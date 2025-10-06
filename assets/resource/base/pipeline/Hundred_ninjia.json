@@ -6,7 +6,8 @@
         "interrupt": [
             "hundred_ninjia_match",
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入百忍子任务[/color]"
     },
     "hundred_ninjia_entry": {
         "recognition": "TemplateMatch",
@@ -24,7 +25,8 @@
         "next": [
             "hundred_ninjia_more_game_entry"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
     },
     "hundred_ninjia_more_game_entry": {
         "recognition": "TemplateMatch",
@@ -39,7 +41,8 @@
         "next": [
             "hundred_ninjia_icon"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]进入更多玩法[/color]"
     },
     "hundred_ninjia_icon": {
         "recognition": "TemplateMatch",
@@ -54,7 +57,8 @@
         "next": [
             "hundred_ninjia_match"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]进入百忍对决[/color]"
     },
     "hundred_ninjia_match": {
         "recognition": "TemplateMatch",
@@ -74,7 +78,8 @@
             "hundred_ninjia_match",
             "sleep_500ms"
         ],
-        "post_delay": 26000
+        "post_delay": 26000,
+        "focus": "[color:DeepSkyBlue]百忍对决匹配[/color]"
     },
     "hundred_ninjia_selcet_ninjia": {
         "recognition": "TemplateMatch",
@@ -94,7 +99,8 @@
         ],
         "interrupt": [
             "hundred_ninjia_match"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入百忍选忍者[/color]"
     },
     "hundred_ninjia_confirm_selcet_ninjia": {
         "recognition": "TemplateMatch",
@@ -113,7 +119,8 @@
         "interrupt": [
             "hundred_ninjia_selcet_ninjia",
             "wait_5_second"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]百忍对决确定选忍者[/color]"
     },
     "hundred_ninjia_check_fight": {
         "recognition": "TemplateMatch",
@@ -130,7 +137,8 @@
         "interrupt": [
             "hundred_ninjia_check_fight",
             "wait_5_second"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]百忍对决战斗[/color]"
     },
     "wait_5_second": {
         "post_delay": 5000
@@ -150,7 +158,8 @@
         ],
         "interrupt": [
             "wait_5_second"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检测百忍对决不在战斗[/color]"
     },
     "hundred_ninjia_confirm_game_over": {
         "recognition": "TemplateMatch",
@@ -169,6 +178,7 @@
         "interrupt": [
             "sleep_500ms"
         ],
-        "post_delay": 4000
+        "post_delay": 4000,
+        "focus": "[color:DeepSkyBlue]百忍对决战斗结束[/color]"
     }
 }

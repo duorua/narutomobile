@@ -5,7 +5,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入忍法帖子任务[/color]"
     },
     "ninjia_book_entry": {
         "next": [
@@ -28,7 +29,8 @@
         "green_mask": true,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]忍法帖已完成[/color]"
     },
     "ninjia_book_undone": {
         "recognition": "TemplateMatch",
@@ -44,7 +46,8 @@
         "next": [
             "ninjia_book_leaderboard"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]忍法帖未完成[/color]"
     },
     "ninjia_book_share": {
         "recognition": "TemplateMatch",
@@ -89,7 +92,8 @@
         "duration": 50,
         "green_mask": true,
         "threshold": 0.5,
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]关闭忍法帖分享[/color]"
     },
     "click_ninjia_book_share_top_bar": {
         "recognition": "DirectHit",
@@ -101,7 +105,8 @@
         ],
         "action": "Click",
         "next": "close_ninjia_book_share",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]点掉顶部栏[/color]"
     },
     "close_ninjia_book_share": {
         "action": "StopApp",
@@ -112,7 +117,8 @@
         "interrupt": [
             "click_ninjia_book_share_top_bar"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]关闭分享[/color]"
     },
     "ninjia_book_mission_done": {
         "recognition": "TemplateMatch",
@@ -128,7 +134,8 @@
             "ninjia_book_liveness_undone",
             "ninjia_book_liveness_done"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]忍法帖任务已完成[/color]"
     },
     "ninjia_book_mission_undone": {
         "recognition": "TemplateMatch",
@@ -143,7 +150,8 @@
             "ninjia_book_mission_award"
         ],
         "action": "Click",
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]忍法帖任务未完成[/color]"
     },
     "ninjia_book_mission_award": {
         "next": [
@@ -164,7 +172,8 @@
             58
         ],
         "next": "ninjia_book_mission_award",
-        "action": "Click"
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]关闭升级界面[/color]"
     },
     "check_no_ninjia_book_mission_award": {
         "recognition": "TemplateMatch",
@@ -183,7 +192,8 @@
             "get_ninjia_book_mission_award",
             "ninjia_book_liveness_undone",
             "ninjia_book_liveness_done"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检查有没有任务奖励[/color]"
     },
     "get_ninjia_book_mission_award": {
         "recognition": "TemplateMatch",
@@ -195,7 +205,8 @@
             91
         ],
         "action": "Click",
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]领取忍法帖任务奖励[/color]"
     },
     "ninjia_book_liveness_done": {
         "recognition": "TemplateMatch",
@@ -214,7 +225,8 @@
         "interrupt": [
             "back_main_screen_and_stop"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]忍法帖活跃度奖励已领取[/color]"
     },
     "ninjia_book_liveness_undone": {
         "recognition": "TemplateMatch",
@@ -233,7 +245,8 @@
             "ninjia_book_liveness_award"
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]忍法帖活跃度奖励未领取[/color]"
     },
     "ninjia_book_liveness_award": {
         "recognition": "TemplateMatch",
@@ -255,7 +268,8 @@
             "check_no_ninjia_book_liveness_award",
             "ninjia_book_liveness_award"
         ],
-        "post_delay": 3000
+        "post_delay": 3000,
+        "focus": "[color:DeepSkyBlue]领取活跃度奖励[/color]"
     },
     "check_no_ninjia_book_liveness_award": {
         "recognition": "TemplateMatch",
@@ -279,7 +293,8 @@
             "close_ninjia_book_level_up_page_when_liveness",
             "ninjia_book_liveness_award"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]检查没有活跃度奖励[/color]"
     },
     "close_ninjia_book_level_up_page_when_liveness": {
         "recognition": "TemplateMatch",
@@ -303,7 +318,8 @@
             11,
             11
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]关闭领取活跃度奖励时的升级界面[/color]"
     },
     "ninjia_book_leaderboard": {
         "recognition": "TemplateMatch",
@@ -319,7 +335,8 @@
             "like_ninjia_book_leaderboard",
             "liked_ninjia_book_leaderboard"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]进入忍法帖排行榜界面[/color]"
     },
     "liked_ninjia_book_leaderboard": {
         "recognition": "TemplateMatch",
@@ -336,7 +353,8 @@
         "interrupt": [
             "ninjia_book_share_v2"
         ],
-        "post_delay": 200
+        "post_delay": 200,
+        "focus": "[color:DeepSkyBlue]进入忍法帖排行榜界面已点赞[/color]"
     },
     "ninjia_book_leaderboard_done": {
         "recognition": "TemplateMatch",
@@ -350,7 +368,8 @@
         "threshold": 0.9,
         "next": [
             "ninjia_book_award_undone"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入忍法帖排行榜已完成[/color]"
     },
     "ninjia_book_leaderboard_undone": {
         "recognition": "TemplateMatch",
@@ -383,7 +402,8 @@
         ],
         "interrupt": [
             "ninjia_book_share_v2"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]忍法帖排行榜点赞[/color]"
     },
     "close_ninjia_book_level_up_page_when_like": {
         "recognition": "TemplateMatch",
@@ -398,7 +418,8 @@
         "next": [
             "ninjia_book_share_v2"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]关闭出现在排行榜点赞后的升级界面[/color]"
     },
     "ninjia_book_share_v2": {
         "recognition": "TemplateMatch",
@@ -416,7 +437,8 @@
         "interrupt": [
             "ninjia_book_share_v2"
         ],
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]忍法帖第二版分享任务[/color]"
     },
     "close_ninjia_book_leaderboard": {
         "recognition": "TemplateMatch",
@@ -435,7 +457,8 @@
         "interrupt": [
             "close_ninjia_book_leaderboard"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]关闭忍法帖排行榜[/color]"
     },
     "ninjia_book_award_done": {
         "recognition": "TemplateMatch",
@@ -454,7 +477,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
-        "action": "Click"
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]忍法帖奖励已领取[/color]"
     },
     "ninjia_book_award_undone": {
         "recognition": "TemplateMatch",
@@ -477,7 +501,8 @@
             "Swipe_for_ninjia_book_award"
         ],
         "post_wait_freezes": 500,
-        "action": "Click"
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]忍法帖奖励未领取[/color]"
     },
     "Swipe_for_ninjia_book_award": {
         "recognition": "TemplateMatch",
@@ -505,7 +530,8 @@
             84,
             81
         ],
-        "duration": 500
+        "duration": 500,
+        "focus": "[color:DeepSkyBlue]滑动领取忍法帖奖励[/color]"
     },
     "check_no_ninjia_book_award_red_point": {
         "recognition": "TemplateMatch",
@@ -524,7 +550,8 @@
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
-        "inverse": true
+        "inverse": true,
+        "focus": "[color:DeepSkyBlue]检查没有忍法帖奖励红点[/color]"
     },
     "check_no_ninjia_book_award": {
         "recognition": "TemplateMatch",
@@ -549,7 +576,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
-        "inverse": true
+        "inverse": true,
+        "focus": "[color:DeepSkyBlue]检查没有忍法帖奖励[/color]"
     },
     "get_ninjia_book_award": {
         "recognition": "TemplateMatch",
@@ -575,7 +603,8 @@
             "confirm_ninjia_book_award"
         ],
         "action": "Click",
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]领取忍法帖奖励[/color]"
     },
     "confirm_ninjia_book_award": {
         "recognition": "TemplateMatch",
@@ -587,6 +616,7 @@
             143
         ],
         "action": "Click",
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]确认领取忍法帖奖励[/color]"
     }
 }

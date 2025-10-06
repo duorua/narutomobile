@@ -6,7 +6,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入试炼之地子任务[/color]"
     },
     "survival_challenge_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -28,7 +29,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "survival_challenge_ac_entry": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
         "next": [
             "survival_challenge_in_center_enter"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "survival_challenge_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -66,7 +69,8 @@
             "survival_challenge_yesterday_award"
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]进入生存挑战[/color]"
     },
     "survival_challenge_ac_done": {
         "recognition": "TemplateMatch",
@@ -79,7 +83,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
     },
     "practice_place_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -101,7 +106,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "practice_place_ac_entry": {
         "recognition": "TemplateMatch",
@@ -116,7 +122,8 @@
         "next": [
             "practice_place_in_center_enter"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "practice_place_ac_done": {
         "recognition": "TemplateMatch",
@@ -129,7 +136,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top_survival_challenge"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]试炼之地已完成[/color]"
     },
     "Swipe_for_back_daily_award_top_survival_challenge": {
         "recognition": "TemplateMatch",
@@ -156,7 +164,8 @@
         "next": [
             "Swipe_for_back_daily_award_top_survival_challenge_1"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]回到奖励中心头部[/color]"
     },
     "Swipe_for_back_daily_award_top_survival_challenge_1": {
         "recognition": "TemplateMatch",
@@ -233,7 +242,8 @@
             "train_road_entry"
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]试炼之地未完成[/color]"
     },
     "practice_place_entry": {
         "next": [
@@ -255,7 +265,8 @@
         "threshold": 0.8,
         "next": [
             "check_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]试炼之地已完成[/color]"
     },
     "practice_place_undone": {
         "recognition": "TemplateMatch",
@@ -270,7 +281,8 @@
         "next": [
             "train_road"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]试炼之地未完成[/color]"
     },
     "train_road": {
         "recognition": "TemplateMatch",
@@ -286,7 +298,8 @@
         ],
         "action": "Click",
         "post_wait_freezes": 500,
-        "enabled": true
+        "enabled": true,
+        "focus": "[color:DeepSkyBlue]修行之路[/color]"
     },
     "train_road_entry": {
         "next": [
@@ -311,7 +324,8 @@
         "next": [
             "survival_challenge_in_center_enter",
             "survival_challenge_ac_entry"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]修行之路扫荡中[/color]"
     },
     "train_road_award": {
         "recognition": "TemplateMatch",
@@ -326,7 +340,8 @@
         "next": [
             "confirm_train_road_award"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]领取修行之路奖励[/color]"
     },
     "confirm_train_road_award": {
         "recognition": "TemplateMatch",
@@ -343,7 +358,8 @@
         "next": [
             "close_train_road"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]确认修行之路奖励[/color]"
     },
     "train_road_unreset": {
         "recognition": "TemplateMatch",
@@ -358,7 +374,8 @@
         "next": [
             "train_road_reset"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]修行之路未重置[/color]"
     },
     "train_road_reset": {
         "recognition": "TemplateMatch",
@@ -373,7 +390,8 @@
         "next": [
             "confirm_train_road_reset"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]修行之路重置[/color]"
     },
     "above_kage_confirm_train_road_reset": {
         "recognition": "TemplateMatch",
@@ -389,7 +407,8 @@
         "next": [
             "above_kage_confirm_train_road_award"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]修行之路超影重置[/color]"
     },
     "above_kage_confirm_train_road_award": {
         "recognition": "TemplateMatch",
@@ -405,7 +424,8 @@
         "next": [
             "confirm_train_road_award"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认修行之路超影重置[/color]"
     },
     "confirm_train_road_reset": {
         "recognition": "TemplateMatch",
@@ -421,7 +441,8 @@
             "confirm_train_road_sweep",
             "above_kage_confirm_train_road_reset"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认修行之路重置[/color]"
     },
     "confirm_train_road_sweep": {
         "recognition": "TemplateMatch",
@@ -435,7 +456,8 @@
         "action": "Click",
         "next": [
             "close_train_road"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]确认修行之路扫荡[/color]"
     },
     "train_road_done": {
         "recognition": "TemplateMatch",
@@ -450,7 +472,8 @@
         "next": [
             "close_train_road"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]修行之路已完成[/color]"
     },
     "close_train_road": {
         "recognition": "TemplateMatch",
@@ -465,7 +488,8 @@
         "next": [
             "survival_challenge_in_center_enter",
             "survival_challenge_ac_entry"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]关闭修行之路[/color]"
     },
     "survival_challenge": {
         "next": [
@@ -530,7 +554,8 @@
         "next": [
             "survival_challenge_yesterday_award_1"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]尝试领取昨日奖励[/color]"
     },
     "survival_challenge_yesterday_award_1": {
         "recognition": "TemplateMatch",
@@ -569,7 +594,8 @@
         "next": [
             "survival_challenge_sweep"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]生存挑战已重置[/color]"
     },
     "survival_challenge_reset_undone": {
         "recognition": "TemplateMatch",
@@ -590,7 +616,8 @@
         "next": [
             "confirm_survival_challenge_reset"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]生存挑战未重置[/color]"
     },
     "confirm_survival_challenge_reset": {
         "recognition": "TemplateMatch",
@@ -605,7 +632,8 @@
         "next": [
             "survival_challenge_confirm_tp"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]确认生存挑战重置[/color]"
     },
     "survival_challenge_confirm_tp": {
         "recognition": "TemplateMatch",
@@ -620,7 +648,8 @@
         "next": [
             "survival_challenge_confirm_tp_1"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]生存挑战传送[/color]"
     },
     "survival_challenge_confirm_tp_1": {
         "recognition": "TemplateMatch",
@@ -635,7 +664,8 @@
         "next": [
             "survival_challenge_sweep"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]确认生存挑战重置[/color]"
     },
     "survival_challenge_sweep": {
         "next": [
@@ -660,7 +690,8 @@
             "start_survival_challenge_sweep",
             "survival_challenge_done"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]进入生存挑战扫荡任务[/color]"
     },
     "check_survival_challenge_done": {
         "recognition": "OCR",
@@ -686,12 +717,14 @@
         ],
         "next": [
             "survival_challenge_done"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检查生存挑战是否完成[/color]"
     },
     "survival_challenge_done": {
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
     },
     "survival_challenge_sweep_ready": {
         "recognition": "TemplateMatch",
@@ -706,7 +739,8 @@
         "next": [
             "survival_challenge_sweep_confirm"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]确认生存挑战准备就绪[/color]"
     },
     "survival_challenge_sweep_confirm": {
         "recognition": "TemplateMatch",
@@ -721,7 +755,8 @@
         "next": [
             "survival_challenge_sweep_ticket_confirm"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]确认进行生存挑战[/color]"
     },
     "survival_challenge_sweep_ticket_confirm": {
         "recognition": "TemplateMatch",
@@ -737,6 +772,7 @@
             "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 200,
-        "post_delay": 30000
+        "post_delay": 30000,
+        "focus": "[color:DeepSkyBlue]确认生存挑战挑战卷提示[/color]"
     }
 }

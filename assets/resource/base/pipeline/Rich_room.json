@@ -6,7 +6,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入丰饶子任务[/color]"
     },
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -28,7 +29,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "rich_room_ac_entry": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
         "next": [
             "rich_room_in_center_enter"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "rich_room_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -67,7 +70,8 @@
             "rich_room_finished"
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]丰饶之间未完成[/color]"
     },
     "rich_room_ac_done": {
         "recognition": "TemplateMatch",
@@ -80,7 +84,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]丰饶之间已完成[/color]"
     },
     "rich_room_entry": {
         "next": [
@@ -102,7 +107,8 @@
         "threshold": 0.5,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]丰饶之间已完成[/color]"
     },
     "rich_room_undone": {
         "recognition": "TemplateMatch",
@@ -117,7 +123,8 @@
             "challenge_rich_room",
             "rich_room_finished"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]丰饶之间未完成[/color]"
     },
     "rich_room_finished": {
         "recognition": "TemplateMatch",
@@ -130,7 +137,8 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]丰饶之间完成[/color]"
     },
     "challenge_rich_room": {
         "recognition": "TemplateMatch",
@@ -141,7 +149,8 @@
         ],
         "interrupt": [
             "challenge_rich_room"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]挑战丰饶之间[/color]"
     },
     "swipe_for_right_entries": {
         "recognition": "TemplateMatch",
@@ -162,7 +171,8 @@
             150,
             50,
             50
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]滑动寻找右边的功能入口[/color]"
     },
     "peace": {
         "recognition": "TemplateMatch",
@@ -175,7 +185,8 @@
         "inverse": true,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检查是否和平[/color]"
     },
     "fight": {
         "next": [
@@ -191,7 +202,8 @@
         ],
         "interrupt": [
             "fighting"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]战斗[/color]"
     },
     "clicker_skill1": {
         "action": "Swipe",
@@ -266,7 +278,8 @@
         "interrupt": [
             "peace"
         ],
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]尝试使用一技能[/color]"
     },
     "click_skill2": {
         "recognition": "TemplateMatch",
@@ -280,7 +293,8 @@
         ],
         "interrupt": [
             "peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]尝试使用二技能[/color]"
     },
     "normal_attack": {
         "recognition": "TemplateMatch",
@@ -294,7 +308,8 @@
         ],
         "interrupt": [
             "peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]尝试使用普攻[/color]"
     },
     "fight_roll": {
         "recognition": "TemplateMatch",
@@ -309,7 +324,8 @@
         "interrupt": [
             "click_skill1",
             "peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]尝试使用密卷[/color]"
     },
     "fight_summon": {
         "recognition": "TemplateMatch",
@@ -321,7 +337,8 @@
         "next": [
             "click_skill1",
             "peace"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]尝试使用通灵[/color]"
     },
     "fight_replace": {
         "recognition": "TemplateMatch",
@@ -329,7 +346,8 @@
         "green_mask": true,
         "action": "Swipe",
         "threshold": 0.6,
-        "duration": 100
+        "duration": 100,
+        "focus": "[color:DeepSkyBlue]尝试使用替身[/color]"
     },
     "click_skill1_ready": {
         "recognition": "OCR",

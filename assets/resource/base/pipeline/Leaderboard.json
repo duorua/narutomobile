@@ -1,11 +1,12 @@
 {
     "leaderboard": {
         "next": [
-            "leaderboard_check_in_main_scream"
+            "leaderboard_check_in_main_screen"
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入排行榜子任务[/color]"
     },
     "swipe_for_left_entries": {
         "recognition": "TemplateMatch",
@@ -26,7 +27,8 @@
             150,
             50,
             50
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]滑动寻找左边的功能入口[/color]"
     },
     "leaderboard_entry_by_ocr": {
         "recognition": "OCR",
@@ -39,9 +41,10 @@
         "next": [
             "click_thumb"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]进入排行榜[/color]"
     },
-    "leaderboard_check_in_main_scream": {
+    "leaderboard_check_in_main_screen": {
         "recognition": "TemplateMatch",
         "template": [
             "Startgame/main_green_masked.png"
@@ -61,7 +64,8 @@
         "interrupt": [
             "swipe_for_left_entries"
         ],
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]检测是否在主页面[/color]"
     },
     "leaderboard_entry": {
         "recognition": "TemplateMatch",
@@ -82,7 +86,8 @@
         "next": [
             "click_thumb"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]进入排行榜[/color]"
     },
     "click_thumb": {
         "recognition": "TemplateMatch",
@@ -91,7 +96,8 @@
         "next": [
             "close_board"
         ],
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]点赞[/color]"
     },
     "close_board": {
         "recognition": "TemplateMatch",
@@ -110,6 +116,7 @@
         "interrupt": [
             "back_main_screen"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]关闭排行榜[/color]"
     }
 }

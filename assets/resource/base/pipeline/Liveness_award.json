@@ -2,7 +2,8 @@
     "liveness_award": {
         "next": [
             "liveness_award_entry"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入活跃度宝箱子任务[/color]"
     },
     "liveness_award_entry": {
         "next": [
@@ -29,7 +30,8 @@
         "interrupt": [
             "get_liveness_award"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]活跃度宝箱未领取[/color]"
     },
     "liveness_award_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -51,7 +53,8 @@
         "interrupt": [
             "get_liveness_award"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "liveness_award_done": {
         "recognition": "TemplateMatch",
@@ -66,7 +69,8 @@
         "next": [
             "weekly_liveness_award_undone",
             "weekly_liveness_award_done"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]活跃度宝箱已领取[/color]"
     },
     "check_no_liveness_award": {
         "recognition": "TemplateMatch",
@@ -88,7 +92,8 @@
         ],
         "inverse": true,
         "threshold": 0.9,
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]检测还有没有活跃度宝箱[/color]"
     },
     "get_liveness_award": {
         "recognition": "TemplateMatch",
@@ -106,7 +111,8 @@
         ],
         "threshold": 0.9,
         "post_wait_freezes": 500,
-        "action": "Click"
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]领取活跃度宝箱[/color]"
     },
     "weekly_liveness_award_undone": {
         "recognition": "TemplateMatch",
@@ -124,7 +130,8 @@
         "interrupt": [
             "weekly_liveness_award_undone"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]周度500活跃奖励可领取[/color]"
     },
     "confirm_weekly_liveness_award": {
         "recognition": "TemplateMatch",
@@ -138,7 +145,8 @@
         "action": "Click",
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]确认领取周度500活跃奖励[/color]"
     },
     "weekly_liveness_award_done": {
         "recognition": "TemplateMatch",
@@ -151,6 +159,7 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]周度500活跃奖励不可领取[/color]"
     }
 }

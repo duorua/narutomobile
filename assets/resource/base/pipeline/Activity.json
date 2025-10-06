@@ -5,7 +5,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入活动子任务[/color]"
     },
     "activity_entry": {
         "recognition": "TemplateMatch",
@@ -29,7 +30,8 @@
         "interrupt": [
             "get_ramen"
         ],
-        "post_wait_freezes": 700
+        "post_wait_freezes": 700,
+        "focus": "[color:DeepSkyBlue]进入活动[/color]"
     },
     "check_no_energy": {
         "recognition": "TemplateMatch",
@@ -44,7 +46,8 @@
         "next": [
             "swipes_for_monthly_sign"
         ],
-        "post_delay": 200
+        "post_delay": 200,
+        "focus": "[color:DeepSkyBlue]检测有没有一乐拉面可领取[/color]"
     },
     "swipes_for_monthly_sign": {
         "action": "Swipe",
@@ -65,7 +68,8 @@
             "mouthly_sign_undone"
         ],
         "duration": 100,
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]前往月度签到[/color]"
     },
     "get_ramen": {
         "recognition": "TemplateMatch",
@@ -76,7 +80,8 @@
             1077,
             395
         ],
-        "action": "Click"
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]领取一乐拉面[/color]"
     },
     "mouthly_sign_undone": {
         "recognition": "TemplateMatch",
@@ -100,7 +105,8 @@
         "interrupt": [
             "mouthly_sign_undone"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]月度签到未完成[/color]"
     },
     "mouthly_sign_done": {
         "recognition": "TemplateMatch",
@@ -118,7 +124,8 @@
         "threshold": 0.9,
         "next": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]月度签到已完成[/color]"
     },
     "mouthly_signature": {
         "recognition": "TemplateMatch",
@@ -133,7 +140,8 @@
         "next": [
             "check_mouthly_signature_title",
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进行月度签到[/color]"
     },
     "check_mouthly_signature_title": {
         "recognition": "TemplateMatch",
@@ -154,6 +162,7 @@
         ],
         "next": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检查月度签到称号是否可以领取[/color]"
     }
 }

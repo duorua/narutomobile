@@ -7,7 +7,8 @@
         "interrupt": [
             "swipe_for_left_entries",
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入积分赛子任务[/color]"
     },
     "point_race_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -29,7 +30,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "point_race_ac_entry": {
         "recognition": "TemplateMatch",
@@ -44,7 +46,8 @@
         "next": [
             "point_race_in_center_enter"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "point_race_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -67,7 +70,8 @@
             "back_main_screen_and_stop"
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]积分赛未完成[/color]"
     },
     "point_race_ac_done": {
         "recognition": "TemplateMatch",
@@ -80,7 +84,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]积分赛已完成[/color]"
     },
     "point_race_entry": {
         "next": [

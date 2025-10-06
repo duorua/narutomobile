@@ -6,7 +6,8 @@
         "interrupt": [
             "swipe_for_left_entries",
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入组织子任务[/color]"
     },
     "group_award_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -24,7 +25,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]检测是否在奖励中心[/color]"
     },
     "group_award_center_enter": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "group_ac_undone": {
         "recognition": "TemplateMatch",
@@ -66,7 +69,8 @@
             "chopper_group_pray"
         ],
         "interrupt": [],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]组织祈福未完成[/color]"
     },
     "group_ac_done": {
         "recognition": "TemplateMatch",
@@ -79,7 +83,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]组织祈福已完成[/color]"
     },
     "group_entry": {
         "recognition": "TemplateMatch",
@@ -98,7 +103,8 @@
             "back_main_screen"
         ],
         "green_mask": true,
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]组织主界面入口[/color]"
     },
     "group_gameplay_undone": {
         "recognition": "TemplateMatch",
@@ -114,7 +120,8 @@
             "check_selected_group_gameplay"
         ],
         "threshold": 0.9,
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]组织玩法未完成[/color]"
     },
     "group_gameplay_done": {
         "recognition": "TemplateMatch",
@@ -129,7 +136,8 @@
         "action": "Click",
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]组织玩法已完成[/color]"
     },
     "check_selected_group_gameplay": {
         "recognition": "TemplateMatch",
@@ -147,7 +155,8 @@
             "check_group_pray_done"
         ],
         "interrupt": [],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认选中组织玩法按钮[/color]"
     },
     "check_group_pray_done": {
         "recognition": "TemplateMatch",
@@ -161,7 +170,8 @@
         "threshold": 0.98,
         "action": "Click",
         "next": "close_group_pray",
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]检测组织签到已完成[/color]"
     },
     "check_group_pray_undone": {
         "recognition": "TemplateMatch",
@@ -170,7 +180,8 @@
         "action": "DoNothing",
         "next": [
             "group_pray_undone"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检测组织签到未完成[/color]"
     },
     "group_pray_undone": {
         "recognition": "TemplateMatch",
@@ -180,7 +191,8 @@
             "above_kage_group_pray",
             "chopper_group_pray"
         ],
-        "post_wait_freezes": 600
+        "post_wait_freezes": 600,
+        "focus": "[color:DeepSkyBlue]检测组织签到未完成[/color]"
     },
     "above_kage_group_pray": {
         "recognition": "TemplateMatch",
@@ -201,7 +213,8 @@
             "close_chopper_group_pray",
             "above_kage_group_pray"
         ],
-        "post_delay": 3000
+        "post_delay": 3000,
+        "focus": "[color:DeepSkyBlue]超影签到[/color]"
     },
     "chopper_group_pray": {
         "recognition": "TemplateMatch",
@@ -222,7 +235,8 @@
             "close_chopper_group_pray",
             "chopper_group_pray"
         ],
-        "post_delay": 3000
+        "post_delay": 3000,
+        "focus": "[color:DeepSkyBlue]铜币签到[/color]"
     },
     "group_pray_remain_1": {
         "recognition": "OCR",
@@ -237,7 +251,8 @@
             "above_kage_group_pray",
             "chopper_group_pray"
         ],
-        "post_wait_freezes": 600
+        "post_wait_freezes": 600,
+        "focus": "[color:DeepSkyBlue]可以组织签到[/color]"
     },
     "close_chopper_group_pray": {
         "recognition": "TemplateMatch",
@@ -253,7 +268,8 @@
             "group_award"
         ],
         "pre_wait_freezes": 300,
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]关闭铜币签到[/color]"
     },
     "confirm_chopper_group_pray": {
         "recognition": "TemplateMatch",
@@ -267,7 +283,8 @@
         "action": "Click",
         "next": "group_award",
         "pre_wait_freezes": 300,
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]确认铜币签到[/color]"
     },
     "group_award": {
         "next": [
@@ -286,7 +303,8 @@
             "first_group_award",
             "first_group_award_done"
         ],
-        "interrupt": []
+        "interrupt": [],
+        "focus": "[color:DeepSkyBlue]检测没有昨日奖励[/color]"
     },
     "first_group_award_done": {
         "recognition": "TemplateMatch",
@@ -298,7 +316,8 @@
             59
         ],
         "threshold": 0.95,
-        "next": "second_group_award_entry"
+        "next": "second_group_award_entry",
+        "focus": "[color:DeepSkyBlue]15人签到奖励未领取[/color]"
     },
     "first_group_award": {
         "recognition": "TemplateMatch",
@@ -316,7 +335,8 @@
             "second_group_award"
         ],
         "interrupt": [],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]领取15人签到奖励[/color]"
     },
     "second_group_award_entry": {
         "next": [
@@ -339,7 +359,8 @@
             44
         ],
         "threshold": 0.7,
-        "next": "third_group_award_entry"
+        "next": "third_group_award_entry",
+        "focus": "[color:DeepSkyBlue]20人签到奖励已领取[/color]"
     },
     "second_group_award": {
         "recognition": "TemplateMatch",
@@ -357,7 +378,8 @@
         "interrupt": [
             "second_group_award_box_done"
         ],
-        "post_wait_freezes": 700
+        "post_wait_freezes": 700,
+        "focus": "[color:DeepSkyBlue]领取20人签到奖励[/color]"
     },
     "second_group_award_box_done": {
         "recognition": "TemplateMatch",
@@ -379,7 +401,8 @@
         "next": [
             "third_group_award",
             "third_group_award_done"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]20人签到奖励已领取[/color]"
     },
     "second_group_award_box": {
         "recognition": "TemplateMatch",
@@ -394,7 +417,8 @@
         "action": "Swipe",
         "duration": 50,
         "next": "close_second_group_award_box",
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]20人签到奖励开箱[/color]"
     },
     "close_second_group_award_box": {
         "recognition": "TemplateMatch",
@@ -417,7 +441,8 @@
             "third_group_award",
             "third_group_award_done"
         ],
-        "interrupt": []
+        "interrupt": [],
+        "focus": "[color:DeepSkyBlue]关闭20人签到奖励[/color]"
     },
     "third_group_award_entry": {
         "next": [
@@ -436,7 +461,8 @@
             59
         ],
         "threshold": 0.7,
-        "next": "close_group_pray"
+        "next": "close_group_pray",
+        "focus": "[color:DeepSkyBlue]25人签到奖励已领取[/color]"
     },
     "third_group_award": {
         "recognition": "TemplateMatch",
@@ -452,7 +478,8 @@
         "next": [
             "close_third_group_award"
         ],
-        "post_wait_freezes": 600
+        "post_wait_freezes": 600,
+        "focus": "[color:DeepSkyBlue]领取25人签到奖励[/color]"
     },
     "close_third_group_award": {
         "recognition": "TemplateMatch",
@@ -467,7 +494,8 @@
         "next": [
             "close_group_pray"
         ],
-        "post_wait_freezes": 600
+        "post_wait_freezes": 600,
+        "focus": "[color:DeepSkyBlue]关闭25人签到奖励[/color]"
     },
     "close_group_pray": {
         "recognition": "TemplateMatch",
@@ -482,7 +510,8 @@
         "next": [
             "pursuit_dawn_organization"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]关闭组织祈福[/color]"
     },
     "pursuit_dawn_organization": {
         "next": [
@@ -506,7 +535,8 @@
         "threshold": 0.95,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]追击晓组织已完成[/color]"
     },
     "pursuit_dawn_organization_undone": {
         "recognition": "TemplateMatch",
@@ -522,7 +552,8 @@
         "next": [
             "pursuit_dawn_organization_award"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]追击晓组织未完成[/color]"
     },
     "pursuit_dawn_organization_award": {
         "next": [
@@ -542,7 +573,8 @@
         "threshold": 0.97,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]追击晓组织奖励已领取[/color]"
     },
     "pursuit_dawn_organization_award_undone": {
         "recognition": "TemplateMatch",
@@ -559,7 +591,8 @@
         "next": [
             "to_pursuit_dawn_organization_award"
         ],
-        "post_wait_freezes": 900
+        "post_wait_freezes": 900,
+        "focus": "[color:DeepSkyBlue]追击晓组织奖励未领取[/color]"
     },
     "to_pursuit_dawn_organization_award": {
         "next": [
@@ -583,7 +616,8 @@
         "duration": 50,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]一键领取追击晓组织奖励[/color]"
     },
     "get_pursuit_dawn_organization_award": {
         "recognition": "TemplateMatch",
@@ -595,7 +629,8 @@
             474
         ],
         "action": "Click",
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]领取追击晓组织奖励[/color]"
     },
     "check_no_pursuit_dawn_organization_award": {
         "recognition": "TemplateMatch",
@@ -609,7 +644,8 @@
         "inverse": true,
         "next": [
             "swipe_for_pursuit_dawn_organization_award"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检测当前没有追击晓组织奖励可领取[/color]"
     },
     "swipe_for_pursuit_dawn_organization_award": {
         "recognition": "TemplateMatch",
@@ -640,7 +676,8 @@
         "interrupt": [
             "back_main_screen_and_stop"
         ],
-        "post_wait_freezes": 400
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]下滑寻找追击晓组织奖励[/color]"
     },
     "to_pursuit_dawn_organization_award_1": {
         "next": [
@@ -660,7 +697,8 @@
             474
         ],
         "action": "Click",
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]领取追击晓组织奖励[/color]"
     },
     "check_no_pursuit_dawn_organization_award_1": {
         "recognition": "TemplateMatch",
@@ -674,7 +712,8 @@
         "inverse": true,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]再次检测当前没有追击晓组织奖励可领取[/color]"
     },
     "pursuit_dawn_organization_entry": {
         "recognition": "TemplateMatch",
@@ -684,7 +723,8 @@
         "next": [
             "pursuit_dawn_organization_entry_button"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]再次进入组织[/color]"
     },
     "pursuit_dawn_organization_entry_button": {
         "recognition": "TemplateMatch",
@@ -693,7 +733,8 @@
         "next": [
             "pursuit_dawn_organization"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]进入组织[/color]"
     },
     "yesterday_award_entry": {
         "recognition": "TemplateMatch",
@@ -711,7 +752,8 @@
         "interrupt": [
             "get_yesterday_award"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]检测昨日奖励[/color]"
     },
     "yesterday_award_done": {
         "recognition": "TemplateMatch",
@@ -726,7 +768,8 @@
         "next": [
             "close_yesterday_award"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]昨日奖励已完成[/color]"
     },
     "get_yesterday_award": {
         "recognition": "TemplateMatch",
@@ -738,7 +781,8 @@
             149,
             444
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]领取昨日奖励[/color]"
     },
     "close_yesterday_award": {
         "recognition": "TemplateMatch",
@@ -747,6 +791,7 @@
         "post_wait_freezes": 500,
         "next": [
             "check_no_yesterday_award"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]关闭昨日奖励界面[/color]"
     }
 }

@@ -6,7 +6,8 @@
         "interrupt": [
             "give_energy_done",
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入送体力子任务[/color]"
     },
     "energy_entry": {
         "recognition": "TemplateMatch",
@@ -25,7 +26,8 @@
         "next": [
             "sent_energy"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]进入送体力界面[/color]"
     },
     "give_energy_done": {
         "recognition": "TemplateMatch",
@@ -37,7 +39,8 @@
             61
         ],
         "green_mask": true,
-        "action": "StopTask"
+        "action": "StopTask",
+        "focus": "[color:DeepSkyBlue]送体力已完成[/color]"
     },
     "sent_energy": {
         "recognition": "OCR",
@@ -56,7 +59,8 @@
         "action": "Click",
         "next": [
             "get_energy"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]送体力[/color]"
     },
     "get_energy": {
         "recognition": "OCR",
@@ -80,7 +84,8 @@
         "interrupt": [
             "close_energy"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]领取好友送的体力[/color]"
     },
     "confirm_get_energy": {
         "recognition": "OCR",
@@ -93,7 +98,8 @@
         "next": [
             "close_energy"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]确认送体力[/color]"
     },
     "close_energy": {
         "recognition": "TemplateMatch",
@@ -112,6 +118,7 @@
         "interrupt": [
             "back_main_screen"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]关闭送体力[/color]"
     }
 }

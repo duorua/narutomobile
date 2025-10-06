@@ -5,7 +5,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入轻松助手子任务[/color]"
     },
     "easy_helper_entry": {
         "next": [
@@ -34,7 +35,7 @@
             "easy_helper_daily"
         ],
         "post_delay": 700,
-        "focus": "[color:DeepSkyBlue]检查轻松助手完整情况[/color]"
+        "focus": "[color:DeepSkyBlue]轻松助手未完成[/color]"
     },
     "easy_helper_daily": {
         "recognition": "TemplateMatch",
@@ -61,7 +62,8 @@
         "green_mask": true,
         "next": [
             "stoptask"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]轻松助手已完成[/color]"
     },
     "easy_helper_one_key": {
         "recognition": "TemplateMatch",
@@ -96,7 +98,7 @@
             "confirm_easy_helper_one_key"
         ],
         "post_wait_freezes": 1000,
-        "focus": "[color:DeepSkyBlue]使用金币扫荡[/color]"
+        "focus": "[color:DeepSkyBlue]使用金币扫荡丰饶[/color]"
     },
     "easy_helper_no_gold_sweep": {
         "recognition": "TemplateMatch",
@@ -130,7 +132,8 @@
         "interrupt": [
             "confirm_easy_helper_one_key"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]一键审批[/color]"
     },
     "confirm_easy_helper_one_key_done": {
         "recognition": "TemplateMatch",
@@ -146,7 +149,8 @@
             "easy_helper_log_on_award_undone",
             "easy_helper_log_on_award_done"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]确认一键审批已完成[/color]"
     },
     "easy_helper_log_on_award_undone": {
         "recognition": "TemplateMatch",
@@ -165,7 +169,8 @@
         "interrupt": [
             "easy_helper_log_on_award_undone"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]轻松助手奖励未领取[/color]"
     },
     "easy_helper_log_on_award_done": {
         "recognition": "TemplateMatch",
@@ -182,7 +187,8 @@
             "easy_helper_privilege_undone",
             "easy_helper_privilege_done"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]轻松助手奖励已领取[/color]"
     },
     "get_easy_helper_log_on_award": {
         "recognition": "TemplateMatch",
@@ -215,7 +221,8 @@
         "next": [
             "easy_helper_sweep"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]轻松特权已完成[/color]"
     },
     "easy_helper_privilege_undone": {
         "recognition": "TemplateMatch",
@@ -231,7 +238,8 @@
         "next": [
             "easy_helper_sweep"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]轻松特权未完成[/color]"
     },
     "easy_helper_sweep": {
         "next": [
@@ -256,7 +264,8 @@
         "next": [
             "easy_helper_team_dash_sweep"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]检查能否进行扫荡[/color]"
     },
     "get_easy_helper_sweep": {
         "recognition": "TemplateMatch",
@@ -297,7 +306,8 @@
             "easy_helper_celebrate_sweep",
             "easy_helper_back_to_sweep"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]检测出现返回图标[/color]"
     },
     "easy_helper_back_to_sweep": {
         "recognition": "TemplateMatch",
@@ -330,7 +340,8 @@
         ],
         "threshold": 0.85,
         "action": "Click",
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]领取扫荡奖励[/color]"
     },
     "easy_helper_team_dash_sweep": {
         "next": [
@@ -355,7 +366,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]领取扫荡奖励[/color]"
     },
     "get_easy_helper_team_dash_sweep": {
         "recognition": "TemplateMatch",
@@ -410,7 +422,8 @@
         "next": [
             "easy_helper_team_dash_sweep"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]检测返回图标[/color]"
     },
     "easy_helper_back_to_team_dash_sweep": {
         "recognition": "TemplateMatch",

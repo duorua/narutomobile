@@ -5,7 +5,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入使用体力子任务[/color]"
     },
     "use_energy_entry": {
         "recognition": "OCR",
@@ -29,7 +30,8 @@
         ],
         "next": [
             "use_energy_by_ninjia_piece"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检测是否可以使用体力[/color]"
     },
     "use_energy_by_ninjia_piece": {
         "recognition": "TemplateMatch",
@@ -48,7 +50,8 @@
             "elite_entry"
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]刷忍者碎片[/color]"
     },
     "elite_entry": {
         "recognition": "TemplateMatch",
@@ -63,7 +66,8 @@
         "next": [
             "use_energy_ez_sweep_entry"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]进入精英副本[/color]"
     },
     "use_energy_ez_sweep_entry": {
         "recognition": "TemplateMatch",
@@ -78,7 +82,8 @@
         "next": [
             "use_energy_ez_sweep"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]便捷扫荡[/color]"
     },
     "use_energy_ez_sweep": {
         "recognition": "TemplateMatch",
@@ -112,7 +117,8 @@
             "use_energy_not_enough_sign"
         ],
         "interrupt": "sleep_500ms",
-        "post_delay": 5000
+        "post_delay": 5000,
+        "focus": "[color:DeepSkyBlue]确认便捷扫荡[/color]"
     },
     "use_energy_not_enough_sign": {
         "recognition": "TemplateMatch",
@@ -132,6 +138,7 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]体力不足[/color]"
     }
 }

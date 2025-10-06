@@ -6,7 +6,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入分享子任务[/color]"
     },
     "share_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -29,6 +30,7 @@
             "Swipe_for_award_center_find"
         ],
         "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "share_ac_entry": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
         "next": [
             "share_in_center_enter"
         ],
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "share_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -72,7 +75,7 @@
         ],
         "action": "Click",
         "post_wait_freezes": 600,
-        "focus": "[color:DeepSkyBlue]检查分享完成状态[/color]"
+        "focus": "[color:DeepSkyBlue]分享未完成[/color]"
     },
     "share_ac_done": {
         "recognition": "TemplateMatch",
@@ -85,7 +88,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]分享已完成[/color]"
     },
     "share_entry": {
         "recognition": "TemplateMatch",
@@ -185,7 +189,8 @@
             "close_chat",
             "close_friend_rank",
             "close_new_ninjia_page"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]退回主界面[/color]"
     },
     "close_weekly_ninjia_title": {
         "recognition": "TemplateMatch",
@@ -213,7 +218,8 @@
             "close_chat",
             "close_friend_rank",
             "close_new_ninjia_page"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]退回主界面并停止子任务[/color]"
     },
     "confirm_quit_team": {
         "recognition": "TemplateMatch",
@@ -225,7 +231,8 @@
             47
         ],
         "action": "Swipe",
-        "duration": 50
+        "duration": 50,
+        "focus": "[color:DeepSkyBlue]小队突袭确认退队[/color]"
     },
     "close_chat": {
         "recognition": "TemplateMatch",
@@ -284,7 +291,8 @@
             "weekly_sign",
             "click_x"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]检查有没有可关闭窗口[/color]"
     },
     "click_x": {
         "recognition": "TemplateMatch",
@@ -338,7 +346,8 @@
             56,
             61
         ],
-        "duration": 700
+        "duration": 700,
+        "focus": "[color:DeepSkyBlue]寻找奖励中心功能入口[/color]"
     },
     "Swipe_for_back_daily_award_top": {
         "recognition": "TemplateMatch",
@@ -365,7 +374,8 @@
         "next": [
             "Swipe_for_back_daily_award_top_1"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]回到奖励中心头部[/color]"
     },
     "Swipe_for_back_daily_award_top_1": {
         "recognition": "TemplateMatch",

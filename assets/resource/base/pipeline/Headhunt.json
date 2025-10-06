@@ -5,7 +5,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入招募子任务[/color]"
     },
     "headhunt_entry": {
         "recognition": "TemplateMatch",
@@ -22,7 +23,8 @@
             "free_headhunt_waiting"
         ],
         "interrupt": [],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]进入招募[/color]"
     },
     "no_free_headhunt": {
         "recognition": "TemplateMatch",
@@ -31,7 +33,8 @@
             "headhunt_recruit_undone",
             "headhunt_recruit_done"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]没有免费高级招募[/color]"
     },
     "free_headhunt_waiting": {
         "recognition": "TemplateMatch",
@@ -46,7 +49,8 @@
             "headhunt_recruit_undone",
             "headhunt_recruit_done"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]有免费高级招募[/color]"
     },
     "confrim_free_headhunt": {
         "recognition": "TemplateMatch",
@@ -62,7 +66,8 @@
             "headhunt_recruit_undone",
             "headhunt_recruit_done"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]确认免费高级招募[/color]"
     },
     "headhunt_recruit_done": {
         "recognition": "TemplateMatch",
@@ -78,7 +83,8 @@
         "next": [
             "top_secret_treasure_box_undone",
             "top_secret_treasure_box_done"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]没有免费普通招募[/color]"
     },
     "headhunt_recruit_undone": {
         "recognition": "TemplateMatch",
@@ -94,7 +100,8 @@
         "next": [
             "headhunt_recruit"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]有免费普通招募[/color]"
     },
     "headhunt_recruit": {
         "recognition": "TemplateMatch",
@@ -107,7 +114,8 @@
         ],
         "action": "Click",
         "next": "confrim_headhunt_recruit",
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]进行免费普通招募[/color]"
     },
     "confrim_headhunt_recruit": {
         "recognition": "TemplateMatch",
@@ -123,7 +131,8 @@
             "top_secret_treasure_box_undone",
             "top_secret_treasure_box_done"
         ],
-        "post_delay": 300
+        "post_delay": 300,
+        "focus": "[color:DeepSkyBlue]确认免费普通招募[/color]"
     },
     "top_secret_treasure_box_undone": {
         "recognition": "TemplateMatch",
@@ -143,7 +152,8 @@
         ],
         "interrupt": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]绝密宝匣未完成[/color]"
     },
     "top_secret_treasure_box_done": {
         "recognition": "TemplateMatch",
@@ -157,7 +167,8 @@
         "threshold": 0.9,
         "inverse": true,
         "post_delay": 300,
-        "next": "back_main_screen_and_stop"
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]绝密宝匣已完成[/color]"
     },
     "top_secret_treasure_box_log": {
         "recognition": "TemplateMatch",
@@ -173,7 +184,8 @@
         "post_delay": 700,
         "next": [
             "top_secret_treasure_box_chopper"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入绝密宝匣奖励日志[/color]"
     },
     "top_secret_treasure_box_chopper": {
         "recognition": "OCR",
@@ -194,6 +206,7 @@
         "post_delay": 700,
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]领取绝密宝匣铜币[/color]"
     }
 }

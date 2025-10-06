@@ -6,7 +6,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入任务集会所子任务[/color]"
     },
     "mission_office_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -28,7 +29,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "mission_office_ac_entry": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
         "next": [
             "mission_office_in_center_enter"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "mission_office_ac_undone": {
         "recognition": "TemplateMatch",
@@ -70,7 +73,8 @@
         ],
         "action": "Click",
         "post_wait_freezes": 400,
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]任务集会所未完成[/color]"
     },
     "mission_office_ac_done": {
         "recognition": "TemplateMatch",
@@ -83,7 +87,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]任务集会所已完成[/color]"
     },
     "mission_office_done": {
         "recognition": "TemplateMatch",
@@ -129,7 +134,8 @@
         ],
         "interrupt": [
             "celebrate_mission_office_award"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]检测有没有任务集会所奖励可领取[/color]"
     },
     "get_mission_office_award": {
         "recognition": "TemplateMatch",
@@ -147,7 +153,8 @@
         "interrupt": [
             "celebrate_mission_office_award"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]领取任务集会所奖励[/color]"
     },
     "confirm_mission_office_award": {
         "recognition": "TemplateMatch",
@@ -166,7 +173,8 @@
         "interrupt": [
             "get_mission_office_award"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]确认领取任务集会所奖励[/color]"
     },
     "celebrate_mission_office_award": {
         "recognition": "TemplateMatch",
@@ -184,7 +192,8 @@
         "interrupt": [
             "get_mission_office_award"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]关闭任务集会所奖励界面[/color]"
     },
     "mission_office_get_mission": {
         "recognition": "TemplateMatch",
@@ -205,7 +214,8 @@
         "interrupt": [
             "mission_office_complete",
             "take_mission_done"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]接任务[/color]"
     },
     "mission_office_complete": {
         "recognition": "TemplateMatch",
@@ -218,7 +228,8 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]任务已领完[/color]"
     },
     "mission_office_3_advance_mission": {
         "recognition": "TemplateMatch",
@@ -243,7 +254,8 @@
         "next": [
             "mission_office_recommended_team"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]接高级任务[/color]"
     },
     "mission_office_recommended_team": {
         "recognition": "TemplateMatch",
@@ -262,7 +274,8 @@
         "interrupt": [
             "mission_office_get_mission"
         ],
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]使用推荐配对[/color]"
     },
     "mission_office_3_mission": {
         "recognition": "TemplateMatch",
@@ -292,7 +305,8 @@
         "next": [
             "mission_office_recommended_team"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]接三人任务[/color]"
     },
     "mission_office_Sharingan_mission": {
         "recognition": "TemplateMatch",
@@ -344,7 +358,8 @@
         "interrupt": [
             "mission_office_get_mission"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]接羁绊任务[/color]"
     },
     "take_mission_office_relation_mission": {
         "next": [
@@ -662,7 +677,8 @@
         "interrupt": [
             "mission_office_get_mission"
         ],
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]接单人任务[/color]"
     },
     "tack_mission_office_solo_mission": {
         "next": [
@@ -1105,6 +1121,7 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]任务已经接取完毕[/color]"
     }
 }

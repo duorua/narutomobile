@@ -6,7 +6,8 @@
         ],
         "interrupt": [
             "back_main_screen"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入铜币招财子任务[/color]"
     },
     "get_chopper_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -28,7 +29,8 @@
         "interrupt": [
             "Swipe_for_award_center_find"
         ],
-        "post_wait_freezes": 700
+        "post_wait_freezes": 700,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
     "get_chopper_ac_entry": {
         "recognition": "TemplateMatch",
@@ -43,7 +45,8 @@
         "next": [
             "get_chopper_in_center_enter"
         ],
-        "post_delay": 1000
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "get_chopper_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -70,7 +73,8 @@
             "get_chopper_ac_entry_undone"
         ],
         "action": "Click",
-        "post_wait_freezes": 1000
+        "post_wait_freezes": 1000,
+        "focus": "[color:DeepSkyBlue]铜币招财未完成[/color]"
     },
     "get_chopper_ac_done": {
         "recognition": "TemplateMatch",
@@ -83,7 +87,8 @@
         ],
         "next": [
             "Swipe_for_back_daily_award_top"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]铜币招财已完成[/color]"
     },
     "get_chopper_entry": {
         "recognition": "TemplateMatch",
@@ -101,7 +106,8 @@
         "interrupt": [
             "check_chopper_done"
         ],
-        "post_delay": 700
+        "post_delay": 700,
+        "focus": "[color:DeepSkyBlue]铜币招财主界面入口[/color]"
     },
     "start_chooper": {
         "recognition": "OCR",
@@ -124,7 +130,8 @@
         "interrupt": [
             "start_chooper"
         ],
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]进行招财[/color]"
     },
     "check_chopper_done": {
         "recognition": "OCR",
@@ -144,7 +151,8 @@
         "next": [
             "close_chooper"
         ],
-        "pre_wait_freezes": 200
+        "pre_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]铜币招财完成[/color]"
     },
     "close_chooper": {
         "recognition": "TemplateMatch",
@@ -162,6 +170,7 @@
         "interrupt": [
             "back_main_screen"
         ],
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]关闭铜币招财[/color]"
     }
 }

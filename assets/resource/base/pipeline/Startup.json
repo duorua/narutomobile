@@ -2,7 +2,8 @@
     "start_up": {
         "next": [
             "start_naruto"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入启动游戏子任务[/color]"
     },
     "start_naruto": {
         "action": "StartApp",
@@ -18,7 +19,8 @@
             "agreement",
             "click_icon",
             "wait_5_second"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]启动游戏[/color]"
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
@@ -40,7 +42,8 @@
             "agreement",
             "click_icon"
         ],
-        "pre_wait_freezes": 500
+        "pre_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]尝试关闭青少年界面[/color]"
     },
     "close_before_game_notice": {
         "recognition": "TemplateMatch",
@@ -58,7 +61,8 @@
         "interrupt": [
             "close_before_game_notice"
         ],
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]关闭游戏前公告[/color]"
     },
     "check_close_before_game_notice": {
         "recognition": "TemplateMatch",
@@ -81,7 +85,8 @@
             "agreement",
             "click_icon"
         ],
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]检查是否关闭游戏前公告[/color]"
     },
     "click_icon": {
         "recognition": "TemplateMatch",
@@ -97,7 +102,8 @@
             "agreement",
             "click_icon",
             "wait_5_second"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]点击游戏图标[/color]"
     },
     "check_start_game": {
         "recognition": "TemplateMatch",
@@ -108,7 +114,8 @@
             294,
             75
         ],
-        "action": "StopTask"
+        "action": "StopTask",
+        "focus": "[color:DeepSkyBlue]检查到开始游戏并终止子任务[/color]"
     },
     "unagreement": {
         "recognition": "TemplateMatch",
@@ -121,7 +128,8 @@
         ],
         "green_mask": true,
         "action": "Click",
-        "next": "account_type"
+        "next": "account_type",
+        "focus": "[color:DeepSkyBlue]确认协议[/color]"
     },
     "agreement": {
         "recognition": "TemplateMatch",
@@ -133,7 +141,8 @@
             69
         ],
         "action": "DoNothing",
-        "next": "account_type"
+        "next": "account_type",
+        "focus": "[color:DeepSkyBlue]已确认协议[/color]"
     },
     "account_type": {
         "next": "android_qq"
@@ -150,7 +159,8 @@
         "action": "Click",
         "next": "agree_log_in",
         "interrupt": "check_start_game",
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
     },
     "agree_log_in": {
         "recognition": "OCR",
@@ -163,7 +173,8 @@
         ],
         "action": "Click",
         "next": "agree_info",
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]确认登录[/color]"
     },
     "agree_info": {
         "recognition": "OCR",
@@ -184,13 +195,15 @@
             "restart_naruto",
             "click_icon"
         ],
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
     },
     "restart_naruto": {
         "action": "StopApp",
         "package": "com.tencent.KiHan",
         "next": [
             "click_icon"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]重启游戏[/color]"
     }
 }

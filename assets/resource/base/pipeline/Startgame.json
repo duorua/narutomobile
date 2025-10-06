@@ -7,7 +7,8 @@
             "unagreement",
             "agreement",
             "check_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]进入开始游戏子任务[/color]"
     },
     "click_start_game": {
         "recognition": "TemplateMatch",
@@ -29,7 +30,8 @@
             "close_friend_rank",
             "back_main_screen"
         ],
-        "post_delay": 8000
+        "post_delay": 8000,
+        "focus": "[color:DeepSkyBlue]点击开始游戏[/color]"
     },
     "close_friend_rank": {
         "recognition": "TemplateMatch",
@@ -41,7 +43,8 @@
             56
         ],
         "action": "Swipe",
-        "duration": 50
+        "duration": 50,
+        "focus": "[color:DeepSkyBlue]关闭好友排名[/color]"
     },
     "check_main_screen_and_stop": {
         "recognition": "TemplateMatch",
@@ -57,7 +60,8 @@
         "threshold": 0.95,
         "action": "StopTask",
         "green_mask": true,
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]检查在主页面并终止子任务[/color]"
     },
     "check_main_screen": {
         "recognition": "TemplateMatch",
@@ -73,7 +77,8 @@
         "threshold": 0.95,
         "action": "DoNothing",
         "green_mask": true,
-        "post_delay": 500
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]检查在主页面[/color]"
     },
     "close_headhunt_end_announcement": {
         "recognition": "TemplateMatch",
@@ -87,7 +92,8 @@
         "green_mask": true,
         "threshold": 0.5,
         "action": "Click",
-        "post_wait_freezes": 200
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]关闭高招公告[/color]"
     },
     "close_announcement": {
         "recognition": "TemplateMatch",
@@ -98,7 +104,8 @@
         "action": "Click",
         "green_mask": true,
         "threshold": 0.5,
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]关闭公告[/color]"
     },
     "close_new_ninjia_page": {
         "recognition": "TemplateMatch",
@@ -110,7 +117,8 @@
             52
         ],
         "action": "Click",
-        "post_wait_freezes": 500
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]关闭忍者上新公告[/color]"
     },
     "weekly_sign": {
         "recognition": "OCR",
@@ -126,6 +134,7 @@
             36
         ],
         "action": "Click",
-        "post_wait_freezes": 100
+        "post_wait_freezes": 100,
+        "focus": "[color:DeepSkyBlue]进行周度签到[/color]"
     }
 }
