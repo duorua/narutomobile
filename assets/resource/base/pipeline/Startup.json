@@ -93,7 +93,7 @@
         ],
         "green_mask": true,
         "action": "Click",
-        "next": "account_type",
+        "next": "game_login",
         "focus": "[color:DeepSkyBlue]确认协议[/color]"
     },
     "agreement": {
@@ -106,14 +106,10 @@
             69
         ],
         "action": "DoNothing",
-        "next": "account_type",
+        "next": "game_login",
         "focus": "[color:DeepSkyBlue]已确认协议[/color]"
     },
-    "account_type": {
-        "timeout": 3000,
-        "next": "android_qq"
-    },
-    "android_qq": {
+    "game_login": {
         "recognition": "TemplateMatch",
         "template": "Startup/android_qq.png",
         "roi": [
@@ -124,7 +120,7 @@
         ],
         "action": "Click",
         "next": [
-            "android_qq",
+            "game_login",
             "agree_log_in"
         ],
         "post_wait_freezes": 100,

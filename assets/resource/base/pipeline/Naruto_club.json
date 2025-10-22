@@ -626,12 +626,6 @@
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]提交任务[/color]"
     },
-    "start_qq": {
-        "action": "StartApp",
-        "package": "com.tencent.mobileqq",
-        "post_delay": 1000,
-        "focus": "[color:DeepSkyBlue]打开qq[/color]"
-    },
     "club_award": {
         "next": [
             "club_first_award_done"
@@ -901,31 +895,5 @@
         "template": "Naruto_club/ad_x_masked.png",
         "action": "Click",
         "green_mask": true
-    },
-    "click_qq_icon": {
-        "recognition": "TemplateMatch",
-        "template": "Naruto_club/qq_icon.png",
-        "action": "Click",
-        "pre_wait_freezes": 200,
-        "post_wait_freezes": 500
-    },
-    "shut_naruto": {
-        "action": "StopApp",
-        "package": "com.tencent.KiHan"
-    },
-    "shut_qq": {
-        "action": "StopApp",
-        "package": "com.tencent.mobileqq"
-    },
-    "restart_qq": {
-        "action": "StopApp",
-        "package": "com.tencent.mobileqq",
-        "next": [
-            "start_qq"
-        ]
-    },
-    "shut_wechat": {
-        "action": "StopApp",
-        "package": "com.tencent.mm"
     }
 }

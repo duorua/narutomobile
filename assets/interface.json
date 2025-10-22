@@ -140,24 +140,22 @@
         "账号属性": {
             "cases": [
                 {
-                    "name": "安卓QQ",
+                    "name": "安卓QQ"
+                },
+                {
+                    "name": "安卓微信（没做完）",
                     "pipeline_override": {
-                        "start_naruto": {
-                            "package": "com.tencent.KiHan"
+                        "game_login": {
+                            "template": "Startgame/android_wechat.png",
+                            "focus": "[color:DeepSkyBlue]安卓微信账号[/color]"
                         },
-                        "account_type": {
-                            "next": "android_qq"
+                        "shut_share_app": {
+                            "package": "com.tencent.mm"
                         },
-                        "try_share": {
-                            "next": "share_to_qq_friend"
+                        "share_close_qq_app": {
+                            "package": "com.tencent.mm"
                         },
-                        "naruto_club_entry": {
-                            "next": "start_qq"
-                        },
-                        "shut_qq": {
-                            "package": "com.tencent.mobileqq"
-                        },
-                        "shut_wechat": {
+                        "close_ninjia_book_share": {
                             "package": "com.tencent.mm"
                         }
                     }

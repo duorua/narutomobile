@@ -71,7 +71,7 @@
         "interrupt": [
             "close_weekly_ninjia_title",
             "share_entry",
-            "share_to_qq_friend"
+            "share_to_friend"
         ],
         "action": "Click",
         "post_wait_freezes": 600,
@@ -116,7 +116,7 @@
         "interrupt": [
             "close_weekly_ninjia_title",
             "share_entry",
-            "share_to_qq_friend"
+            "share_to_friend"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:darkgray]尝试进入用户主页[/color]"
@@ -132,7 +132,7 @@
         ],
         "action": "Click",
         "next": [
-            "share_to_qq_friend"
+            "share_to_friend"
         ],
         "interrupt": [
             "close_weekly_ninjia_title"
@@ -141,17 +141,11 @@
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]点击分享按钮[/color]"
     },
-    "share_to_qq_friend": {
+    "share_to_friend": {
         "recognition": "OCR",
         "expected": [
-            "发给好友",
-            "发给好",
-            "给好友",
             "发给",
-            "好友",
-            "给好",
-            "好",
-            "友"
+            "好友"
         ],
         "roi": [
             1161,
@@ -160,21 +154,17 @@
             39
         ],
         "next": [
-            "close_qq_app"
-        ],
-        "interrupt": [
-            "close_weekly_ninjia_title"
+            "share_close_qq_app"
         ],
         "action": "Click",
         "pre_wait_freezes": 200,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]发给好友[/color]"
     },
-    "close_qq_app": {
+    "share_close_qq_app": {
         "action": "StopApp",
         "package": "com.tencent.mobileqq",
         "next": [
-            "click_x_single",
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]关闭QQ[/color]"
