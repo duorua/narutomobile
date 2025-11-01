@@ -77,7 +77,7 @@ jobs:
         with:
           repository: MaaXYZ/MaaFramework
           fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
-          latest: true
+          tag: "v4.5.6"
           out-file-path: "deps"
           extract: true
 
@@ -115,6 +115,9 @@ jobs:
             fi
           else
             echo "Skipping copy MFA for Android."
+          fi
+          if [[ "${{ matrix.os }}" == "win" ]]; then
+            cp "tools/DependencySetup_依赖库安装.bat" install/
           fi
 
       - uses: actions/upload-artifact@v4

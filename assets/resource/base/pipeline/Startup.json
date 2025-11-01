@@ -15,11 +15,13 @@
             "before_game",
             "close_before_game_notice",
             "close_teenager_page"
-        ]
+        ],
+        "rate_limit": 5000,
+        "timeout": 30000
     },
     "before_game": {
         "recognition": "TemplateMatch",
-        "template": "Startgame/naruto_logo.png",
+        "template": "Startup/naruto_logo.png",
         "threshold": 0.4,
         "recommended roi": [
             6,
@@ -34,7 +36,9 @@
             "agreement",
             "unagreement",
             "agree_log_in"
-        ]
+        ],
+        "rate_limit": 3000,
+        "timeout": 60000
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
@@ -59,28 +63,8 @@
             77
         ],
         "action": "Click",
-        "next": [
-            "check_close_before_game_notice"
-        ],
-        "interrupt": [
-            "close_before_game_notice"
-        ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]关闭游戏前公告[/color]"
-    },
-    "check_close_before_game_notice": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/x.png",
-        "roi": [
-            1010,
-            53,
-            93,
-            77
-        ],
-        "action": "Click",
-        "inverse": true,
-        "post_delay": 500,
-        "focus": "[color:DeepSkyBlue]检查是否关闭游戏前公告[/color]"
     },
     "unagreement": {
         "recognition": "TemplateMatch",
@@ -123,6 +107,7 @@
             "game_login",
             "agree_log_in"
         ],
+        "timeout": 3000,
         "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
     },
@@ -164,89 +149,8 @@
         ],
         "action": "Click",
         "next": [
-            "click_start_game",
-            "check_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "close_new_ninjia_page",
-            "close_headhunt_end_announcement",
-            "weekly_sign",
-            "close_friend_rank",
-            "back_main_screen",
-            "im_come_back",
-            "im_come_back_award"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]点击开始游戏[/color]"
-    },
-    "check_main_screen_and_stop": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Startgame/main_green_masked.png"
-        ],
-        "roi": [
-            11,
-            0,
-            1269,
-            720
-        ],
-        "threshold": 0.95,
-        "action": "StopTask",
-        "green_mask": true,
-        "post_delay": 500,
-        "focus": "[color:tomato]当前任务结束[/color]"
-    },
-    "close_new_ninjia_page": {
-        "recognition": "TemplateMatch",
-        "template": "Startgame/right_up_x.png",
-        "roi": [
-            1188,
-            0,
-            92,
-            52
-        ],
-        "action": "Click",
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]关闭忍者上新公告[/color]"
-    },
-    "weekly_sign": {
-        "recognition": "OCR",
-        "expected": [
-            "领取",
-            "领",
-            "取"
-        ],
-        "roi": [
-            606,
-            587,
-            68,
-            36
-        ],
-        "action": "Click",
-        "post_wait_freezes": 100,
-        "focus": "[color:DeepSkyBlue]进行周度签到[/color]"
-    },
-    "im_come_back": {
-        "recognition": "ocr",
-        "text": "我回来了",
-        "action": "Click",
-        "roi": [
-            496,
-            560,
-            324,
-            160
-        ],
-        "focus": "[color:DeepSkyBlue]点击我回来了[/color]"
-    },
-    "im_come_back_award": {
-        "recognition": "ocr",
-        "text": "领取礼物",
-        "action": "Click",
-        "roi": [
-            470,
-            441,
-            351,
-            191
-        ],
-        "focus": "[color:DeepSkyBlue]点击领取礼物[/color]"
     }
 }

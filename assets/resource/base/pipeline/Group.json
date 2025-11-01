@@ -11,7 +11,7 @@
     },
     "group_award_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -30,7 +30,7 @@
     },
     "group_award_center_enter": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -74,7 +74,7 @@
     },
     "group_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -82,7 +82,7 @@
             118
         ],
         "next": [
-            "Swipe_for_back_daily_award_top"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]组织祈福已完成[/color]"
     },

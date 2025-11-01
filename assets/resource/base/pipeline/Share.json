@@ -12,8 +12,8 @@
     "share_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -34,7 +34,7 @@
     },
     "share_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -79,7 +79,7 @@
     },
     "share_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -87,14 +87,14 @@
             118
         ],
         "next": [
-            "Swipe_for_back_daily_award_top"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]分享已完成[/color]"
     },
     "share_entry": {
         "recognition": "TemplateMatch",
         "template": [
-            "Startgame/main_green_masked.png"
+            "Startup/main_green_masked.png"
         ],
         "roi": [
             11,
@@ -144,8 +144,10 @@
     "share_to_friend": {
         "recognition": "OCR",
         "expected": [
-            "发给",
-            "好友"
+            "发",
+            "给",
+            "好",
+            "友"
         ],
         "roi": [
             1161,
@@ -154,16 +156,32 @@
             39
         ],
         "next": [
-            "share_close_qq_app"
+            "close_qq_app"
         ],
         "action": "Click",
         "pre_wait_freezes": 200,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]发给好友[/color]"
     },
-    "share_close_qq_app": {
-        "action": "StopApp",
-        "package": "com.tencent.mobileqq",
+    "close_qq_app": {
+        "action": "ClickKey",
+        "key": 4,
+        "next": [
+            "close_share_top_bar"
+        ],
+        "focus": "[color:DeepSkyBlue]关闭QQ[/color]",
+        "pre_delay": 1000,
+        "post_delay": 1000
+    },
+    "close_share_top_bar": {
+        "recognition": "DirectHit",
+        "target": [
+            1067,
+            0,
+            213,
+            143
+        ],
+        "action": "Click",
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -183,176 +201,5 @@
         ],
         "action": "Click",
         "focus": "[color:darkgray]关闭周榜更新提示[/color]"
-    },
-    "close_chat": {
-        "recognition": "TemplateMatch",
-        "template": "Share/chat_close_button.png",
-        "roi": [
-            807,
-            295,
-            53,
-            104
-        ],
-        "action": "Click",
-        "focus": "[color:darkgray]关闭聊天[/color]"
-    },
-    "click_x_single": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            1067,
-            0,
-            213,
-            143
-        ],
-        "template": [
-            "Share/green_masked_x.png",
-            "Share/x.png"
-        ],
-        "action": "Swipe",
-        "duration": 50,
-        "green_mask": true,
-        "next": "back_main_screen_and_stop",
-        "threshold": 0.5,
-        "post_delay": 500,
-        "focus": "[color:darkgray]关闭当前窗口[/color]"
-    },
-    "award_center_enter": {
-        "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
-        "roi": [
-            1200,
-            348,
-            42,
-            39
-        ],
-        "action": "Click",
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
-    },
-    "Swipe_for_award_center_find": {
-        "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ],
-        "action": "Swipe",
-        "begin": [
-            1133,
-            169,
-            56,
-            61
-        ],
-        "end": [
-            294,
-            169,
-            56,
-            61
-        ],
-        "duration": 700,
-        "focus": "[color:DeepSkyBlue]寻找奖励中心功能入口[/color]"
-    },
-    "Swipe_for_back_daily_award_top": {
-        "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ],
-        "action": "Swipe",
-        "begin": [
-            294,
-            169,
-            56,
-            61
-        ],
-        "end": [
-            1133,
-            169,
-            56,
-            61
-        ],
-        "next": [
-            "Swipe_for_back_daily_award_top_1"
-        ],
-        "post_wait_freezes": 100,
-        "focus": "[color:DeepSkyBlue]回到奖励中心头部[/color]"
-    },
-    "Swipe_for_back_daily_award_top_1": {
-        "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ],
-        "action": "Swipe",
-        "begin": [
-            294,
-            169,
-            56,
-            61
-        ],
-        "end": [
-            1133,
-            169,
-            56,
-            61
-        ],
-        "next": [
-            "Swipe_for_back_daily_award_top_2"
-        ],
-        "post_wait_freezes": 100
-    },
-    "Swipe_for_back_daily_award_top_2": {
-        "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ],
-        "action": "Swipe",
-        "begin": [
-            294,
-            169,
-            56,
-            61
-        ],
-        "end": [
-            1133,
-            169,
-            56,
-            61
-        ],
-        "next": [
-            "stoptask"
-        ]
-    },
-    "Swipe_for_award_center_find_end": {
-        "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
-        "roi": [
-            180,
-            384,
-            1100,
-            118
-        ]
-    },
-    "check_in_daily_award": {
-        "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ]
     }
 }

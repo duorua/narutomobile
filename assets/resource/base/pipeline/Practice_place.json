@@ -12,8 +12,8 @@
     "survival_challenge_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -34,7 +34,7 @@
     },
     "survival_challenge_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -74,7 +74,7 @@
     },
     "survival_challenge_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -82,15 +82,15 @@
             118
         ],
         "next": [
-            "Swipe_for_back_daily_award_top"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
     },
     "practice_place_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -111,7 +111,7 @@
     },
     "practice_place_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -127,7 +127,7 @@
     },
     "practice_place_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -141,7 +141,7 @@
     },
     "Swipe_for_back_daily_award_top_survival_challenge": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -150,7 +150,7 @@
         ],
         "action": "Swipe",
         "begin": [
-            294,
+            580,
             169,
             56,
             61
@@ -169,7 +169,7 @@
     },
     "Swipe_for_back_daily_award_top_survival_challenge_1": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -178,7 +178,7 @@
         ],
         "action": "Swipe",
         "begin": [
-            294,
+            580,
             169,
             56,
             61
@@ -196,7 +196,7 @@
     },
     "Swipe_for_back_daily_award_top_survival_challenge_2": {
         "recognition": "TemplateMatch",
-        "template": "Share/check_in_daily_award.png",
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -205,7 +205,7 @@
         ],
         "action": "Swipe",
         "begin": [
-            294,
+            580,
             169,
             56,
             61
@@ -244,16 +244,6 @@
         "action": "Click",
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]试炼之地未完成[/color]"
-    },
-    "practice_place_entry": {
-        "next": [
-            "practice_place_undone",
-            "practice_place_done"
-        ],
-        "interrupt": [
-            "swipe_for_right_entries",
-            "back_main_screen"
-        ]
     },
     "practice_place_done": {
         "recognition": "TemplateMatch",
@@ -768,11 +758,34 @@
             75
         ],
         "action": "Click",
-        "next": [
-            "back_main_screen_and_stop"
+        "next": "wait_for_survival_challenge_sweep_complete",
+        "interrupt": [
+            "survival_challenge_sweep_ticket_used_up"
         ],
         "post_wait_freezes": 200,
-        "post_delay": 30000,
+        "timeout": 60000,
+        "on_error": "back_main_screen_and_stop",
         "focus": "[color:DeepSkyBlue]确认生存挑战挑战卷提示[/color]"
+    },
+    "survival_challenge_sweep_ticket_used_up": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            469,
+            219,
+            316,
+            217
+        ],
+        "template": "Practice_place/sweep_ticket_used_up.png",
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]生存挑战卷用完了[/color]"
+    },
+    "wait_for_survival_challenge_sweep_complete": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Practice_place/survival_no_ninjia.png",
+            "Practice_place/final_reward.png"
+        ],
+        "next": "back_main_screen_and_stop",
+        "focus": "[color:DeepSkyBlue]生存挑战扫荡完成[/color]"
     }
 }

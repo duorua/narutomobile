@@ -13,8 +13,8 @@
     "point_race_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -35,7 +35,7 @@
     },
     "point_race_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -75,7 +75,7 @@
     },
     "point_race_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -83,7 +83,7 @@
             118
         ],
         "next": [
-            "Swipe_for_back_daily_award_top"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]积分赛已完成[/color]"
     },

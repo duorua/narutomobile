@@ -28,7 +28,7 @@
     },
     "stoptask": {
         "action": "StopTask",
-        "focus": "[color:DeepSkyBlue]停止子任务[/color]"
+        "focus": "[color:chartreuse]当前任务结束[/color]"
     },
     "open_mail": {
         "recognition": "TemplateMatch",

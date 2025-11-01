@@ -12,8 +12,8 @@
     "get_chopper_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -34,7 +34,7 @@
     },
     "get_chopper_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -66,10 +66,10 @@
             -114
         ],
         "next": [
-            "start_chooper"
+            "check_chopper_done"
         ],
         "interrupt": [
-            "check_chopper_done",
+            "start_chooper",
             "get_chopper_ac_entry_undone"
         ],
         "action": "Click",
@@ -78,7 +78,7 @@
     },
     "get_chopper_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -86,28 +86,9 @@
             118
         ],
         "next": [
-            "Swipe_for_back_daily_award_top"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]铜币招财已完成[/color]"
-    },
-    "get_chopper_entry": {
-        "recognition": "TemplateMatch",
-        "template": "Get_chopper/chopper.png",
-        "roi": [
-            562,
-            0,
-            247,
-            91
-        ],
-        "action": "Click",
-        "next": [
-            "start_chooper"
-        ],
-        "interrupt": [
-            "check_chopper_done"
-        ],
-        "post_delay": 700,
-        "focus": "[color:DeepSkyBlue]铜币招财主界面入口[/color]"
     },
     "start_chooper": {
         "recognition": "OCR",
@@ -125,9 +106,6 @@
         ],
         "action": "Click",
         "next": [
-            "check_chopper_done"
-        ],
-        "interrupt": [
             "start_chooper"
         ],
         "post_wait_freezes": 100,
@@ -165,10 +143,7 @@
         ],
         "action": "Click",
         "next": [
-            "check_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]关闭铜币招财[/color]"

@@ -11,7 +11,7 @@
     "swipe_for_left_entries": {
         "recognition": "TemplateMatch",
         "template": [
-            "Startgame/main_green_masked.png"
+            "Startup/main_green_masked.png"
         ],
         "threshold": 0.8,
         "green_mask": true,
@@ -47,13 +47,26 @@
     "leaderboard_check_in_main_screen": {
         "recognition": "TemplateMatch",
         "template": [
-            "Startgame/main_green_masked.png"
+            "Startup/main_green_masked.png"
         ],
         "roi": [
             11,
             0,
             1269,
             720
+        ],
+        "action": "Swipe",
+        "begin": [
+            1015,
+            334,
+            1,
+            1
+        ],
+        "end": [
+            273,
+            336,
+            1,
+            1
         ],
         "threshold": 0.95,
         "green_mask": true,
@@ -72,13 +85,9 @@
         "template": [
             "Leaderboard/board.png",
             "Leaderboard/board_night_undone.png",
-            "Leaderboard/board_night_done.png"
-        ],
-        "roi": [
-            5,
-            95,
-            1088,
-            518
+            "Leaderboard/board_night_done.png",
+            "Leaderboard/board_konoha_autumn.png",
+            "Leaderboard/board_HanFengZhuiYu.png"
         ],
         "threshold": 0.8,
         "green_mask": true,
@@ -110,11 +119,7 @@
         ],
         "action": "Click",
         "next": [
-            "close_announcement",
             "check_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "back_main_screen"
         ],
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]关闭排行榜[/color]"

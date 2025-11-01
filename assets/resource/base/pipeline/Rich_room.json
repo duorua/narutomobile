@@ -12,8 +12,8 @@
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
-            "Share/check_not_in_daily_award.png",
-            "Share/check_in_daily_award.png"
+            "SharedNode/check_not_in_daily_award.png",
+            "SharedNode/check_in_daily_award.png"
         ],
         "roi": [
             37,
@@ -34,7 +34,7 @@
     },
     "rich_room_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry.png",
+        "template": "SharedNode/center_entry.png",
         "roi": [
             1200,
             348,
@@ -75,7 +75,7 @@
     },
     "rich_room_ac_done": {
         "recognition": "TemplateMatch",
-        "template": "Share/center_entry_end.png",
+        "template": "SharedNode/center_entry_end.png",
         "roi": [
             180,
             384,
@@ -83,7 +83,7 @@
             118
         ],
         "next": [
-            "Swipe_for_back_daily_award_top"
+            "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]丰饶之间已完成[/color]"
     },
@@ -198,7 +198,8 @@
     },
     "fighting": {
         "next": [
-            "click_skill1"
+            "click_skill1",
+            "normal_attack"
         ],
         "interrupt": [
             "fighting"
@@ -269,11 +270,12 @@
         "recognition": "TemplateMatch",
         "template": "Rich_room/skill1_masked.png",
         "green_mask": true,
-        "threshold": 0.4,
+        "threshold": 0.3,
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "click_skill2"
+            "click_skill2",
+            "normal_attack"
         ],
         "interrupt": [
             "peace"
@@ -286,7 +288,7 @@
         "template": "Rich_room/skill2_masked.png",
         "green_mask": true,
         "action": "Swipe",
-        "threshold": 0.5,
+        "threshold": 0.3,
         "duration": 50,
         "next": [
             "normal_attack"
@@ -302,9 +304,10 @@
         "green_mask": true,
         "action": "Swipe",
         "threshold": 0.9,
-        "duration": 5000,
+        "duration": 1000,
         "next": [
-            "click_skill1"
+            "click_skill1",
+            "normal_attack"
         ],
         "interrupt": [
             "peace"

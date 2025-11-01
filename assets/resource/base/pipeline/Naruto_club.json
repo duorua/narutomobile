@@ -239,6 +239,7 @@
         "next": [
             "ninja_station"
         ],
+        "threshold": 0.4,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭卷轴[/color]"
     },
@@ -267,6 +268,7 @@
             115,
             55
         ],
+        "threshold": 0.4,
         "action": "Click",
         "next": [
             "village_entry"
@@ -573,6 +575,7 @@
         "next": [
             "swipe_for_club_submit"
         ],
+        "interrupt": "close_gold_helper",
         "focus": "[color:DeepSkyBlue]关闭金币助手[/color]"
     },
     "swipe_for_club_submit": {
@@ -625,6 +628,12 @@
         "action": "Click",
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]提交任务[/color]"
+    },
+    "start_qq": {
+        "action": "StartApp",
+        "package": "com.tencent.mobileqq",
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]打开qq[/color]"
     },
     "club_award": {
         "next": [
@@ -895,5 +904,31 @@
         "template": "Naruto_club/ad_x_masked.png",
         "action": "Click",
         "green_mask": true
+    },
+    "click_qq_icon": {
+        "recognition": "TemplateMatch",
+        "template": "Naruto_club/qq_icon.png",
+        "action": "Click",
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 500
+    },
+    "shut_naruto": {
+        "action": "StopApp",
+        "package": "com.tencent.KiHan"
+    },
+    "shut_qq": {
+        "action": "StopApp",
+        "package": "com.tencent.mobileqq"
+    },
+    "restart_qq": {
+        "action": "StopApp",
+        "package": "com.tencent.mobileqq",
+        "next": [
+            "start_qq"
+        ]
+    },
+    "shut_wechat": {
+        "action": "StopApp",
+        "package": "com.tencent.mm"
     }
 }
