@@ -302,6 +302,7 @@
             "team_dash_do_not_remind_gold"
         ],
         "rate_limit": 3000,
+        "rate_limit": 3000,
         "focus": "[color:DeepSkyBlue]小队突袭自动战斗[/color]"
     },
     "team_dash_keep_fight": {
