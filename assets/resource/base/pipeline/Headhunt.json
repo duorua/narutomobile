@@ -75,7 +75,9 @@
         "next": [
             "headhunt_recruit_no_free"
         ],
-        "interrupt": "headhunt_recruit",
+        "interrupt": [
+            "headhunt_recruit"
+        ],
         "focus": "[color:DeepSkyBlue]进入普通招募[/color]"
     },
     "headhunt_recruit_no_free": {
@@ -119,10 +121,6 @@
             75
         ],
         "action": "Click",
-        "next": [
-            "top_secret_treasure_box_undone",
-            "top_secret_treasure_box_done"
-        ],
         "post_delay": 300,
         "focus": "[color:DeepSkyBlue]确认免费普通招募[/color]"
     },
