@@ -471,3 +471,4 @@ install/debug/maa.log
 
 config
 assets/resource/model/ocr
+temp/
