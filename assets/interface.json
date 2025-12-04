@@ -71,6 +71,10 @@
         {
             "name": "积分赛",
             "entry": "point_race",
+            "doc": "[size:15][color:tomato]打开战斗会从主页进入,需要使用已适配主题。战斗会打比自己战力低的对手[/color][/size]",
+            "option": [
+                "积分赛战斗选项"
+            ],
             "default_check": true
         },
         {
@@ -143,7 +147,7 @@
             "default_check": true
         },
         {
-            "name": "周胜(beta)",
+            "name": "周胜(连点器)",
             "entry": "weekly_win",
             "option": [
                 "匹配还是排位",
@@ -300,11 +304,6 @@
                             "next": [
                                 "weekly_win_rank"
                             ]
-                        },
-                        "weekly_win_entry": {
-                            "next": [
-                                "weekly_win_rank"
-                            ]
                         }
                     }
                 }
@@ -412,21 +411,13 @@
             "cases": [
                 {
                     "name": "不开启,无限打",
-                    "pipeline_override": {
-                        "weekly_win_success": {
-                            "next": [
-                                "weekly_win_match_fight"
-                            ]
-                        }
-                    }
+                    "pipeline_override": {}
                 },
                 {
                     "name": "开启,胜利一次就退出任务",
                     "pipeline_override": {
                         "weekly_win_success": {
-                            "next": [
-                                "back_main_screen_and_stop"
-                            ]
+                            "next": "back_main_screen_and_stop"
                         }
                     }
                 }
@@ -450,6 +441,38 @@
                         "team_dash_invite_page": {
                             "next": [
                                 "dash_or_exit"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "积分赛战斗选项": {
+            "cases": [
+                {
+                    "name": "开启战斗",
+                    "pipeline_override": {
+                        "point_race": {
+                            "next": [
+                                "point_race_check_in_main_screen"
+                            ],
+                            "interrupt": [
+                                "back_main_screen"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "关闭战斗",
+                    "pipeline_override": {
+                        "point_race": {
+                            "next": [
+                                "point_race_in_center_enter"
+                            ]
+                        },
+                        "point_race_ac_entry_undone": {
+                            "next": [
+                                "back_main_screen_and_stop"
                             ]
                         }
                     }

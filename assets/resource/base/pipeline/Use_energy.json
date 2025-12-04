@@ -95,6 +95,7 @@
             72
         ],
         "action": "Click",
+        "rate_limit": 5000,
         "next": [
             "use_energy_not_enough_sign",
             "use_energy_finish"

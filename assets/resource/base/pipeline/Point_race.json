@@ -9,6 +9,57 @@
         ],
         "focus": "[color:DeepSkyBlue]进入积分赛子任务[/color]"
     },
+    "point_race_check_in_main_screen": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "roi": [
+            11,
+            0,
+            1269,
+            720
+        ],
+        "action": "Swipe",
+        "begin": [
+            1015,
+            334,
+            1,
+            1
+        ],
+        "end": [
+            273,
+            336,
+            1,
+            1
+        ],
+        "threshold": 0.95,
+        "green_mask": true,
+        "next": [
+            "point_race_main_screen_entry"
+        ],
+        "interrupt": [
+            "swipe_for_left_entries"
+        ],
+        "post_delay": 500,
+        "focus": "[color:DeepSkyBlue]检测是否在主页面[/color]"
+    },
+    "point_race_main_screen_entry": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "home/积分赛"
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "next": [
+            "point_race_chanllenge_enter"
+        ],
+        "interrupt": [
+            "point_race_main_screen_entry"
+        ],
+        "post_delay": 800,
+        "focus": "[color:DeepSkyBlue]积分赛主界面入口[/color]"
+    },
     "point_race_in_center_enter": {
         "recognition": "TemplateMatch",
         "template": [
@@ -76,9 +127,24 @@
         "action": "Click",
         "post_wait_freezes": 500,
         "next": [
+            "point_race_chanllenge_limit",
             "point_race_chanllenge_enter",
             "wait_for_select_opponent"
         ]
+    },
+    "point_race_chanllenge_limit": {
+        "recognition": "TemplateMatch",
+        "template": "Point_race/tip_of_buy.png",
+        "roi": [
+            541,
+            124,
+            195,
+            155
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]积分赛挑战次数已用完[/color]"
     },
     "wait_for_select_opponent": {
         "recognition": "TemplateMatch",
@@ -105,7 +171,9 @@
         "action": {
             "type": "Click"
         },
-        "next": "point_race_chanllenge_finished"
+        "next": "point_race_chanllenge_finished",
+        "timeout": 60000,
+        "focus": "[color:DeepSkyBlue]进入积分赛战斗[/color]"
     },
     "point_race_chanllenge_finished": {
         "recognition": "OCR",
@@ -120,7 +188,8 @@
         "next": [
             "point_race_chanllenge_finished",
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]积分赛战斗结束[/color]"
     },
     "point_race_get_chanllenge_button": {
         "recognition": "OCR",

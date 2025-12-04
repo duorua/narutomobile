@@ -1,0 +1,108 @@
+{
+    "stronghold": {
+        "next": [
+            "stronghold_entry"
+        ],
+        "interrupt": [
+            "swipe_for_left_entries",
+            "back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入天地子任务[/color]"
+    },
+    "stronghold_entry": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "home/组织"
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "next": [
+            "stronghold_gameplay",
+            "no_group"
+        ],
+        "interrupt": [
+            "group_entry",
+            "back_main_screen"
+        ],
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]组织主界面入口[/color]"
+    },
+    "stronghold_gameplay": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/gameplay.png",
+        "action": "Click",
+        "next": [
+            "stronghold_gameplay_slected"
+        ],
+        "interrupt": [
+            "stronghold_gameplay"
+        ],
+        "post_delay": 500
+    },
+    "stronghold_gameplay_slected": {
+        "recognition": "TemplateMatch",
+        "template": "Group/selected_group_gameplay.png",
+        "roi": [
+            80,
+            417,
+            93,
+            48
+        ],
+        "action": "DoNothing",
+        "next": [
+            "stronghold_mode"
+        ],
+        "interrupt": [
+            "swipe_for_stronghold_mode"
+        ],
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认选中组织玩法按钮[/color]"
+    },
+    "stronghold_mode": {
+        "recognition": "TemplateMatch",
+        "template": "Stronghold/stronghold_icon.png",
+        "roi": [
+            190,
+            150,
+            913,
+            224
+        ],
+        "action": "Click",
+        "target_offset": [
+            -10,
+            350,
+            40,
+            -5
+        ],
+        "next": [],
+        "interrupt": [
+            "stronghold_mode"
+        ],
+        "post_wait_freezes": 400
+    },
+    "swipe_for_stronghold_mode": {
+        "recognition": "TemplateMatch",
+        "template": "Group/selected_group_gameplay.png",
+        "roi": [
+            80,
+            417,
+            93,
+            48
+        ],
+        "action": "Swipe",
+        "begin": [
+            479,
+            343,
+            103,
+            111
+        ],
+        "end": [
+            207,
+            327,
+            89,
+            96
+        ],
+        "duration": 300,
+        "post_delay": 800
+    }
+}
