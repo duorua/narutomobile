@@ -108,6 +108,19 @@
           670,
           229
         ]
+      },
+      {
+        "sub_name": "masked_x",
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/mask_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+          610,
+          0,
+          670,
+          229
+        ]
       }
     ],
     "pre_delay": 0,
@@ -191,11 +204,8 @@
     "focus": "[color:DeepSkyBlue]当前任务已完成[/color]"
   },
   "weekly_sign": {
-    "recognition": "OCR",
-    "expected": [
-      "领",
-      "取"
-    ],
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/weekly_sign.png",
     "roi": [
       533,
       555,

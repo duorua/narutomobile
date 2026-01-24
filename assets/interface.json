@@ -122,14 +122,14 @@
             "default_check": true
         },
         {
-            "name": "任务集会所(beta)",
-            "entry": "mission_office",
-            "description": "目前仅能接三个任务,不会刷新。买了超影要拿满奖励请手动完成",
+            "name": "刷体力(精英副本)",
+            "entry": "use_energy",
             "default_check": true
         },
         {
-            "name": "刷体力(精英副本)",
-            "entry": "use_energy",
+            "name": "任务集会所(beta)",
+            "entry": "mission_office",
+            "description": "目前仅能接三个任务,不会刷新。买了超影要拿满奖励请手动完成",
             "default_check": true
         },
         {
@@ -298,8 +298,28 @@
             "type": "select",
             "cases": [
                 {
+                    "name": "20S",
+                    "pipeline_override": {
+                        "start_naruto": {
+                            "timeout": 20000
+                        }
+                    }
+                },
+                {
+                    "name": "10S",
+                    "pipeline_override": {
+                        "start_naruto": {
+                            "timeout": 10000
+                        }
+                    }
+                },
+                {
                     "name": "30S",
-                    "pipeline_override": {}
+                    "pipeline_override": {
+                        "start_naruto": {
+                            "timeout": 30000
+                        }
+                    }
                 },
                 {
                     "name": "45S",
