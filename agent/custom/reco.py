@@ -810,7 +810,7 @@ def get_flip_ticket_count(
     source_text = str(reco_detail.best_result.text).strip()  # type: ignore
     logger.debug(f"[get_flip_ticket_count] ROI{roi} 原始识别文本：{source_text}")
 
-    # 执行自定义文本修改（如去掉前面的"6"）
+    # 执行自定义文本修改（似乎python和低代码的OCR不一样,所以这里目前没有修改）
     modified_text = text_modifier(source_text)
     logger.debug(f"[get_flip_ticket_count] ROI{roi} 修改后识别文本：{modified_text}")
 
@@ -861,38 +861,20 @@ class FindAccessoryFlipTicket(CustomRecognition):
             logger.warning(
                 "[FindAccessoryFlipTicket] 饰品翻牌卷数量识别失败,返回未通过"
             )
-            return CustomRecognition.AnalyzeResult(
-                box=None,
-                detail={"ticket_count": None, "passed": False, "type": "饰品翻牌卷"},
-            )
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
 
-        # 逻辑2：数量>0 → 返回通过（非空无效Rect,避免重试）
+        # 逻辑2：数量>0 → 返回通过（非空无效Rect）
         if ticket_count > 0:
             logger.info(
                 f"[FindAccessoryFlipTicket] 饰品翻牌卷数量{ticket_count}>0,返回识别通过"
             )
-            pass_box = Rect(0, 0, 1, 1)
-            return CustomRecognition.AnalyzeResult(
-                box=pass_box,
-                detail={
-                    "ticket_count": ticket_count,
-                    "passed": True,
-                    "type": "饰品翻牌卷",
-                },
-            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
         # 逻辑3：数量≤0 → 返回未通过（空box）
         logger.info(
             f"[FindAccessoryFlipTicket] 饰品翻牌卷数量{ticket_count}≤0,返回识别未通过"
         )
-        return CustomRecognition.AnalyzeResult(
-            box=None,
-            detail={
-                "ticket_count": ticket_count,
-                "passed": False,
-                "type": "饰品翻牌卷",
-            },
-        )
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
 @AgentServer.custom_recognition("FindGearFlipTicket")
@@ -918,33 +900,15 @@ class FindGearFlipTicket(CustomRecognition):
 
         if ticket_count is None:
             logger.warning("[FindGearFlipTicket] 忍具翻牌卷数量识别失败,返回未通过")
-            return CustomRecognition.AnalyzeResult(
-                box=None,
-                detail={"ticket_count": None, "passed": False, "type": "忍具翻牌卷"},
-            )
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         if ticket_count > 0:
             logger.info(
                 f"[FindGearFlipTicket] 忍具翻牌卷数量{ticket_count}>0,返回识别通过"
             )
-            pass_box = Rect(0, 0, 1, 1)
-            return CustomRecognition.AnalyzeResult(
-                box=pass_box,
-                detail={
-                    "ticket_count": ticket_count,
-                    "passed": True,
-                    "type": "忍具翻牌卷",
-                },
-            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
         logger.info(
             f"[FindGearFlipTicket] 忍具翻牌卷数量{ticket_count}≤0,返回识别未通过"
         )
-        return CustomRecognition.AnalyzeResult(
-            box=None,
-            detail={
-                "ticket_count": ticket_count,
-                "passed": False,
-                "type": "忍具翻牌卷",
-            },
-        )
+        return CustomRecognition.AnalyzeResult(box=None, detail={})

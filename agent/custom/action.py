@@ -203,7 +203,7 @@ class GoIntoEntryByGuide(CustomAction):
             logger.info("任务停止，提前退出")
             return CustomAction.RunResult(success=False)
 
-        box = fast_ocr(context=context, expected=["倒计时"], roi=(450, 31, 250, 54))
+        box = fast_ocr(context=context, expected=["回流"], roi=(0, 0, 195, 285))
         if box is None:
             logger.debug("该账号不为回归账号")
             start = [70, 500]
