@@ -491,7 +491,7 @@
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 200
+    "post_wait_freezes": 400
   },
   "level_up": {
     "recognition": "OCR",

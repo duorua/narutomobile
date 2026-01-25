@@ -5,7 +5,6 @@
             "[JumpBack]open_ninjia_guide",
             "[JumpBack]back_main_screen"
         ],
-        "timeout": 2000,
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入任务集会所子任务[/color]"
