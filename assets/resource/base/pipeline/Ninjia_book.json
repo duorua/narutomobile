@@ -649,8 +649,7 @@
         "next": [
             "[JumpBack]treasure_box_click_All_skill",
             "treasure_box_challenge_not_in_fight"
-        ],
-        "focus": "[color:DeepSkyBlue]宝匣正在战斗中[/color]"
+        ]
     },
     "treasure_box_challenge_not_in_fight": {
         "recognition": "TemplateMatch",

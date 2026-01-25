@@ -293,7 +293,6 @@
             160,
             127
         ],
-        "focus": "正在战斗中",
         "next": [
             "check_not_in_auto_fight"
         ]

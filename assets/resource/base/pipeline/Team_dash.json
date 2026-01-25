@@ -357,7 +357,7 @@
             "team_dash_loading"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "post_delay": 0
     },
     "team_dash_do_not_remind_gold": {
         "recognition": "TemplateMatch",
@@ -389,7 +389,7 @@
             "check_in_team_dash_sweep",
             "[JumpBack]team_dash_sweep_win"
         ],
-        "rate_limit": 5000,
+        "rate_limit": 5000
     },
     "team_dash_sweep_win": {
         "recognition": "TemplateMatch",

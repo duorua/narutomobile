@@ -364,8 +364,7 @@
         "action": "Swipe",
         "duration": 50,
         "threshold": 0.9,
-        "post_delay": 3000,
-        "focus": "[color:darkgray]准备进入战斗[/color]"
+        "post_delay": 3000
     },
     "stronghold_end": {
         "recognition": "OCR",

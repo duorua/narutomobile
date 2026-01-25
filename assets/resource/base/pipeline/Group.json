@@ -334,8 +334,7 @@
             224,
             449,
             232
-        ],
-        "focus": "[color:DarkGoldenRod]20人签到结束通知[/color]"
+        ]
     },
     "second_group_award_box_done": {
         "recognition": "TemplateMatch",

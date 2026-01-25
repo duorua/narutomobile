@@ -64,8 +64,7 @@
             "hundred_ninjia_in_match",
             "[JumpBack]hundred_ninjia_match"
         ],
-        "post_delay": 900,
-        "focus": "[color:DeepSkyBlue]百忍对决匹配[/color]"
+        "post_delay": 900
     },
     "hundred_ninjia_in_match": {
         "recognition": "OCR",

@@ -210,8 +210,7 @@
         "timeout": 800,
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200,
-        "focus": "[color:DeepSkyBlue]确认生存挑战准备就绪[/color]"
+        "post_wait_freezes": 200
     },
     "survival_challenge_sweep_confirm": {
         "recognition": "OCR",

@@ -176,8 +176,7 @@
             "rich_room_in_fight",
             "challenge_rich_room",
             "check_main_screen_and_stop"
-        ],
-        "focus": "[color:DeepSkyBlue]挑战丰饶之间[/color]"
+        ]
     },
     "rich_room_peace": {
         "recognition": "TemplateMatch",
