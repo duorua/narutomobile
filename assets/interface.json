@@ -3,6 +3,7 @@
     "github": "https://github.com/duorua/narutomobile",
     "description": "本软件开源免费,受AGPL v3协议保护。",
     "license": "LICENSE",
+    "icon": "Assets/logo.ico",
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": true,
     "interface_version": 2,
