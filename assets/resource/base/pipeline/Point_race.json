@@ -118,7 +118,7 @@
             "point_race_loading"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "post_delay": 0
     },
     "point_race_unchallengeable": {
         "recognition": "OCR",
@@ -176,8 +176,7 @@
             "back_main_screen_and_stop"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]积分赛战斗结束[/color]"
+        "post_delay": 0
     },
     "point_race_get_challenge_button": {
         "recognition": "OCR",
