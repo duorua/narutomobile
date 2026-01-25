@@ -39,7 +39,7 @@
         "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
-        "$doc": "因为高招有动画，所以这里不设post_wait_freezes",
+        "$doc": "因为高招有动画,所以这里不设post_wait_freezes",
         "next": [
             "no_free_headhunt",
             "[JumpBack]free_headhunt_waiting",
@@ -249,16 +249,52 @@
             "取"
         ],
         "roi": [
-            573,
-            614,
-            126,
-            47
+            553,
+            601,
+            180,
+            80
         ],
         "action": "Click",
-        "repeat": 2,
-        "repeat_delay": 0,
         "post_delay": 0,
-        "next": "back_main_screen_and_stop",
+        "next": [
+            "top_secret_treasure_box_without_copper",
+            "top_secret_treasure_box_copper"
+        ],
         "focus": "[color:DeepSkyBlue]领取绝密宝匣铜币[/color]"
+    },
+    "top_secret_treasure_box_without_copper": {
+        "recognition": "TemplateMatch",
+        "template": "Headhunt/top_secret_treasure_box_award.png",
+        "roi": [
+            688,
+            56,
+            217,
+            385
+        ],
+        "next": [
+            "top_secret_treasure_box_without_copper_back"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]已领取绝密宝匣铜币[/color]"
+    },
+    "top_secret_treasure_box_without_copper_back": {
+        "recognition": "TemplateMatch",
+        "template": "Headhunt/headhunt_headline.png",
+        "action": "Click",
+        "roi": [
+            0,
+            0,
+            326,
+            234
+        ],
+        "method": 10001,
+        "next": [
+            "top_secret_treasure_box_without_copper_back",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]已领取绝密宝匣铜币[/color]"
     }
 }

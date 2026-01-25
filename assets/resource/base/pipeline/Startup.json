@@ -151,13 +151,14 @@
     "before_game_loading": {
         "recognition": "OCR",
         "expected": [
-            "%"
+            "%",
+            "加载"
         ],
         "roi": [
-            558,
-            503,
-            162,
-            113
+            417,
+            444,
+            466,
+            275
         ],
         "next": [
             "before_game_loading",
@@ -169,18 +170,18 @@
         "recognition": "OCR",
         "expected": [
             "%",
-            "资源加载"
+            "加载"
         ],
         "roi": [
-            558,
-            503,
-            162,
-            113
+            417,
+            444,
+            466,
+            275
         ],
         "inverse": true,
         "next": [
             "back_main_screen_and_stop"
         ],
-        "focus": "[color:DeepSkyBlue]结束开始加载[/color]"
+        "focus": "[color:DeepSkyBlue]加载结束[/color]"
     }
 }

@@ -123,8 +123,8 @@
         ],
         "green_mask": true,
         "next": [
-            "[JumpBack]click_All_skill",
             "[JumpBack]winner_decided",
+            "[JumpBack]click_All_skill",
             "battle_tips"
         ],
         "timeout": 5000,
@@ -148,7 +148,9 @@
             "battle_end",
             "weekly_win_substitution"
         ],
-        "$doc": "有一部分忍者会复活，这时候可能会直接进战斗，所以提前JumpBack",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "$doc": "有一部分忍者会复活,这时候可能会直接进战斗,所以提前JumpBack",
         "timeout": 10000
     },
     "battle_end": {
@@ -203,6 +205,7 @@
         "post_delay": 0,
         "next": [
             "go_to_war_again",
+            "[JumpBack]weekly_win_rank_up",
             "weekly_win_stop"
         ]
     },
