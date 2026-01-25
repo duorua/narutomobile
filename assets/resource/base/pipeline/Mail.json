@@ -17,14 +17,8 @@
         "recognition": "TemplateMatch",
         "template": "Mail/mail_done.png",
         "threshold": 0.9,
-        "next": [
-            "stoptask"
-        ],
-        "focus": "[color:DeepSkyBlue]无邮箱奖励[/color]"
-    },
-    "stoptask": {
         "action": "StopTask",
-        "focus": "[color:chartreuse]当前任务结束[/color]"
+        "focus": "[color:DeepSkyBlue]无邮箱奖励[/color]"
     },
     "open_mail": {
         "recognition": "TemplateMatch",

@@ -172,8 +172,7 @@
         ],
         "next": "back_main_screen_and_stop",
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
+        "post_delay": 0
     },
     "survival_challenge_ticket_used_up": {
         "recognition": "OCR",
@@ -347,7 +346,6 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "next": "back_main_screen_and_stop",
-        "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
+        "next": "back_main_screen_and_stop"
     }
 }

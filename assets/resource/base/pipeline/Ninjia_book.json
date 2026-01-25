@@ -139,8 +139,7 @@
             "ninjia_book_liveness_done",
             "[JumpBack]close_ninjia_book_liveness_detail"
         ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]忍法帖任务已完成[/color]"
+        "post_wait_freezes": 500
     },
     "ninjia_book_mission_undone": {
         "recognition": "TemplateMatch",

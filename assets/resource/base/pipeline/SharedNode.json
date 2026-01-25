@@ -5,8 +5,7 @@
       "check_main_screen_and_stop"
     ],
     "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]退回主界面并停止当前任务[/color]"
+    "post_delay": 0
   },
   "back_main_screen": {
     "recognition": "TemplateMatch",
@@ -272,8 +271,7 @@
     "action": "StopTask",
     "green_mask": true,
     "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]当前任务结束[/color]"
+    "post_delay": 0
   },
   "check_main_screen": {
     "recognition": "TemplateMatch",

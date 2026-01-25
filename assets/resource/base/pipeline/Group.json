@@ -215,8 +215,7 @@
             "confirm_copper_group_pray"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]签到已完成[/color]"
+        "post_delay": 0
     },
     "check_confirm_copper_group_pray": {
         "recognition": "TemplateMatch",
@@ -230,8 +229,7 @@
             "[JumpBack]yesterday_award_entry"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]签到已完成[/color]"
+        "post_delay": 0
     },
     "check_no_yesterday_award": {
         "recognition": "TemplateMatch",
