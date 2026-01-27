@@ -148,8 +148,7 @@
       53,
       104
     ],
-    "action": "Click",
-    "focus": "[color:darkgray]关闭聊天[/color]"
+    "action": "Click"
   },
   "award_center_enter": {
     "recognition": "TemplateMatch",
@@ -164,9 +163,7 @@
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 300,
-    "timeout": 3000,
-    "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
+    "post_wait_freezes": 300
   },
   "swipe_for_award_center_find": {
     "action": "Swipe",
@@ -186,8 +183,7 @@
     "end_hold": 100,
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 200,
-    "focus": "[color:DeepSkyBlue]寻找奖励中心功能入口[/color]"
+    "post_wait_freezes": 200
   },
   "award_center_find_end": {
     "recognition": "TemplateMatch",
@@ -253,8 +249,7 @@
       497,
       640,
       222
-    ],
-    "focus": "[color:DeepSkyBlue]点击下一步[/color]"
+    ]
   },
   "direct_hit_quit": {
     "recognition": "OCR",
@@ -269,7 +264,7 @@
     ],
     "action": "Click",
     "post_wait_freezes": 500,
-    "focus": "[color:DeepSkyBlue]点击任意地方退出[/color]"
+    "$doc": "点击任意地方退出"
   },
   "check_main_screen_and_stop": {
     "recognition": "TemplateMatch",
@@ -316,7 +311,7 @@
     "duration": 500,
     "post_delay": 500,
     "green_mask": true,
-    "focus": "[color:darkgray]在主界面向右滑动[/color]"
+    "$doc": "在主界面向右滑动"
   },
   "main_screen_swipe_to_left": {
     "recognition": "TemplateMatch",
@@ -339,7 +334,7 @@
     "duration": 500,
     "post_delay": 500,
     "green_mask": true,
-    "focus": "[color:darkgray]在主界面向左滑动[/color]"
+    "$doc": "在主界面向左滑动"
   },
   "naruto_club_x": {
     "recognition": "TemplateMatch",
@@ -450,7 +445,6 @@
         ]
       }
     },
-    "focus": "[color:darkgray]确认关闭所有气泡[/color]",
     "next": "click_ensure_close"
   },
   "click_ensure_close": {
