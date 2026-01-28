@@ -35,7 +35,7 @@ def setup_logger(log_dir: Path = log_dir, console_level: str = "INFO"):
         return True
 
     _logger.add(
-        sys.stderr,
+        sys.stdout,
         format="<level>{extra[level_short]}</level>:<level>{message}</level>",
         colorize=True,
         level=console_level,
