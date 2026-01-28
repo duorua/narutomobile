@@ -25,16 +25,16 @@
                 ]
             },
             {
-                "sub_name": "activity_count_down",
+                "sub_name": "returning_player",
                 "recognition": "OCR",
                 "expected": [
-                    "倒计时"
+                    "回流"
                 ],
                 "roi": [
-                    400,
                     0,
-                    350,
-                    135
+                    0,
+                    195,
+                    285
                 ]
             }
         ],
@@ -673,5 +673,107 @@
         "action": "Click",
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]关闭昨日奖励界面[/color]"
+    },
+    "group_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "next": [
+            "group_ac_entry_undone",
+            "group_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "group_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "action": "Click",
+        "next": [
+            "group_in_center_enter",
+            "group_not_in_center_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
+    },
+    "group_ac_entry": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/award_center_entry.png",
+        "roi": [
+            1174,
+            302,
+            99,
+            105
+        ],
+        "method": 10001,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "group_in_center_enter",
+            "group_not_in_center_enter",
+            "group_ac_entry"
+        ],
+        "timeout": 3000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
+    },
+    "group_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Group/group_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "above_kage_group_pray",
+            "copper_group_pray",
+            "no_group",
+            "group_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]组织未完成[/color]"
+    },
+    "group_ac_done": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/center_entry_end.png",
+        "roi": [
+            180,
+            384,
+            1100,
+            118
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]组织已完成[/color]"
     }
 }

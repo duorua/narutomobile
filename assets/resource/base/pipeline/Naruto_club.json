@@ -688,18 +688,11 @@
         "focus": "[color:DeepSkyBlue]无法找到喂豚豚按钮[/color]"
     },
     "weekly_feed_pig": {
-        "recognition": "OCR",
-        "expected": [
-            "本周已参与"
+        "recognition": "TemplateMatch",
+        "template": [
+            "Naruto_club/feed_pig.png"
         ],
-        "inverse": true,
         "action": "Click",
-        "target": [
-            558,
-            1145,
-            93,
-            23
-        ],
         "max_hit": 5,
         "next": [
             "confirm_feed_pig",

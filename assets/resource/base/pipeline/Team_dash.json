@@ -2,7 +2,7 @@
     "team_dash": {
         "next": [
             "team_dash_in_center_enter",
-            "[JumpBack]award_center_enter",
+            "team_dash_ac_entry",
             "[JumpBack]back_main_screen"
         ],
         "timeout": 2000,
@@ -12,10 +12,7 @@
     },
     "team_dash_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/check_not_in_daily_award.png",
-            "SharedNode/check_in_daily_award.png"
-        ],
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -32,6 +29,44 @@
         "post_delay": 0,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "team_dash_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "action": "Click",
+        "next": [
+            "team_dash_in_center_enter",
+            "team_dash_not_in_center_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
+    },
+    "team_dash_ac_entry": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/award_center_entry.png",
+        "roi": [
+            1174,
+            302,
+            99,
+            105
+        ],
+        "method": 10001,
+        "action": "Click",
+        "next": [
+            "team_dash_in_center_enter",
+            "team_dash_not_in_center_enter",
+            "team_dash_ac_entry"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "team_dash_ac_entry_undone": {
         "recognition": "TemplateMatch",

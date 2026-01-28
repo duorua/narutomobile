@@ -2,33 +2,67 @@
     "rich_room": {
         "next": [
             "rich_room_in_center_enter",
-            "[JumpBack]award_center_enter",
+            "rich_room_ac_entry",
             "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入丰饶子任务[/color]"
     },
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/check_not_in_daily_award.png",
-            "SharedNode/check_in_daily_award.png"
-        ],
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
             130,
             47
         ],
-        "pre_delay": 0,
-        "action": "Click",
-        "post_delay": 0,
-        "post_wait_freezes": 200,
         "next": [
             "rich_room_ac_entry_undone",
             "award_center_find_end",
             "[JumpBack]swipe_for_award_center_find"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "rich_room_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "action": "Click",
+        "next": [
+            "rich_room_in_center_enter",
+            "rich_room_not_in_center_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
+    },
+    "rich_room_ac_entry": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/award_center_entry.png",
+        "roi": [
+            1174,
+            302,
+            99,
+            105
+        ],
+        "method": 10001,
+        "action": "Click",
+        "next": [
+            "rich_room_in_center_enter",
+            "rich_room_not_in_center_enter",
+            "rich_room_ac_entry"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "rich_room_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -55,7 +89,6 @@
         "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]丰饶之间未完成[/color]"
     },
     "rich_room_without_above_kage": {

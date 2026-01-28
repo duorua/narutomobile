@@ -63,10 +63,10 @@
       "确定"
     ],
     "roi": [
-      543,
-      415,
-      193,
-      76
+      303,
+      263,
+      696,
+      456
     ],
     "action": "Click",
     "pre_delay": 0,
@@ -113,7 +113,7 @@
         "recognition": "TemplateMatch",
         "template": "SharedNode/mask_x.png",
         "green_mask": true,
-        "threshold": 0.6,
+        "threshold": 0.68,
         "roi": [
           610,
           0,

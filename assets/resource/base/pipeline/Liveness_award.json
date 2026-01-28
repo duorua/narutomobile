@@ -23,16 +23,31 @@
         "post_delay": 200,
         "next": [
             "liveness_award_in_center_enter",
+            "liveness_award_not_in_center_enter",
             "liveness_award_undone"
         ],
         "post_wait_freezes": 200
     },
     "liveness_award_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/check_not_in_daily_award.png",
-            "SharedNode/check_in_daily_award.png"
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
         ],
+        "next": [
+            "liveness_award_done",
+            "[JumpBack]get_liveness_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
+    },
+    "liveness_award_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -41,12 +56,12 @@
         ],
         "action": "Click",
         "next": [
-            "liveness_award_done",
-            "[JumpBack]get_liveness_award"
+            "liveness_award_in_center_enter",
+            "liveness_award_not_in_center_enter"
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
     },
     "liveness_award_done": {
         "recognition": "TemplateMatch",

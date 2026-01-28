@@ -27,16 +27,16 @@
                 ]
             },
             {
-                "sub_name": "activity_count_down",
+                "sub_name": "returning_player",
                 "recognition": "OCR",
                 "expected": [
-                    "倒计时"
+                    "回流"
                 ],
                 "roi": [
-                    400,
                     0,
-                    350,
-                    135
+                    0,
+                    195,
+                    285
                 ]
             }
         ],

@@ -157,12 +157,56 @@
         "action": "Click",
         "next": [
             "hundred_ninjia_confirm_selcet_ninjia",
+            "hundred_ninjia_battle_tips",
             "[JumpBack]hundred_ninjia_selcet_ninjia",
             "hundred_ninjia_check_fight"
         ],
         "post_delay": 500,
         "timeout": 60000,
         "focus": "[color:DeepSkyBlue]进入百忍选忍者[/color]"
+    },
+    "hundred_ninjia_battle_tips": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/battle_tips.png",
+        "roi": [
+            527,
+            120,
+            225,
+            157
+        ],
+        "next": [
+            "hundred_ninjia_tips_confirm"
+        ],
+        "focus": "[color:DeepSkyBlue]战斗异常提示[/color]"
+    },
+    "hundred_ninjia_tips_confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            529,
+            375,
+            221,
+            155
+        ],
+        "action": "Click",
+        "next": [
+            "hundred_ninjia_without_tips_confirm",
+            "hundred_ninjia_tips_confirm"
+        ]
+    },
+    "hundred_ninjia_without_tips_confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            529,
+            375,
+            221,
+            155
+        ],
+        "inverse": true,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
     },
     "hundred_ninjia_confirm_selcet_ninjia": {
         "recognition": "OCR",
@@ -178,6 +222,7 @@
         "action": "Click",
         "next": [
             "hundred_ninjia_check_fight",
+            "hundred_ninjia_battle_tips",
             "[JumpBack]hundred_ninjia_selcet_ninjia"
         ],
         "timeout": 60000,
