@@ -88,8 +88,7 @@
             "get_copper_ac_entry_undone"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]铜币招财未完成[/color]"
+        "post_delay": 0
     },
     "get_copper_ac_done": {
         "recognition": "TemplateMatch",

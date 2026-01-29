@@ -274,7 +274,6 @@
             "back_main_screen_and_stop"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]已领取绝密宝匣铜币[/color]"
+        "post_delay": 0
     }
 }

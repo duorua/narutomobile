@@ -512,8 +512,7 @@
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 200,
-    "focus": "[color:darkgray]忍界指引重试进入功能[/color]"
+    "post_wait_freezes": 200
   },
   "unknow_error": {
     "action": "StopTask",

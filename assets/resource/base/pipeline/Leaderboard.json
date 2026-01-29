@@ -60,8 +60,7 @@
         "max_hit": 5,
         "action": "Click",
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]点赞[/color]"
+        "post_delay": 0
     },
     "click_thumb_done": {
         "recognition": "ColorMatch",
