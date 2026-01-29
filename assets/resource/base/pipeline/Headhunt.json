@@ -259,38 +259,18 @@
         "next": [
             "top_secret_treasure_box_without_copper",
             "top_secret_treasure_box_copper"
-        ],
-        "focus": "[color:DeepSkyBlue]领取绝密宝匣铜币[/color]"
+        ]
     },
     "top_secret_treasure_box_without_copper": {
-        "recognition": "TemplateMatch",
-        "template": "Headhunt/top_secret_treasure_box_award.png",
+        "recognition": "OCR",
+        "expected": "没有可领取",
         "roi": [
-            688,
-            56,
-            217,
-            385
+            484,
+            316,
+            299,
+            80
         ],
         "next": [
-            "top_secret_treasure_box_without_copper_back"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]已领取绝密宝匣铜币[/color]"
-    },
-    "top_secret_treasure_box_without_copper_back": {
-        "recognition": "TemplateMatch",
-        "template": "Headhunt/headhunt_headline.png",
-        "action": "Click",
-        "roi": [
-            0,
-            0,
-            326,
-            234
-        ],
-        "method": 10001,
-        "next": [
-            "top_secret_treasure_box_without_copper_back",
             "back_main_screen_and_stop"
         ],
         "pre_delay": 0,
