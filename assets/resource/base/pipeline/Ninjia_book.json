@@ -139,8 +139,7 @@
             "ninjia_book_liveness_done",
             "[JumpBack]close_ninjia_book_liveness_detail"
         ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]忍法帖任务已完成[/color]"
+        "post_wait_freezes": 500
     },
     "ninjia_book_mission_undone": {
         "recognition": "TemplateMatch",
@@ -649,8 +648,7 @@
         "next": [
             "[JumpBack]treasure_box_click_All_skill",
             "treasure_box_challenge_not_in_fight"
-        ],
-        "focus": "[color:DeepSkyBlue]宝匣正在战斗中[/color]"
+        ]
     },
     "treasure_box_challenge_not_in_fight": {
         "recognition": "TemplateMatch",

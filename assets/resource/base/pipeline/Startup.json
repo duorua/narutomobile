@@ -32,8 +32,7 @@
             "腾讯游戏",
             "魔方工作室",
             "BANDAI"
-        ],
-        "focus": "[color:DeepSkyBlue]商标页面[/color]"
+        ]
     },
     "start_up_loading": {
         "recognition": "OCR",
@@ -45,8 +44,7 @@
             503,
             162,
             113
-        ],
-        "focus": "[color:DeepSkyBlue]游戏加载中...[/color]"
+        ]
     },
     "before_game": {
         "recognition": "TemplateMatch",
@@ -143,10 +141,22 @@
         "action": "Click",
         "next": [
             "before_game_loading",
+            "[JumpBack]before_game_loading_1",
             "back_main_screen_and_stop"
         ],
         "timeout": 1000,
         "focus": "[color:DeepSkyBlue]点击开始游戏[/color]"
+    },
+    "before_game_loading_1": {
+        "recognition": "TemplateMatch",
+        "template": "Startup/naruto_logo.png",
+        "threshold": 0.4,
+        "roi": [
+            6,
+            0,
+            348,
+            218
+        ]
     },
     "before_game_loading": {
         "recognition": "OCR",
@@ -163,8 +173,7 @@
         "next": [
             "before_game_loading",
             "without_before_game_loading"
-        ],
-        "focus": "[color:DeepSkyBlue]游戏加载中...[/color]"
+        ]
     },
     "without_before_game_loading": {
         "recognition": "OCR",

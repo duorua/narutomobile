@@ -38,10 +38,11 @@
             "name": "进入火影",
             "entry": "start_up",
             "option": [
-                "账号属性",
                 "设置启动超时时间",
-                "启动超时后行为"
+                "启动超时后行为",
+                "账号属性"
             ],
+            "description": "软件会关闭公告气泡",
             "default_check": true
         },
         {
@@ -57,8 +58,10 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
-            "default_check": true,
-            "description": "[size:15][color:tomato]该功能会关闭公告气泡且需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题[/color][/size]"
+            "option": [
+                "排行榜低配优化"
+            ],
+            "default_check": true
         },
         {
             "name": "送体力",
@@ -79,14 +82,18 @@
         {
             "name": "组织",
             "entry": "group",
+            "option": [
+                "组织低配优化"
+            ],
             "default_check": true,
-            "description": "包含祈福签到和领奖，追击晓组织领奖。该功能需要使用已适配主题,如果不清楚已适配主题,请使用木叶季节系列主题或开启从奖励中心进入"
+            "description": "包含祈福签到和领奖，追击晓组织领奖。"
         },
         {
             "name": "积分赛",
             "entry": "point_race",
             "description": "领取当日奖励并尝试进行一次挑战。",
             "option": [
+                "积分赛低配优化",
                 "强制战斗"
             ],
             "default_check": true
@@ -95,7 +102,8 @@
             "name": "修行之路",
             "entry": "shugyou_no_michi",
             "option": [
-                "打新关卡"
+                "打新关卡",
+                "修行之路低配优化"
             ],
             "default_check": true
         },
@@ -130,6 +138,9 @@
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
+            "option": [
+                "任务集会所低配优化"
+            ],
             "description": "目前仅能接三个任务,不会刷新。买了超影要拿满奖励请手动完成",
             "default_check": true
         },
@@ -154,8 +165,24 @@
             "default_check": true
         },
         {
+            "name": "周胜(连点器)",
+            "entry": "weekly_win",
+            "option": [
+                "打排位",
+                "何时退出",
+                "领取周胜奖励",
+                "清周胜过期宝箱",
+                "周胜低配优化"
+            ],
+            "description": "请在主页开始任务"
+        },
+        {
             "name": "火影情报社(beta)",
             "entry": "naruto_club",
+            "option": [
+                "喂豚豚",
+                "金币助手"
+            ],
             "default_check": true,
             "description": "该任务并不稳定，如遇卡顿可能需要人工接管。"
         },
@@ -163,17 +190,6 @@
             "name": "邮箱",
             "entry": "mail",
             "default_check": true
-        },
-        {
-            "name": "周胜(连点器)",
-            "entry": "weekly_win",
-            "option": [
-                "打排位",
-                "何时退出",
-                "领取周胜奖励",
-                "清周胜过期宝箱"
-            ],
-            "description": "请在主页开始任务"
         },
         {
             "name": "活跃宝箱",
@@ -187,6 +203,7 @@
                 "秘境赢几次",
                 "秘境翻饰品牌",
                 "秘境翻忍具牌",
+                "秘境低配优化",
                 "秘境忍具每次只翻一张",
                 "烈炎秘境",
                 "罡体秘境",
@@ -196,6 +213,7 @@
                 "雷霆秘境",
                 "阴阳秘境"
             ],
+            "default_check": true,
             "description": "请在主页开始任务"
         },
         {
@@ -258,7 +276,7 @@
                 "大蛇丸试炼",
                 "百忍是否使用连点器战斗"
             ],
-            "description": "百忍虽好,可是有开放时间限制的哦"
+            "description": "需要已经适配的主题或者在决斗场页面开启任务"
         },
         {
             "name": "小游戏",
@@ -338,6 +356,16 @@
             "cases": [
                 {
                     "name": "启动火影",
+                    "pipeline_override": {
+                        "start_naruto": {
+                            "on_error": [
+                                "start_up"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "什么都不做",
                     "pipeline_override": {}
                 },
                 {
@@ -347,6 +375,30 @@
                             "on_error": [
                                 "restart_naruto"
                             ]
+                        }
+                    }
+                }
+            ]
+        },
+        "排行榜低配优化": {
+            "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "leaderboard": {
+                            "next": [
+                                "ninjia_guide_to_leaderboard",
+                                "[JumpBack]open_ninjia_guide"
+                            ],
+                            "on_error": "[JumpBack]back_main_screen",
+                            "timeout": 2000,
+                            "focus": "[color:Aquamarine]进入排行榜子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -362,7 +414,7 @@
                             "custom_action_param": {
                                 "entry_name": "忍术对战"
                             },
-                            "focus": "[color:DeepSkyBlue]进入段位赛[/color]"
+                            "focus": "[color:DeepSkyBlue]进入忍术对战[/color]"
                         }
                     }
                 },
@@ -511,6 +563,49 @@
                             ]
                         }
                     }
+                }
+            ]
+        },
+        "喂豚豚": {
+            "type": "switch",
+            "description": "确认MFA不会在喂豚豚闪退后开启,闪退bug成因还在寻找",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "feed_pig": {
+                            "enabled": false
+                        },
+                        "without_feed_pig": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                }
+            ]
+        },
+        "金币助手": {
+            "type": "switch",
+            "description": "确认MFA不会在喂豚豚闪退后开启,闪退bug成因还在寻找",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "check_club_mission_done": {
+                            "next": [
+                                "club_third_award_done",
+                                "benefit_station",
+                                "swipe_for_club_submit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
                 }
             ]
         },
@@ -691,9 +786,9 @@
                 }
             ]
         },
-        "周胜从奖励中心进入": {
-            "description": "用于适配部分主题,不能打排位,一天只能运行一次",
+        "周胜低配优化": {
             "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
             "cases": [
                 {
                     "name": "No",
@@ -704,10 +799,11 @@
                     "pipeline_override": {
                         "weekly_win": {
                             "next": [
-                                "go_to_war_again",
-                                "[JumpBack]award_center_enter",
+                                "weekly_win_in_center_enter",
+                                "weekly_win_ac_entry",
                                 "[JumpBack]back_main_screen"
-                            ]
+                            ],
+                            "focus": "[color:Aquamarine]进入周胜子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -767,6 +863,29 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+            ]
+        },
+        "积分赛低配优化": {
+            "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "point_race": {
+                            "next": [
+                                "point_race_in_center_enter",
+                                "point_race_ac_entry",
+                                "[JumpBack]back_main_screen"
+                            ],
+                            "focus": "[color:Aquamarine]进入积分赛子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -837,6 +956,30 @@
                         },
                         "secret_realm_flip_without_card": {
                             "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "秘境低配优化": {
+            "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "secret_realm": {
+                            "next": [
+                                "secret_realm_in_center_enter",
+                                "secret_realm_ac_entry",
+                                "secret_realm_fight",
+                                "[JumpBack]back_main_screen"
+                            ],
+                            "focus": "[color:Aquamarine]进入秘境子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -1049,6 +1192,7 @@
         },
         "百忍": {
             "type": "switch",
+            "description": "百忍虽好,可是有开放时间限制的哦",
             "cases": [
                 {
                     "name": "Yes",
@@ -1202,6 +1346,29 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {}
+                }
+            ]
+        },
+        "任务集会所低配优化": {
+            "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "mission_office": {
+                            "next": [
+                                "mission_office_in_center_enter",
+                                "mission_office_ac_entry",
+                                "[JumpBack]back_main_screen"
+                            ],
+                            "focus": "[color:Aquamarine]进入任务集会所子任务(低配优化)[/color]"
+                        }
+                    }
                 }
             ]
         },
@@ -1467,7 +1634,7 @@
             ]
         },
         "分享后直接返回游戏": {
-            "description": "开启后不会关闭社交软件而是直接返回火影,这个选项也会影响忍法帖的分享",
+            "description": "开启后不会关闭社交软件而是直接返回火影",
             "type": "switch",
             "cases": [
                 {
@@ -1479,6 +1646,29 @@
                     "pipeline_override": {
                         "share_back_to_natuto": {
                             "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "组织低配优化": {
+            "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "group": {
+                            "next": [
+                                "group_in_center_enter",
+                                "group_ac_entry",
+                                "[JumpBack]back_main_screen"
+                            ],
+                            "focus": "[color:Aquamarine]进入组织子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -1496,6 +1686,29 @@
                     "pipeline_override": {
                         "train_road_entry": {
                             "next": "shugyou_no_michi_auto_push"
+                        }
+                    }
+                }
+            ]
+        },
+        "修行之路低配优化": {
+            "type": "switch",
+            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "shugyou_no_michi": {
+                            "next": [
+                                "train_road_in_center_enter",
+                                "train_road_ac_entry",
+                                "[JumpBack]back_main_screen"
+                            ],
+                            "focus": "[color:Aquamarine]进入修行之路子任务(低配优化)[/color]"
                         }
                     }
                 }

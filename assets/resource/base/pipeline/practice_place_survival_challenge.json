@@ -2,7 +2,7 @@
     "survival_challenge": {
         "next": [
             "survival_challenge_in_center_enter",
-            "[JumpBack]award_center_enter",
+            "survival_challenge_ac_entry",
             "[JumpBack]back_main_screen"
         ]
     },
@@ -172,8 +172,7 @@
         ],
         "next": "back_main_screen_and_stop",
         "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
+        "post_delay": 0
     },
     "survival_challenge_ticket_used_up": {
         "recognition": "OCR",
@@ -210,8 +209,7 @@
         "timeout": 800,
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200,
-        "focus": "[color:DeepSkyBlue]确认生存挑战准备就绪[/color]"
+        "post_wait_freezes": 200
     },
     "survival_challenge_sweep_confirm": {
         "recognition": "OCR",
@@ -289,10 +287,7 @@
     },
     "survival_challenge_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/check_not_in_daily_award.png",
-            "SharedNode/check_in_daily_award.png"
-        ],
+        "template": "SharedNode/check_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -300,7 +295,6 @@
             47
         ],
         "pre_delay": 0,
-        "action": "Click",
         "post_delay": 0,
         "post_wait_freezes": 200,
         "next": [
@@ -309,6 +303,44 @@
             "[JumpBack]swipe_for_award_center_find"
         ],
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "survival_challenge_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "action": "Click",
+        "next": [
+            "survival_challenge_in_center_enter",
+            "survival_challenge_not_in_center_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
+    },
+    "survival_challenge_ac_entry": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/award_center_entry.png",
+        "roi": [
+            1174,
+            302,
+            99,
+            105
+        ],
+        "method": 10001,
+        "action": "Click",
+        "next": [
+            "survival_challenge_in_center_enter",
+            "survival_challenge_not_in_center_enter",
+            "survival_challenge_ac_entry"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "survival_challenge_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -334,7 +366,6 @@
         "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]进入生存挑战[/color]"
     },
     "survival_challenge_ac_done": {
@@ -348,7 +379,6 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "next": "back_main_screen_and_stop",
-        "focus": "[color:DeepSkyBlue]生存挑战已完成[/color]"
+        "next": "back_main_screen_and_stop"
     }
 }
