@@ -5,669 +5,114 @@
         "custom_action": {
             "enum": [
                 "Screenshot",
-                "DisableNode",
-                "NodeOverride",
-                "ResetCount",
-                "DuringAct",
-                "DuringAnecdote",
-                "DuringRe_release",
-                "BankPurchaseRecord",
-                "ModifyBankTaskList",
-                "SwitchCombatTimes",
-                "PsychubeDoubleTimes",
-                "LucidscapeStageSelect",
-                "LucidscapeStatusDetect",
-                "TeamSelect",
-                "CombatTargetLevel",
-                "SummonlngSwipe",
-                "GoodDreamWellFishing",
-                "SOD_DifficultySelect",
-                "ActivityTargetLevel",
-                "SelectChapter",
-                "SelectCombatStage",
-                "TargetCount",
-                "JudgeDepthsOfMythWeekly"
+                "GoIntoEntry",
+                "GoIntoEntryByGuide",
+                "StopTaskList",
+                "RetryFailed",
+                "CounterIncrement"
+            ]
+        },
+        "custom_action_param": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ScreenshotParam"
+                },
+                {
+                    "$ref": "#/$defs/GoIntoEntryParam"
+                },
+                {
+                    "$ref": "#/$defs/GoIntoEntryByGuideParam"
+                },
+                {
+                    "$ref": "#/$defs/StopTaskListParam"
+                },
+                {
+                    "$ref": "#/$defs/RetryFailedParam"
+                },
+                {
+                    "$ref": "#/$defs/CounterIncrementParam"
+                }
             ]
         }
     },
-    "anyOf": [
-        {
-            "$ref": "#/$defs/Screenshot"
-        },
-        {
-            "$ref": "#/$defs/DisableNode"
-        },
-        {
-            "$ref": "#/$defs/NodeOverride"
-        },
-        {
-            "$ref": "#/$defs/ResetCount"
-        },
-        {
-            "$ref": "#/$defs/DuringAct"
-        },
-        {
-            "$ref": "#/$defs/DuringAnecdote"
-        },
-        {
-            "$ref": "#/$defs/DuringRe_release"
-        },
-        {
-            "$ref": "#/$defs/BankPurchaseRecord"
-        },
-        {
-            "$ref": "#/$defs/ModifyBankTaskList"
-        },
-        {
-            "$ref": "#/$defs/SwitchCombatTimes"
-        },
-        {
-            "$ref": "#/$defs/PsychubeDoubleTimes"
-        },
-        {
-            "$ref": "#/$defs/LucidscapeStageSelect"
-        },
-        {
-            "$ref": "#/$defs/LucidscapeStatusDetect"
-        },
-        {
-            "$ref": "#/$defs/TeamSelect"
-        },
-        {
-            "$ref": "#/$defs/CombatTargetLevel"
-        },
-        {
-            "$ref": "#/$defs/SummonlngSwipe"
-        },
-        {
-            "$ref": "#/$defs/GoodDreamWellFishing"
-        },
-        {
-            "$ref": "#/$defs/SOD_DifficultySelect"
-        },
-        {
-            "$ref": "#/$defs/ActivityTargetLevel"
-        },
-        {
-            "$ref": "#/$defs/SelectChapter"
-        },
-        {
-            "$ref": "#/$defs/SelectCombatStage"
-        },
-        {
-            "$ref": "#/$defs/TargetCount"
-        },
-        {
-            "$ref": "#/$defs/JudgeDepthsOfMythWeekly"
-        }
-    ],
     "$defs": {
-        "RequiredParam": {
-            "anyOf": [
-                {
-                    "required": [
-                        "custom_action_param"
-                    ]
-                },
-                {
-                    "required": [
-                        "custom_action_param_code"
-                    ]
-                }
-            ]
+        "ScreenshotParam": {
+            "type": "object",
+            "description": "自定义截图动作，保存当前屏幕截图到日志目录",
+            "markdownDescription": "自定义截图动作\n\n**功能说明：**\n- 获取当前屏幕截图\n- 检查分辨率是否为 16:9（允许1%误差）\n- 转换图像格式为 RGB\n- 保存为 PNG 格式到日志目录\n\n**文件命名：**\n- 使用时间戳命名：`YYYYMMDD_HHMMSS.png`\n- 保存路径：日志目录（log_dir）\n\n**返回值：**\n- `success`: 始终返回 true",
+            "properties": {}
         },
-        "Screenshot": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
+        "GoIntoEntryParam": {
+            "type": "object",
+            "description": "从主界面获取功能入口，支持左右滑动查找",
+            "markdownDescription": "从主界面获取功能入口\n\n**功能说明：**\n- 在主界面识别指定的功能入口图标\n- 支持单个或多个模板匹配\n- 如果未找到，会自动滑动屏幕查找\n- 滑动顺序：右滑2次 → 左滑2次\n\n**查找流程：**\n1. 在当前屏幕识别功能入口\n2. 未找到则右滑，重新识别（最多2次）\n3. 仍未找到则左滑，重新识别（最多2次）\n4. 找到后点击对应位置\n\n**参数说明：**\n- `template`: 功能入口的匹配模板名称\n  - 类型：字符串或字符串数组\n  - 必填\n  - 示例：`\"template_name\"` 或 `[\"template1\", \"template2\"]`\n\n**返回值：**\n- `success`: 找到并点击返回 true，否则返回 false",
             "properties": {
-                "custom_action": {
-                    "const": "Screenshot",
-                    "description": "自定义截图动作，保存当前屏幕截图到指定目录"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "description": "截图动作的参数配置",
-                    "properties": {
-                        "save_dir": {
-                            "type": "string",
-                            "description": "保存截图的目录路径"
-                        }
-                    },
-                    "required": [
-                        "save_dir"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "DisableNode": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "DisableNode",
-                    "description": "将特定 node 设置为 disable 状态 。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "node_name": {
-                            "type": "string",
-                            "description": "需要设置为 disable 状态的节点名称"
-                        }
-                    },
-                    "required": [
-                        "node_name"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "NodeOverride": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "NodeOverride",
-                    "description": "在 node 中执行 pipeline_override 。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "patternProperties": {
-                        "^.*$": {
-                            "type": "object",
-                            "description": "节点覆盖配置，键为节点名称，值为覆盖参数对象",
-                            "additionalProperties": true
-                        }
-                    }
-                }
-            }
-        },
-        "ResetCount": {
-            "properties": {
-                "custom_action": {
-                    "const": "ResetCount",
-                    "description": "重置计数器的值。无参数或空参数调用时置空全部计数器。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "node_name": {
-                            "type": "string",
-                            "description": "需要重置计数器的节点名称"
-                        }
-                    },
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "DuringAct": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "DuringAct",
-                    "description": "判断当前是否在作战开放期间。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "resource": {
-                            "type": "string",
-                            "enum": [
-                                "cn",
-                                "en",
-                                "jp"
-                            ],
-                            "default": "cn",
-                            "description": "资源版本，决定使用的数据和时区"
-                        }
-                    },
-                    "required": [
-                        "resource"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "DuringAnecdote": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "DuringAnecdote",
-                    "description": "判断当前是否在轶事开放期间。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "resource": {
-                            "type": "string",
-                            "enum": [
-                                "cn",
-                                "en",
-                                "jp"
-                            ],
-                            "default": "cn",
-                            "description": "资源版本，决定使用的数据和时区"
-                        }
-                    },
-                    "required": [
-                        "resource"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "DuringRe_release": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "DuringRe_release",
-                    "description": "判断当前是否在复刻开放期间。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "resource": {
-                            "type": "string",
-                            "enum": [
-                                "cn",
-                                "en",
-                                "jp"
-                            ],
-                            "default": "cn",
-                            "description": "资源版本，决定使用的数据和时区"
-                        }
-                    },
-                    "required": [
-                        "resource"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "BankPurchaseRecord": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "BankPurchaseRecord",
-                    "description": "记录在银行购买物品的时间戳。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "item": {
-                            "type": "string",
-                            "description": "物品名称"
-                        }
-                    },
-                    "required": [
-                        "item"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "ModifyBankTaskList": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "ModifyBankTaskList",
-                    "description": "根据本地记录的物品购买时间修改任务链。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "resource": {
-                            "type": "string",
-                            "enum": [
-                                "cn",
-                                "en",
-                                "jp"
-                            ],
-                            "default": "cn",
-                            "description": "资源版本，决定使用的时区"
-                        }
-                    },
-                    "required": [
-                        "resource"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "SwitchCombatTimes": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "SwitchCombatTimes",
-                    "description": "选择战斗次数。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "times": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "maximum": 4,
-                            "description": "目标次数"
-                        }
-                    },
-                    "required": [
-                        "times"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "PsychubeDoubleTimes": {
-            "properties": {
-                "custom_action": {
-                    "const": "PsychubeDoubleTimes",
-                    "description": "识别加成次数，根据结果覆盖 PsychubeVictoryOverrideTask 中参数。"
-                }
-            }
-        },
-        "LucidscapeStageSelect": {
-            "properties": {
-                "custom_action": {
-                    "const": "LucidscapeStageSelect",
-                    "description": "醒梦域界面，选择最新可进入片段。"
-                }
-            }
-        },
-        "LucidscapeStatusDetect": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "LucidscapeStatusDetect",
-                    "description": "醒梦域片段界面，通过检测当前状态决定后续动作。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "stage": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "maximum": 4,
-                            "description": "所处深眠片段"
-                        }
-                    },
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "TeamSelect": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "TeamSelect",
-                    "description": "选择作战队伍。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "team": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "maximum": 4
-                        }
-                    },
-                    "required": [
-                        "team"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "CombatTargetLevel": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "CombatTargetLevel",
-                    "description": "选择主线作战目标难度。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "level": {
-                            "type": "string",
-                            "enum": [
-                                "童话",
-                                "故事",
-                                "厄险"
-                            ],
-                            "description": "目标难度"
-                        }
-                    },
-                    "required": [
-                        "level"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "SummonlngSwipe": {
-            "properties": {
-                "custom_action": {
-                    "const": "SummonlngSwipe",
-                    "description": "分派魔精滑动名片。"
-                }
-            }
-        },
-        "GoodDreamWellFishing": {
-            "properties": {
-                "custom_action": {
-                    "const": "GoodDreamWellFishing",
-                    "description": "好梦井打捞。"
-                }
-            }
-        },
-        "SOD_DifficultySelect": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "SOD_DifficultySelect",
-                    "description": "黄昏的音序难度选择。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "level": {
-                            "type": "string",
-                            "enum": [
-                                "5",
-                                "10",
-                                "11",
-                                "cur",
-                                "max"
-                            ],
-                            "description": "目标难度，5|10|11|cur(当前)|max(最高)"
-                        }
-                    },
-                    "required": [
-                        "level"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "ActivityTargetLevel": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "CombatTargetLevel",
-                    "description": "选择活动作战目标难度。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "level": {
-                            "type": "string",
-                            "enum": [
-                                "故事",
-                                "意外",
-                                "艰难"
-                            ],
-                            "description": "目标难度"
-                        }
-                    },
-                    "required": [
-                        "level"
-                    ],
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "SelectChapter": {
-            "properties": {
-                "custom_action": {
-                    "const": "SelectChapter",
-                    "description": "选择主线章节。"
-                }
-            }
-        },
-        "SelectCombatStage": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "SelectCombatStage",
-                    "description": "处理关卡和难度信息，并修改后续任务。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "stage": {
+                "template": {
+                    "title": "Template Property",
+                    "description": "功能入口的匹配模板名称，支持单个模板（字符串）或多个模板（字符串数组）",
+                    "anyOf": [
+                        {
                             "type": "string"
                         },
-                        "level": {
-                            "type": "string",
-                            "enum": [
-                                "Hard",
-                                "Story"
-                            ],
-                            "description": "目标难度"
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1
                         }
-                    },
-                    "required": [
-                        "stage",
-                        "level"
                     ],
-                    "unevaluatedProperties": true
+                    "markdownDescription": "*string* | *array<string,>*\n\n功能入口的匹配模板名称。必填。\n\n- *string*: 单个模板名称\n- *array<string,>*: 多个模板名称，匹配任意一个即可"
                 }
-            }
+            },
+            "required": [
+                "template"
+            ]
         },
-        "TargetCount": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
+        "GoIntoEntryByGuideParam": {
+            "type": "object",
+            "description": "通过忍界指引进入功能入口，支持普通账号和回归账号",
+            "markdownDescription": "通过忍界指引进入功能入口\n\n**功能说明：**\n- 自动检测账号类型（普通/回归）\n- 根据账号类型调整滑动区域\n- 在任务列表中查找指定功能入口\n- 支持多次滑动查找（最多20次）\n\n**账号类型检测：**\n- **普通账号**：未检测到\"回流\"文本\n  - 滑动区域：[70, 500] → [70, 200]\n- **回归账号**：检测到\"回流\"文本\n  - 先点击\"忍界指引\"按钮\n  - 滑动区域：[300, 500] → [300, 200]\n\n**查找流程：**\n1. 检测账号类型并设置对应参数\n2. 尝试滑动到列表最顶端（识别到\"天赋\"或目标项）\n3. 在列表中查找指定入口文本\n4. 未找到则滑动列表（最多20次）\n5. 找到后点击入口，再点击\"前往\"按钮\n\n**参数说明：**\n- `entry_name`: 功能入口的文本名称\n  - 类型：字符串或字符串数组\n  - 必填\n  - 示例：`\"决斗场\"` 或 `[\"决斗场\", \"段位赛\"]`\n\n**返回值：**\n- `success`: 找到入口并成功点击\"前往\"返回 true，否则返回 false",
             "properties": {
-                "custom_action": {
-                    "const": "TargetCount",
-                    "description": "根据设定的目标次数和吃糖方式刷图。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "target_count": {
-                            "type": "integer",
-                            "minimum": 0,
-                            "description": "目标次数，不填或填0表示清空体力"
+                "entry_name": {
+                    "title": "Entry Name Property",
+                    "description": "功能入口的文本名称，支持单个或多个名称，匹配任意一个即可。必须写入功能对应的全称，而非简称。必填。",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "minItems": 1
                         }
-                    },
-                    "unevaluatedProperties": false
-                }
-            }
-        },
-        "JudgeDepthsOfMythWeekly": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_action": {
-                    "const": "JudgeDepthsOfMythWeekly",
-                    "description": "记录在雨中悬想每周扫荡的时间戳。"
-                },
-                "custom_action_param": {
-                    "type": "object",
-                    "properties": {
-                        "resource": {
-                            "type": "string",
-                            "enum": [
-                                "cn",
-                                "en",
-                                "jp"
-                            ],
-                            "default": "cn",
-                            "description": "资源版本，决定使用的时区"
-                        }
-                    },
-                    "required": [
-                        "resource"
                     ],
-                    "unevaluatedProperties": false
+                    "markdownDescription": "*string* | *array<string,>*\n\n功能入口的文本名称。必填。\n\n- *string*: 单个入口名称\n- *array<string,>*: 多个入口名称，匹配任意一个即可"
                 }
-            }
+            },
+            "required": [
+                "entry_name"
+            ]
+        },
+        "StopTaskListParam": {
+            "type": "object",
+            "description": "停止当前任务以及后续任务列表",
+            "markdownDescription": "停止当前任务以及后续任务列表\n\n**功能说明：**\n- 停止当前正在执行的任务\n- 清空后续任务列表\n- 停止整个任务流程\n\n**返回值：**\n- `success`: 始终返回 false (表示任务已停止)",
+            "properties": {}
+        },
+        "RetryFailedParam": {
+            "type": "object",
+            "description": "保存截图并重新验证配置",
+            "markdownDescription": "保存截图并重新验证配置\n\n**功能说明：**\n- 该动作通常作为 `on_error` 后备操作\n- 执行时保存当前截图\n- 重新验证配置文件有效性 (validate_config/validate_mfa)\n\n**返回值：**\n- `success`: 始终返回 true",
+            "properties": {}
+        },
+        "CounterIncrementParam": {
+            "type": "object",
+            "description": "计数器自增动作",
+            "markdownDescription": "计数器自增\n\n**功能说明：**\n- 将当前任务 job_id 对应的计数器加 1\n\n**返回值：**\n- `success`: 始终返回 true",
+            "properties": {}
         }
     }
 }

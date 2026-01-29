@@ -4,190 +4,111 @@
     "properties": {
         "custom_recognition": {
             "enum": [
-                "MultiRecognition",
-                "Count",
-                "BankShop",
-                "ActivityRe_releaseChapter",
-                "FindFirstUnplayedStageByCheckmark",
-                "SailingRecordSelectTarget",
-                "StagePromotionComplete"
+                "FindToChallenge",
+                "FindPlantableFlower",
+                "FlipCard",
+                "find_bonds_without_enough_token",
+                "IsInNinjiaGuide",
+                "IsCounterOverflow",
+                "FindAccessoryFlipTicket",
+                "FindGearFlipTicket"
+            ]
+        },
+        "custom_recognition_param": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/FindToChallengeParam"
+                },
+                {
+                    "$ref": "#/$defs/FindPlantableFlowerParam"
+                },
+                {
+                    "$ref": "#/$defs/FlipCardParam"
+                },
+                {
+                    "$ref": "#/$defs/FindBondsWithoutEnoughTokenParam"
+                },
+                {
+                    "$ref": "#/$defs/IsInNinjiaGuideParam"
+                },
+                {
+                    "$ref": "#/$defs/IsCounterOverflowParam"
+                },
+                {
+                    "$ref": "#/$defs/FindAccessoryFlipTicketParam"
+                },
+                {
+                    "$ref": "#/$defs/FindGearFlipTicketParam"
+                }
             ]
         }
     },
-    "anyOf": [
-        {
-            "$ref": "#/$defs/MultiRecognition"
-        },
-        {
-            "$ref": "#/$defs/Count"
-        },
-        {
-            "$ref": "#/$defs/BankShop"
-        },
-        {
-            "$ref": "#/$defs/ActivityRe_releaseChapter"
-        },
-        {
-            "$ref": "#/$defs/FindFirstUnplayedStageByCheckmark"
-        },
-        {
-            "$ref": "#/$defs/SailingRecordSelectTarget"
-        },
-        {
-            "$ref": "#/$defs/StagePromotionComplete"
-        }
-    ],
     "$defs": {
-        "RequiredParam": {
-            "anyOf": [
-                {
-                    "required": [
-                        "custom_recognition_param"
-                    ]
-                },
-                {
-                    "required": [
-                        "custom_recognition_param_code"
-                    ]
+        "FindToChallengeParam": {
+            "type": "object",
+            "description": "在积分赛中寻找可以挑战的对象，通过比较我方战力与敌方战力来决定是否挑战",
+            "markdownDescription": "在积分赛中寻找可以挑战的对象\n\n**功能说明：**\n- 读取我方小队战力\n- 遍历4个敌方小队，读取战力并比较\n- 找到战力最低的敌队\n- 根据`fource_battle`参数决定是否挑战\n\n**参数说明：**\n- `fource_battle`: 是否强制挑战，true时无视战力差距直接挑战\n\n**返回值：**\n- `box`: 挑战按钮的位置，如果无法挑战则返回None\n- `detail`: 空对象",
+            "properties": {
+                "fource_battle": {
+                    "type": "boolean",
+                    "description": "是否强制挑战，true时无视战力差距直接挑战战力最低的敌队",
+                    "default": false
                 }
+            }
+        },
+        "FindPlantableFlowerParam": {
+            "type": "object",
+            "description": "在选花界面中寻找可以种植的花（需要至少10个种子）",
+            "markdownDescription": "在选花界面中寻找可以种植的花\n\n**功能说明：**\n- 检测5种花的种子数量\n- 从左到右遍历，找到第一个种子≥10的花\n- 返回对应的种植按钮位置\n\n**种子配置：**\n- 第1-5种花分别对应不同的ROI区域\n- 每种花有两个ROI：种子数量文本ROI和按钮ROI\n\n**返回值：**\n- `box`: 种植按钮的位置，或无效box (0,0,1,1)\n- `detail.flower_num`: 可种植的花序号(1-5)\n- `detail.seed_count`: 当前种子数量\n- `detail.btn_roi`: 按钮ROI坐标\n- `detail.has_valid_target`: false表示无可用种子",
+            "properties": {}
+        },
+        "FlipCardParam": {
+            "type": "object",
+            "description": "4x4翻牌游戏算法,优先同方向生长以连成4个紫色牌",
+            "markdownDescription": "4x4翻牌游戏算法逻辑\n\n**游戏规则：**\n1. 胜利判定：仅统计紫色牌数量,连续4个判定胜利\n2. 初始状态：优先选橙色不在的对角线牌\n3. 紫色生长：按单一方向（行/列/对角线）的最高紫色数评分\n\n**评分策略：**\n- 有橙色的方向，紫色数直接计0\n- 同最高分下，优先选该方向内的位置\n- 优先级：行 > 列 > 对角线\n- 双对角线橙色时忽略对角线优先级\n\n**卡牌类型：**\n- 0: 未翻开\n- 1: 紫色牌\n- 2: 橙色牌\n- 3: 识别失败\n\n**返回值：**\n- `box`: 要翻开的牌的位置，或提示框位置，或无效box\n- `detail.action`: \"flip_initial\"/\"flip_growth\"/\"click_tip\"\n- `detail.flip_pos`: 翻牌位置(1-4, 1-4)\n- `detail.flip_roi`: 翻牌ROI坐标\n- `detail.is_win`: 是否胜利\n- `detail.has_valid_target`: 是否有有效目标",
+            "properties": {}
+        },
+        "FindBondsWithoutEnoughTokenParam": {
+            "type": "object",
+            "description": "检查token数量是否小于5,用于决定是否继续羁绊任务",
+            "markdownDescription": "检查token数量\n\n**功能说明：**\n- 读取固定ROI区域的token数量\n- token < 5: 返回识别通过（非空box）\n- token ≥ 5 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[846, 639, 111, 80]\n\n**返回值：**\n- `box`: token<5时返回 (0,0,1,1)，否则返回 None\n- `detail.token_count`: 识别到的token数量\n- `detail.passed`: 是否通过检查",
+            "properties": {}
+        },
+        "IsInNinjiaGuideParam": {
+            "type": "object",
+            "description": "判断是否在忍者指南界面",
+            "markdownDescription": "判断是否在忍者指南界面\n\n**功能说明：**\n- 调用 `in_ninjia_guide` 识别器进行判断\n- 如果识别成功，返回识别区域\n\n**返回值：**\n- `box`: 识别到的区域，识别失败时返回None\n- `detail`: 空对象",
+            "properties": {}
+        },
+        "IsCounterOverflowParam": {
+            "type": "object",
+            "description": "检查计数器是否超过阈值",
+            "markdownDescription": "检查计数器是否超过阈值\n\n**功能说明：**\n- 检查内部计数器是否达到或超过指定的最大次数\n- 如果计数器值 >= max_hit，返回 None，表示识别未命中（触发 on_error）\n- 如果计数器值 < max_hit，返回 (0,0,1,1)，表示识别命中（触发 next）\n\n**参数说明：**\n- `max_hit`: 计数器的最大阈值\n  - 类型：整数\n  - 必填\n  - 示例：`1` 表示最多允许1次，当达到1次后返回None\n\n**返回值：**\n- `box`: 当计数器 < max_hit 时返回 (0,0,1,1)，否则返回 None\n\n**使用场景：**\n- 作为管线节点中的 `recognition` 使用，控制逻辑分支",
+            "properties": {
+                "max_hit": {
+                    "title": "Max Hit Property",
+                    "description": "计数器的最大阈值,达到此值后返回None",
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 1,
+                    "markdownDescription": "*integer*\n\n计数器的最大阈值。必填。"
+                }
+            },
+            "required": [
+                "max_hit"
             ]
         },
-        "MultiRecognition": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_recognition": {
-                    "const": "MultiRecognition"
-                },
-                "custom_recognition_param": {
-                    "type": "object",
-                    "properties": {
-                        "nodes": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            },
-                            "description": "节点名称数组，按顺序对应 $0、$1、$2..."
-                        },
-                        "logic": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "enum": [
-                                        "AND",
-                                        "OR",
-                                        "CUSTOM"
-                                    ],
-                                    "default": "AND",
-                                    "description": "逻辑类型：AND(所有节点都识别成功)、OR(任意节点识别成功)、NOT(节点识别结果取反)、CUSTOM(使用自定义表达式)"
-                                },
-                                "expression": {
-                                    "type": "string",
-                                    "description": "自定义逻辑表达式，仅当type=CUSTOM时使用。支持$0、$1、$2引用nodes数组节点，{NodeName}引用其他节点，AND、OR、NOT运算符和括号分组"
-                                }
-                            },
-                            "required": [
-                                "type"
-                            ],
-                            "additionalProperties": false,
-                            "description": "逻辑判断条件"
-                        },
-                        "return": {
-                            "oneOf": [
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "integer"
-                                    },
-                                    "minItems": 4,
-                                    "maxItems": 4,
-                                    "description": "固定坐标 [x, y, w, h]"
-                                },
-                                {
-                                    "type": "string",
-                                    "description": "基于识别结果计算ROI表达式。支持$0、$1、$2引用节点区域，{NodeName}引用其他节点区域，UNION、INTERSECTION、OFFSET等函数"
-                                }
-                            ],
-                            "description": "返回的ROI区域"
-                        }
-                    },
-                    "required": [
-                        "nodes",
-                        "return"
-                    ],
-                    "additionalProperties": false
-                }
-            }
+        "FindAccessoryFlipTicketParam": {
+            "type": "object",
+            "description": "检查饰品翻牌卷数量是否大于0,用于决定是否进行饰品翻牌",
+            "markdownDescription": "检查饰品翻牌卷数量\n\n**功能说明：**\n- 读取固定ROI区域的饰品翻牌卷数量\n- 数量 > 0: 返回识别通过（非空box）\n- 数量 ≤ 0 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[586, 589, 91, 64]\n\n**返回值：**\n- `box`: 数量>0时返回 (0,0,1,1)，否则返回 None\n- `detail.ticket_count`: 识别到的饰品翻牌卷数量\n- `detail.passed`: 是否通过检查\n- `detail.type`: 翻牌卷类型（固定为「饰品翻牌卷」）",
+            "properties": {}
         },
-        "Count": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_recognition": {
-                    "const": "Count"
-                },
-                "custom_recognition_param": {
-                    "type": "object",
-                    "properties": {
-                        "target": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "description": "目标匹配次数，默认sys.maxsize"
-                        },
-                        "recognition": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "default": "DirectHit",
-                                    "description": "识别类型，默认DirectHit"
-                                },
-                                "param": {
-                                    "type": "object",
-                                    "description": "识别相关字段"
-                                }
-                            },
-                            "required": [
-                                "type"
-                            ],
-                            "additionalProperties": false,
-                            "description": "v2协议的recognition字段"
-                        }
-                    },
-                    "required": [
-                        "target"
-                    ],
-                    "additionalProperties": false
-                }
-            }
-        },
-        "<custom_2>": {
-            "allOf": [
-                {
-                    "$ref": "#/$defs/RequiredParam"
-                }
-            ],
-            "properties": {
-                "custom_recognition": {
-                    "const": "<custom_2>"
-                },
-                "custom_recognition_param": {
-                    "type": "object",
-                    "properties": {
-                        "<param_integer>": {
-                            "type": "integer"
-                        }
-                    },
-                    "unevaluatedProperties": true
-                }
-            }
+        "FindGearFlipTicketParam": {
+            "type": "object",
+            "description": "检查忍具翻牌卷数量是否大于0,用于决定是否进行忍具翻牌",
+            "markdownDescription": "检查忍具翻牌卷数量\n\n**功能说明：**\n- 读取固定ROI区域的忍具翻牌卷数量\n- 数量 > 0: 返回识别通过（非空box）\n- 数量 ≤ 0 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[435, 579, 118, 88]\n\n**返回值：**\n- `box`: 数量>0时返回 (0,0,1,1)，否则返回 None\n- `detail.ticket_count`: 识别到的忍具翻牌卷数量\n- `detail.passed`: 是否通过检查\n- `detail.type`: 翻牌卷类型（固定为「忍具翻牌卷」）",
+            "properties": {}
         }
     }
 }

@@ -1,0 +1,977 @@
+{
+    "sky_ground": {
+        "next": [
+            "sky_ground_entry",
+            "sky_ground_in_main",
+            "[JumpBack]open_ninjia_guide",
+            "[JumpBack]back_main_screen"
+        ],
+        "timeout": 1500,
+        "focus": "[color:DeepSkyBlue]进入天地子任务[/color]"
+    },
+    "sky_ground_entry": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "mission_label",
+                "recognition": "OCR",
+                "expected": [
+                    "任务"
+                ],
+                "roi": [
+                    968,
+                    68,
+                    307,
+                    100
+                ]
+            },
+            {
+                "sub_name": "returning_player",
+                "recognition": "OCR",
+                "expected": [
+                    "回流"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    195,
+                    285
+                ]
+            }
+        ],
+        "action": "Custom",
+        "custom_action": "GoIntoEntryByGuide",
+        "custom_action_param": {
+            "entry_name": "组织"
+        },
+        "next": [
+            "sky_ground_gameplay",
+            "no_group",
+            "sky_ground_entry"
+        ],
+        "timeout": 3000,
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]组织主界面入口[/color]"
+    },
+    "sky_ground_gameplay": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/gameplay.png",
+        "roi": [
+            44,
+            382,
+            177,
+            118
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_gameplay_slected",
+            "[JumpBack]sky_ground_gameplay"
+        ],
+        "post_delay": 500
+    },
+    "sky_ground_gameplay_slected": {
+        "recognition": "TemplateMatch",
+        "template": "Group/selected_group_gameplay.png",
+        "roi": [
+            44,
+            382,
+            177,
+            118
+        ],
+        "action": "DoNothing",
+        "next": [
+            "sky_ground_mode",
+            "[JumpBack]swipe_for_sky_ground_mode"
+        ],
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认选中组织玩法按钮[/color]"
+    },
+    "sky_ground_mode": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/sky_ground_icon.png",
+        "roi": [
+            190,
+            150,
+            913,
+            224
+        ],
+        "max_hit": 5,
+        "action": "Click",
+        "target_offset": [
+            -10,
+            350,
+            40,
+            -5
+        ],
+        "next": [
+            "sky_ground_battlefield_selection",
+            "[JumpBack]sky_ground_mode",
+            "back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]进入天地模式[/color]"
+    },
+    "swipe_for_sky_ground_mode": {
+        "recognition": "TemplateMatch",
+        "template": "Group/selected_group_gameplay.png",
+        "roi": [
+            80,
+            417,
+            93,
+            48
+        ],
+        "action": "Swipe",
+        "begin": [
+            479,
+            343,
+            103,
+            111
+        ],
+        "end": [
+            207,
+            327,
+            89,
+            96
+        ],
+        "duration": 300,
+        "post_delay": 800,
+        "focus": "[color:DeepSkyBlue]寻找天地模式[/color]"
+    },
+    "sky_ground_battlefield_selection": {
+        "recognition": "OCR",
+        "expected": [
+            "天",
+            "地",
+            "战",
+            "场"
+        ],
+        "roi": [
+            0,
+            0,
+            496,
+            170
+        ],
+        "next": [
+            "sky_battlefield",
+            "sky_ground_settlement"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]选择战场[/color]"
+    },
+    "sky_ground_settlement": {
+        "recognition": "OCR",
+        "expected": [
+            "下次开启"
+        ],
+        "roi": [
+            439,
+            609,
+            256,
+            110
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]天地战场结束[/color]"
+    },
+    "sky_battlefield": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/sky_entry.png",
+        "roi": [
+            114,
+            434,
+            363,
+            185
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_confrim_battlefield_selection",
+            "sky_ground_confirm_set",
+            "sky_ground_to_column",
+            "[JumpBack]sky_battlefield"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]选择天战场[/color]"
+    },
+    "ground_battlefield": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/ground.png",
+        "roi": [
+            860,
+            451,
+            358,
+            123
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_confrim_battlefield_selection",
+            "sky_ground_confirm_set",
+            "[JumpBack]ground_battlefield"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]选择地战场[/color]"
+    },
+    "sky_ground_confrim_battlefield_selection": {
+        "recognition": "OCR",
+        "expected": [
+            "确认"
+        ],
+        "roi": [
+            384,
+            382,
+            264,
+            170
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_recommended_ninja",
+            "sky_ground_select_nijia",
+            "[JumpBack]sky_ground_confrim_battlefield_selection"
+        ],
+        "post_wait_freezes": 800,
+        "focus": "[color:DeepSkyBlue]确认战场选择[/color]"
+    },
+    "sky_ground_select_nijia": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/ninjia_star.png",
+        "roi": [
+            795,
+            132,
+            434,
+            390
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_selected_ninjia",
+            "[JumpBack]sky_ground_select_nijia"
+        ],
+        "post_wait_freezes": 800,
+        "focus": "[color:DeepSkyBlue]选择忍者[/color]"
+    },
+    "sky_ground_recommended_ninja": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/recommended_ninja.png",
+        "roi": [
+            795,
+            132,
+            434,
+            390
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_selected_ninjia",
+            "[JumpBack]sky_ground_recommended_ninja"
+        ],
+        "post_wait_freezes": 800,
+        "focus": "[color:DeepSkyBlue]选择推荐忍者[/color]"
+    },
+    "sky_ground_selected_ninjia": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/no_ninja.png",
+        "roi": [
+            131,
+            135,
+            210,
+            177
+        ],
+        "inverse": true,
+        "next": [
+            "sky_ground_to_select_summon",
+            "sky_ground_in_select_summon"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]确认选中忍者[/color]"
+    },
+    "sky_ground_to_select_summon": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/summon.png",
+        "roi": [
+            615,
+            175,
+            266,
+            253
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_in_select_summon",
+            "[JumpBack]sky_ground_to_select_summon"
+        ],
+        "focus": "[color:DeepSkyBlue]选择通灵[/color]"
+    },
+    "sky_ground_in_select_summon": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/summon_selected.png",
+        "roi": [
+            615,
+            175,
+            266,
+            253
+        ],
+        "next": [
+            "sky_ground_summon_done",
+            "[JumpBack]sky_ground_select_summon"
+        ],
+        "focus": "[color:DeepSkyBlue]开始选择通灵[/color]"
+    },
+    "sky_ground_select_summon": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "battle/通灵"
+        ],
+        "roi": [
+            790,
+            137,
+            439,
+            407
+        ],
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]识别通灵[/color]"
+    },
+    "sky_ground_summon_done": {
+        "recognition": "OCR",
+        "expected": "未选择",
+        "roi": [
+            0,
+            446,
+            398,
+            216
+        ],
+        "inverse": true,
+        "next": [
+            "sky_ground_to_select_roll",
+            "sky_ground_in_select_roll"
+        ],
+        "focus": "[color:DeepSkyBlue]完成选择通灵[/color]"
+    },
+    "sky_ground_to_select_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/roll.png",
+        "roi": [
+            679,
+            333,
+            143,
+            138
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_in_select_roll",
+            "[JumpBack]sky_ground_to_select_roll"
+        ],
+        "focus": "[color:DeepSkyBlue]选择秘卷[/color]"
+    },
+    "sky_ground_in_select_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/roll_selected.png",
+        "next": [
+            "sky_ground_select_roll"
+        ],
+        "focus": "[color:DeepSkyBlue]开始选择密卷[/color]"
+    },
+    "sky_ground_select_roll": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "battle/秘卷"
+        ],
+        "roi": [
+            797,
+            135,
+            432,
+            385
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_selected_roll"
+        ],
+        "focus": "[color:DeepSkyBlue]识别密卷[/color]"
+    },
+    "sky_ground_selected_roll": {
+        "recognition": "OCR",
+        "expected": "未选择",
+        "roi": [
+            387,
+            535,
+            377,
+            148
+        ],
+        "inverse": true,
+        "next": [
+            "sky_ground_confirm_set"
+        ],
+        "focus": "[color:DeepSkyBlue]完成选择密卷[/color]"
+    },
+    "sky_ground_confirm_set": {
+        "recognition": "OCR",
+        "expected": [
+            "确认"
+        ],
+        "roi": [
+            804,
+            471,
+            328,
+            209
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_group_encouragement",
+            "sky_ground_to_column",
+            "[JumpBack]sky_ground_confirm_set",
+            "right_swipe_for_empty_column",
+            "left_swipe_for_empty_column",
+            "up_swipe_for_empty_column"
+        ],
+        "focus": "[color:DeepSkyBlue]确认配置[/color]"
+    },
+    "sky_ground_group_encouragement": {
+        "recognition": "OCR",
+        "expected": [
+            "组织"
+        ],
+        "roi": [
+            0,
+            207,
+            158,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_to_column",
+            "right_swipe_for_empty_column",
+            "left_swipe_for_empty_column",
+            "up_swipe_for_empty_column"
+        ],
+        "focus": "[color:DeepSkyBlue]组织激励[/color]"
+    },
+    "sky_ground_to_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/empty_column.png",
+        "roi": [
+            354,
+            0,
+            796,
+            718
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_end",
+            "sky_ground_group_encouragement",
+            "[JumpBack]sky_ground_to_award_column",
+            "[JumpBack]sky_ground_on_column",
+            "sky_ground_to_column",
+            "[JumpBack]sky_ground_to_fight_column",
+            "[JumpBack]sky_ground_in_fight",
+            "right_swipe_for_empty_column",
+            "left_swipe_for_empty_column",
+            "up_swipe_for_empty_column",
+            "sky_ground_in_main"
+        ],
+        "timeout": 60000,
+        "focus": "[color:DeepSkyBlue]前往空柱子[/color]"
+    },
+    "sky_ground_to_award_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/group_coin_award_column.png",
+        "roi": [
+            354,
+            0,
+            796,
+            718
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            -100,
+            0,
+            0
+        ]
+    },
+    "sky_ground_on_column": {
+        "recognition": "OCR",
+        "expected": [
+            "MaaAutoNaruto"
+        ],
+        "roi": [
+            298,
+            80,
+            978,
+            551
+        ],
+        "post_delay": 5000
+    },
+    "sky_ground_to_fight_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/fight_column.png",
+        "roi": [
+            354,
+            0,
+            796,
+            718
+        ],
+        "threshold": [
+            0.8
+        ],
+        "action": "Click",
+        "target_offset": [
+            10,
+            -100,
+            0,
+            0
+        ]
+    },
+    "right_swipe_for_empty_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/rule_book.png",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "action": "Swipe",
+        "begin": [
+            955,
+            328,
+            98,
+            105
+        ],
+        "end": [
+            251,
+            323,
+            140,
+            145
+        ],
+        "duration": 200,
+        "max_hit": 1,
+        "post_delay": 900,
+        "next": [
+            "sky_ground_to_column",
+            "down_swipe_for_empty_column"
+        ],
+        "focus": "[color:DeepSkyBlue]右滑选择空柱子[/color]"
+    },
+    "left_swipe_for_empty_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/rule_book.png",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "action": "Swipe",
+        "begin": [
+            251,
+            323,
+            140,
+            145
+        ],
+        "end": [
+            955,
+            328,
+            98,
+            105
+        ],
+        "duration": 200,
+        "max_hit": 1,
+        "post_delay": 900,
+        "next": [
+            "sky_ground_to_column",
+            "up_swipe_for_empty_column"
+        ],
+        "focus": "[color:DeepSkyBlue]左滑选择空柱子[/color]"
+    },
+    "down_swipe_for_empty_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/rule_book.png",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "action": "Swipe",
+        "begin": [
+            566,
+            611,
+            118,
+            91
+        ],
+        "end": [
+            581,
+            29,
+            133,
+            101
+        ],
+        "duration": 200,
+        "max_hit": 1,
+        "post_delay": 900,
+        "next": [
+            "[JumpBack]sky_ground_to_award_column",
+            "sky_ground_to_column",
+            "[JumpBack]sky_ground_to_fight_column",
+            "left_swipe_for_empty_column"
+        ],
+        "focus": "[color:DeepSkyBlue]下滑选择空柱子[/color]"
+    },
+    "up_swipe_for_empty_column": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/rule_book.png",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "action": "Swipe",
+        "begin": [
+            581,
+            29,
+            133,
+            101
+        ],
+        "end": [
+            566,
+            611,
+            118,
+            91
+        ],
+        "duration": 200,
+        "max_hit": 1,
+        "post_delay": 900,
+        "next": [
+            "[JumpBack]sky_ground_to_award_column",
+            "sky_ground_to_column",
+            "[JumpBack]sky_ground_to_fight_column",
+            "down_swipe_for_empty_column"
+        ],
+        "focus": "[color:DeepSkyBlue]上滑选择空柱子[/color]"
+    },
+    "sky_ground_get_bead": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/bead.png",
+        "action": "Click",
+        "threshold": [
+            0.9
+        ],
+        "focus": "[color:DeepSkyBlue]抢经验球[/color]"
+    },
+    "sky_ground_check_no_bead": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/bead.png",
+        "inverse": true,
+        "threshold": [
+            0.9
+        ],
+        "focus": "[color:DeepSkyBlue]确认没有经验求[/color]"
+    },
+    "sky_ground_in_main": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/rule_book.png",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "post_delay": 2000,
+        "next": [
+            "sky_ground_end",
+            "sky_ground_group_encouragement",
+            "[JumpBack]sky_ground_to_award_column",
+            "sky_ground_to_column",
+            "[JumpBack]sky_ground_to_fight_column",
+            "[JumpBack]sky_ground_get_bead",
+            "sky_ground_in_fight",
+            "right_swipe_for_empty_column",
+            "left_swipe_for_empty_column",
+            "up_swipe_for_empty_column"
+        ]
+    },
+    "sky_ground_in_fight": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/battle_emoji.png",
+        "green_mask": true,
+        "threshold": 0.5,
+        "roi": [
+            5,
+            267,
+            79,
+            68
+        ],
+        "next": [
+            "[JumpBack]sky_ground_click_All_skill",
+            "sky_ground_success",
+            "sky_ground_fail",
+            "sky_ground_in_main"
+        ]
+    },
+    "sky_ground_success": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Weekly_win/victory.png",
+            "Weekly_win/complete_victory.png"
+        ],
+        "roi": [
+            480,
+            328,
+            341,
+            240
+        ],
+        "action": "Click",
+        "threshold": 0.8,
+        "post_delay": 500,
+        "next": [
+            "sky_ground_in_main",
+            "win_to_entry"
+        ],
+        "focus": "[color:DeepSkyBlue]战斗胜利[/color]"
+    },
+    "sky_ground_fail": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/fail.png",
+        "roi": [
+            480,
+            328,
+            341,
+            240
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "post_delay": 500,
+        "next": [
+            "sky_ground_confirm_new_set",
+            "[JumpBack]sky_ground_fail"
+        ],
+        "focus": "[color:DeepSkyBlue]战斗失败[/color]"
+    },
+    "sky_ground_confirm_new_set": {
+        "recognition": "OCR",
+        "expected": [
+            "确认"
+        ],
+        "roi": [
+            804,
+            471,
+            328,
+            209
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_in_main",
+            "[JumpBack]sky_ground_confirm_new_set"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]确认配置[/color]"
+    },
+    "sky_ground_end": {
+        "recognition": "OCR",
+        "expected": [
+            "天地战场活动已结束"
+        ],
+        "roi": [
+            459,
+            293,
+            390,
+            155
+        ],
+        "next": [
+            "sky_ground_end_back_main_screen"
+        ]
+    },
+    "sky_ground_end_back_main_screen": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/back.png",
+        "roi": [
+            1160,
+            0,
+            119,
+            91
+        ],
+        "green_mask": true,
+        "action": "Click",
+        "next": [
+            "sky_ground_end_confirm_back_main_screen",
+            "[JumpBack]sky_ground_end_back_main_screen"
+        ],
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]天地开始回主页面[/color]"
+    },
+    "sky_ground_end_confirm_back_main_screen": {
+        "recognition": "OCR",
+        "expected": [
+            "确认"
+        ],
+        "roi": [
+            484,
+            372,
+            296,
+            155
+        ],
+        "action": "Click",
+        "next": [
+            "sky_ground_end_not_in_main",
+            "[JumpBack]sky_ground_end_confirm_back_main_screen"
+        ],
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]天地确认回主页面[/color]"
+    },
+    "sky_ground_end_not_in_main": {
+        "recognition": "TemplateMatch",
+        "template": "Sky_ground/rule_book.png",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "inverse": true,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    },
+    "sky_ground_click_All_skill": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/battle_emoji.png",
+        "green_mask": true,
+        "threshold": 0.5,
+        "roi": [
+            5,
+            267,
+            79,
+            68
+        ],
+        "action": "MultiSwipe",
+        "swipes": [
+            {
+                "$doc": "replace",
+                "begin": [
+                    793,
+                    564,
+                    142,
+                    154
+                ],
+                "end": [
+                    793,
+                    564,
+                    142,
+                    154
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "summon",
+                "begin": [
+                    1128,
+                    153,
+                    54,
+                    51
+                ],
+                "end": [
+                    1128,
+                    153,
+                    54,
+                    51
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "roll",
+                "begin": [
+                    1127,
+                    268,
+                    56,
+                    55
+                ],
+                "end": [
+                    1127,
+                    268,
+                    56,
+                    55
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "attack",
+                "begin": [
+                    1099,
+                    548,
+                    92,
+                    92
+                ],
+                "end": [
+                    1099,
+                    548,
+                    92,
+                    92
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "ultimate",
+                "begin": [
+                    1120,
+                    400,
+                    71,
+                    65
+                ],
+                "end": [
+                    1120,
+                    400,
+                    71,
+                    65
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "skill1",
+                "begin": [
+                    970,
+                    613,
+                    62,
+                    54
+                ],
+                "end": [
+                    970,
+                    613,
+                    62,
+                    54
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "skill2",
+                "begin": [
+                    985,
+                    471,
+                    65,
+                    59
+                ],
+                "end": [
+                    985,
+                    471,
+                    65,
+                    59
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "sub_skill1",
+                "begin": [
+                    875,
+                    472,
+                    53,
+                    44
+                ],
+                "end": [
+                    875,
+                    472,
+                    53,
+                    44
+                ],
+                "duration": 100
+            }
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

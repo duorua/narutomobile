@@ -2,19 +2,33 @@
     "rich_room": {
         "next": [
             "rich_room_in_center_enter",
-            "rich_room_ac_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "rich_room_ac_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入丰饶子任务[/color]"
     },
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",
-        "template": [
-            "SharedNode/check_not_in_daily_award.png",
-            "SharedNode/check_in_daily_award.png"
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
         ],
+        "next": [
+            "rich_room_ac_entry_undone",
+            "award_center_find_end",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "rich_room_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
         "roi": [
             37,
             172,
@@ -23,29 +37,31 @@
         ],
         "action": "Click",
         "next": [
-            "rich_room_ac_entry_undone",
-            "rich_room_ac_done"
+            "rich_room_in_center_enter",
+            "rich_room_not_in_center_enter"
         ],
-        "interrupt": [
-            "Swipe_for_award_center_find"
-        ],
-        "post_wait_freezes": 400,
-        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
     },
     "rich_room_ac_entry": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry.png",
+        "template": "SharedNode/award_center_entry.png",
         "roi": [
-            1200,
-            348,
-            42,
-            39
+            1174,
+            302,
+            99,
+            105
         ],
+        "method": 10001,
         "action": "Click",
         "next": [
-            "rich_room_in_center_enter"
+            "rich_room_in_center_enter",
+            "rich_room_not_in_center_enter",
+            "rich_room_ac_entry"
         ],
-        "post_wait_freezes": 1000,
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
     },
     "rich_room_ac_entry_undone": {
@@ -66,74 +82,110 @@
             -114
         ],
         "next": [
-            "challenge_rich_room",
-            "rich_room_finished"
+            "rich_room_above_kage",
+            "rich_room_without_above_kage",
+            "rich_room_ac_entry_undone"
         ],
         "action": "Click",
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]丰饶之间未完成[/color]"
     },
-    "rich_room_ac_done": {
+    "rich_room_without_above_kage": {
         "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry_end.png",
+        "template": "Rich_room/above_kage.png",
         "roi": [
-            180,
-            384,
-            1100,
-            118
+            751,
+            546,
+            395,
+            173
         ],
+        "threshold": [
+            0.9
+        ],
+        "inverse": true,
         "next": [
-            "back_main_screen_and_stop"
-        ],
-        "focus": "[color:DeepSkyBlue]丰饶之间已完成[/color]"
-    },
-    "rich_room_entry": {
-        "next": [
-            "rich_room_undone",
-            "rich_room_done"
-        ],
-        "interrupt": [
-            "swipe_for_right_entries",
-            "back_main_screen"
+            "challenge_rich_room"
         ]
     },
-    "rich_room_done": {
+    "rich_room_above_kage": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Rich_room/rich_room_done_night.png",
-            "Rich_room/rich_room_done_day.png"
+        "template": "Rich_room/above_kage.png",
+        "roi": [
+            751,
+            546,
+            395,
+            173
         ],
-        "green_mask": true,
-        "threshold": 0.5,
+        "threshold": [
+            0.9
+        ],
         "next": [
-            "back_main_screen_and_stop"
-        ],
-        "focus": "[color:DeepSkyBlue]丰饶之间已完成[/color]"
+            "rich_room_above_kage_sweep"
+        ]
     },
-    "rich_room_undone": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Rich_room/rich_room_undone.png",
-            "Rich_room/rich_room_undone_day.png",
-            "Rich_room/rich_room_undone_night.png"
+    "rich_room_above_kage_sweep": {
+        "recognition": "OCR",
+        "expected": [
+            "完成"
         ],
-        "green_mask": true,
+        "roi": [
+            632,
+            587,
+            224,
+            113
+        ],
         "action": "Click",
         "next": [
-            "challenge_rich_room",
-            "rich_room_finished"
+            "rich_room_confirm_above_kage_sweep",
+            "rich_room_peace",
+            "rich_room_above_kage_sweep"
+        ]
+    },
+    "rich_room_confirm_above_kage_sweep": {
+        "recognition": "OCR",
+        "expected": [
+            "免费"
         ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]丰饶之间未完成[/color]"
+        "roi": [
+            380,
+            362,
+            528,
+            219
+        ],
+        "action": "Click",
+        "next": [
+            "rich_room_without_confirm_above_kage_sweep",
+            "rich_room_confirm_above_kage_sweep"
+        ]
+    },
+    "rich_room_without_confirm_above_kage_sweep": {
+        "recognition": "OCR",
+        "expected": [
+            "免费"
+        ],
+        "roi": [
+            380,
+            362,
+            528,
+            219
+        ],
+        "inverse": true,
+        "next": [
+            "rich_room_peace",
+            "back_main_screen_and_stop"
+        ]
     },
     "rich_room_finished": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/finish.png",
+        "recognition": "OCR",
+        "expected": [
+            "点击"
+        ],
         "roi": [
-            617,
-            513,
-            74,
-            49
+            465,
+            646,
+            355,
+            61
         ],
         "next": [
             "back_main_screen_and_stop"
@@ -141,269 +193,147 @@
         "focus": "[color:DeepSkyBlue]丰饶之间完成[/color]"
     },
     "challenge_rich_room": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/challenge.png",
+        "recognition": "OCR",
+        "expected": "挑战",
+        "roi": [
+            447,
+            568,
+            171,
+            144
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "action": "Click",
         "next": [
-            "fighting"
-        ],
-        "interrupt": [
-            "challenge_rich_room"
-        ],
-        "focus": "[color:DeepSkyBlue]挑战丰饶之间[/color]"
+            "rich_room_finished",
+            "rich_room_in_fight",
+            "challenge_rich_room",
+            "check_main_screen_and_stop"
+        ]
     },
-    "swipe_for_right_entries": {
+    "rich_room_peace": {
         "recognition": "TemplateMatch",
         "template": [
-            "Group/group.png",
-            "Rich_room/ninja_drama.png"
+            "Rich_room/rich_room_finish.png",
+            "SharedNode/click_anywhere_to_quit.png",
+            "Activity/headhunt.png"
         ],
-        "green_mask": true,
-        "action": "Swipe",
-        "begin": [
-            850,
-            150,
-            50,
-            50
-        ],
-        "end": [
-            150,
-            150,
-            50,
-            50
-        ],
-        "focus": "[color:DeepSkyBlue]滑动寻找右边的功能入口[/color]"
-    },
-    "peace": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Rich_room/normal_attack.png",
-            "Rich_room/normal_attack_1.png"
-        ],
-        "action": "Swipe",
-        "threshold": 0.7,
-        "inverse": true,
+        "threshold": 0.9,
+        "post_delay": 300,
         "next": [
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]检查是否和平[/color]"
     },
-    "fight": {
-        "next": [
-            "peace"
-        ],
-        "interrupt": [
-            "fighting"
-        ]
-    },
-    "fighting": {
-        "next": [
-            "click_skill1",
-            "normal_attack"
-        ],
-        "interrupt": [
-            "fighting"
-        ],
-        "focus": "[color:DeepSkyBlue]战斗[/color]"
-    },
-    "clicker_skill1": {
-        "action": "Swipe",
-        "begin": [
-            968,
-            608,
-            69,
-            60
-        ],
-        "end": [
-            968,
-            608,
-            69,
-            60
-        ],
-        "duration": 200,
-        "next": [
-            "clicker_skill2"
-        ]
-    },
-    "clicker_skill2": {
-        "action": "Swipe",
-        "begin": [
-            984,
-            467,
-            67,
-            58
-        ],
-        "end": [
-            984,
-            467,
-            67,
-            58
-        ],
-        "duration": 200,
-        "next": [
-            "clicker_normal_attack"
-        ],
-        "interrupt": [
-            "peace"
-        ]
-    },
-    "clicker_normal_attack": {
-        "action": "Swipe",
-        "begin": [
-            1104,
-            556,
-            69,
-            71
-        ],
-        "end": [
-            1104,
-            556,
-            69,
-            71
-        ],
-        "duration": 5000,
-        "next": [
-            "clicker_skill1"
-        ]
-    },
-    "click_skill1": {
+    "rich_room_in_fight": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/skill1_masked.png",
-        "green_mask": true,
-        "threshold": 0.3,
-        "action": "Swipe",
-        "duration": 50,
-        "next": [
-            "click_skill2",
-            "normal_attack"
+        "template": "auto_battle/challenge.png",
+        "roi": [
+            560,
+            0,
+            156,
+            89
         ],
-        "interrupt": [
-            "peace"
-        ],
-        "post_delay": 1500,
-        "focus": "[color:DeepSkyBlue]尝试使用一技能[/color]"
+        "threshold": 0.4,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "[JumpBack]rich_room_combo",
+        "timeout": 3000,
+        "on_error": "rich_room_not_in_fight"
     },
-    "click_skill2": {
+    "rich_room_not_in_fight": {
         "recognition": "TemplateMatch",
-        "template": "Rich_room/skill2_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.3,
-        "duration": 50,
-        "next": [
-            "normal_attack"
+        "template": "auto_battle/challenge.png",
+        "roi": [
+            560,
+            0,
+            156,
+            89
         ],
-        "interrupt": [
-            "peace"
-        ],
-        "focus": "[color:DeepSkyBlue]尝试使用二技能[/color]"
-    },
-    "normal_attack": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/normal_attack_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.9,
-        "duration": 1000,
-        "next": [
-            "click_skill1",
-            "normal_attack"
-        ],
-        "interrupt": [
-            "peace"
-        ],
-        "focus": "[color:DeepSkyBlue]尝试使用普攻[/color]"
-    },
-    "fight_roll": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/roll_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.6,
-        "duration": 100,
-        "next": [
-            "fight_replace"
-        ],
-        "interrupt": [
-            "click_skill1",
-            "peace"
-        ],
-        "focus": "[color:DeepSkyBlue]尝试使用密卷[/color]"
-    },
-    "fight_summon": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/summon_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.6,
-        "duration": 100,
-        "next": [
-            "click_skill1",
-            "peace"
-        ],
-        "focus": "[color:DeepSkyBlue]尝试使用通灵[/color]"
-    },
-    "fight_replace": {
-        "recognition": "TemplateMatch",
-        "template": "Rich_room/replace_masked.png",
-        "green_mask": true,
-        "action": "Swipe",
-        "threshold": 0.6,
-        "duration": 100,
-        "focus": "[color:DeepSkyBlue]尝试使用替身[/color]"
-    },
-    "click_skill1_ready": {
-        "recognition": "OCR",
-        "expected": [
-            "20",
-            "19",
-            "18",
-            "17",
-            "16",
-            "15",
-            "14",
-            "13",
-            "12",
-            "11",
-            "10",
-            "9",
-            "8",
-            "7",
-            "6",
-            "5",
-            "4",
-            "3",
-            "2",
-            "1"
-        ],
+        "threshold": 0.4,
         "inverse": true,
-        "next": "click_skill1"
+        "next": [
+            "rich_room_peace"
+        ]
     },
-    "click_skill2_ready": {
-        "recognition": "OCR",
-        "expected": [
-            "20",
-            "19",
-            "18",
-            "17",
-            "16",
-            "15",
-            "14",
-            "13",
-            "12",
-            "11",
-            "10",
-            "9",
-            "8",
-            "7",
-            "6",
-            "5",
-            "4",
-            "3",
-            "2",
-            "1"
+    "rich_room_combo": {
+        "recognition": "TemplateMatch",
+        "template": "auto_battle/challenge.png",
+        "roi": [
+            560,
+            0,
+            156,
+            89
         ],
-        "inverse": true,
-        "next": "click_skill2"
+        "threshold": 0.4,
+        "action": "MultiSwipe",
+        "swipes": [
+            {
+                "$doc": "attack",
+                "begin": [
+                    1099,
+                    548,
+                    92,
+                    92
+                ],
+                "end": [
+                    1099,
+                    548,
+                    92,
+                    92
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "skill1",
+                "begin": [
+                    970,
+                    613,
+                    62,
+                    54
+                ],
+                "end": [
+                    970,
+                    613,
+                    62,
+                    54
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "skill2",
+                "begin": [
+                    985,
+                    471,
+                    65,
+                    59
+                ],
+                "end": [
+                    985,
+                    471,
+                    65,
+                    59
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "sub_skill1",
+                "begin": [
+                    875,
+                    472,
+                    53,
+                    44
+                ],
+                "end": [
+                    875,
+                    472,
+                    53,
+                    44
+                ],
+                "duration": 100
+            }
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     }
 }

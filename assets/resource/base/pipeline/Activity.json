@@ -1,15 +1,16 @@
 {
     "activity": {
         "next": [
-            "activity_entry"
+            "activity_entry",
+            "[JumpBack]back_main_screen"
         ],
-        "interrupt": [
-            "back_main_screen"
-        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入活动子任务[/color]"
     },
     "activity_entry": {
         "recognition": "TemplateMatch",
+        "method": 10001,
         "template": "Activity/headhunt.png",
         "roi": [
             1194,
@@ -18,20 +19,39 @@
             42
         ],
         "action": "Click",
+        "$doc": "活动的图标会变，所以识别用的是招募的图标",
         "target": [
             1196,
             32,
             53,
             45
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "next": [
-            "check_no_energy"
+            "check_no_energy",
+            "[JumpBack]get_ramen",
+            "activity_entry"
+        ]
+    },
+    "has_ramen": {
+        "recognition": "TemplateMatch",
+        "template": "Activity/ramen.png",
+        "roi": [
+            190,
+            108,
+            1077,
+            395
         ],
-        "interrupt": [
-            "get_ramen"
+        "action": "Click",
+        "next": [
+            "check_no_energy",
+            "[JumpBack]get_ramen"
         ],
-        "post_wait_freezes": 700,
-        "focus": "[color:DeepSkyBlue]进入活动[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
     },
     "check_no_energy": {
         "recognition": "TemplateMatch",
@@ -43,33 +63,9 @@
             395
         ],
         "inverse": true,
-        "next": [
-            "swipes_for_monthly_sign"
-        ],
-        "post_delay": 200,
-        "focus": "[color:DeepSkyBlue]检测有没有一乐拉面可领取[/color]"
-    },
-    "swipes_for_monthly_sign": {
-        "action": "Swipe",
-        "begin": [
-            80,
-            700,
-            10,
-            10
-        ],
-        "end": [
-            80,
-            100,
-            10,
-            10
-        ],
-        "next": [
-            "mouthly_sign_done",
-            "mouthly_sign_undone"
-        ],
-        "duration": 100,
-        "post_delay": 500,
-        "focus": "[color:DeepSkyBlue]前往月度签到[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "swipes_for_monthly_sign"
     },
     "get_ramen": {
         "recognition": "TemplateMatch",
@@ -80,52 +76,53 @@
             1077,
             395
         ],
-        "action": "Click",
-        "focus": "[color:DeepSkyBlue]领取一乐拉面[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "action": "Click"
     },
-    "mouthly_sign_undone": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Activity/monthly_sign_undone.png",
-            "Activity/monthly_sign_undone_activity.png"
-        ],
-        "roi": [
-            0,
-            197,
-            176,
-            523
-        ],
-        "threshold": 0.9,
+    "swipes_for_monthly_sign": {
         "action": "Swipe",
-        "duration": 100,
+        "begin": [
+            80,
+            600,
+            50,
+            50
+        ],
+        "end": [
+            80,
+            300,
+            50,
+            50
+        ],
+        "duration": 200,
+        "end_hold": 100,
+        "max_hit": 10,
         "next": [
-            "mouthly_signature",
-            "check_mouthly_signature_title"
+            "has_ramen",
+            "mouthly_sign_tab",
+            "swipes_for_monthly_sign",
+            "retry_failed"
         ],
-        "interrupt": [
-            "mouthly_sign_undone"
-        ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]月度签到未完成[/color]"
+        "post_delay": 900
     },
-    "mouthly_sign_done": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Activity/monthly_sign_done.png",
-            "Activity/monthly_sign_done_1.png",
-            "Activity/monthly_sign_done_activity.png"
-        ],
+    "mouthly_sign_tab": {
+        "recognition": "OCR",
+        "expected": "每月签到",
         "roi": [
-            0,
-            201,
-            178,
-            519
+            19,
+            130,
+            143,
+            572
         ],
-        "threshold": 0.9,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
-            "back_main_screen"
-        ],
-        "focus": "[color:DeepSkyBlue]月度签到已完成[/color]"
+            "[JumpBack]mouthly_signature",
+            "mouthly_signature_done",
+            "mouthly_sign_tab"
+        ]
     },
     "mouthly_signature": {
         "recognition": "TemplateMatch",
@@ -137,32 +134,149 @@
             61
         ],
         "action": "Click",
-        "next": [
-            "check_mouthly_signature_title",
-            "back_main_screen"
-        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]进行月度签到[/color]"
     },
-    "check_mouthly_signature_title": {
-        "recognition": "TemplateMatch",
-        "template": "Activity/title.png",
+    "mouthly_signature_done": {
+        "recognition": "OCR",
+        "expected": [
+            "已签到",
+            "活跃度",
+            "补签"
+        ],
         "roi": [
-            525,
-            527,
-            101,
+            1104,
+            532,
+            158,
             98
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "check_mouthly_signature_title"
+    },
+    "check_mouthly_signature_title": {
+        "$doc": "点一下也没啥坏处",
         "action": "Click",
-        "threshold": 0.68,
         "target": [
             525,
             527,
             101,
             98
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
-            "back_main_screen"
+            "[JumpBack]back_main_screen",
+            "store_enter"
+        ]
+    },
+    "store_enter": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/shop_entry.png",
+        "roi": [
+            1157,
+            180,
+            123,
+            129
         ],
-        "focus": "[color:DeepSkyBlue]检查月度签到称号是否可以领取[/color]"
+        "action": "Click",
+        "focus": "[color:DarkGray]进入商店[/color]",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "next": [
+            "click_privilege_store",
+            "[JumpBack]click_normal_store",
+            "store_enter"
+        ]
+    },
+    "click_normal_store": {
+        "recognition": "OCR",
+        "expected": "^商店$",
+        "roi": [
+            30,
+            145,
+            162,
+            470
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
+    },
+    "click_privilege_store": {
+        "recognition": "OCR",
+        "expected": "特权商店",
+        "roi": [
+            30,
+            145,
+            162,
+            470
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "action": "Click",
+        "focus": "[color:DarkGray]进入特权商店[/color]",
+        "next": [
+            "privilege_points",
+            "click_privilege_store"
+        ]
+    },
+    "privilege_points": {
+        "$doc1": "这玩意会被全区广播挡住，所以用了半张图的模板检测",
+        "recognition": "TemplateMatch",
+        "template": "Shop/privilege_points.png",
+        "roi": [
+            594,
+            60,
+            206,
+            115
+        ],
+        "action": "Click",
+        "focus": "[color:DarkGray]进入特权积分[/color]",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "next": [
+            "get_copper_in_privilege_points_done",
+            "[JumpBack]get_copper_in_privilege_points",
+            "privilege_points"
+        ],
+        "timeout": 1000,
+        "$doc2": "遇到真投入什么字也没有",
+        "on_error": "back_main_screen_and_stop"
+    },
+    "get_copper_in_privilege_points_done": {
+        "recognition": "OCR",
+        "$doc": "图标为立即充值的领不了",
+        "expected": [
+            "已",
+            "充值"
+        ],
+        "replace": [
+            "己",
+            "已"
+        ],
+        "roi": [
+            906,
+            659,
+            323,
+            48
+        ],
+        "next": "back_main_screen_and_stop"
+    },
+    "get_copper_in_privilege_points": {
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi": [
+            1120,
+            659,
+            109,
+            48
+        ],
+        "action": "Click"
     }
 }

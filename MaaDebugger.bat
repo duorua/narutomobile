@@ -1,3 +1,2 @@
-d:
-cd D:\file\project\NM\narutomobile
+cd /d %~dp0
 python -m MaaDebugger

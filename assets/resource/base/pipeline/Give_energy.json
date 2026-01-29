@@ -1,12 +1,13 @@
 {
     "give_energy": {
         "next": [
-            "energy_entry"
-        ],
-        "interrupt": [
+            "energy_entry",
             "give_energy_done",
-            "back_main_screen"
+            "[JumpBack]back_main_screen"
         ],
+        "timeout": 2000,
+        "post_delay": 0,
+        "pre_delay": 0,
         "focus": "[color:DeepSkyBlue]进入送体力子任务[/color]"
     },
     "energy_entry": {
@@ -20,14 +21,62 @@
             59,
             55
         ],
+        "method": 10001,
         "green_mask": true,
-        "action": "Swipe",
-        "duration": 100,
+        "action": "Click",
         "next": [
-            "sent_energy"
+            "sent_energy",
+            "energy_entry"
         ],
-        "post_delay": 700,
+        "post_delay": 0,
+        "pre_delay": 0,
+        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进入送体力界面[/color]"
+    },
+    "give_energy_account_friend": {
+        "recognition": "OCR",
+        "roi": [
+            143,
+            169,
+            197,
+            143
+        ],
+        "expected": [
+            "游戏好友"
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            100,
+            0,
+            0
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "give_energy_in_account_friend",
+            "give_energy_account_friend"
+        ],
+        "focus": "[color:DeepSkyBlue]选择账号好友[/color]"
+    },
+    "give_energy_in_account_friend": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Leaderboard/leaderboard_the_first.png"
+        ],
+        "roi": [
+            259,
+            83,
+            298,
+            439
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "sent_energy",
+            "energy_entry"
+        ],
+        "focus": "[color:DeepSkyBlue]选择账号好友[/color]"
     },
     "give_energy_done": {
         "recognition": "TemplateMatch",
@@ -38,16 +87,16 @@
             63,
             61
         ],
+        "method": 10001,
         "green_mask": true,
         "action": "StopTask",
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]送体力已完成[/color]"
     },
     "sent_energy": {
         "recognition": "OCR",
         "expected": [
-            "一键赠送",
-            "赠送",
-            "送",
             "一键"
         ],
         "roi": [
@@ -57,19 +106,15 @@
             48
         ],
         "action": "Click",
-        "next": [
-            "get_energy"
-        ],
+        "next": "get_energy",
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]送体力[/color]"
     },
     "get_energy": {
         "recognition": "OCR",
         "expected": [
-            "一键领取",
-            "键领取",
-            "领取",
-            "一键",
-            "取"
+            "领取"
         ],
         "roi": [
             519,
@@ -78,46 +123,13 @@
             42
         ],
         "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "$doc": "一键领取体力后不需要点确定",
         "next": [
-            "confirm_get_energy"
-        ],
-        "interrupt": [
-            "close_energy"
+            "back_main_screen_and_stop"
         ],
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]领取好友送的体力[/color]"
-    },
-    "confirm_get_energy": {
-        "recognition": "OCR",
-        "expected": [
-            "确认",
-            "确",
-            "认"
-        ],
-        "action": "Click",
-        "next": [
-            "close_energy"
-        ],
-        "post_wait_freezes": 200,
-        "focus": "[color:DeepSkyBlue]确认送体力[/color]"
-    },
-    "close_energy": {
-        "recognition": "TemplateMatch",
-        "template": "Give_energy/x.png",
-        "roi": [
-            1046,
-            86,
-            99,
-            83
-        ],
-        "action": "Click",
-        "next": [
-            "check_main_screen_and_stop"
-        ],
-        "interrupt": [
-            "back_main_screen"
-        ],
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]关闭送体力[/color]"
     }
 }

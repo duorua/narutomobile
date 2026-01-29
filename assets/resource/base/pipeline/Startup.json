@@ -9,36 +9,64 @@
     },
     "start_naruto": {
         "next": [
-            "check_main_screen_and_stop"
-        ],
-        "interrupt": [
+            "check_main_screen_and_stop",
             "before_game",
-            "close_before_game_notice",
-            "close_teenager_page"
+            "[JumpBack]splash_screen",
+            "[JumpBack]start_up_loading",
+            "[JumpBack]close_before_game_notice",
+            "[JumpBack]close_teenager_page"
         ],
-        "rate_limit": 5000,
         "timeout": 30000
+    },
+    "restart_naruto": {
+        "action": "StopApp",
+        "package": "com.tencent.KiHan",
+        "next": [
+            "start_up"
+        ],
+        "focus": "[color:tomato]重启火影[/color]"
+    },
+    "splash_screen": {
+        "recognition": "OCR",
+        "expected": [
+            "腾讯游戏",
+            "魔方工作室",
+            "BANDAI"
+        ]
+    },
+    "start_up_loading": {
+        "recognition": "OCR",
+        "expected": [
+            "%"
+        ],
+        "roi": [
+            558,
+            503,
+            162,
+            113
+        ]
     },
     "before_game": {
         "recognition": "TemplateMatch",
         "template": "Startup/naruto_logo.png",
         "threshold": 0.4,
-        "recommended roi": [
+        "roi": [
             6,
             0,
             348,
             218
         ],
         "next": [
-            "click_start_game"
+            "click_start_game",
+            "[JumpBack]start_up_loading",
+            "[JumpBack]close_teenager_page",
+            "[JumpBack]agree_log_in",
+            "[JumpBack]agree_info"
         ],
-        "interrupt": [
-            "agreement",
-            "unagreement",
-            "agree_log_in"
+        "on_error": [
+            "start_up"
         ],
-        "rate_limit": 3000,
-        "timeout": 60000
+        "timeout": 15000
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
@@ -66,84 +94,43 @@
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]关闭游戏前公告[/color]"
     },
-    "unagreement": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/uncheck.png",
-        "roi": [
-            70,
-            583,
-            72,
-            69
-        ],
-        "green_mask": true,
-        "action": "Click",
-        "next": "account_type",
-        "focus": "[color:DeepSkyBlue]确认协议[/color]"
-    },
-    "agreement": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/check.png",
-        "roi": [
-            70,
-            583,
-            72,
-            69
-        ],
-        "action": "DoNothing",
-        "next": "account_type",
-        "focus": "[color:DeepSkyBlue]已确认协议[/color]"
-    },
-    "account_type": {
-        "timeout": 3000,
-        "next": "android_qq"
-    },
-    "android_qq": {
-        "recognition": "TemplateMatch",
-        "template": "Startup/android_qq.png",
-        "roi": [
-            946,
-            507,
-            248,
-            71
-        ],
-        "action": "Click",
-        "next": [
-            "android_qq",
-            "agree_log_in"
-        ],
-        "timeout": 3000,
-        "post_wait_freezes": 100,
-        "focus": "[color:DeepSkyBlue]安卓qq账号[/color]"
-    },
     "agree_log_in": {
         "recognition": "OCR",
         "expected": "同意",
         "roi": [
-            612,
-            531,
-            58,
-            37
+            454,
+            382,
+            385,
+            281
         ],
         "action": "Click",
-        "next": "agree_info",
         "post_delay": 500,
+        "next": "empty_number",
+        "timeout": 1000,
         "focus": "[color:DeepSkyBlue]确认登录[/color]"
+    },
+    "empty_number": {
+        "recognition": "OCR",
+        "expected": "位数不足",
+        "action": "Custom",
+        "custom_action": "StopTaskList",
+        "focus": "[color:tomato]当前没有可登录的账号[/color]"
     },
     "agree_info": {
         "recognition": "OCR",
         "expected": "同意",
         "roi": [
-            615,
-            512,
-            50,
-            34
+            465,
+            459,
+            365,
+            234
         ],
         "action": "Click",
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
     },
     "click_start_game": {
-        "recognition": "ocr",
+        "recognition": "OCR",
         "expected": "开始游戏",
         "roi": [
             494,
@@ -153,8 +140,57 @@
         ],
         "action": "Click",
         "next": [
+            "before_game_loading",
+            "[JumpBack]before_game_loading_1",
             "back_main_screen_and_stop"
         ],
+        "timeout": 1000,
         "focus": "[color:DeepSkyBlue]点击开始游戏[/color]"
+    },
+    "before_game_loading_1": {
+        "recognition": "TemplateMatch",
+        "template": "Startup/naruto_logo.png",
+        "threshold": 0.4,
+        "roi": [
+            6,
+            0,
+            348,
+            218
+        ]
+    },
+    "before_game_loading": {
+        "recognition": "OCR",
+        "expected": [
+            "%",
+            "加载"
+        ],
+        "roi": [
+            417,
+            444,
+            466,
+            275
+        ],
+        "next": [
+            "before_game_loading",
+            "without_before_game_loading"
+        ]
+    },
+    "without_before_game_loading": {
+        "recognition": "OCR",
+        "expected": [
+            "%",
+            "加载"
+        ],
+        "roi": [
+            417,
+            444,
+            466,
+            275
+        ],
+        "inverse": true,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]加载结束[/color]"
     }
 }

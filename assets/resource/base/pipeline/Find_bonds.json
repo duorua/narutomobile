@@ -1,0 +1,179 @@
+{
+    "find_bonds": {
+        "next": [
+            "find_bonds_card_flip_start",
+            "find_bonds_entry",
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入羁绊追寻子任务[/color]"
+    },
+    "find_bonds_entry": {
+        "recognition": "TemplateMatch",
+        "template": "Activity/headhunt.png",
+        "roi": [
+            1194,
+            132,
+            50,
+            42
+        ],
+        "action": "Click",
+        "target": [
+            1196,
+            32,
+            53,
+            45
+        ],
+        "next": [
+            "find_find_bonds",
+            "[JumpBack]swipes_for_find_bonds",
+            "[JumpBack]back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 700,
+        "focus": "[color:DeepSkyBlue]进入活动[/color]"
+    },
+    "swipes_for_find_bonds": {
+        "action": "Swipe",
+        "begin": [
+            80,
+            300,
+            10,
+            10
+        ],
+        "end": [
+            80,
+            100,
+            10,
+            10
+        ],
+        "duration": 200,
+        "post_delay": 700,
+        "max_hit": 5,
+        "focus": "[color:DeepSkyBlue]前往羁绊搜寻[/color]"
+    },
+    "find_find_bonds": {
+        "recognition": "OCR",
+        "expected": [
+            "羁绊追寻"
+        ],
+        "roi": [
+            0,
+            115,
+            212,
+            605
+        ],
+        "action": "Click",
+        "next": [
+            "find_bonds_card_flip_start",
+            "[JumpBack]find_find_bonds"
+        ],
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]找到羁绊追寻[/color]"
+    },
+    "find_bonds_card_flip_start": {
+        "recognition": "OCR",
+        "expected": [
+            "每次消耗"
+        ],
+        "roi": [
+            383,
+            0,
+            222,
+            71
+        ],
+        "next": [
+            "find_bonds_without_enough_token",
+            "find_bonds_card_flip_loop"
+        ],
+        "focus": "[color:DeepSkyBlue]进入翻牌游戏[/color]"
+    },
+    "find_bonds_without_enough_token": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "find_bonds_without_enough_token"
+            }
+        },
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "post_delay": 300,
+        "focus": "[color:DeepSkyBlue]检测翻牌卷数量不足5则退出,足够则继续翻牌[/color]"
+    },
+    "find_bonds_card_flip_loop": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "FlipCard"
+            }
+        },
+        "action": "Click",
+        "next": [
+            "find_bonds_card_flip_win",
+            "find_bonds_without_enough_token",
+            "[JumpBack]find_bonds_card_flip_loop"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]自动翻牌中[/color]"
+    },
+    "find_bonds_card_flip_win": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Find_bonds/win_in_8.png",
+            "Find_bonds/win_over_8.png"
+        ],
+        "roi": [
+            1007,
+            506,
+            272,
+            150
+        ],
+        "threshold": [
+            0.85
+        ],
+        "action": "Click",
+        "next": [
+            "find_bonds_without_card_flip_win",
+            "[JumpBack]find_bonds_card_flip_win"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]翻牌胜利[/color]"
+    },
+    "find_bonds_without_card_flip_win": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Find_bonds/win_in_8.png",
+            "Find_bonds/win_over_8.png"
+        ],
+        "roi": [
+            1007,
+            506,
+            272,
+            150
+        ],
+        "threshold": [
+            0.85
+        ],
+        "inverse": true,
+        "next": [
+            "find_bonds_without_enough_token",
+            "find_bonds_card_flip_loop"
+        ]
+    },
+    "find_bonds_done": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Treasure_gathering_trial_award/red_point.png"
+        ],
+        "roi": [
+            244,
+            416,
+            491,
+            200
+        ],
+        "inverse": true,
+        "next": [
+            "flower_shop_planting_flower",
+            "back_main_screen_and_stop"
+        ]
+    }
+}

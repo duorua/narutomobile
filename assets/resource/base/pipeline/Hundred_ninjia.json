@@ -1,36 +1,28 @@
 {
     "hundred_ninjia": {
         "next": [
-            "hundred_ninjia_entry"
-        ],
-        "interrupt": [
             "hundred_ninjia_match",
-            "back_main_screen"
+            "[JumpBack]hundred_ninjia_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入百忍子任务[/color]"
     },
     "hundred_ninjia_entry": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Hundred_ninjia/deul_entry_night.png"
-        ],
-        "roi": [
-            90,
-            254,
-            1093,
-            151
-        ],
-        "green_mask": true,
+        "template": "home/决斗场",
+        "threshold": 0.7,
         "action": "Click",
         "next": [
             "hundred_ninjia_more_game_entry"
         ],
-        "post_wait_freezes": 300,
+        "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
     },
     "hundred_ninjia_more_game_entry": {
-        "recognition": "TemplateMatch",
-        "template": "Hundred_ninjia/more_game_entry.png",
+        "recognition": "OCR",
+        "expected": [
+            "更多玩法"
+        ],
         "roi": [
             953,
             605,
@@ -54,10 +46,7 @@
             450
         ],
         "action": "Click",
-        "next": [
-            "hundred_ninjia_match"
-        ],
-        "post_wait_freezes": 200,
+        "post_wait_freezes": 1000,
         "focus": "[color:DeepSkyBlue]进入百忍对决[/color]"
     },
     "hundred_ninjia_match": {
@@ -72,14 +61,87 @@
         "action": "Swipe",
         "duration": 50,
         "next": [
-            "hundred_ninjia_selcet_ninjia"
+            "hundred_ninjia_in_match",
+            "[JumpBack]hundred_ninjia_match"
         ],
-        "interrupt": [
-            "hundred_ninjia_match",
-            "sleep_500ms"
+        "post_delay": 900
+    },
+    "hundred_ninjia_in_match": {
+        "recognition": "OCR",
+        "expected": [
+            "0"
         ],
-        "post_delay": 26000,
-        "focus": "[color:DeepSkyBlue]百忍对决匹配[/color]"
+        "roi": [
+            555,
+            2,
+            150,
+            98
+        ],
+        "post_delay": 900,
+        "next": [
+            "hundred_ninjia_not_in_match"
+        ],
+        "timeout": 60000
+    },
+    "hundred_ninjia_not_in_match": {
+        "recognition": "OCR",
+        "expected": [
+            "0"
+        ],
+        "roi": [
+            555,
+            2,
+            150,
+            98
+        ],
+        "inverse": true,
+        "post_delay": 900,
+        "next": [
+            "hundred_ninjia_entrance_animation"
+        ],
+        "timeout": 60000,
+        "focus": "[color:DeepSkyBlue]匹配结束[/color]"
+    },
+    "hundred_ninjia_entrance_animation": {
+        "recognition": "OCR",
+        "expected": [
+            "百",
+            "大",
+            "战"
+        ],
+        "roi": [
+            0,
+            0,
+            541,
+            308
+        ],
+        "post_delay": 900,
+        "next": [
+            "hundred_ninjia_out_entrance_animation"
+        ],
+        "focus": "[color:DeepSkyBlue]百忍进场动画[/color]"
+    },
+    "hundred_ninjia_out_entrance_animation": {
+        "recognition": "OCR",
+        "expected": [
+            "百",
+            "忍",
+            "大",
+            "战"
+        ],
+        "roi": [
+            0,
+            0,
+            541,
+            308
+        ],
+        "inverse": true,
+        "post_delay": 900,
+        "next": [
+            "hundred_ninjia_selcet_ninjia",
+            "[JumpBack]wait_5_second"
+        ],
+        "focus": "[color:DeepSkyBlue]离开百忍进场动画[/color]"
     },
     "hundred_ninjia_selcet_ninjia": {
         "recognition": "TemplateMatch",
@@ -92,51 +154,115 @@
         ],
         "threshold": 0.6,
         "green_mask": true,
-        "action": "Swipe",
-        "duration": 50,
+        "action": "Click",
         "next": [
-            "hundred_ninjia_confirm_selcet_ninjia"
+            "hundred_ninjia_confirm_selcet_ninjia",
+            "hundred_ninjia_battle_tips",
+            "[JumpBack]hundred_ninjia_selcet_ninjia",
+            "hundred_ninjia_check_fight"
         ],
-        "interrupt": [
-            "hundred_ninjia_match"
-        ],
+        "post_delay": 500,
+        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]进入百忍选忍者[/color]"
     },
-    "hundred_ninjia_confirm_selcet_ninjia": {
+    "hundred_ninjia_battle_tips": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninjia/confrim_ninjia.png",
+        "template": "Weekly_win/battle_tips.png",
+        "roi": [
+            527,
+            120,
+            225,
+            157
+        ],
+        "next": [
+            "hundred_ninjia_tips_confirm"
+        ],
+        "focus": "[color:DeepSkyBlue]战斗异常提示[/color]"
+    },
+    "hundred_ninjia_tips_confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            529,
+            375,
+            221,
+            155
+        ],
+        "action": "Click",
+        "next": [
+            "hundred_ninjia_without_tips_confirm",
+            "hundred_ninjia_tips_confirm"
+        ]
+    },
+    "hundred_ninjia_without_tips_confirm": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            529,
+            375,
+            221,
+            155
+        ],
+        "inverse": true,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    },
+    "hundred_ninjia_confirm_selcet_ninjia": {
+        "recognition": "OCR",
+        "expected": [
+            "确定"
+        ],
         "roi": [
             538,
             634,
             197,
             75
         ],
-        "action": "Swipe",
-        "duration": 50,
+        "action": "Click",
         "next": [
-            "hundred_ninjia_check_fight"
+            "hundred_ninjia_check_fight",
+            "hundred_ninjia_battle_tips",
+            "[JumpBack]hundred_ninjia_selcet_ninjia"
         ],
-        "interrupt": [
-            "hundred_ninjia_selcet_ninjia",
-            "wait_5_second"
-        ],
+        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]百忍对决确定选忍者[/color]"
+    },
+    "hundred_ninjia_fight": {
+        "recognition": "TemplateMatch",
+        "template": "Hundred_ninjia/fight.png",
+        "roi": [
+            0,
+            0,
+            327,
+            145
+        ],
+        "threshold": 0.7,
+        "green_mask": true,
+        "action": "DoNothing",
+        "next": [
+            "hundred_ninjia_check_no_fight",
+            "[JumpBack]hundred_ninjia_click_All_skill",
+            "[JumpBack]wait_5_second"
+        ],
+        "focus": "[color:DeepSkyBlue]百忍对决战斗[/color]"
     },
     "hundred_ninjia_check_fight": {
         "recognition": "TemplateMatch",
         "template": "Hundred_ninjia/fight.png",
         "roi": [
-            1106,
-            561,
-            66,
-            64
+            0,
+            0,
+            327,
+            145
         ],
+        "threshold": 0.7,
+        "green_mask": true,
+        "action": "DoNothing",
         "next": [
-            "hundred_ninjia_check_no_fight"
-        ],
-        "interrupt": [
-            "hundred_ninjia_check_fight",
-            "wait_5_second"
+            "hundred_ninjia_check_no_fight",
+            "[JumpBack]hundred_ninjia_check_fight",
+            "[JumpBack]wait_5_second"
         ],
         "focus": "[color:DeepSkyBlue]百忍对决战斗[/color]"
     },
@@ -147,38 +273,189 @@
         "recognition": "TemplateMatch",
         "template": "Hundred_ninjia/fight.png",
         "roi": [
-            1106,
-            561,
-            66,
-            64
+            0,
+            0,
+            327,
+            145
         ],
+        "threshold": 0.7,
         "inverse": true,
+        "green_mask": true,
         "next": [
-            "hundred_ninjia_confirm_game_over"
-        ],
-        "interrupt": [
-            "wait_5_second"
+            "hundred_ninjia_confirm_game_over",
+            "hundred_ninjia_windfall",
+            "hundred_ninjia_check_fight",
+            "[JumpBack]wait_5_second"
         ],
         "focus": "[color:DeepSkyBlue]检测百忍对决不在战斗[/color]"
     },
+    "hundred_ninjia_windfall": {
+        "recognition": "OCR",
+        "expected": [
+            "继",
+            "续"
+        ],
+        "roi": [
+            476,
+            557,
+            355,
+            163
+        ],
+        "action": "Click",
+        "next": [
+            "hundred_ninjia_entrance_animation",
+            "[JumpBack]hundred_ninjia_windfall",
+            "[JumpBack]wait_5_second"
+        ],
+        "focus": "[color:DeepSkyBlue]赢了![/color]"
+    },
     "hundred_ninjia_confirm_game_over": {
-        "recognition": "TemplateMatch",
-        "template": "Hundred_ninjia/confrim_gg.png",
+        "recognition": "OCR",
+        "expected": [
+            "确定"
+        ],
         "roi": [
             650,
             613,
             200,
             69
         ],
-        "action": "Swipe",
-        "duration": 50,
+        "action": "Click",
         "next": [
-            "hundred_ninjia_match"
-        ],
-        "interrupt": [
-            "sleep_500ms"
+            "hundred_ninjia_match",
+            "[JumpBack]hundred_ninjia_confirm_game_over"
         ],
         "post_delay": 4000,
+        "timeout": 60000,
         "focus": "[color:DeepSkyBlue]百忍对决战斗结束[/color]"
+    },
+    "hundred_ninjia_click_All_skill": {
+        "recognition": "TemplateMatch",
+        "template": "Hundred_ninjia/fight.png",
+        "roi": [
+            0,
+            0,
+            327,
+            145
+        ],
+        "green_mask": true,
+        "threshold": 0.7,
+        "action": "MultiSwipe",
+        "swipes": [
+            {
+                "$doc": "replace",
+                "begin": [
+                    793,
+                    564,
+                    142,
+                    154
+                ],
+                "end": [
+                    793,
+                    564,
+                    142,
+                    154
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "roll",
+                "begin": [
+                    1127,
+                    268,
+                    56,
+                    55
+                ],
+                "end": [
+                    1127,
+                    268,
+                    56,
+                    55
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "attack",
+                "begin": [
+                    1099,
+                    548,
+                    92,
+                    92
+                ],
+                "end": [
+                    1099,
+                    548,
+                    92,
+                    92
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "ultimate",
+                "begin": [
+                    1120,
+                    400,
+                    71,
+                    65
+                ],
+                "end": [
+                    1120,
+                    400,
+                    71,
+                    65
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "skill1",
+                "begin": [
+                    970,
+                    613,
+                    62,
+                    54
+                ],
+                "end": [
+                    970,
+                    613,
+                    62,
+                    54
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "skill2",
+                "begin": [
+                    985,
+                    471,
+                    65,
+                    59
+                ],
+                "end": [
+                    985,
+                    471,
+                    65,
+                    59
+                ],
+                "duration": 100
+            },
+            {
+                "$doc": "sub_skill1",
+                "begin": [
+                    875,
+                    472,
+                    53,
+                    44
+                ],
+                "end": [
+                    875,
+                    472,
+                    53,
+                    44
+                ],
+                "duration": 100
+            }
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     }
 }

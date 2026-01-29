@@ -1,0 +1,243 @@
+{
+    "flower_shop": {
+        "next": [
+            "select_flower_shop",
+            "flower_shop_entry",
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入花店子任务[/color]"
+    },
+    "flower_shop_entry": {
+        "recognition": "TemplateMatch",
+        "template": "Activity/headhunt.png",
+        "roi": [
+            1194,
+            132,
+            50,
+            42
+        ],
+        "action": "Click",
+        "target": [
+            1196,
+            32,
+            53,
+            45
+        ],
+        "next": [
+            "find_flower_shop",
+            "[JumpBack]swipes_for_flower_shop",
+            "[JumpBack]back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 700,
+        "focus": "[color:DeepSkyBlue]进入活动[/color]"
+    },
+    "find_flower_shop": {
+        "recognition": "OCR",
+        "expected": "山中花店",
+        "roi": [
+            0,
+            115,
+            212,
+            605
+        ],
+        "action": "Click",
+        "next": [
+            "select_flower_shop",
+            "find_flower_shop"
+        ],
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]找到花店[/color]"
+    },
+    "select_flower_shop": {
+        "recognition": "TemplateMatch",
+        "template": "Flower_shop/selected.png",
+        "roi": [
+            0,
+            0,
+            348,
+            273
+        ],
+        "next": [
+            "flower_shop_undone",
+            "flower_shop_done"
+        ],
+        "focus": "[color:DeepSkyBlue]选中花店[/color]"
+    },
+    "swipes_for_flower_shop": {
+        "action": "Swipe",
+        "begin": [
+            80,
+            300,
+            10,
+            10
+        ],
+        "end": [
+            80,
+            100,
+            10,
+            10
+        ],
+        "duration": 200,
+        "post_delay": 700,
+        "max_hit": 5,
+        "focus": "[color:DeepSkyBlue]前往花店[/color]"
+    },
+    "flower_shop_undone": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Treasure_gathering_trial_award/red_point.png"
+        ],
+        "roi": [
+            244,
+            416,
+            491,
+            200
+        ],
+        "next": [
+            "flower_shop_in_select_flower",
+            "flower_shop_to_select_flower"
+        ],
+        "focus": "[color:DeepSkyBlue]可以种花[/color]"
+    },
+    "flower_shop_in_select_flower": {
+        "recognition": "OCR",
+        "expected": "花朵",
+        "roi": [
+            325,
+            165,
+            249,
+            153
+        ],
+        "next": [
+            "flower_shop_in_choose_flower"
+        ],
+        "focus": "[color:DeepSkyBlue]在选花界面[/color]"
+    },
+    "flower_shop_to_select_flower": {
+        "recognition": "OCR",
+        "expected": [
+            "种花"
+        ],
+        "roi": [
+            249,
+            422,
+            521,
+            121
+        ],
+        "action": "Click",
+        "next": [
+            "flower_shop_in_select_flower",
+            "[JumpBack]flower_shop_to_select_flower"
+        ],
+        "focus": "[color:DeepSkyBlue]去选花[/color]"
+    },
+    "flower_shop_in_choose_flower": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "FindPlantableFlower"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "flower_shop_check_select_flower",
+            "[JumpBack]flower_shop_in_choose_flower"
+        ],
+        "focus": "[color:DeepSkyBlue]寻找可以种的花[/color]"
+    },
+    "flower_shop_check_select_flower": {
+        "recognition": "TemplateMatch",
+        "template": "Flower_shop/mark.png",
+        "roi": [
+            398,
+            256,
+            523,
+            135
+        ],
+        "next": [
+            "flower_shop_confrim_choose_flower"
+        ]
+    },
+    "flower_shop_confrim_choose_flower": {
+        "recognition": "OCR",
+        "expected": [
+            "确定"
+        ],
+        "action": "Click",
+        "next": [
+            "[JumpBack]flower_shop_not_select_flower",
+            "flower_shop_out_choose_flower",
+            "flower_shop_done",
+            "[JumpBack]flower_shop_confrim_choose_flower"
+        ],
+        "focus": "[color:DeepSkyBlue]确定种花[/color]"
+    },
+    "flower_shop_not_select_flower": {
+        "recognition": "OCR",
+        "expected": [
+            "选择"
+        ],
+        "roi": [
+            496,
+            300,
+            249,
+            120
+        ],
+        "next": [
+            "flower_shop_in_choose_flower"
+        ]
+    },
+    "flower_shop_out_choose_flower": {
+        "recognition": "OCR",
+        "expected": "花朵",
+        "roi": [
+            325,
+            165,
+            249,
+            153
+        ],
+        "inverse": true,
+        "next": [
+            "flower_shop_done",
+            "flower_shop_to_select_flower"
+        ]
+    },
+    "flower_shop_done": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Treasure_gathering_trial_award/red_point.png"
+        ],
+        "roi": [
+            244,
+            416,
+            491,
+            200
+        ],
+        "inverse": true,
+        "next": [
+            "flower_shop_planting_flower",
+            "back_main_screen_and_stop"
+        ]
+    },
+    "flower_shop_planting_flower": {
+        "recognition": "OCR",
+        "expected": [
+            "0",
+            "1",
+            "2",
+            "3"
+        ],
+        "roi": [
+            235,
+            422,
+            523,
+            133
+        ],
+        "post_wait_freezes": 300,
+        "next": [
+            "flower_shop_out_choose_flower"
+        ]
+    }
+}

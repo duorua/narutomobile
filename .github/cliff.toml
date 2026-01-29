@@ -1,8 +1,7 @@
 [remote.github]
 owner = "duorua"
 repo = "narutomobile"
-#自用时换成自己的仓库owner和repo
-#注意，本地git user需与github一致才能实现成功@
+
 [changelog]
 # 标题
 header = """
@@ -62,8 +61,32 @@ body = """
 
 # 尾部
 footer = """
+{%- macro remote_url() -%}
+  https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
+{%- endmacro -%}
 
-[已有 Mirror酱 CDK？点击前往高速下载](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&source=MaaAutoNarutogh-release)
+{%- set latest_version = "" -%}
+{%- for release in releases -%}
+  {%- if release.version and latest_version == "" -%}
+    {%- set_global latest_version = release.version -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{% if latest_version is matching(".*(rc|alpha|beta).*") -%}
+**⚠️ 此版本为内部测试版本，非测试参与人员请勿下载！**
+{%- else -%}
+    {% if latest_version -%}
+    **绝大部分用户请下载 [MaaAutoNaruto-win-x86_64-{{ latest_version }}.zip]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-win-x86_64-{{ latest_version }}.zip)**
+    {%- else -%}
+    **绝大部分用户请下载 MaaAutoNaruto-win-x86_64
+    {%- endif %}
+    [已有 Mirror酱 CDK？点击前往高速下载](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&source=MaaAutoNarutogh-release)
+{%- endif %}
+
+> 本项目GitHub链接：[duorua/narutomobile](https://github.com/duorua/narutomobile)  
+> 最新稳定版下载地址: [release](https://github.com/duorua/narutomobile/releases/latest)  
+> 用户QQ群：[724500650](https://qm.qq.com/q/ekVOQE2bao)  
+> 软件本体完全免费，若您有付费购买请立即退款并举报！  
 
 """
 
@@ -76,6 +99,7 @@ split_commits = false
 # 保留完整的 commit body
 protect_breaking_commits = false
 commit_parsers = [
+    { message = ".*Update interface schema files from MaaFramework.*", skip = true },
     { message = "^feat", group = "<!-- 0 -->✨ 新功能" },
     { message = "^fix", group = "<!-- 1 -->🐛 Bug修复" },
     { message = "^docs", group = "<!-- 4 -->📚 文档" },
@@ -87,7 +111,8 @@ commit_parsers = [
     { message = "^chore", group = "<!-- 8 -->🔧 日常维护" },
     { message = "^ci", group = "<!-- 7 -->⚙️ 持续集成" },
     { body = ".*security", group = "<!-- 9 -->🔒 安全" },
-    { message = "^revert", group = "<!-- 10 -->◀️ 撤销" },
+    { message = "^[Rr]evert", group = "<!-- 10 -->◀️ 撤销" },
+    { message = "^build", group = "<!-- 11 -->💼 构建" },
 ]
 
 # 忽略这些提交

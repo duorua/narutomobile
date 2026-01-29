@@ -1,5 +1,9 @@
 name: install
 
+env:
+  MFAA_VERSION: v2.5.7
+  MAA_FRAMEWORK_VERSION: v5.4.3
+
 on:
   push:
     tags:
@@ -62,11 +66,28 @@ jobs:
 
   install:
     needs: meta
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
-        os: [win, macos, linux]
-        arch: [aarch64, x86_64]
+        include:
+          - os: win
+            arch: x86_64
+            runner: windows-latest
+          - os: win
+            arch: aarch64
+            runner: windows-11-arm
+          - os: macos
+            arch: x86_64
+            runner: ubuntu-latest
+          - os: macos
+            arch: aarch64
+            runner: ubuntu-latest
+          - os: linux
+            arch: x86_64
+            runner: ubuntu-latest
+          - os: linux
+            arch: aarch64
+            runner: ubuntu-latest
       fail-fast: false
 
     steps:
@@ -74,14 +95,9 @@ jobs:
         with:
           submodules: true
 
-      - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1
+      - uses: actions/setup-python@v6
         with:
-          repository: MaaXYZ/MaaFramework
-          fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
-          tag: "v4.5.6"
-          out-file-path: "deps"
-          extract: true
+          python-version: "3.12"
 
       - name: Download MFAAvalonia
         if: matrix.os != 'android'
@@ -90,8 +106,17 @@ jobs:
         with:
           repository: SweetSmellFox/MFAAvalonia
           fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
-          latest: true
+          tag: ${{ env.MFAA_VERSION }}
           out-file-path: "MFA"
+          extract: true
+
+      - name: Download MaaFramework
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: MaaXYZ/MaaFramework
+          fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
+          tag: ${{ env.MAA_FRAMEWORK_VERSION }}
+          out-file-path: "deps"
           extract: true
 
       - name: Clean up MFAAvalonia archive
@@ -102,23 +127,112 @@ jobs:
           rm -f "${ARCHIVE_FILE_PATH}"
           echo "Archive cleanup command executed for MFAAvalonia."
 
-      - name: Install
+      - name: Convert PNG to ICO
+        if: matrix.os == 'win' && matrix.arch == 'x86_64'
         shell: bash
         run: |
-          python -m pip install -r ./requirements.txt
-          python ./install.py ${{ needs.meta.outputs.tag }}
+          # 安装 ImageMagick
+          choco install imagemagick -y
 
+          # 转换 PNG 到 ICO
+          magick convert docs/imgs/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 man.ico
+
+      - name: Modify MFAAvalonia exe icon
+        if: matrix.os == 'win' && matrix.arch == 'x86_64'
+        shell: bash
+        run: |
+          # 下载 rcedit
+          curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
+
+          # 修改 exe 图标
+          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "man.ico"
+
+      - name: Setup Embed Python
+        if: matrix.os != 'linux' && matrix.os != 'android'
+        shell: bash
+        run: |
+          python3 tools/ci/setup_embed_python.py ${{ matrix.os }} ${{ matrix.arch }}
+          if [[ "${{ matrix.os }}" == "macos" ]]; then
+            EMBED_PYTHON_PATH="./install/python/bin/python3"
+            if [ -f "$EMBED_PYTHON_PATH" ]; then
+              echo "Setting execute permission for $EMBED_PYTHON_PATH"
+              chmod +x "$EMBED_PYTHON_PATH"
+            else
+              echo "Warning: Embedded Python executable not found at $EMBED_PYTHON_PATH. Skipping chmod."
+            fi
+          fi
+
+      - name: Fix permissions on unix
+        if: matrix.os != 'win'
+        shell: bash
+        run: |
+          # 修复install目录中的Python可执行文件权限
+          if [ -d "./install/python/bin" ]; then
+            echo "Setting execute permission for Python binaries..."
+            chmod +x ./install/python/bin/* 2>/dev/null || true
+          fi
+
+          # 修复所有shell脚本的权限
+          if [ -d "./install" ]; then
+            echo "Setting execute permission for shell scripts..."
+            find ./install -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
+          fi
+
+      - name: Install on unix
+        if: matrix.os != 'win'
+        shell: bash
+        run: |
           if [[ "${{ matrix.os }}" != "android" ]]; then
             if [ -d "MFA" ]; then
               echo "Copying MFA files to install directory..."
               mkdir -p install
               rsync -av --ignore-existing MFA/ install/
+              echo "MFA files copied successfully."
             else
               echo "MFA directory not found, skipping copy."
             fi
           else
             echo "Skipping copy MFA for Android."
           fi
+
+          python3 -m pip install -r requirements.txt
+          cd tools/
+          python3 ci/install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
+          cd ..
+
+      - name: Install on windows
+        if: matrix.os == 'win'
+        shell: bash
+        run: |
+          if [[ "${{ matrix.os }}" != "android" ]]; then
+            if [ -d "MFA" ]; then
+              echo "Copying MFA files to install directory..."
+              mkdir -p install
+              cp -r MFA/* install/
+              echo "MFA files copied successfully."
+            else
+              echo "MFA directory not found, skipping copy."
+            fi
+          else
+            echo "Skipping copy MFA for Android."
+          fi
+
+          python -m pip install -r requirements.txt
+          cd tools/
+          python ci/install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
+          cd ..
+
+      - name: Download Python dependencies on Windows
+        if: matrix.os == 'win'
+        shell: bash
+        run: |
+          python tools/ci/download_deps.py --deps-dir ./install/python/Lib/site-packages --os ${{ matrix.os }} --arch ${{ matrix.arch }}
+
+      - name: Download Python dependencies on macOS
+        if: matrix.os == 'macos'
+        shell: bash
+        run: |
+          python3 tools/ci/download_deps.py --deps-dir ./install/python/lib/python3.12/site-packages --os ${{ matrix.os }} --arch ${{ matrix.arch }}
 
       - uses: actions/upload-artifact@v4
         with:
@@ -127,6 +241,7 @@ jobs:
 
   changelog:
     name: Generate changelog
+    needs: meta
     runs-on: ubuntu-latest
     outputs:
       release_body: ${{ steps.git-cliff.outputs.content }}
@@ -141,7 +256,11 @@ jobs:
         id: git-cliff
         with:
           config: .github/cliff.toml
-          args: -vv --latest --strip header
+          # 正式版：使用 tag-pattern 只匹配正式版标签，包含所有从上一个正式版以来的提交
+          # 预发布版：正常生成，只包含从上一个标签以来的提交
+          args: >-
+            -vv --latest --strip header
+            ${{ needs.meta.outputs.is_prerelease == 'false' && '--tag-pattern "^v[0-9]+\\.[0-9]+\\.[0-9]+$"' || '' }}
         env:
           OUTPUT: CHANGES.md
           GITHUB_REPO: ${{ github.repository }}
@@ -160,7 +279,7 @@ jobs:
           for f in *; do
             (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
           done
-          
+
       - uses: softprops/action-gh-release@v2
         with:
           files: assets/*
@@ -168,3 +287,11 @@ jobs:
           body: ${{ needs.changelog.outputs.release_body }}
           draft: false
           prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
+
+      - name: Trigger MirrorChyanUploading
+        shell: bash
+        run: |
+          gh workflow run --repo $GITHUB_REPOSITORY mirrorchyan_release.yml -f tag=${{ needs.meta.outputs.tag }}
+          gh workflow run --repo $GITHUB_REPOSITORY mirrorchyan_release_note.yml -f tag=${{ needs.meta.outputs.tag }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

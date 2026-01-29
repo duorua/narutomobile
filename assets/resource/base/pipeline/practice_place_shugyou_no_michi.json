@@ -1,0 +1,522 @@
+{
+    "shugyou_no_michi": {
+        "next": [
+            "go_into_shugyou_no_michi",
+            "[JumpBack]open_ninjia_guide",
+            "[JumpBack]back_main_screen"
+        ]
+    },
+    "go_into_shugyou_no_michi": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "mission_label",
+                "recognition": "OCR",
+                "expected": [
+                    "任务"
+                ],
+                "roi": [
+                    968,
+                    68,
+                    307,
+                    100
+                ]
+            },
+            {
+                "sub_name": "returning_player",
+                "recognition": "OCR",
+                "expected": [
+                    "回流"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    195,
+                    285
+                ]
+            }
+        ],
+        "action": "Custom",
+        "custom_action": "GoIntoEntryByGuide",
+        "custom_action_param": {
+            "entry_name": "修行之路"
+        },
+        "next": [
+            "train_road_entry",
+            "[JumpBack]ninjia_guide_to_funtion_retry"
+        ],
+        "focus": "进入修行之路",
+        "post_wait_freezes": 400
+    },
+    "train_road_entry": {
+        "recognition": "OCR",
+        "expected": [
+            "修行",
+            "之路"
+        ],
+        "roi": [
+            91,
+            9,
+            395,
+            143
+        ],
+        "next": [
+            "train_road_award",
+            "train_road_unreset",
+            "train_road_unsweep",
+            "train_road_done",
+            "train_road_sweeping"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "train_road_unsweep": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/train_road_unsweep.png",
+        "roi": [
+            807,
+            570,
+            155,
+            149
+        ],
+        "action": "Click",
+        "target": [
+            867,
+            639,
+            39,
+            34
+        ],
+        "next": [
+            "confirm_train_road_sweep",
+            "[JumpBack]train_road_unsweep"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]修行之路未扫荡[/color]"
+    },
+    "train_road_sweeping": {
+        "recognition": "OCR",
+        "expected": "正在",
+        "roi": [
+            469,
+            263,
+            231,
+            76
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]修行之路扫荡中[/color]"
+    },
+    "train_road_award": {
+        "recognition": "OCR",
+        "expected": [
+            "领取奖励"
+        ],
+        "roi": [
+            817,
+            431,
+            170,
+            64
+        ],
+        "action": "Click",
+        "next": [
+            "confirm_train_road_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]领取修行之路奖励[/color]"
+    },
+    "confirm_train_road_award": {
+        "recognition": "OCR",
+        "expected": [
+            "恭喜你"
+        ],
+        "roi": [
+            461,
+            121,
+            335,
+            96
+        ],
+        "action": "Click",
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]确认修行之路奖励[/color]"
+    },
+    "train_road_unreset": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/train_road_reset.png",
+        "roi": [
+            737,
+            624,
+            83,
+            56
+        ],
+        "action": "Click",
+        "threshold": [
+            0.9
+        ],
+        "next": [
+            "confirm_train_road_reset",
+            "train_road_unreset"
+        ],
+        "pre_delay": 0,
+        "max_hit": 5,
+        "focus": "[color:DeepSkyBlue]重置修行之路[/color]"
+    },
+    "above_kage_confirm_train_road_reset": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/above_kage_sweep.png",
+        "roi": [
+            580,
+            525,
+            34,
+            39
+        ],
+        "action": "Swipe",
+        "duration": 50,
+        "next": [
+            "above_kage_confirm_train_road_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]修行之路超影重置[/color]"
+    },
+    "above_kage_confirm_train_road_award": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/above_kage_sweep.png",
+        "roi": [
+            580,
+            525,
+            34,
+            39
+        ],
+        "action": "Swipe",
+        "duration": 50,
+        "next": [
+            "confirm_train_road_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认修行之路超影重置[/color]"
+    },
+    "confirm_train_road_reset": {
+        "recognition": "OCR",
+        "expected": [
+            "确定"
+        ],
+        "roi": [
+            532,
+            409,
+            205,
+            83
+        ],
+        "action": "Click",
+        "next": [
+            "confirm_train_road_sweep",
+            "above_kage_confirm_train_road_reset",
+            "confirm_train_road_reset"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认修行之路重置[/color]"
+    },
+    "confirm_train_road_sweep": {
+        "recognition": "OCR",
+        "expected": [
+            "扫荡"
+        ],
+        "roi": [
+            499,
+            402,
+            280,
+            204
+        ],
+        "action": "Click",
+        "next": [
+            "without_confirm_train_road_sweep",
+            "confirm_train_road_sweep"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
+        "focus": "[color:DeepSkyBlue]确认修行之路扫荡[/color]"
+    },
+    "without_confirm_train_road_sweep": {
+        "recognition": "OCR",
+        "expected": [
+            "扫荡"
+        ],
+        "roi": [
+            499,
+            402,
+            280,
+            204
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    },
+    "train_road_done": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/train_road_done.png",
+        "roi": [
+            409,
+            591,
+            545,
+            124
+        ],
+        "threshold": 0.95,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]修行之路已完成[/color]"
+    },
+    "shugyou_no_michi_auto_push": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/go_to_war.png",
+        "roi": [
+            1104,
+            541,
+            149,
+            153
+        ],
+        "threshold": 0.3,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]shugyou_no_michi_level_teleportation",
+            "[JumpBack]shugyou_no_michi_level_award",
+            "[JumpBack]shugyou_no_michi_go_to_war"
+        ]
+    },
+    "shugyou_no_michi_level_award": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/enter_shugyou_no_michi_award.png",
+        "roi": [
+            537,
+            177,
+            203,
+            212
+        ],
+        "post_delay": 0,
+        "action": "Click"
+    },
+    "shugyou_no_michi_level_teleportation": {
+        "recognition": "OCR",
+        "expected": [
+            "传送"
+        ],
+        "roi": [
+            851,
+            472,
+            105,
+            64
+        ],
+        "post_delay": 0,
+        "action": "Click",
+        "focus": "传送到前方关卡"
+    },
+    "shugyou_no_michi_go_to_war": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/go_to_war.png",
+        "roi": [
+            1104,
+            541,
+            149,
+            153
+        ],
+        "threshold": 0.35,
+        "action": "Click",
+        "post_delay": 3000,
+        "next": [
+            "shugyou_no_michi_go_to_war",
+            "win_in_shugyou_no_michi",
+            "fail_in_shugyou_no_michi",
+            "[JumpBack]not_in_auto_battle"
+        ],
+        "rate_limit": 5000,
+        "timeout": 60000,
+        "focus": "进入战斗"
+    },
+    "not_in_auto_battle": {
+        "recognition": "OCR",
+        "expected": "自动",
+        "roi": [
+            556,
+            99,
+            177,
+            59
+        ],
+        "inverse": true,
+        "next": "click_auto_battle",
+        "timeout": 1000,
+        "focus": "没有检测到自动战斗"
+    },
+    "click_auto_battle": {
+        "recognition": "OCR",
+        "expected": "自动",
+        "roi": [
+            44,
+            56,
+            72,
+            42
+        ],
+        "pre_delay": 0,
+        "post_delay": 500,
+        "action": "Click",
+        "focus": "开启自动战斗"
+    },
+    "fail_in_shugyou_no_michi": {
+        "recognition": "OCR",
+        "expected": "变强",
+        "roi": [
+            475,
+            222,
+            338,
+            141
+        ],
+        "action": "StopTask",
+        "focus": "战斗失败"
+    },
+    "win_in_shugyou_no_michi": {
+        "recognition": "OCR",
+        "expected": "点击任意位置",
+        "roi": [
+            514,
+            652,
+            283,
+            59
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "next": "wait_for_battle_again",
+        "timeout": 10000
+    },
+    "wait_for_battle_again": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/go_to_war.png",
+        "roi": [
+            1104,
+            541,
+            149,
+            153
+        ],
+        "threshold": 0.35,
+        "post_wait_freezes": 200
+    },
+    "train_road_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "next": [
+            "train_road_ac_entry_undone",
+            "train_road_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "train_road_not_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_not_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "action": "Click",
+        "next": [
+            "train_road_in_center_enter",
+            "train_road_not_in_center_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
+    },
+    "train_road_ac_entry": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/award_center_entry.png",
+        "roi": [
+            1174,
+            302,
+            99,
+            105
+        ],
+        "method": 10001,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "train_road_in_center_enter",
+            "train_road_not_in_center_enter",
+            "train_road_ac_entry"
+        ],
+        "timeout": 3000,
+        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
+    },
+    "train_road_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/train_road_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "train_road_entry",
+            "train_road_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]修行之路未完成[/color]"
+    },
+    "train_road_ac_done": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/center_entry_end.png",
+        "roi": [
+            180,
+            384,
+            1100,
+            118
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]修行之路已完成[/color]"
+    }
+}

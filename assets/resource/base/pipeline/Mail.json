@@ -1,34 +1,24 @@
 {
     "mail": {
         "next": [
-            "mail_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "mail_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入领取邮箱奖励子任务[/color]"
     },
     "mail_entry": {
         "next": [
-            "mail_done"
-        ],
-        "interrupt": [
-            "open_mail",
-            "back_main_screen"
+            "mail_done",
+            "[JumpBack]open_mail",
+            "[JumpBack]back_main_screen"
         ]
     },
     "mail_done": {
         "recognition": "TemplateMatch",
         "template": "Mail/mail_done.png",
         "threshold": 0.9,
-        "next": [
-            "stoptask"
-        ],
-        "focus": "[color:DeepSkyBlue]无邮箱奖励[/color]"
-    },
-    "stoptask": {
         "action": "StopTask",
-        "focus": "[color:chartreuse]当前任务结束[/color]"
+        "focus": "[color:DeepSkyBlue]无邮箱奖励[/color]"
     },
     "open_mail": {
         "recognition": "TemplateMatch",
@@ -45,8 +35,10 @@
         "focus": "[color:DeepSkyBlue]打开邮箱[/color]"
     },
     "get_mail_award": {
-        "recognition": "TemplateMatch",
-        "template": "Mail/get_mail_award.png",
+        "recognition": "OCR",
+        "expected": [
+            "一键提取"
+        ],
         "roi": [
             362,
             594,

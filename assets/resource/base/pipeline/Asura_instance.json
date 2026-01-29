@@ -1,0 +1,76 @@
+{
+    "asura_instance": {
+        "next": [
+            "asura_instance_entry",
+            "asura_instance_in_level_roll",
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入修罗副本子任务[/color]"
+    },
+    "asura_instance_entry": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/advanture_entry.png",
+        "roi": [
+            1076,
+            543,
+            204,
+            177
+        ],
+        "action": "Click",
+        "next": [
+            "asura_instance_in_level_roll",
+            "[JumpBack]asura_instance_entry"
+        ],
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]进入冒险副本入口[/color]"
+    },
+    "asura_instance_in_level_roll": {
+        "recognition": "TemplateMatch",
+        "template": "Advanture/level_roll.png",
+        "roi": [
+            0,
+            0,
+            363,
+            258
+        ],
+        "threshold": 0.9,
+        "next": [
+            "asura_instance_to_asura_instance"
+        ],
+        "focus": "[color:DeepSkyBlue]已经在冒险副本[/color]"
+    },
+    "asura_instance_to_asura_instance": {
+        "recognition": "TemplateMatch",
+        "template": "Asura_instance/entry.png",
+        "threshold": 0.9,
+        "roi": [
+            0,
+            0,
+            469,
+            256
+        ],
+        "action": "Click",
+        "next": [
+            "asura_instance_in_asura_instance",
+            "[JumpBack]asura_instance_to_asura_instance"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]去在修罗副本[/color]"
+    },
+    "asura_instance_in_asura_instance": {
+        "recognition": "TemplateMatch",
+        "template": "Asura_instance/in_asura_instance.png",
+        "roi": [
+            0,
+            0,
+            435,
+            231
+        ],
+        "next": [
+            "advanture_check_no_next_roll",
+            "[JumpBack]advanture_to_next_roll"
+        ],
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]已在修罗副本[/color]"
+    }
+}

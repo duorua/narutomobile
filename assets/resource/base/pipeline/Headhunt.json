@@ -1,10 +1,8 @@
 {
     "headhunt": {
         "next": [
-            "headhunt_entry"
-        ],
-        "interrupt": [
-            "back_main_screen"
+            "headhunt_entry",
+            "[JumpBack]back_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]进入招募子任务[/color]"
     },
@@ -17,20 +15,43 @@
             52,
             45
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "action": "Click",
         "next": [
-            "no_free_headhunt"
+            "headhunt_to_advanced_recruit",
+            "headhunt_entry"
+        ]
+    },
+    "headhunt_to_advanced_recruit": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Headhunt/headhunt.png",
+            "Headhunt/headhunt_selected.png"
         ],
-        "interrupt": [
-            "free_headhunt_waiting"
+        "roi": [
+            4,
+            108,
+            210,
+            456
         ],
-        "post_delay": 3000,
-        "focus": "[color:DeepSkyBlue]进入招募[/color]"
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "$doc": "因为高招有动画,所以这里不设post_wait_freezes",
+        "next": [
+            "no_free_headhunt",
+            "[JumpBack]free_headhunt_waiting",
+            "headhunt_to_advanced_recruit"
+        ]
     },
     "no_free_headhunt": {
         "recognition": "TemplateMatch",
         "template": "Headhunt/no_free_headhunt.png",
-        "post_delay": 700,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "$doc": "因为高招有动画,所以这里不设post_wait_freezes",
         "next": [
             "headhunt_recruit_enter"
         ],
@@ -42,10 +63,31 @@
         "threshold": 0.97,
         "action": "Click",
         "next": [
-            "confrim_free_headhunt"
+            "confrim_free_headhunt",
+            "free_headhunt_fake",
+            "free_headhunt_waiting"
         ],
-        "post_delay": 700,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]有免费高级招募[/color]"
+    },
+    "free_headhunt_fake": {
+        "recognition": "OCR",
+        "expected": [
+            "取消"
+        ],
+        "roi": [
+            639,
+            385,
+            274,
+            153
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
+        "focus": "[color:DarkGoldenRod]什么,情报是假的[/color]"
     },
     "confrim_free_headhunt": {
         "recognition": "TemplateMatch",
@@ -57,12 +99,16 @@
             70
         ],
         "action": "Click",
-        "post_delay": 700,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]确认免费高级招募[/color]"
     },
     "headhunt_recruit_enter": {
-        "recognition": "TemplateMatch",
-        "template": "Headhunt/recruit_done.png",
+        "recognition": "OCR",
+        "expected": [
+            "普通"
+        ],
         "roi": [
             0,
             119,
@@ -70,14 +116,14 @@
             523
         ],
         "action": "Click",
-        "threshold": 0.85,
-        "post_delay": 3000,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
         "next": [
-            "headhunt_recruit_no_free"
+            "headhunt_recruit_no_free",
+            "[JumpBack]headhunt_recruit"
         ],
-        "interrupt": [
-            "headhunt_recruit"
-        ],
+        "timeout": 2000,
         "focus": "[color:DeepSkyBlue]进入普通招募[/color]"
     },
     "headhunt_recruit_no_free": {
@@ -90,10 +136,12 @@
             138
         ],
         "next": [
+            "top_secret_treasure_box_undone",
             "top_secret_treasure_box_done"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "threshold": 0.5,
-        "interrupt": "top_secret_treasure_box_undone",
         "focus": "[color:DeepSkyBlue]免费普通招募已使用[/color]"
     },
     "headhunt_recruit": {
@@ -107,22 +155,31 @@
         ],
         "threshold": 0.6,
         "action": "Click",
-        "next": "confrim_headhunt_recruit",
-        "post_delay": 700,
+        "next": [
+            "confrim_headhunt_recruit",
+            "headhunt_recruit"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进行免费普通招募[/color]"
     },
     "confrim_headhunt_recruit": {
-        "recognition": "TemplateMatch",
-        "template": "Headhunt/confirm_free_headhunt.png",
+        "recognition": "OCR",
+        "expected": [
+            "确",
+            "认"
+        ],
         "roi": [
-            430,
-            523,
-            202,
-            75
+            353,
+            352,
+            614,
+            368
         ],
         "action": "Click",
-        "post_delay": 300,
-        "focus": "[color:DeepSkyBlue]确认免费普通招募[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500
     },
     "top_secret_treasure_box_undone": {
         "recognition": "TemplateMatch",
@@ -133,12 +190,14 @@
             174,
             523
         ],
-        "threshold": 0.9,
-        "action": "Swipe",
-        "duration": 100,
-        "post_delay": 2000,
+        "threshold": 0.85,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
         "next": [
-            "top_secret_treasure_box_log"
+            "top_secret_treasure_box_log",
+            "top_secret_treasure_box_undone"
         ],
         "timeout": 2000,
         "focus": "[color:DeepSkyBlue]绝密宝匣未完成[/color]"
@@ -152,10 +211,13 @@
             174,
             523
         ],
-        "threshold": 0.9,
+        "threshold": 0.85,
         "inverse": true,
-        "post_delay": 300,
-        "next": "back_main_screen_and_stop",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
         "focus": "[color:DeepSkyBlue]绝密宝匣已完成[/color]"
     },
     "top_secret_treasure_box_log": {
@@ -167,15 +229,18 @@
             39,
             34
         ],
-        "action": "Swipe",
-        "duration": 100,
-        "post_delay": 700,
+        "method": 10001,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 500,
         "next": [
-            "top_secret_treasure_box_chopper"
+            "top_secret_treasure_box_copper",
+            "top_secret_treasure_box_log"
         ],
         "focus": "[color:DeepSkyBlue]进入绝密宝匣奖励记录[/color]"
     },
-    "top_secret_treasure_box_chopper": {
+    "top_secret_treasure_box_copper": {
         "recognition": "OCR",
         "expected": [
             "一",
@@ -184,14 +249,52 @@
             "取"
         ],
         "roi": [
-            573,
-            614,
-            126,
-            47
+            553,
+            601,
+            180,
+            80
         ],
-        "action": "Swipe",
-        "duration": 100,
-        "post_delay": 700,
+        "action": "Click",
+        "post_delay": 0,
+        "next": [
+            "top_secret_treasure_box_without_copper",
+            "top_secret_treasure_box_copper"
+        ],
         "focus": "[color:DeepSkyBlue]领取绝密宝匣铜币[/color]"
+    },
+    "top_secret_treasure_box_without_copper": {
+        "recognition": "TemplateMatch",
+        "template": "Headhunt/top_secret_treasure_box_award.png",
+        "roi": [
+            688,
+            56,
+            217,
+            385
+        ],
+        "next": [
+            "top_secret_treasure_box_without_copper_back"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]已领取绝密宝匣铜币[/color]"
+    },
+    "top_secret_treasure_box_without_copper_back": {
+        "recognition": "TemplateMatch",
+        "template": "Headhunt/headhunt_headline.png",
+        "action": "Click",
+        "roi": [
+            0,
+            0,
+            326,
+            234
+        ],
+        "method": 10001,
+        "next": [
+            "top_secret_treasure_box_without_copper_back",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]已领取绝密宝匣铜币[/color]"
     }
 }

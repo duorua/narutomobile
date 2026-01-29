@@ -1,0 +1,82 @@
+{
+    "in_ninjia_guide": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "mission_label",
+                "recognition": "OCR",
+                "expected": [
+                    "任务"
+                ],
+                "roi": [
+                    968,
+                    68,
+                    307,
+                    100
+                ]
+            },
+            {
+                "sub_name": "returning_player",
+                "recognition": "OCR",
+                "expected": [
+                    "回流"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    195,
+                    285
+                ]
+            }
+        ]
+    },
+    "GetSenryokuText": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "order_by": "Vertical",
+                "expected": "[\\u4e00-\\u9fa5]*[\\d]+万?"
+            }
+        }
+    },
+    "custom_ocr": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": ".*",
+                "replace": [
+                    [
+                        "丑术",
+                        "忍术"
+                    ],
+                    [
+                        "双术",
+                        "忍术"
+                    ],
+                    [
+                        "双米",
+                        "忍术"
+                    ]
+                ]
+            }
+        }
+    },
+    "card_wait": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Find_bonds/未翻开.png"
+        ]
+    },
+    "card_0": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Find_bonds/紫色牌.png"
+        ]
+    },
+    "card_1": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Find_bonds/橙色牌.png"
+        ]
+    }
+}

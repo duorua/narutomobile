@@ -1,0 +1,6 @@
+{
+    "mini_game": {
+        "next": "treasure_gathering_trial_award",
+        "focus": "[color:DeepSkyBlue]进入小游戏[/color]"
+    }
+}

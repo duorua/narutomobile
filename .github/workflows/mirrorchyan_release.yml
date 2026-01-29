@@ -1,0 +1,52 @@
+name: mirrorchyan_release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        default: ""
+        required: false
+  release:
+    types: [released]
+
+jobs:
+  mirrorchyan:
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [win, linux]
+        arch: [x86_64]
+    steps:
+      - id: uploading
+        uses: MirrorChyan/uploading-action@v1
+        with:
+          filetype: latest-release
+          filename: "MaaAutoNaruto-${{ matrix.os }}-${{ matrix.arch }}-*.zip"
+          mirrorchyan_rid: MaaAutoNaruto
+          tag: ${{ inputs.tag }}
+
+          owner: duorua
+          repo: narutomobile
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          upload_token: ${{ secrets.MirrorChyanUploadToken }}
+          os: ${{ matrix.os }}
+          arch: ${{ matrix.arch }}
+
+  mirrorchyan_res:
+    runs-on: macos-latest
+    steps:
+      - id: uploading
+        uses: MirrorChyan/uploading-action@v1
+        with:
+          filetype: latest-release
+          filename: "MaaAutoNaruto-win-x86_64-*.zip"
+          pick_files: '["resource", "interface.json", "agent", "python"]'
+          exclude_files: '["resource/model/ocr/**"]'
+          mirrorchyan_rid: MaaAutoNaruto
+          tag: ${{ inputs.tag }}
+
+          owner: duorua
+          repo: narutomobile
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          upload_token: ${{ secrets.MirrorChyanUploadToken }}

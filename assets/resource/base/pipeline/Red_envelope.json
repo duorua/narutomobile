@@ -1,0 +1,189 @@
+{
+    "red_envelope": {
+        "next": [
+            "red_envelope_in_fire_work",
+            "red_envelope_to_activity",
+            "[JumpBack]get_red_envelope",
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入抢红包子任务[/color]"
+    },
+    "red_envelope_to_activity": {
+        "recognition": "TemplateMatch",
+        "template": "Activity/headhunt.png",
+        "roi": [
+            1194,
+            132,
+            50,
+            42
+        ],
+        "action": "Click",
+        "target": [
+            1196,
+            32,
+            53,
+            45
+        ],
+        "next": [
+            "check_in_activity",
+            "[JumpBack]red_envelope_to_activity"
+        ],
+        "post_wait_freezes": 900,
+        "focus": "[color:DeepSkyBlue]进入活动[/color]"
+    },
+    "check_in_activity": {
+        "recognition": "OCR",
+        "expected": [
+            "一乐",
+            "外卖"
+        ],
+        "roi": [
+            0,
+            0,
+            261,
+            288
+        ],
+        "next": [
+            "swipes_for_red_envelope"
+        ],
+        "focus": "[color:DeepSkyBlue]进入活动[/color]"
+    },
+    "swipes_for_red_envelope": {
+        "action": "Swipe",
+        "begin": [
+            80,
+            300,
+            10,
+            10
+        ],
+        "end": [
+            80,
+            100,
+            10,
+            10
+        ],
+        "next": [
+            "red_envelope_entry"
+        ],
+        "duration": 200,
+        "post_delay": 900,
+        "focus": "[color:DeepSkyBlue]寻找红包任务[/color]"
+    },
+    "red_envelope_entry": {
+        "recognition": "OCR",
+        "expected": [
+            "冬日烟花"
+        ],
+        "roi": [
+            0,
+            130,
+            175,
+            580
+        ],
+        "action": "Click",
+        "next": [
+            "check_selected_red_envelope",
+            "[JumpBack]red_envelope_entry"
+        ],
+        "post_wait_freezes": 500,
+        "focus": "[color:DeepSkyBlue]进入红包任务[/color]"
+    },
+    "check_selected_red_envelope": {
+        "recognition": "TemplateMatch",
+        "template": "Red_envelope/love.png",
+        "roi": [
+            604,
+            298,
+            545,
+            340
+        ],
+        "next": [
+            "red_envelope_to_fire_work"
+        ],
+        "focus": "[color:DeepSkyBlue]确认选中红包任务[/color]"
+    },
+    "red_envelope_to_fire_work": {
+        "recognition": "OCR",
+        "expected": [
+            "立即",
+            "前往"
+        ],
+        "roi": [
+            965,
+            535,
+            314,
+            184
+        ],
+        "action": "Click",
+        "next": [
+            "red_envelope_in_fire_work",
+            "[JumpBack]red_envelope_to_fire_work",
+            "[JumpBack]get_red_envelope"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]进入烟花界面[/color]"
+    },
+    "red_envelope_in_fire_work": {
+        "recognition": "OCR",
+        "expected": [
+            "烟花"
+        ],
+        "next": [
+            "red_envelope_clicker_1"
+        ],
+        "focus": "[color:DeepSkyBlue]确认在烟花界面[/color]"
+    },
+    "red_envelope_clicker_1": {
+        "action": "Click",
+        "target": [
+            627,
+            372,
+            76,
+            64
+        ],
+        "next": [
+            "red_envelope_clicker_2"
+        ],
+        "focus": "[color:DeepSkyBlue]抢红包连点器[/color]"
+    },
+    "red_envelope_clicker_2": {
+        "action": "Click",
+        "target": [
+            980,
+            194,
+            56,
+            64
+        ],
+        "next": [
+            "red_envelope_clicker_1"
+        ]
+    },
+    "get_red_envelope": {
+        "recognition": "TemplateMatch",
+        "template": "Red_envelope/christmas_stocking.png",
+        "roi": [
+            138,
+            179,
+            1044,
+            382
+        ],
+        "action": "Click",
+        "next": [
+            "without_red_envelope",
+            "[JumpBack]get_red_envelope"
+        ],
+        "focus": "[color:DeepSkyBlue]领取红包雨[/color]"
+    },
+    "without_red_envelope": {
+        "recognition": "TemplateMatch",
+        "template": "Red_envelope/christmas_stocking.png",
+        "roi": [
+            138,
+            179,
+            1044,
+            382
+        ],
+        "inverse": true,
+        "focus": "[color:DeepSkyBlue]离开红包雨[/color]"
+    }
+}

@@ -8,13 +8,6 @@ repos:
     hooks:
       - id: oxipng
         args: ["-q", "-o", "2", "-s", "--ng"]
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v4.0.0-alpha.8
-    hooks:
-      - id: prettier
-        types_or:
-          - yaml
-          - json
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.13.0
     hooks:
@@ -22,4 +15,5 @@ repos:
         files: ^docs/.*|^README\.md$
         types:
           - markdown
-        args: ["--fix", "--config", "docs/.markdownlint.yaml", "#**/node_modules"]
+        args:
+          ["--fix", "--config", "docs/.markdownlint.yaml", "#**/node_modules"]

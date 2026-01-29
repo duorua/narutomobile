@@ -1,127 +1,94 @@
 {
     "leaderboard": {
         "next": [
-            "leaderboard_check_in_main_screen"
+            "ninjia_guide_to_leaderboard",
+            "[JumpBack]open_ninjia_guide",
+            "[JumpBack]back_main_screen"
         ],
-        "interrupt": [
-            "back_main_screen"
-        ],
+        "timeout": 2000,
         "focus": "[color:DeepSkyBlue]进入排行榜子任务[/color]"
     },
-    "swipe_for_left_entries": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Startup/main_green_masked.png"
-        ],
-        "threshold": 0.8,
-        "green_mask": true,
-        "action": "Swipe",
-        "begin": [
-            150,
-            150,
-            50,
-            50
-        ],
-        "end": [
-            850,
-            150,
-            50,
-            50
-        ],
-        "focus": "[color:DeepSkyBlue]滑动寻找左边的功能入口[/color]"
-    },
-    "leaderboard_entry_by_ocr": {
-        "recognition": "OCR",
-        "expected": [
-            "排",
-            "行",
-            "榜"
-        ],
-        "action": "Click",
+    "ninjia_guide_to_leaderboard": {
+        "recognition": "Custom",
+        "custom_recognition": "IsInNinjiaGuide",
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "GoIntoEntryByGuide",
+                "custom_action_param": {
+                    "entry_name": "排行榜"
+                }
+            }
+        },
+        "pre_wait_freezes": 200,
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "next": [
-            "click_thumb"
-        ],
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]进入排行榜[/color]"
+            "leaderboard_in_leaderboard",
+            "[JumpBack]ninjia_guide_to_funtion_retry"
+        ]
     },
-    "leaderboard_check_in_main_screen": {
+    "leaderboard_in_leaderboard": {
         "recognition": "TemplateMatch",
-        "template": [
-            "Startup/main_green_masked.png"
-        ],
+        "template": "Leaderboard/leaderboard_the_first.png",
         "roi": [
-            11,
-            0,
-            1269,
-            720
+            444,
+            105,
+            170,
+            170
         ],
-        "action": "Swipe",
-        "begin": [
-            1015,
-            334,
-            1,
-            1
-        ],
-        "end": [
-            273,
-            336,
-            1,
-            1
-        ],
-        "threshold": 0.95,
-        "green_mask": true,
-        "next": [
-            "leaderboard_entry",
-            "leaderboard_entry_by_ocr"
-        ],
-        "interrupt": [
-            "swipe_for_left_entries"
-        ],
-        "post_delay": 500,
-        "focus": "[color:DeepSkyBlue]检测是否在主页面[/color]"
-    },
-    "leaderboard_entry": {
-        "recognition": "TemplateMatch",
-        "template": [
-            "Leaderboard/board.png",
-            "Leaderboard/board_night_undone.png",
-            "Leaderboard/board_night_done.png",
-            "Leaderboard/board_konoha_autumn.png",
-            "Leaderboard/board_HanFengZhuiYu.png"
-        ],
-        "threshold": 0.8,
-        "green_mask": true,
-        "action": "Click",
-        "next": [
-            "click_thumb"
-        ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]进入排行榜[/color]"
+        "next": [
+            "click_thumb_done",
+            "[JumpBack]click_thumb",
+            "retry_failed"
+        ],
+        "focus": "[color:DeepSkyBlue]在排行榜中[/color]"
     },
     "click_thumb": {
         "recognition": "TemplateMatch",
         "template": "Leaderboard/thumb.png",
-        "action": "Click",
-        "next": [
-            "close_board"
+        "roi": [
+            1027,
+            79,
+            252,
+            493
         ],
-        "post_delay": 500,
+        "max_hit": 5,
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]点赞[/color]"
     },
-    "close_board": {
-        "recognition": "TemplateMatch",
-        "template": "Leaderboard/x.png",
+    "click_thumb_done": {
+        "recognition": "ColorMatch",
+        "upper": [
+            77,
+            122,
+            175
+        ],
+        "lower": [
+            72,
+            115,
+            164
+        ],
         "roi": [
-            1173,
-            0,
-            94,
-            80
+            1027,
+            79,
+            252,
+            493
         ],
-        "action": "Click",
+        "count": 120,
+        "method": 4,
+        "inverse": true,
         "next": [
-            "check_main_screen_and_stop"
+            "back_main_screen_and_stop"
         ],
-        "post_wait_freezes": 200,
-        "focus": "[color:DeepSkyBlue]关闭排行榜[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]点赞完成[/color]"
     }
 }
