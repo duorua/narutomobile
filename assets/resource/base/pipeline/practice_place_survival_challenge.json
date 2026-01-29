@@ -332,6 +332,9 @@
             105
         ],
         "method": 10001,
+        "threshold": [
+            0.8
+        ],
         "action": "Click",
         "next": [
             "survival_challenge_in_center_enter",

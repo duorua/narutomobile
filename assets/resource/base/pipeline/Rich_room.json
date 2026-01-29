@@ -54,6 +54,9 @@
             105
         ],
         "method": 10001,
+        "threshold": [
+            0.8
+        ],
         "action": "Click",
         "next": [
             "rich_room_in_center_enter",

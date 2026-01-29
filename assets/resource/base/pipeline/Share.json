@@ -57,6 +57,9 @@
             105
         ],
         "method": 10001,
+        "threshold": [
+            0.8
+        ],
         "action": "Click",
         "next": [
             "share_in_center_enter",
