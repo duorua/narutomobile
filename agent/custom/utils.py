@@ -183,8 +183,8 @@ def fast_swipe(
         "custom_swipe",
         pipeline_override={
             "custom_swipe": {
-                "begin": [start_x, start_y, 50, 50],
-                "end": [end_x, end_y, 50, 50],
+                "begin": [start_x - 50, start_y, 100, 0],
+                "end": [end_x - 50, end_y, 100, 0],
                 "duration": randint(duration - 100, duration + 100),
                 "end_hold": randint(100, 200) if end_hold else 0,
             }

@@ -205,8 +205,8 @@ class GoIntoEntryByGuide(CustomAction):
         box = fast_ocr(context=context, expected=["倒计时"], roi=(450, 31, 250, 54))
         if box is None:
             logger.debug("该账号不为回归账号")
-            start = [70, 500]
-            end = [70, 200]
+            start = [70, 600]
+            end = [70, 100]
         else:
             logger.debug("该账号为回归账号")
             start = [300, 500]
