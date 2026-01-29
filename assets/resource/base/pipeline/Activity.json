@@ -182,7 +182,6 @@
             129
         ],
         "action": "Click",
-        "focus": "[color:DarkGray]进入商店[/color]",
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,
@@ -236,7 +235,6 @@
             115
         ],
         "action": "Click",
-        "focus": "[color:DarkGray]进入特权积分[/color]",
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,
