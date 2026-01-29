@@ -189,8 +189,10 @@ def fast_swipe(
         "custom_swipe",
         pipeline_override={
             "custom_swipe": {
-                "begin": [start_x, start_y, 50, 0],
-                "end": [end_x, end_y, 50, 0],
+                # 疑似有闭包问题
+                # 采用手动随机而不是maafw自带的随机
+                "begin": [random.randint(start_x - 50, start_x + 50), start_y],
+                "end": [random.randint(end_x - 50, end_x + 50), end_y],
                 "duration": randint(duration - 100, duration + 100),
                 "end_hold": randint(100, 200) if end_hold else 0,
             }
