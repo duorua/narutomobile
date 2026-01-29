@@ -38,8 +38,8 @@
             47
         ],
         "next": [
-            "liveness_award_done",
-            "[JumpBack]get_liveness_award"
+            "[JumpBack]get_liveness_award",
+            "liveness_award_done"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -64,15 +64,6 @@
         "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
     },
     "liveness_award_done": {
-        "recognition": "TemplateMatch",
-        "template": "Liveness_award/award_box_done.png",
-        "roi": [
-            435,
-            496,
-            816,
-            107
-        ],
-        "threshold": 0.95,
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -95,6 +86,8 @@
             824,
             96
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "threshold": 0.9,
         "post_wait_freezes": 500,
         "action": "Click",
@@ -112,7 +105,7 @@
         "action": "Click",
         "next": [
             "confirm_weekly_liveness_award",
-            "[JumpBack]weekly_liveness_award_undone"
+            "weekly_liveness_award_undone"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]周度500活跃奖励可领取[/color]"
