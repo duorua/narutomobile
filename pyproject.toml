@@ -6,6 +6,6 @@ requires-python = ">=3.12"
 dependencies = [
     "json-with-comments>=1.2.10",
     "loguru>=0.7.3",
-    "maafw>=5.4.3",
+    "maafw>=5.5.0",
     "pillow>=12.0.0",
 ]
