@@ -598,6 +598,14 @@
     "next": "back_main_screen_and_stop"
   },
   "ac_entry_mission_done": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/center_entry_end.png",
+    "roi": [
+      180,
+      384,
+      1100,
+      118
+    ],
     "focus": "[color:DeepSkyBlue]任务已完成[/color]",
     "next": "back_main_screen_and_stop"
   }
