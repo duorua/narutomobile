@@ -3,7 +3,7 @@
         "next": [
             "go_into_shugyou_no_michi",
             "[JumpBack]open_ninjia_guide",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ]
     },
     "go_into_shugyou_no_michi": {
@@ -435,50 +435,7 @@
             "train_road_ac_entry_undone",
             "train_road_ac_done",
             "[JumpBack]swipe_for_award_center_find"
-        ],
-        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
-    },
-    "train_road_not_in_center_enter": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/check_not_in_daily_award.png",
-        "roi": [
-            37,
-            172,
-            130,
-            47
-        ],
-        "action": "Click",
-        "next": [
-            "train_road_in_center_enter",
-            "train_road_not_in_center_enter"
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]奖励中心有奖励没领取[/color]"
-    },
-    "train_road_ac_entry": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/award_center_entry.png",
-        "roi": [
-            1174,
-            302,
-            99,
-            105
-        ],
-        "method": 10001,
-        "threshold": [
-            0.8
-        ],
-        "action": "Click",
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "train_road_in_center_enter",
-            "train_road_not_in_center_enter",
-            "train_road_ac_entry"
-        ],
-        "timeout": 3000,
-        "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
+        ]
     },
     "train_road_ac_entry_undone": {
         "recognition": "TemplateMatch",
@@ -504,6 +461,7 @@
         "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]修行之路未完成[/color]"
     },
     "train_road_ac_done": {

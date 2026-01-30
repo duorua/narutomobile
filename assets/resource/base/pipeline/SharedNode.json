@@ -1,4 +1,10 @@
 {
+  "back_main_screen_before_task": {
+    "max_hit": 1,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": "back_main_screen"
+  },
   "back_main_screen_and_stop": {
     "next": [
       "[JumpBack]back_main_screen",
@@ -159,11 +165,43 @@
       99,
       105
     ],
+    "threshold": 0.8,
     "method": 10001,
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 300
+    "post_wait_freezes": 300,
+    "next": [
+      "[JumpBack]goto_daily_award",
+      "already_in_daily_award"
+    ]
+  },
+  "goto_daily_award": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/check_not_in_daily_award.png",
+    "roi": [
+      37,
+      172,
+      130,
+      47
+    ],
+    "action": "Click",
+    "pre_delay": 0,
+    "post_delay": 0,
+    "post_wait_freezes": 200
+  },
+  "already_in_daily_award": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/check_in_daily_award.png",
+    "roi": [
+      37,
+      172,
+      130,
+      47
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "$doc": "DoNothing and JumpBack to ac entry of task"
   },
   "swipe_for_award_center_find": {
     "action": "Swipe",

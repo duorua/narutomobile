@@ -1705,7 +1705,7 @@
                         "shugyou_no_michi": {
                             "next": [
                                 "train_road_in_center_enter",
-                                "award_center_enter",
+                                "[JumpBack]award_center_enter",
                                 "[JumpBack]back_main_screen_before_task"
                             ],
                             "focus": "[color:Aquamarine]进入修行之路子任务(低配优化)[/color]"
