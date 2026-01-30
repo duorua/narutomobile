@@ -1561,7 +1561,7 @@
                         },
                         "shugyou_no_michi": {
                             "next": [
-                                "train_road_ac_entry_undone",
+                                "train_road_in_center_enter",
                                 "[JumpBack]award_center_enter",
                                 "[JumpBack]back_main_screen_before_task"
                             ]
