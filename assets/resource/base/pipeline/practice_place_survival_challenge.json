@@ -2,8 +2,8 @@
     "survival_challenge": {
         "next": [
             "survival_challenge_in_center_enter",
-            "survival_challenge_ac_entry",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]award_center_enter",
+            "[JumpBack]back_main_screen_before_task"
         ]
     },
     "survival_challenge_yesterday_award": {
