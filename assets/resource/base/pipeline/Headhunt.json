@@ -4,6 +4,8 @@
             "headhunt_entry",
             "[JumpBack]back_main_screen"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入招募子任务[/color]"
     },
     "headhunt_entry": {

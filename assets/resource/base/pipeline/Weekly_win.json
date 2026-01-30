@@ -5,6 +5,8 @@
             "[JumpBack]open_ninjia_guide",
             "[JumpBack]back_main_screen"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始周胜任务[/color]"
     },
     "goto_duel_field_by_guide": {

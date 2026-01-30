@@ -5,7 +5,9 @@
             "rich_room_ac_entry",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "focus": "[color:DeepSkyBlue]进入丰饶子任务[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入丰饶之间子任务[/color]"
     },
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",

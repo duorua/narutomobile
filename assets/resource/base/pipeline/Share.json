@@ -5,7 +5,6 @@
             "share_ac_entry",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "timeout": 1500,
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入分享子任务[/color]"

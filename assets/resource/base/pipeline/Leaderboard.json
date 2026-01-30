@@ -5,7 +5,8 @@
             "[JumpBack]open_ninjia_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
-        "timeout": 2000,
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入排行榜子任务[/color]"
     },
     "ninjia_guide_to_leaderboard": {

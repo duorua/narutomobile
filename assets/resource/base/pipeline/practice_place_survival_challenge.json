@@ -4,7 +4,10 @@
             "survival_challenge_in_center_enter",
             "[JumpBack]award_center_enter",
             "[JumpBack]back_main_screen_before_task"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入生存挑战任务[/color]"
     },
     "survival_challenge_in_center_enter": {
         "recognition": "TemplateMatch",

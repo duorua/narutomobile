@@ -6,7 +6,8 @@
             "[JumpBack]back_main_screen_before_task"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入修行之路[/color]"
     },
     "go_into_shugyou_no_michi_by_guide": {
         "recognition": "Or",
