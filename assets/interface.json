@@ -58,9 +58,6 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
-            "option": [
-                "排行榜低配优化"
-            ],
             "default_check": true
         },
         {
@@ -82,9 +79,6 @@
         {
             "name": "组织",
             "entry": "group",
-            "option": [
-                "组织低配优化"
-            ],
             "default_check": true,
             "description": "包含祈福签到和领奖，追击晓组织领奖。"
         },
@@ -93,7 +87,6 @@
             "entry": "point_race",
             "description": "领取当日奖励并尝试进行一次挑战。",
             "option": [
-                "积分赛低配优化",
                 "强制战斗"
             ],
             "default_check": true
@@ -102,8 +95,7 @@
             "name": "修行之路",
             "entry": "shugyou_no_michi",
             "option": [
-                "打新关卡",
-                "修行之路低配优化"
+                "打新关卡"
             ],
             "default_check": true
         },
@@ -138,9 +130,6 @@
         {
             "name": "任务集会所(beta)",
             "entry": "mission_office",
-            "option": [
-                "任务集会所低配优化"
-            ],
             "description": "目前仅能接三个任务,不会刷新。买了超影要拿满奖励请手动完成",
             "default_check": true
         },
@@ -171,8 +160,7 @@
                 "打排位",
                 "何时退出",
                 "领取周胜奖励",
-                "清周胜过期宝箱",
-                "周胜低配优化"
+                "清周胜过期宝箱"
             ],
             "description": "请在主页开始任务"
         },
@@ -203,7 +191,6 @@
                 "秘境赢几次",
                 "秘境翻饰品牌",
                 "秘境翻忍具牌",
-                "秘境低配优化",
                 "秘境忍具每次只翻一张",
                 "烈炎秘境",
                 "罡体秘境",
@@ -375,30 +362,6 @@
                             "on_error": [
                                 "restart_naruto"
                             ]
-                        }
-                    }
-                }
-            ]
-        },
-        "排行榜低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "leaderboard": {
-                            "next": [
-                                "ninjia_guide_to_leaderboard",
-                                "[JumpBack]open_ninjia_guide"
-                            ],
-                            "on_error": "[JumpBack]back_main_screen",
-                            "timeout": 2000,
-                            "focus": "[color:Aquamarine]进入排行榜子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -786,29 +749,6 @@
                 }
             ]
         },
-        "周胜低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "weekly_win": {
-                            "next": [
-                                "weekly_win_in_center_enter",
-                                "weekly_win_ac_entry",
-                                "[JumpBack]back_main_screen"
-                            ],
-                            "focus": "[color:Aquamarine]进入周胜子任务(低配优化)[/color]"
-                        }
-                    }
-                }
-            ]
-        },
         "借组织助战": {
             "type": "switch",
             "cases": [
@@ -863,29 +803,6 @@
                                     }
                                 }
                             }
-                        }
-                    }
-                }
-            ]
-        },
-        "积分赛低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "point_race": {
-                            "next": [
-                                "point_race_in_center_enter",
-                                "point_race_ac_entry",
-                                "[JumpBack]back_main_screen"
-                            ],
-                            "focus": "[color:Aquamarine]进入积分赛子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -956,30 +873,6 @@
                         },
                         "secret_realm_flip_without_card": {
                             "enabled": true
-                        }
-                    }
-                }
-            ]
-        },
-        "秘境低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "secret_realm": {
-                            "next": [
-                                "secret_realm_in_center_enter",
-                                "secret_realm_ac_entry",
-                                "secret_realm_fight",
-                                "[JumpBack]back_main_screen"
-                            ],
-                            "focus": "[color:Aquamarine]进入秘境子任务(低配优化)[/color]"
                         }
                     }
                 }
@@ -1349,29 +1242,6 @@
                 }
             ]
         },
-        "任务集会所低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "mission_office": {
-                            "next": [
-                                "mission_office_in_center_enter",
-                                "mission_office_ac_entry",
-                                "[JumpBack]back_main_screen"
-                            ],
-                            "focus": "[color:Aquamarine]进入任务集会所子任务(低配优化)[/color]"
-                        }
-                    }
-                }
-            ]
-        },
         "丰饶开大": {
             "type": "switch",
             "cases": [
@@ -1651,29 +1521,6 @@
                 }
             ]
         },
-        "组织低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "group": {
-                            "next": [
-                                "group_in_center_enter",
-                                "group_ac_entry",
-                                "[JumpBack]back_main_screen"
-                            ],
-                            "focus": "[color:Aquamarine]进入组织子任务(低配优化)[/color]"
-                        }
-                    }
-                }
-            ]
-        },
         "打新关卡": {
             "type": "switch",
             "default_case": "No",
@@ -1686,29 +1533,6 @@
                     "pipeline_override": {
                         "train_road_entry": {
                             "next": "shugyou_no_michi_auto_push"
-                        }
-                    }
-                }
-            ]
-        },
-        "修行之路低配优化": {
-            "type": "switch",
-            "description": "为低配置,延迟高电脑服务,如果经常出现任务不执行,可以开启这个选项;会增加日志图片记录和减慢运行速度;从奖励中心进入",
-            "cases": [
-                {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "shugyou_no_michi": {
-                            "next": [
-                                "train_road_in_center_enter",
-                                "[JumpBack]award_center_enter",
-                                "[JumpBack]back_main_screen_before_task"
-                            ],
-                            "focus": "[color:Aquamarine]进入修行之路子任务(低配优化)[/color]"
                         }
                     }
                 }
