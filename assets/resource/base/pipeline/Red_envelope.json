@@ -6,7 +6,7 @@
             "[JumpBack]get_red_envelope",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入抢红包子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入抢红包任务[/color]"
     },
     "red_envelope_to_activity": {
         "recognition": "TemplateMatch",

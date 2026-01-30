@@ -5,7 +5,7 @@
             "konoha_snack_entry",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入木叶小吃店子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入木叶小吃店任务[/color]"
     },
     "konoha_snack_entry": {
         "recognition": "TemplateMatch",

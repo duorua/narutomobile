@@ -7,7 +7,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入小队突袭子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入小队突袭任务[/color]"
     },
     "team_dash_in_center_enter": {
         "recognition": "TemplateMatch",

@@ -8,7 +8,7 @@
             "[JumpBack]back_main_screen"
         ],
         "timeout": 1500,
-        "focus": "[color:DeepSkyBlue]进入叛忍来袭子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入叛忍来袭任务[/color]"
     },
     "goto_rebel_ninja_by_guide": {
         "recognition": "Custom",

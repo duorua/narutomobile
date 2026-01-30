@@ -6,7 +6,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入活动子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入活动任务[/color]"
     },
     "activity_entry": {
         "recognition": "TemplateMatch",

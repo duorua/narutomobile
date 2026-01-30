@@ -7,7 +7,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入丰饶之间子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入丰饶之间任务[/color]"
     },
     "rich_room_in_center_enter": {
         "recognition": "TemplateMatch",

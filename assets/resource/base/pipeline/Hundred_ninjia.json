@@ -5,7 +5,7 @@
             "[JumpBack]hundred_ninjia_entry",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入百忍子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入百忍任务[/color]"
     },
     "hundred_ninjia_entry": {
         "recognition": "TemplateMatch",

@@ -7,7 +7,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入任务集会所子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入任务集会所任务[/color]"
     },
     "mission_office_in_ninjia_guide": {
         "recognition": "Custom",

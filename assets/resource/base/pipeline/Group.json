@@ -7,7 +7,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入组织子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入组织任务[/color]"
     },
     "goto_group_by_guide": {
         "recognition": "Custom",

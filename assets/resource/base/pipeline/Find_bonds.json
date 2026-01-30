@@ -5,7 +5,7 @@
             "find_bonds_entry",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入羁绊追寻子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入羁绊追寻任务[/color]"
     },
     "find_bonds_entry": {
         "recognition": "TemplateMatch",

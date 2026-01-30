@@ -6,7 +6,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入活跃度宝箱子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入活跃度宝箱任务[/color]"
     },
     "liveness_award_undone": {
         "recognition": "TemplateMatch",
