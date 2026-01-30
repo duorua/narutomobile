@@ -6,6 +6,25 @@
             "[JumpBack]back_main_screen_before_task"
         ]
     },
+    "survival_challenge_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "next": [
+            "survival_challenge_ac_entry_undone",
+            "survival_challenge_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
     "survival_challenge_yesterday_award": {
         "recognition": "TemplateMatch",
         "template": "Practice_place/survival_challenge_yesterday_award.png",
