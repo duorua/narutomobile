@@ -16,16 +16,16 @@
                 ]
             },
             {
-                "sub_name": "activity_count_down",
+                "sub_name": "returning_player",
                 "recognition": "OCR",
                 "expected": [
-                    "倒计时"
+                    "回流"
                 ],
                 "roi": [
-                    400,
                     0,
-                    350,
-                    135
+                    0,
+                    195,
+                    285
                 ]
             }
         ]
@@ -45,8 +45,18 @@
             "param": {
                 "expected": ".*",
                 "replace": [
-                    "丑术",
-                    "忍术"
+                    [
+                        "丑术",
+                        "忍术"
+                    ],
+                    [
+                        "双术",
+                        "忍术"
+                    ],
+                    [
+                        "双米",
+                        "忍术"
+                    ]
                 ]
             }
         }

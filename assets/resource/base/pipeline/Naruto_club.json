@@ -153,9 +153,8 @@
             50
         ],
         "duration": 400,
-        "post_delay": 1000,
-        "max_hit": 10,
-        "focus": "[color:DeepSkyBlue]滑动寻找评论[/color]"
+        "post_delay": 0,
+        "max_hit": 10
     },
     "check_surf_post": {
         "recognition": "OCR",
@@ -180,16 +179,17 @@
             "Naruto_club/surf_post.png"
         ],
         "roi": [
-            583,
-            58,
-            56,
-            662
+            519,
+            73,
+            113,
+            646
         ],
         "threshold": [
             0.9
         ],
         "max_hit": 8,
         "action": "Click",
+        "pre_delay": 0,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]选择有评论话题[/color]"
     },
@@ -639,7 +639,6 @@
         "expected": [
             "去参与"
         ],
-        "enabled": false,
         "inverse": true,
         "next": [
             "check_club_mission_done"
@@ -657,7 +656,6 @@
             456,
             232
         ],
-        "enabled": false,
         "action": "Click",
         "next": [
             "feed_pig_work",
@@ -690,18 +688,11 @@
         "focus": "[color:DeepSkyBlue]无法找到喂豚豚按钮[/color]"
     },
     "weekly_feed_pig": {
-        "recognition": "OCR",
-        "expected": [
-            "本周已参与"
+        "recognition": "TemplateMatch",
+        "template": [
+            "Naruto_club/feed_pig.png"
         ],
-        "inverse": true,
         "action": "Click",
-        "target": [
-            558,
-            1145,
-            93,
-            23
-        ],
         "max_hit": 5,
         "next": [
             "confirm_feed_pig",
@@ -871,8 +862,7 @@
         "on_error": [
             "unknow_error"
         ],
-        "post_wait_freezes": 1000,
-        "focus": "[color:DeepSkyBlue]滑动提交任务[/color]"
+        "post_wait_freezes": 1000
     },
     "check_club_all_submit": {
         "recognition": "TemplateMatch",
@@ -893,8 +883,7 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/mission_submit.png",
         "action": "Click",
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]提交任务[/color]"
+        "post_wait_freezes": 500
     },
     "naruto_club_duplicate_claim": {
         "recognition": "OCR",
@@ -1028,8 +1017,7 @@
             "naruto_club_in_loop_wheel"
         ],
         "action": "Click",
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]收到第一个奖励领取通知[/color]"
+        "post_wait_freezes": 300
     },
     "naruto_club_in_loop_wheel": {
         "recognition": "TemplateMatch",
@@ -1056,7 +1044,8 @@
         ],
         "action": "Click",
         "next": [
-            "confirm_club_second_award"
+            "confirm_club_second_award",
+            "club_second_award"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]领取第二个奖励[/color]",
@@ -1077,7 +1066,8 @@
         "action": "Click",
         "next": [
             "roger_club_second_award",
-            "confirm_club_second_award"
+            "confirm_club_second_award",
+            "club_second_award_done"
         ],
         "timeout": 2000,
         "post_wait_freezes": 300,
@@ -1095,8 +1085,7 @@
             52
         ],
         "action": "Click",
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]收到第二个奖励领取通知[/color]"
+        "post_wait_freezes": 300
     },
     "club_second_award_done": {
         "recognition": "TemplateMatch",
@@ -1140,7 +1129,8 @@
         "max_hit": 3,
         "next": [
             "confirm_club_third_award",
-            "[JumpBack]club_third_award"
+            "[JumpBack]club_third_award",
+            "club_third_award_done"
         ],
         "timeout": 3000,
         "post_wait_freezes": 800,
@@ -1160,7 +1150,8 @@
         "action": "Click",
         "next": [
             "roger_club_third_award",
-            "confirm_club_third_award"
+            "confirm_club_third_award",
+            "club_third_award_done"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确认领取第三个奖励[/color]"
@@ -1181,8 +1172,7 @@
             "club_third_award_done",
             "roger_club_third_award"
         ],
-        "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]收到第三个奖励领取通知[/color]"
+        "post_wait_freezes": 300
     },
     "club_third_award_done": {
         "recognition": "TemplateMatch",

@@ -1,26 +1,11 @@
 {
     "easy_helper": {
         "next": [
-            "[JumpBack]back_main_screen",
-            "easy_helper_entry"
-        ],
-        "focus": "[color:DeepSkyBlue]进入轻松助手任务[/color]"
-    },
-    "easy_helper_entry": {
-        "recognition": "TemplateMatch",
-        "template": "Easy_helper/easy_helper_done_masked.png",
-        "roi": [
-            1066,
-            1,
-            145,
-            533
-        ],
-        "green_mask": true,
-        "next": [
             "easy_helper_enter",
             "easy_helper_done",
-            "[JumpBack]stoptask"
-        ]
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": "[color:DeepSkyBlue]进入轻松助手任务[/color]"
     },
     "easy_helper_done": {
         "recognition": "TemplateMatch",
@@ -32,9 +17,7 @@
             533
         ],
         "green_mask": true,
-        "next": [
-            "stoptask"
-        ],
+        "action": "StopTask",
         "focus": "[color:DeepSkyBlue]轻松助手已完成[/color]"
     },
     "easy_helper_enter": {

@@ -4,9 +4,7 @@
             "rebel_ninja_only_me",
             "rebel_ninja_in_battlefield",
             "goto_rebel_ninja_by_guide",
-            "[JumpBack]open_ninjia_guide"
-        ],
-        "on_error": [
+            "[JumpBack]open_ninjia_guide",
             "[JumpBack]back_main_screen"
         ],
         "timeout": 1500,
@@ -24,9 +22,6 @@
             "rebel_ninja_gameplay",
             "no_group",
             "goto_rebel_ninja_by_guide"
-        ],
-        "on_error": [
-            "rebel_ninja"
         ],
         "timeout": 3000,
         "post_delay": 1500,

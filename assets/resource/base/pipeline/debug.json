@@ -27,19 +27,24 @@
     "set_pointer_location": {
         "next": [
             "[JumpBack]hide_pointer_location",
-            "[JumpBack]show_pointer_location"
-            // "others_settings"
+            "[JumpBack]show_pointer_location",
+            "others_settings"
         ]
     },
     "hide_pointer_location": {
+        "focus": "隐藏指针位置",
         "max_hit": 1,
         "action": "Shell",
         "cmd": "settings put system pointer_location 0"
     },
     "show_pointer_location": {
+        "focus": "显示指针位置",
         "max_hit": 1,
         "enabled": false,
         "action": "Shell",
         "cmd": "settings put system pointer_location 1"
+    },
+    "others_settings": {
+        "action": "StopTask"
     }
 }

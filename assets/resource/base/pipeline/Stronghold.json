@@ -4,9 +4,7 @@
             "stronghold_entry",
             "[JumpBack]open_ninjia_guide",
             "stronghold_in_stronghold",
-            "stronghold_in_map"
-        ],
-        "on_error": [
+            "stronghold_in_map",
             "[JumpBack]back_main_screen"
         ],
         "timeout": 1500,
@@ -29,16 +27,16 @@
                 ]
             },
             {
-                "sub_name": "activity_count_down",
+                "sub_name": "returning_player",
                 "recognition": "OCR",
                 "expected": [
-                    "倒计时"
+                    "回流"
                 ],
                 "roi": [
-                    400,
                     0,
-                    350,
-                    135
+                    0,
+                    195,
+                    285
                 ]
             }
         ],
@@ -51,9 +49,6 @@
             "stronghold_gameplay",
             "no_group",
             "stronghold_entry"
-        ],
-        "on_error": [
-            "stronghold"
         ],
         "timeout": 3000,
         "post_delay": 1500,
@@ -247,8 +242,7 @@
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
         ],
-        "timeout": 30000,
-        "focus": "[color:DeepSkyBlue]匹配中[/color]"
+        "timeout": 30000
     },
     "stronghold_match_win": {
         "recognition": "OCR",
@@ -370,8 +364,7 @@
         "action": "Swipe",
         "duration": 50,
         "threshold": 0.9,
-        "post_delay": 3000,
-        "focus": "[color:darkgray]准备进入战斗[/color]"
+        "post_delay": 3000
     },
     "stronghold_end": {
         "recognition": "OCR",

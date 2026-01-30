@@ -1,7 +1,7 @@
 json-with-comments==1.2.10
 loguru==0.7.3
 maaagentbinary==1.0.1
-maafw==5.4.3
+maafw==5.5.0
 numpy==2.3.5  
 pillow==12.0.0
 strenum==0.4.15      

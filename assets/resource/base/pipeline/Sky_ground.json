@@ -2,10 +2,8 @@
     "sky_ground": {
         "next": [
             "sky_ground_entry",
+            "sky_ground_in_main",
             "[JumpBack]open_ninjia_guide",
-            "sky_ground_in_main"
-        ],
-        "on_error": [
             "[JumpBack]back_main_screen"
         ],
         "timeout": 1500,
@@ -28,16 +26,16 @@
                 ]
             },
             {
-                "sub_name": "activity_count_down",
+                "sub_name": "returning_player",
                 "recognition": "OCR",
                 "expected": [
-                    "倒计时"
+                    "回流"
                 ],
                 "roi": [
-                    400,
                     0,
-                    350,
-                    135
+                    0,
+                    195,
+                    285
                 ]
             }
         ],
@@ -50,9 +48,6 @@
             "sky_ground_gameplay",
             "no_group",
             "sky_ground_entry"
-        ],
-        "on_error": [
-            "sky_ground"
         ],
         "timeout": 3000,
         "post_delay": 1500,

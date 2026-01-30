@@ -2,9 +2,7 @@
     "give_energy": {
         "next": [
             "energy_entry",
-            "give_energy_done"
-        ],
-        "on_error": [
+            "give_energy_done",
             "[JumpBack]back_main_screen"
         ],
         "timeout": 2000,

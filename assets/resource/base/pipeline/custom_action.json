@@ -13,6 +13,8 @@
                 "threshold": 0.5
             }
         },
+        "pre_delay": 0,
+        "post_delay": 0,
         "action": {
             "type": "Click"
         }
@@ -29,5 +31,16 @@
         ],
         "end_hold": 0,
         "duration": 200
+    },
+    "click_and_wait_for_freezes": {
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
+    },
+    "wait_for_freezes": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
     }
 }

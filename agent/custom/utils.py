@@ -41,52 +41,6 @@ def save_screenshot(context: Context):
     logger.info(f"截图保存至 {save_dir}/{time_str}.png")
 
 
-def validate_config(context: Context):
-    if len(list(root.glob("*.exe"))) == 0:
-        return
-    fp = [p for p in (root).glob("*.json") if p.name.startswith("in")][0]
-    logger.info(f"验证配置文件: {fp}")
-    config = jL(fp.open(encoding="utf-8"))
-    config.update(
-        {
-            bdc("bmFtZQ=="): bdc("TWFhQXV0b05hcnV0bw=="),
-            bdc("Z2l0aHVi"): bdc(
-                "aHR0cHM6Ly9naXRodWIuY29tL2R1b3J1YS9uYXJ1dG9tb2JpbGU="
-            ),
-            bdc("bWlycm9yY2h5YW5fcmlk"): bdc("TWFhQXV0b05hcnV0bw=="),
-        }
-    )
-    jD(config, fp.open("w", encoding="utf-8"), ensure_ascii=False, indent=4)
-
-
-def click(context: Context, x: int, y: int, w: int = 1, h: int = 1):
-    context.tasker.controller.post_click(
-        random.randint(x, x + w - 1), random.randint(y, y + h - 1)
-    ).wait()
-
-
-def validate_mfa(context: Context):
-    fps = [p for p in (root / "config").glob("*.json") if p.name.startswith("c")]
-    if len(fps) != 0:
-        fp = fps[0]
-    else:
-        return
-    mfa = jL(fp.open(encoding="utf-8"))
-    if mfa.get(bdc("RG93bmxvYWRDREs="), "") == "":
-        mfa.update(
-            {
-                bdc("RG93bmxvYWRTb3VyY2VJbmRleA=="): 0,
-            }
-        )
-
-    mfa.update(
-        {
-            bdc("RW5hYmxlQXV0b1VwZGF0ZVJlc291cmNl"): True,
-            bdc("RW5hYmxlQXV0b1VwZGF0ZU1GQQ=="): True,
-        }
-    )
-
-
 def fast_ocr(
     context: Context,
     expected: str | list[str],
@@ -139,7 +93,7 @@ def fast_ocr(
                     for res in reco_detail.filtered_results
                     if res.text == target  # ty:ignore[unresolved-attribute]
                 )
-                logger.info(
+                logger.debug(
                     f"OCR 绝对匹配成功: {target} in {reco_detail.filtered_results} with {result}"
                 )
                 break
@@ -150,6 +104,58 @@ def fast_ocr(
         else:
             logger.debug(f"{expected} 绝对匹配失败：{reco_detail.filtered_results}")
             return None
+
+
+def wait_for_freezes(context: Context, wait_for_freezes: int = 200):
+    context.run_task(
+        "wait_for_freezes", {"wait_for_freezes": {"wait_for_freezes": wait_for_freezes}}
+    )
+
+
+def validate_config(context: Context):
+    if len(list(root.glob("*.exe"))) == 0:
+        return
+    fp = [p for p in (root).glob("*.json") if p.name.startswith("in")][0]
+    logger.info(f"验证配置文件: {fp}")
+    config = jL(fp.open(encoding="utf-8"))
+    config.update(
+        {
+            bdc("bmFtZQ=="): bdc("TWFhQXV0b05hcnV0bw=="),
+            bdc("Z2l0aHVi"): bdc(
+                "aHR0cHM6Ly9naXRodWIuY29tL2R1b3J1YS9uYXJ1dG9tb2JpbGU="
+            ),
+            bdc("bWlycm9yY2h5YW5fcmlk"): bdc("TWFhQXV0b05hcnV0bw=="),
+        }
+    )
+    jD(config, fp.open("w", encoding="utf-8"), ensure_ascii=False, indent=4)
+
+
+def click(context: Context, x: int, y: int, w: int = 1, h: int = 1):
+    context.tasker.controller.post_click(
+        random.randint(x, x + w - 1), random.randint(y, y + h - 1)
+    ).wait()
+
+
+def validate_mfa(context: Context):
+    fps = [p for p in (root / "config").glob("*.json") if p.name.startswith("c")]
+    if len(fps) != 0:
+        fp = fps[0]
+    else:
+        return
+    mfa = jL(fp.open(encoding="utf-8"))
+    if mfa.get(bdc("RG93bmxvYWRDREs="), "") == "":
+        mfa.update(
+            {
+                bdc("RG93bmxvYWRTb3VyY2VJbmRleA=="): 0,
+            }
+        )
+
+    mfa.update(
+        {
+            bdc("RW5hYmxlQXV0b1VwZGF0ZVJlc291cmNl"): True,
+            bdc("RW5hYmxlQXV0b1VwZGF0ZU1GQQ=="): True,
+        }
+    )
 
 
 def fast_swipe(
@@ -183,11 +189,41 @@ def fast_swipe(
         "custom_swipe",
         pipeline_override={
             "custom_swipe": {
-                "begin": [start_x - 50, start_y, 100, 0],
-                "end": [end_x - 50, end_y, 100, 0],
+                # 疑似有闭包问题
+                # 采用手动随机而不是maafw自带的随机
+                "begin": [random.randint(start_x - 50, start_x + 50), start_y],
+                "end": [random.randint(end_x - 50, end_x + 50), end_y],
                 "duration": randint(duration - 100, duration + 100),
                 "end_hold": randint(100, 200) if end_hold else 0,
             }
         },
     )
     sleep(after_swipe_delay / 1000)
+
+
+def click_and_wait_for_freezes(
+    context: Context,
+    x: int,
+    y: int,
+    w: int = 1,
+    h: int = 1,
+    post_wait_freezes: int = 200,
+):
+    """
+    点击并等待屏幕静止
+    :param context: 上下文对象
+    :param x: 点击点X坐标
+    :param y: 点击点Y坐标
+    :param w: 点击点宽度范围
+    :param h: 点击点高度范围
+    :param post_wait_freezes: 点击后等待屏幕静止的时间，单位毫秒
+    """
+    context.run_task(
+        "click_and_wait_for_freezes",
+        {
+            "click_and_wait_for_freezes": {
+                "target": [x, y, w, h],
+                "post_wait_freezes": post_wait_freezes,
+            }
+        },
+    )

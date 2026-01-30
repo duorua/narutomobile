@@ -3,7 +3,7 @@
         "next": [
             "go_into_shugyou_no_michi",
             "[JumpBack]open_ninjia_guide",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ]
     },
     "go_into_shugyou_no_michi": {
@@ -23,16 +23,16 @@
                 ]
             },
             {
-                "sub_name": "activity_count_down",
+                "sub_name": "returning_player",
                 "recognition": "OCR",
                 "expected": [
-                    "倒计时"
+                    "回流"
                 ],
                 "roi": [
-                    400,
                     0,
-                    350,
-                    135
+                    0,
+                    195,
+                    285
                 ]
             }
         ],
@@ -418,5 +418,66 @@
         ],
         "threshold": 0.35,
         "post_wait_freezes": 200
+    },
+    "train_road_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "next": [
+            "train_road_ac_entry_undone",
+            "train_road_ac_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ]
+    },
+    "train_road_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/train_road_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "train_road_entry",
+            "train_road_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]修行之路未完成[/color]"
+    },
+    "train_road_ac_done": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/center_entry_end.png",
+        "roi": [
+            180,
+            384,
+            1100,
+            118
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]修行之路已完成[/color]"
     }
 }

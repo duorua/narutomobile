@@ -53,30 +53,20 @@ class IsCounterOverflow(CustomRecognition):
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
         param = json.loads(argv.custom_recognition_param)
-        max_hit = param.get("max_hit", "0")
-        if isinstance(max_hit, int):
-            max_hit = str(max_hit)
-
-        if not max_hit.isdecimal():
-            logger.error(f"max_hit 参数填写错误: {max_hit}")
-            context.tasker.post_stop()
-            return CustomRecognition.AnalyzeResult(box=None, detail={})
-        else:
-            max_hit = int(max_hit)
+        max_hit = int(param.get("max_hit", "0"))
 
         if max_hit <= 0:
             logger.error("max_hit 参数错误，请检查")
             context.tasker.post_stop()
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
-        job = context.get_task_job()
-        if counter.get_count(job.job_id) >= max_hit:
-            logger.debug(
-                f"计数器溢出！最大值: {max_hit} 当前值: {counter.get_count(job.job_id)} "
-            )
+        task_id = argv.task_detail.task_id
+        now_count = counter.get_count(task_id)
+        if now_count >= max_hit:
+            logger.debug(f"计数器溢出！最大值: {max_hit} 当前值: {now_count} ")
             logger.info("达到最大执行次数")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
-
+        logger.debug(f"计数器状态： 最大值: {max_hit} 当前值: {now_count} ")
         return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
 
@@ -706,7 +696,7 @@ class FlipCard(CustomRecognition):
 
 def get_token_count(context: Context, image: ndarray, roi: list[int]) -> int | None:
     """
-    独立读取指定ROI的纯数字(仅调用custom_ocr识别器)
+    独立读取指定ROI的纯数字(调用custom_ocr)
     :param context: MAA上下文
     :param image: 屏幕图像
     :param roi: 识别区域 [x, y, w, h]
@@ -793,3 +783,132 @@ class FindBondsWithoutEnoughToken(CustomRecognition):
         return CustomRecognition.AnalyzeResult(
             box=None, detail={"token_count": token_count, "passed": False}
         )
+
+
+def get_flip_ticket_count(
+    context: Context, image: ndarray, roi: list[int], text_modifier=lambda x: x
+) -> int | None:
+    """
+    独立读取指定ROI的翻牌卷数量(调用custom_oc)，支持自定义文本修改
+    :param context: MAA上下文
+    :param image: 屏幕图像
+    :param roi: 识别区域 [x, y, w, h]
+    :param text_modifier: 文本修改函数，入参原始识别文本，返回修改后文本（用于去掉前缀/替换字符等）
+    :return: 解析后的整型数字,失败返回None
+    """
+
+    reco_detail = context.run_recognition(
+        "custom_ocr", image, {"custom_ocr": {"roi": roi}}
+    )
+
+    # 基础校验：识别器返回None或未命中文本
+    if reco_detail is None or not reco_detail.hit:
+        logger.warning(f"[get_flip_ticket_count] ROI{roi} 未识别到任何文本")
+        return None
+
+    # 提取并清洗原始识别文本
+    source_text = str(reco_detail.best_result.text).strip()  # type: ignore
+    logger.debug(f"[get_flip_ticket_count] ROI{roi} 原始识别文本：{source_text}")
+
+    # 执行自定义文本修改（似乎python和低代码的OCR不一样,所以这里目前没有修改）
+    modified_text = text_modifier(source_text)
+    logger.debug(f"[get_flip_ticket_count] ROI{roi} 修改后识别文本：{modified_text}")
+
+    # 正则提取纯数字
+    num_match = re.search(r"\d+", modified_text)
+    if not num_match:
+        logger.warning(
+            f"[get_flip_ticket_count] ROI{roi} 未提取到有效数字，修改后文本：{modified_text}"
+        )
+        return None
+
+    # 数字转换（异常捕获）
+    try:
+        ticket_count = int(num_match.group())
+        logger.info(f"[get_flip_ticket_count] ROI{roi} 解析到翻牌卷数量:{ticket_count}")
+        return ticket_count
+    except ValueError:
+        logger.warning(
+            f"[get_flip_ticket_count] ROI{roi} 数字转换失败，提取字符串：{num_match.group()}"
+        )
+        return None
+
+
+@AgentServer.custom_recognition("FindAccessoryFlipTicket")
+class FindAccessoryFlipTicket(CustomRecognition):
+    """
+    秘境饰品翻牌卷识别
+    """
+
+    # 饰品翻牌卷ROI
+    ACCESSORY_TICKET_ROI = [550, 481, 171, 238]
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        logger.info("===== 执行饰品翻牌卷识别 FindAccessoryFlipTicket =====")
+
+        # 调用独立识别函数，传入ROI+自定义文本修改（lambda x: x[1:] if x else x是去掉第一个字符，无修改则改为lambda x:x）
+        ticket_count = get_flip_ticket_count(
+            context=context,
+            image=argv.image,
+            roi=self.ACCESSORY_TICKET_ROI,
+            text_modifier=lambda x: x,
+        )
+
+        # 逻辑1：识别失败 → 返回未通过（空box）
+        if ticket_count is None:
+            logger.warning(
+                "[FindAccessoryFlipTicket] 饰品翻牌卷数量识别失败,返回未通过"
+            )
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        # 逻辑2：数量>0 → 返回通过（非空无效Rect）
+        if ticket_count > 0:
+            logger.info(
+                f"[FindAccessoryFlipTicket] 饰品翻牌卷数量{ticket_count}>0,返回识别通过"
+            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        # 逻辑3：数量≤0 → 返回未通过（空box）
+        logger.info(
+            f"[FindAccessoryFlipTicket] 饰品翻牌卷数量{ticket_count}≤0,返回识别未通过"
+        )
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("FindGearFlipTicket")
+class FindGearFlipTicket(CustomRecognition):
+    """
+    忍具翻牌卷识别:和上面的饰品翻牌差不多
+    """
+
+    # 忍具翻牌卷ROI
+    GEAR_TICKET_ROI = [436, 483, 138, 236]
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        logger.info("===== 执行忍具翻牌卷识别 FindGearFlipTicket =====")
+
+        ticket_count = get_flip_ticket_count(
+            context=context,
+            image=argv.image,
+            roi=self.GEAR_TICKET_ROI,
+            text_modifier=lambda x: x,
+        )
+
+        if ticket_count is None:
+            logger.warning("[FindGearFlipTicket] 忍具翻牌卷数量识别失败,返回未通过")
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        if ticket_count > 0:
+            logger.info(
+                f"[FindGearFlipTicket] 忍具翻牌卷数量{ticket_count}>0,返回识别通过"
+            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.info(
+            f"[FindGearFlipTicket] 忍具翻牌卷数量{ticket_count}≤0,返回识别未通过"
+        )
+        return CustomRecognition.AnalyzeResult(box=None, detail={})

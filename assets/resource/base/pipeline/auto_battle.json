@@ -219,10 +219,10 @@
     "green_mask": true,
     "threshold": 0.7,
     "roi": [
-      5,
-      267,
-      79,
-      68
+      0,
+      224,
+      127,
+      154
     ],
     "method": 10001,
     "action": "MultiSwipe",

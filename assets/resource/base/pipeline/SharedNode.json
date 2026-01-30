@@ -1,12 +1,17 @@
 {
+  "back_main_screen_before_task": {
+    "max_hit": 1,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": "back_main_screen"
+  },
   "back_main_screen_and_stop": {
     "next": [
       "[JumpBack]back_main_screen",
       "check_main_screen_and_stop"
     ],
     "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]退回主界面并停止当前任务[/color]"
+    "post_delay": 0
   },
   "back_main_screen": {
     "recognition": "TemplateMatch",
@@ -64,10 +69,10 @@
       "确定"
     ],
     "roi": [
-      543,
-      415,
-      193,
-      76
+      303,
+      263,
+      696,
+      456
     ],
     "action": "Click",
     "pre_delay": 0,
@@ -81,24 +86,52 @@
     "enabled": false
   },
   "check_has_x": {
-    "recognition": "TemplateMatch",
-    "template": [
-      "SharedNode/green_masked_x.png",
-      "SharedNode/x_right_top.png"
-    ],
-    "green_mask": true,
-    "threshold": 0.45,
-    "roi": [
-      610,
-      0,
-      670,
-      229
+    "recognition": "Or",
+    "any_of": [
+      {
+        "sub_name": "announcement_x",
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+          610,
+          0,
+          670,
+          229
+        ]
+      },
+      {
+        "sub_name": "right_top_x",
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/x_right_top.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+          610,
+          0,
+          670,
+          229
+        ]
+      },
+      {
+        "sub_name": "masked_x",
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/mask_x.png",
+        "green_mask": true,
+        "threshold": 0.68,
+        "roi": [
+          610,
+          0,
+          670,
+          229
+        ]
+      }
     ],
     "pre_delay": 0,
     "action": "Click",
     "post_wait_freezes": 500,
-    "post_delay": 200,
-    "focus": "[color:darkgray]关闭当前窗口[/color]"
+    "post_delay": 200
   },
   "close_friend_rank": {
     "recognition": "TemplateMatch",
@@ -121,8 +154,7 @@
       53,
       104
     ],
-    "action": "Click",
-    "focus": "[color:darkgray]关闭聊天[/color]"
+    "action": "Click"
   },
   "award_center_enter": {
     "recognition": "TemplateMatch",
@@ -133,13 +165,43 @@
       99,
       105
     ],
+    "threshold": 0.8,
     "method": 10001,
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
     "post_wait_freezes": 300,
-    "timeout": 3000,
-    "focus": "[color:DeepSkyBlue]进入奖励中心[/color]"
+    "next": [
+      "[JumpBack]goto_daily_award",
+      "already_in_daily_award"
+    ]
+  },
+  "goto_daily_award": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/check_not_in_daily_award.png",
+    "roi": [
+      37,
+      172,
+      130,
+      47
+    ],
+    "action": "Click",
+    "pre_delay": 0,
+    "post_delay": 0,
+    "post_wait_freezes": 200
+  },
+  "already_in_daily_award": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/check_in_daily_award.png",
+    "roi": [
+      37,
+      172,
+      130,
+      47
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "$doc": "DoNothing and JumpBack to ac entry of task"
   },
   "swipe_for_award_center_find": {
     "action": "Swipe",
@@ -159,8 +221,7 @@
     "end_hold": 100,
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 200,
-    "focus": "[color:DeepSkyBlue]寻找奖励中心功能入口[/color]"
+    "post_wait_freezes": 200
   },
   "award_center_find_end": {
     "recognition": "TemplateMatch",
@@ -175,11 +236,8 @@
     "focus": "[color:DeepSkyBlue]当前任务已完成[/color]"
   },
   "weekly_sign": {
-    "recognition": "OCR",
-    "expected": [
-      "领",
-      "取"
-    ],
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/weekly_sign.png",
     "roi": [
       533,
       555,
@@ -200,6 +258,10 @@
       324,
       160
     ],
+    "next": [
+      "im_come_back_award"
+    ],
+    "timeout": 3000,
     "focus": "[color:DeepSkyBlue]点击我回来了[/color]"
   },
   "im_come_back_award": {
@@ -225,8 +287,7 @@
       497,
       640,
       222
-    ],
-    "focus": "[color:DeepSkyBlue]点击下一步[/color]"
+    ]
   },
   "direct_hit_quit": {
     "recognition": "OCR",
@@ -241,7 +302,7 @@
     ],
     "action": "Click",
     "post_wait_freezes": 500,
-    "focus": "[color:DeepSkyBlue]点击任意地方退出[/color]"
+    "$doc": "点击任意地方退出"
   },
   "check_main_screen_and_stop": {
     "recognition": "TemplateMatch",
@@ -253,8 +314,7 @@
     "action": "StopTask",
     "green_mask": true,
     "pre_delay": 0,
-    "post_delay": 0,
-    "focus": "[color:DeepSkyBlue]当前任务结束[/color]"
+    "post_delay": 0
   },
   "check_main_screen": {
     "recognition": "TemplateMatch",
@@ -266,8 +326,7 @@
     "green_mask": true,
     "pre_delay": 0,
     "action": "DoNothing",
-    "post_delay": 0,
-    "focus": "[color:darkgray]检查在主界面[/color]"
+    "post_delay": 0
   },
   "main_screen_swipe_to_right": {
     "recognition": "TemplateMatch",
@@ -290,7 +349,7 @@
     "duration": 500,
     "post_delay": 500,
     "green_mask": true,
-    "focus": "[color:darkgray]在主界面向右滑动[/color]"
+    "$doc": "在主界面向右滑动"
   },
   "main_screen_swipe_to_left": {
     "recognition": "TemplateMatch",
@@ -313,7 +372,7 @@
     "duration": 500,
     "post_delay": 500,
     "green_mask": true,
-    "focus": "[color:darkgray]在主界面向左滑动[/color]"
+    "$doc": "在主界面向左滑动"
   },
   "naruto_club_x": {
     "recognition": "TemplateMatch",
@@ -424,7 +483,6 @@
         ]
       }
     },
-    "focus": "[color:darkgray]确认关闭所有气泡[/color]",
     "next": "click_ensure_close"
   },
   "click_ensure_close": {
@@ -461,7 +519,7 @@
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 200
+    "post_wait_freezes": 400
   },
   "level_up": {
     "recognition": "OCR",
@@ -492,8 +550,7 @@
     "action": "Click",
     "pre_delay": 0,
     "post_delay": 0,
-    "post_wait_freezes": 200,
-    "focus": "[color:darkgray]忍界指引重试进入功能[/color]"
+    "post_wait_freezes": 200
   },
   "unknow_error": {
     "action": "StopTask",

@@ -9,7 +9,9 @@
                 "FlipCard",
                 "find_bonds_without_enough_token",
                 "IsInNinjiaGuide",
-                "IsCounterOverflow"
+                "IsCounterOverflow",
+                "FindAccessoryFlipTicket",
+                "FindGearFlipTicket"
             ]
         },
         "custom_recognition_param": {
@@ -31,6 +33,12 @@
                 },
                 {
                     "$ref": "#/$defs/IsCounterOverflowParam"
+                },
+                {
+                    "$ref": "#/$defs/FindAccessoryFlipTicketParam"
+                },
+                {
+                    "$ref": "#/$defs/FindGearFlipTicketParam"
                 }
             ]
         }
@@ -56,13 +64,13 @@
         },
         "FlipCardParam": {
             "type": "object",
-            "description": "4x4翻牌游戏算法，优先同方向生长以连成4个紫色牌",
-            "markdownDescription": "4x4翻牌游戏算法逻辑\n\n**游戏规则：**\n1. 胜利判定：仅统计紫色牌数量，连续4个判定胜利\n2. 初始状态：优先选橙色不在的对角线牌\n3. 紫色生长：按单一方向（行/列/对角线）的最高紫色数评分\n\n**评分策略：**\n- 有橙色的方向，紫色数直接计0\n- 同最高分下，优先选该方向内的位置\n- 优先级：行 > 列 > 对角线\n- 双对角线橙色时忽略对角线优先级\n\n**卡牌类型：**\n- 0: 未翻开\n- 1: 紫色牌\n- 2: 橙色牌\n- 3: 识别失败\n\n**返回值：**\n- `box`: 要翻开的牌的位置，或提示框位置，或无效box\n- `detail.action`: \"flip_initial\"/\"flip_growth\"/\"click_tip\"\n- `detail.flip_pos`: 翻牌位置(1-4, 1-4)\n- `detail.flip_roi`: 翻牌ROI坐标\n- `detail.is_win`: 是否胜利\n- `detail.has_valid_target`: 是否有有效目标",
+            "description": "4x4翻牌游戏算法,优先同方向生长以连成4个紫色牌",
+            "markdownDescription": "4x4翻牌游戏算法逻辑\n\n**游戏规则：**\n1. 胜利判定：仅统计紫色牌数量,连续4个判定胜利\n2. 初始状态：优先选橙色不在的对角线牌\n3. 紫色生长：按单一方向（行/列/对角线）的最高紫色数评分\n\n**评分策略：**\n- 有橙色的方向，紫色数直接计0\n- 同最高分下，优先选该方向内的位置\n- 优先级：行 > 列 > 对角线\n- 双对角线橙色时忽略对角线优先级\n\n**卡牌类型：**\n- 0: 未翻开\n- 1: 紫色牌\n- 2: 橙色牌\n- 3: 识别失败\n\n**返回值：**\n- `box`: 要翻开的牌的位置，或提示框位置，或无效box\n- `detail.action`: \"flip_initial\"/\"flip_growth\"/\"click_tip\"\n- `detail.flip_pos`: 翻牌位置(1-4, 1-4)\n- `detail.flip_roi`: 翻牌ROI坐标\n- `detail.is_win`: 是否胜利\n- `detail.has_valid_target`: 是否有有效目标",
             "properties": {}
         },
         "FindBondsWithoutEnoughTokenParam": {
             "type": "object",
-            "description": "检查token数量是否小于5，用于决定是否继续羁绊任务",
+            "description": "检查token数量是否小于5,用于决定是否继续羁绊任务",
             "markdownDescription": "检查token数量\n\n**功能说明：**\n- 读取固定ROI区域的token数量\n- token < 5: 返回识别通过（非空box）\n- token ≥ 5 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[846, 639, 111, 80]\n\n**返回值：**\n- `box`: token<5时返回 (0,0,1,1)，否则返回 None\n- `detail.token_count`: 识别到的token数量\n- `detail.passed`: 是否通过检查",
             "properties": {}
         },
@@ -79,7 +87,7 @@
             "properties": {
                 "max_hit": {
                     "title": "Max Hit Property",
-                    "description": "计数器的最大阈值，达到此值后返回None",
+                    "description": "计数器的最大阈值,达到此值后返回None",
                     "type": "integer",
                     "default": 1,
                     "minimum": 1,
@@ -89,6 +97,18 @@
             "required": [
                 "max_hit"
             ]
+        },
+        "FindAccessoryFlipTicketParam": {
+            "type": "object",
+            "description": "检查饰品翻牌卷数量是否大于0,用于决定是否进行饰品翻牌",
+            "markdownDescription": "检查饰品翻牌卷数量\n\n**功能说明：**\n- 读取固定ROI区域的饰品翻牌卷数量\n- 数量 > 0: 返回识别通过（非空box）\n- 数量 ≤ 0 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[586, 589, 91, 64]\n\n**返回值：**\n- `box`: 数量>0时返回 (0,0,1,1)，否则返回 None\n- `detail.ticket_count`: 识别到的饰品翻牌卷数量\n- `detail.passed`: 是否通过检查\n- `detail.type`: 翻牌卷类型（固定为「饰品翻牌卷」）",
+            "properties": {}
+        },
+        "FindGearFlipTicketParam": {
+            "type": "object",
+            "description": "检查忍具翻牌卷数量是否大于0,用于决定是否进行忍具翻牌",
+            "markdownDescription": "检查忍具翻牌卷数量\n\n**功能说明：**\n- 读取固定ROI区域的忍具翻牌卷数量\n- 数量 > 0: 返回识别通过（非空box）\n- 数量 ≤ 0 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[435, 579, 118, 88]\n\n**返回值：**\n- `box`: 数量>0时返回 (0,0,1,1)，否则返回 None\n- `detail.ticket_count`: 识别到的忍具翻牌卷数量\n- `detail.passed`: 是否通过检查\n- `detail.type`: 翻牌卷类型（固定为「忍具翻牌卷」）",
+            "properties": {}
         }
     }
 }

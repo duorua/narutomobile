@@ -92,8 +92,7 @@
             "retry_failed"
         ],
         "max_hit": 5,
-        "post_wait_freezes": 500,
-        "focus": "[color:DeepSkyBlue]确定便捷扫荡[/color]"
+        "post_wait_freezes": 500
     },
     "use_energy_keep_sweep": {
         "recognition": "OCR",

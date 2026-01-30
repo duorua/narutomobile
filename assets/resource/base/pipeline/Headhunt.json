@@ -39,7 +39,7 @@
         "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
-        "$doc": "因为高招有动画，所以这里不设post_wait_freezes",
+        "$doc": "因为高招有动画,所以这里不设post_wait_freezes",
         "next": [
             "no_free_headhunt",
             "[JumpBack]free_headhunt_waiting",
@@ -122,9 +122,6 @@
         "next": [
             "headhunt_recruit_no_free",
             "[JumpBack]headhunt_recruit"
-        ],
-        "on_error": [
-            "back_main_screen_and_stop"
         ],
         "timeout": 2000,
         "focus": "[color:DeepSkyBlue]进入普通招募[/color]"
@@ -252,16 +249,31 @@
             "取"
         ],
         "roi": [
-            573,
-            614,
-            126,
-            47
+            553,
+            601,
+            180,
+            80
         ],
         "action": "Click",
-        "repeat": 2,
-        "repeat_delay": 0,
         "post_delay": 0,
-        "next": "back_main_screen_and_stop",
-        "focus": "[color:DeepSkyBlue]领取绝密宝匣铜币[/color]"
+        "next": [
+            "top_secret_treasure_box_without_copper",
+            "top_secret_treasure_box_copper"
+        ]
+    },
+    "top_secret_treasure_box_without_copper": {
+        "recognition": "OCR",
+        "expected": "没有可领取",
+        "roi": [
+            484,
+            316,
+            299,
+            80
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     }
 }
