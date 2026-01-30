@@ -5,6 +5,13 @@
     "post_delay": 0,
     "next": "back_main_screen"
   },
+  "back_and_stop_after_task_done": {
+    "max_hit": 1,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": "back_main_screen_and_stop",
+    "focus": "任务已完成"
+  },
   "back_main_screen_and_stop": {
     "next": [
       "[JumpBack]back_main_screen",

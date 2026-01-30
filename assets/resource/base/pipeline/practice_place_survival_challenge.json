@@ -25,6 +25,45 @@
         ],
         "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
     },
+    "survival_challenge_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/survival_challenge_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "survival_challenge_yesterday_award",
+            "survival_challenge_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入生存挑战[/color]"
+    },
+    "survival_challenge_ac_done": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/center_entry_end.png",
+        "roi": [
+            180,
+            384,
+            1100,
+            118
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_and_stop_after_task_done"
+    },
     "survival_challenge_yesterday_award": {
         "recognition": "TemplateMatch",
         "template": "Practice_place/survival_challenge_yesterday_award.png",
