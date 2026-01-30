@@ -410,7 +410,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "goto_duel_field": {
+                        "goto_duel_field_by_guide": {
                             "custom_action_param": {
                                 "entry_name": "忍术对战"
                             },
@@ -421,7 +421,7 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "goto_duel_field": {
+                        "goto_duel_field_by_guide": {
                             "custom_action_param": {
                                 "entry_name": "段位赛"
                             },
@@ -1705,8 +1705,8 @@
                         "shugyou_no_michi": {
                             "next": [
                                 "train_road_in_center_enter",
-                                "train_road_ac_entry",
-                                "[JumpBack]back_main_screen"
+                                "award_center_enter",
+                                "[JumpBack]back_main_screen_before_task"
                             ],
                             "focus": "[color:Aquamarine]进入修行之路子任务(低配优化)[/color]"
                         }

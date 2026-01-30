@@ -23,7 +23,7 @@
             "[JumpBack]weekly_win_weekly_award",
             "[JumpBack]weekly_win_confirm_weekly_award",
             "[JumpBack]go_to_war",
-            "goto_duel_field"
+            "goto_duel_field_by_guide"
         ]
     },
     "weekly_win_weekly_award": {
@@ -875,7 +875,7 @@
             "[JumpBack]weekly_win_weekly_award",
             "[JumpBack]weekly_win_confirm_weekly_award",
             "[JumpBack]go_to_war",
-            "goto_duel_field"
+            "goto_duel_field_by_guide"
         ],
         "pre_delay": 0,
         "post_delay": 0,
