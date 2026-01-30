@@ -80,7 +80,10 @@
             "name": "组织",
             "entry": "group",
             "default_check": true,
-            "description": "包含祈福签到和领奖，追击晓组织领奖。"
+            "description": "包含祈福签到和领奖，追击晓组织领奖。",
+            "option": [
+                "从奖励中心进入"
+            ]
         },
         {
             "name": "积分赛",
@@ -94,10 +97,11 @@
         {
             "name": "修行之路",
             "entry": "shugyou_no_michi",
+            "default_check": true,
             "option": [
-                "打新关卡"
-            ],
-            "default_check": true
+                "打新关卡",
+                "从奖励中心进入"
+            ]
         },
         {
             "name": "生存挑战",
@@ -1533,6 +1537,34 @@
                     "pipeline_override": {
                         "train_road_entry": {
                             "next": "shugyou_no_michi_auto_push"
+                        }
+                    }
+                }
+            ]
+        },
+        "从奖励中心进入": {
+            "type": "switch",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "group": {
+                            "next": [
+                                "group_in_center_enter",
+                                "[JumpBack]award_center_enter",
+                                "[JumpBack]back_main_screen_before_task"
+                            ]
+                        },
+                        "shugyou_no_michi": {
+                            "next": [
+                                "train_road_ac_entry_undone",
+                                "[JumpBack]award_center_enter",
+                                "[JumpBack]back_main_screen_before_task"
+                            ]
                         }
                     }
                 }

@@ -1,12 +1,14 @@
 {
     "shugyou_no_michi": {
         "next": [
-            "go_into_shugyou_no_michi",
+            "go_into_shugyou_no_michi_by_guide",
             "[JumpBack]open_ninjia_guide",
             "[JumpBack]back_main_screen_before_task"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
-    "go_into_shugyou_no_michi": {
+    "go_into_shugyou_no_michi_by_guide": {
         "recognition": "Or",
         "any_of": [
             {
@@ -433,7 +435,7 @@
         "post_wait_freezes": 200,
         "next": [
             "train_road_ac_entry_undone",
-            "train_road_ac_done",
+            "ac_entry_mission_done",
             "[JumpBack]swipe_for_award_center_find"
         ]
     },
@@ -463,21 +465,5 @@
         "post_delay": 0,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]修行之路未完成[/color]"
-    },
-    "train_road_ac_done": {
-        "recognition": "TemplateMatch",
-        "template": "SharedNode/center_entry_end.png",
-        "roi": [
-            180,
-            384,
-            1100,
-            118
-        ],
-        "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "back_main_screen_and_stop"
-        ],
-        "focus": "[color:DeepSkyBlue]修行之路已完成[/color]"
     }
 }

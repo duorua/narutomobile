@@ -596,5 +596,9 @@
     "post_delay": 0,
     "focus": "[color:tomato]战斗失败！[/color]",
     "next": "back_main_screen_and_stop"
+  },
+  "ac_entry_mission_done": {
+    "focus": "[color:DeepSkyBlue]任务已完成[/color]",
+    "next": "back_main_screen_and_stop"
   }
 }
