@@ -3,7 +3,7 @@
         "next": [
             "team_dash_in_center_enter",
             "team_dash_ac_entry",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 2000,
         "pre_delay": 0,

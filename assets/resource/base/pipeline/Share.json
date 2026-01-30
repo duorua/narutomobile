@@ -3,7 +3,7 @@
         "next": [
             "share_in_center_enter",
             "share_ac_entry",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 1500,
         "pre_delay": 0,
