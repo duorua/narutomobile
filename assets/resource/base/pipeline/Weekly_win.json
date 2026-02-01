@@ -447,12 +447,11 @@
             "Weekly_win/ban.png"
         ],
         "roi": [
-            353,
-            449,
-            587,
-            271
+            528,
+            631,
+            209,
+            89
         ],
-        "threshold": 0.6,
         "action": "Click",
         "post_delay": 3000,
         "focus": "[color:DeepSkyBlue]ban忍者[/color]"
