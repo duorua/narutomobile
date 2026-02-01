@@ -73,6 +73,7 @@ footer = """
 {%- endfor -%}
 
 {% if latest_version is matching(".*(rc|alpha|beta).*") -%}
+
 **⚠️ 此版本为内部测试版本，非测试参与人员请勿下载！**
 {%- else -%}
     {% if latest_version -%}

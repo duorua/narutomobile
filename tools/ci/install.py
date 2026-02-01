@@ -60,11 +60,12 @@ def install_maafw(os_name, arch):
         dirs_exist_ok=True,
     )
 
-    shutil.copytree(
-        working_dir / "deps" / "share" / "MaaAgentBinary",
-        install_path / "libs" / "MaaAgentBinary",
-        dirs_exist_ok=True,
-    )
+    # 新版的mfa里有这个了
+    # shutil.copytree(
+    #     working_dir / "deps" / "share" / "MaaAgentBinary",
+    #     install_path / "libs" / "MaaAgentBinary",
+    #     dirs_exist_ok=True,
+    # )
 
 
 def install_resource(version):

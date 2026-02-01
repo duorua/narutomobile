@@ -2,10 +2,12 @@
     "get_copper": {
         "next": [
             "get_copper_in_center_enter",
-            "get_copper_ac_entry",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]award_center_enter",
+            "[JumpBack]back_main_screen_before_task"
         ],
-        "focus": "[color:DeepSkyBlue]进入铜币招财子任务[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入铜币招财任务[/color]"
     },
     "get_copper_in_center_enter": {
         "recognition": "TemplateMatch",

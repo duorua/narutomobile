@@ -5,7 +5,7 @@
             "asura_instance_in_level_roll",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入修罗副本子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入修罗副本任务[/color]"
     },
     "asura_instance_entry": {
         "recognition": "TemplateMatch",

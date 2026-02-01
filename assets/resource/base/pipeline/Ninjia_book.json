@@ -3,7 +3,9 @@
         "next": [
             "ninjia_book_entry"
         ],
-        "focus": "[color:DeepSkyBlue]进入忍法帖子任务[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入忍法帖任务[/color]"
     },
     "ninjia_book_entry": {
         "next": [
@@ -40,10 +42,57 @@
         "action": "Click",
         "next": [
             "ninjia_book_leaderboard",
-            "ninjia_book_undone"
+            "ninjia_book_undone",
+            "[JumpBack]hit_to_enter_ninjia_book",
+            "[JumpBack]hit_to_enter_ninjia_book_x",
+            "[JumpBack]ninjia_book_skip"
         ],
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]忍法帖未完成[/color]"
+    },
+    "ninjia_book_skip": {
+        "recognition": "OCR",
+        "expected": [
+            "跳过"
+        ],
+        "roi": [
+            847,
+            0,
+            432,
+            236
+        ],
+        "action": "Click",
+        "post_delay": 300
+    },
+    "hit_to_enter_ninjia_book": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            422,
+            206
+        ],
+        "expected": [
+            "点击",
+            "任意",
+            "位置"
+        ],
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]忍法帖忍者展示[/color]"
+    },
+    "hit_to_enter_ninjia_book_x": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/mask_x.png",
+        "green_mask": true,
+        "threshold": 0.68,
+        "roi": [
+            610,
+            0,
+            670,
+            229
+        ],
+        "action": "Click",
+        "focus": "[color:DeepSkyBlue]忍法帖忍者展示[/color]"
     },
     "ninjia_book_share_to_qq": {
         "recognition": "TemplateMatch",
@@ -159,10 +208,10 @@
     },
     "ninjia_book_mission_award": {
         "next": [
+            "[JumpBack]close_ninjia_book_level_up_page",
             "check_no_ninjia_book_mission_award",
             "[JumpBack]get_ninjia_book_mission_award_one_key",
-            "[JumpBack]get_ninjia_book_mission_award",
-            "[JumpBack]close_ninjia_book_level_up_page"
+            "[JumpBack]get_ninjia_book_mission_award"
         ]
     },
     "close_ninjia_book_level_up_page": {
@@ -278,10 +327,10 @@
             "Ninjia_book/liveness_undone_selected.png"
         ],
         "roi": [
-            135,
-            297,
-            64,
-            61
+            0,
+            298,
+            259,
+            197
         ],
         "green_mask": true,
         "threshold": 0.8,

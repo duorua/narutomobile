@@ -5,6 +5,13 @@
     "post_delay": 0,
     "next": "back_main_screen"
   },
+  "back_and_stop_after_task_done": {
+    "max_hit": 1,
+    "pre_delay": 0,
+    "post_delay": 0,
+    "next": "back_main_screen_and_stop",
+    "focus": "任务已完成"
+  },
   "back_main_screen_and_stop": {
     "next": [
       "[JumpBack]back_main_screen",
@@ -588,6 +595,18 @@
     "pre_delay": 0,
     "post_delay": 0,
     "focus": "[color:tomato]战斗失败！[/color]",
+    "next": "back_main_screen_and_stop"
+  },
+  "ac_entry_mission_done": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/center_entry_end.png",
+    "roi": [
+      180,
+      384,
+      1100,
+      118
+    ],
+    "focus": "[color:DeepSkyBlue]任务已完成[/color]",
     "next": "back_main_screen_and_stop"
   }
 }

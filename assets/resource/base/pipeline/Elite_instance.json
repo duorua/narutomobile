@@ -6,7 +6,7 @@
             "[JumpBack]elite_instance_to_level_roll",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入精英副本子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入精英副本任务[/color]"
     },
     "elite_instance_entry": {
         "recognition": "TemplateMatch",

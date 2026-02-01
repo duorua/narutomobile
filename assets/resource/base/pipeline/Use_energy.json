@@ -6,7 +6,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入使用体力子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入使用体力任务[/color]"
     },
     "use_energy_by_ninjia_piece": {
         "recognition": "TemplateMatch",

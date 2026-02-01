@@ -5,6 +5,8 @@
         "next": [
             "start_naruto"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]火影忍者，启动！[/color]"
     },
     "start_naruto": {

@@ -8,7 +8,7 @@
             "[JumpBack]back_main_screen"
         ],
         "timeout": 1500,
-        "focus": "[color:DeepSkyBlue]进入要塞子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入要塞任务[/color]"
     },
     "stronghold_entry": {
         "recognition": "Or",

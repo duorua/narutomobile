@@ -3,12 +3,11 @@
         "next": [
             "team_dash_in_center_enter",
             "team_dash_ac_entry",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
-        "timeout": 2000,
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入小队突袭子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入小队突袭任务[/color]"
     },
     "team_dash_in_center_enter": {
         "recognition": "TemplateMatch",
@@ -244,6 +243,7 @@
         "next": [
             "team_dash_invite_ninjia",
             "[JumpBack]can_not_invite",
+            "dash_or_exit",
             "retry_failed"
         ],
         "focus": "[color:DeepSkyBlue]进入助战邀请界面[/color]"

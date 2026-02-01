@@ -7,7 +7,7 @@
             "[JumpBack]back_main_screen"
         ],
         "timeout": 1500,
-        "focus": "[color:DeepSkyBlue]进入天地子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入天地任务[/color]"
     },
     "sky_ground_entry": {
         "recognition": "Or",

@@ -5,7 +5,7 @@
             "flower_shop_entry",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入花店子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入花店任务[/color]"
     },
     "flower_shop_entry": {
         "recognition": "TemplateMatch",

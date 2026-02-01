@@ -6,7 +6,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入活动子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入活动任务[/color]"
     },
     "activity_entry": {
         "recognition": "TemplateMatch",
@@ -154,17 +154,51 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "next": "check_mouthly_signature_title"
+        "next": [
+            "check_mouthly_signature_title",
+            "mouthly_signature_title_done"
+        ]
+    },
+    "mouthly_signature_title_done": {
+        "recognition": "OCR",
+        "expected": [
+            "已",
+            "领"
+        ],
+        "replace": [
+            [
+                "巳",
+                "已"
+            ],
+            [
+                "己",
+                "已"
+            ]
+        ],
+        "roi": [
+            346,
+            360,
+            414,
+            340
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]back_main_screen",
+            "store_enter"
+        ]
     },
     "check_mouthly_signature_title": {
-        "$doc": "点一下也没啥坏处",
-        "action": "Click",
-        "target": [
-            525,
-            527,
-            101,
-            98
+        "recognition": "TemplateMatch",
+        "template": "Activity/title.png",
+        "roi": [
+            346,
+            360,
+            414,
+            340
         ],
+        "action": "Click",
+        "$doc": "点一下也没啥坏处",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [

@@ -3,12 +3,11 @@
         "next": [
             "share_in_center_enter",
             "share_ac_entry",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
-        "timeout": 1500,
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入分享子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入分享任务[/color]"
     },
     "share_in_center_enter": {
         "recognition": "TemplateMatch",

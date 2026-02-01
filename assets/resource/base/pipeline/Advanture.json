@@ -7,7 +7,7 @@
             "[JumpBack]advanture_entry",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入冒险副本子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入冒险副本任务[/color]"
     },
     "advanture_entry": {
         "recognition": "TemplateMatch",

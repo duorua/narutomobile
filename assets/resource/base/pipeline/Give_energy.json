@@ -8,7 +8,7 @@
         "timeout": 2000,
         "post_delay": 0,
         "pre_delay": 0,
-        "focus": "[color:DeepSkyBlue]进入送体力子任务[/color]"
+        "focus": "[color:DeepSkyBlue]进入送体力任务[/color]"
     },
     "energy_entry": {
         "recognition": "TemplateMatch",

@@ -1,4 +1,4 @@
-# Maa Auto Naruto 开发环境搭建与开发指南
+# 快速上手
 
 > [!WARNING]
 > 本项目目前的开发文档尚未完善！
@@ -58,33 +58,33 @@ cd narutomobile
 
 ---
 
-## 4. 安装 MaaFramework 依赖
+## 4. 更新 Git 子模块
 
-MaaFramework 依赖可以通过以下两种方式之一安装：
-
-### 4.1 方式一：直接下载发布包
-
-1. 访问 [MaaFramework 发布页面](https://github.com/MaaXYZ/MaaFramework/releases)
-2. 下载最新版本的发布包
-3. 将下载的文件解压到项目根目录下的 `deps` 文件夹中
-
-### 4.2 方式二：使用下载脚本 (推荐)
-
-在项目根目录下执行以下命令：
-
-```bash title="下载MaaFramework依赖"
-python tools\download_maafw.py
-```
-
-## 5. 更新 Git 子模块
-
-完成 MaaFramework 依赖安装后，在项目根目录下执行以下命令：
+克隆完成项目代码后，在项目根目录下执行以下命令：
 
 ```bash title="更新Git子模块"
 git submodule update --init --recursive
 ```
 
 ---
+
+## 5. 安装 MaaFramework 依赖
+
+MaaFramework 依赖可以通过以下两种方式之一安装：
+
+### 5.1 方式一：直接下载发布包
+
+1. 访问 [MaaFramework 发布页面](https://github.com/MaaXYZ/MaaFramework/releases)
+2. 下载最新版本的发布包
+3. 将下载的文件解压到项目根目录下的 `deps` 文件夹中
+
+### 5.2 方式二：使用下载脚本 (推荐)
+
+在项目根目录下执行以下命令：
+
+```bash title="下载MaaFramework依赖"
+python tools\download_maafw.py
+```
 
 ## 6. 安装 Python 依赖
 
@@ -104,8 +104,7 @@ pip install -r requirements.txt
 
 > [!NOTE]  
 >
-> - 虚拟环境可以隔离项目依赖，避免与系统 Python 环境冲突
-> - 如果不使用虚拟环境，可以直接执行 `pip install -r requirements.txt`
+> - 虚拟环境可以隔离项目依赖，避免与全局环境冲突
 
 ---
 
@@ -124,8 +123,10 @@ python ./tools/ci/configure.py
 安装完成后，可以运行项目来验证是否安装成功：
 
 ```bash title="验证安装"
-python -m agent.main (这里加上narutomobile\assets\interface里的identifier)
+python -m agent.main <identifier>
 ```
+
+`identifier`的值在`assets/interface.json`里
 
 **✓ 如果能够正常启动，说明开发环境已经搭建完成！**
 

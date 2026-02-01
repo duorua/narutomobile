@@ -4,7 +4,9 @@
             "headhunt_entry",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入招募子任务[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入招募任务[/color]"
     },
     "headhunt_entry": {
         "recognition": "TemplateMatch",
@@ -99,10 +101,29 @@
             70
         ],
         "action": "Click",
+        "max_hit": 5,
+        "next": [
+            "without_confrim_free_headhunt",
+            "confrim_free_headhunt"
+        ],
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]确认免费高级招募[/color]"
+    },
+    "without_confrim_free_headhunt": {
+        "recognition": "TemplateMatch",
+        "template": "Headhunt/confirm_free_headhunt.png",
+        "roi": [
+            300,
+            525,
+            197,
+            70
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]完成免费高级招募[/color]"
     },
     "headhunt_recruit_enter": {
         "recognition": "OCR",

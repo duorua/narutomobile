@@ -4,7 +4,9 @@
             "click_club_icon",
             "[JumpBack]back_main_screen"
         ],
-        "focus": "[color:DeepSkyBlue]进入情报社子任务[/color]"
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入情报社任务[/color]"
     },
     "click_club_icon": {
         "recognition": "TemplateMatch",

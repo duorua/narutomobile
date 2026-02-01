@@ -17,6 +17,7 @@ from .utils import (
     validate_config,
     validate_mfa,
     wait_for_freezes,
+    check_resolution,
 )
 
 
@@ -73,6 +74,7 @@ class RetryFaild(CustomAction):
         context: Context,
         argv: CustomAction.RunArg,
     ) -> CustomAction.RunResult:
+        check_resolution(context)
         save_screenshot(context)
         validate_config(context)
         validate_mfa(context)
@@ -210,7 +212,7 @@ class GoIntoEntryByGuide(CustomAction):
             end = [70, 200]
         else:
             logger.debug("该账号为回归账号")
-            start = [300, 500]
+            start = [300, 600]
             end = [300, 200]
             box = fast_ocr(context, expected=["忍界指引"], roi=(6, 886, 249, 173))
             if box is None:
@@ -226,14 +228,14 @@ class GoIntoEntryByGuide(CustomAction):
         # 如果等级较低还有东西没解锁就会聚焦到这里
         # 此时需要先划到最顶上
         logger.info("滑动到最顶端")
-        for _ in range(10):
+        while True:
             if context.tasker.stopping:
                 logger.info("任务停止，提前退出")
                 return CustomAction.RunResult(success=False)
 
             if fast_ocr(
                 context,
-                expected=["天赋"] + enter_name,
+                expected=["天赋"],
                 roi=list_roi,
                 absolutely=True,
             ):
