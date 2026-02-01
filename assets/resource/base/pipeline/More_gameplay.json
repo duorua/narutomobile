@@ -12,8 +12,7 @@
         "expected": [
             "忍",
             "术",
-            "对",
-            "战"
+            "对战"
         ],
         "roi": [
             172,
@@ -471,5 +470,50 @@
         ],
         "pre_delay": 0,
         "post_delay": 0
+    },
+    "more_gameplay_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "next": [
+            "more_gameplay_ac_entry_undone",
+            "ac_entry_mission_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "more_gameplay_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/more_gameplay_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "more_gameplay_in_select_gameplay",
+            "more_gameplay_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]可以进入更多玩法[/color]"
     }
 }

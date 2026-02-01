@@ -30,10 +30,28 @@
         "post_delay": 0,
         "post_wait_freezes": 200,
         "next": [
-            "check_no_energy",
-            "[JumpBack]get_ramen",
+            "activity_check_in_activity",
             "activity_entry"
         ]
+    },
+    "activity_check_in_activity": {
+        "recognition": "OCR",
+        "expected": [
+            "一乐",
+            "外卖"
+        ],
+        "roi": [
+            0,
+            0,
+            261,
+            288
+        ],
+        "next": [
+            "check_no_energy",
+            "[JumpBack]get_ramen"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "has_ramen": {
         "recognition": "TemplateMatch",

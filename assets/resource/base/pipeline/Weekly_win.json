@@ -3,6 +3,8 @@
         "next": [
             "goto_duel_field_by_guide",
             "[JumpBack]open_ninjia_guide",
+            "[JumpBack]go_to_war",
+            "[JumpBack]weekly_win_match_fighting",
             "[JumpBack]back_main_screen"
         ],
         "pre_delay": 0,
@@ -447,19 +449,21 @@
             "Weekly_win/ban.png"
         ],
         "roi": [
-            528,
-            631,
-            209,
-            89
+            202,
+            632,
+            725,
+            87
         ],
+        "threshold": 0.8,
         "action": "Click",
-        "post_delay": 3000,
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]ban忍者[/color]"
     },
     "weekly_win_rank_confirm_ninjia": {
         "recognition": "TemplateMatch",
         "template": [
-            "Weekly_win/ban.png"
+            "Weekly_win/lock.png"
         ],
         "roi": [
             788,
@@ -467,10 +471,10 @@
             492,
             200
         ],
-        "threshold": 0.6,
+        "threshold": 0.8,
         "action": "Click",
         "post_delay": 5000,
-        "focus": "[color:DeepSkyBlue]确认忍者[/color]"
+        "focus": "[color:DeepSkyBlue]锁定阵容[/color]"
     },
     "weekly_win_in_seasonal_awards": {
         "recognition": "OCR",
@@ -791,5 +795,54 @@
         ],
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]回到战斗[/color]"
+    },
+    "weekly_win_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "next": [
+            "weekly_win_ac_entry_undone",
+            "ac_entry_mission_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "weekly_win_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/weekly_win_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "[JumpBack]weekly_win_mouthly_award",
+            "[JumpBack]weekly_win_mouthly_reset_award",
+            "[JumpBack]weekly_win_weekly_award",
+            "[JumpBack]weekly_win_confirm_weekly_award",
+            "[JumpBack]go_to_war",
+            "weekly_win_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]匹配首胜任务未完成[/color]"
     }
 }
