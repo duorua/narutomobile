@@ -112,6 +112,14 @@ def wait_for_freezes(context: Context, wait_for_freezes: int = 200):
     )
 
 
+def check_resolution(context: Context):
+    resolution = context.tasker.controller.resolution
+    if resolution not in [(1280, 720), (720, 1280), (1920, 1080), (1080, 1920)]:
+        logger.warning("你可能正在使用非推荐的分辨率！")
+        logger.warning("推荐使用的分辨率：1920x1080")
+        logger.warning(f"当前使用的分辨率：{resolution[0]}x{resolution[1]}")
+
+
 def validate_config(context: Context):
     if len(list(root.glob("*.exe"))) == 0:
         return

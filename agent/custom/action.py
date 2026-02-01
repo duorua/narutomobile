@@ -17,6 +17,7 @@ from .utils import (
     validate_config,
     validate_mfa,
     wait_for_freezes,
+    check_resolution,
 )
 
 
@@ -73,6 +74,7 @@ class RetryFaild(CustomAction):
         context: Context,
         argv: CustomAction.RunArg,
     ) -> CustomAction.RunResult:
+        check_resolution(context)
         save_screenshot(context)
         validate_config(context)
         validate_mfa(context)
