@@ -25,13 +25,13 @@
             45
         ],
         "next": [
-            "check_in_activity",
+            "red_envelope_check_in_activity",
             "[JumpBack]red_envelope_to_activity"
         ],
         "post_wait_freezes": 900,
         "focus": "[color:DeepSkyBlue]进入活动[/color]"
     },
-    "check_in_activity": {
+    "red_envelope_check_in_activity": {
         "recognition": "OCR",
         "expected": [
             "一乐",

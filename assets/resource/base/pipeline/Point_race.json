@@ -193,5 +193,50 @@
         "post_delay": 0,
         "index": 0,
         "order_by": "Vertical"
+    },
+    "point_race_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "next": [
+            "point_race_ac_entry_undone",
+            "ac_entry_mission_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "point_race_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Point_race/point_race_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "point_race_challenge_enter",
+            "point_race_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]组织祈福未完成[/color]"
     }
 }

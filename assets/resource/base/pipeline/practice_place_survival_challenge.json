@@ -312,6 +312,7 @@
             "survival_challenge_sweep_ticket_used_up"
         ],
         "$doc": "这里设置了post_wait_freezes,所以timeout可以调的很短",
+        "timeout": 50000,
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,

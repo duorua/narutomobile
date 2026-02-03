@@ -163,6 +163,19 @@
     ],
     "action": "Click"
   },
+  "loading_page": {
+    "recognition": "OCR",
+    "expected": [
+      "资源",
+      "加载中"
+    ],
+    "roi": [
+      483,
+      594,
+      303,
+      125
+    ]
+  },
   "award_center_enter": {
     "recognition": "TemplateMatch",
     "template": "SharedNode/award_center_entry.png",

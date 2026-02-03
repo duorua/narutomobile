@@ -28,17 +28,21 @@ jobs:
       # pip install maafw
       - name: Install maafw
         run: |
-            python -m pip install --upgrade pip
-            # 在 requirements.txt 中查找以 maafw 开头的行（例如: maafw==4.5.6 或 maafw>=4.5）
-            line=$(grep -E '^\s*maafw' requirements.txt | head -n 1)
-            if [ -n "$line" ]; then
-              pkg=$(echo "$line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-            else
-              pkg='maafw'
-            fi
-            echo "Installing $pkg"
-            python -m pip install --upgrade $pkg
-            
+          python -m pip install --upgrade pip
+          # 在 requirements.txt 中查找以 maafw 开头的行（例如: maafw==4.5.6 或 maafw>=4.5）
+          line=$(grep -E '^\s*maafw' requirements.txt | head -n 1)
+          if [ -n "$line" ]; then
+            pkg=$(echo "$line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+          else
+            pkg='maafw'
+          fi
+          echo "Installing $pkg"
+          python -m pip install --upgrade $pkg
+
       - name: Check Resource
         run: |
-            python ./tools/ci/check_resource.py ./assets/resource/base
+          python ./tools/ci/check_resource.py ./assets/resource/base
+
+      - name: Check Interface
+        run: |
+          npx @nekosu/maa-checker ./assets/interface.json -y

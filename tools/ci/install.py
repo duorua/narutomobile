@@ -60,13 +60,6 @@ def install_maafw(os_name, arch):
         dirs_exist_ok=True,
     )
 
-    # 新版的mfa里有这个了
-    # shutil.copytree(
-    #     working_dir / "deps" / "share" / "MaaAgentBinary",
-    #     install_path / "libs" / "MaaAgentBinary",
-    #     dirs_exist_ok=True,
-    # )
-
 
 def install_resource(version):
     configure_ocr_model()
@@ -132,10 +125,9 @@ def install_chores():
         ignore=shutil.ignore_patterns("*.yaml"),
     )
 
-    # MFA 2.6.1 需要手动创建这个文件夹
-    (install_path / "Assets").mkdir(exist_ok=True)
     shutil.copy2(
-        working_dir / "docs" / "imgs" / "logo.ico", install_path / "Assets" / "logo.ico"
+        working_dir / "docs" / "imgs" / "logo.ico",
+        install_path / "resource" / "logo.ico",
     )
 
     if platform.system() == "Linux":

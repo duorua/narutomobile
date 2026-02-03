@@ -1036,5 +1036,50 @@
             "back_main_screen_and_stop"
         ],
         "focus": "[color:DeepSkyBlue]任务已经接取完毕[/color]"
+    },
+    "mission_office_in_center_enter": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/check_in_daily_award.png",
+        "roi": [
+            37,
+            172,
+            130,
+            47
+        ],
+        "next": [
+            "mission_office_ac_entry_undone",
+            "ac_entry_mission_done",
+            "[JumpBack]swipe_for_award_center_find"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
+        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+    },
+    "mission_office_ac_entry_undone": {
+        "recognition": "TemplateMatch",
+        "template": "Mission_office/misson_ac_undone.png",
+        "roi": [
+            180,
+            288,
+            1100,
+            225
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "target_offset": [
+            12,
+            116,
+            -40,
+            -114
+        ],
+        "next": [
+            "check_in_mission_office",
+            "[JumpBack]mission_office_ac_entry_undone"
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]组织祈福未完成[/color]"
     }
 }

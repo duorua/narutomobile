@@ -835,7 +835,8 @@
         "recognition": "OCR",
         "expected": [
             "金币",
-            "领取"
+            "领取",
+            "完成"
         ],
         "roi": [
             57,
@@ -874,17 +875,20 @@
             "club_first_award_done",
             "[JumpBack]club_first_award",
             "naruto_club_in_loop_wheel",
-            "[JumpBack]club_first_award_on_error"
+            "[JumpBack]club_first_award_on_error",
+            "[JumpBack]try_esc"
         ],
         "inverse": true,
         "focus": "[color:DeepSkyBlue]检测任务是否已经全部提交[/color]",
-        "timeout": 15000,
+        "timeout": 5000,
         "on_error": "award_kale"
     },
     "club_submit": {
         "recognition": "TemplateMatch",
         "template": "Naruto_club/mission_submit.png",
         "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 500
     },
     "naruto_club_duplicate_claim": {
@@ -1013,10 +1017,6 @@
             441,
             124,
             53
-        ],
-        "timeout": 5000,
-        "on_error": [
-            "naruto_club_in_loop_wheel"
         ],
         "action": "Click",
         "post_wait_freezes": 300
@@ -1228,5 +1228,11 @@
     "award_kale": {
         "action": "StopTask",
         "focus": "[color:DarkGoldenRod]当前操作超时，疑似遇到真投入[/color]"
+    },
+    "try_esc": {
+        "action": "ClickKey",
+        "key": 4,
+        "post_wait_freezes": 500,
+        "max_hit": 1
     }
 }
