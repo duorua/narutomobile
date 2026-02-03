@@ -14,6 +14,9 @@ from utils.logger import log_dir
 
 
 def save_screenshot(context: Context):
+    """
+    保存截图
+    """
     # image array(BGR)
     screen_array = context.tasker.controller.cached_image
 

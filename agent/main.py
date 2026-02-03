@@ -102,8 +102,6 @@ def agent(is_dev_mode=False):
 
 
 ### 程序入口 ###
-
-
 def main():
     current_version = read_interface_version()
     is_dev_mode = current_version == "DEBUG"

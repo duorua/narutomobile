@@ -12,6 +12,9 @@ from utils.counter import counter
 
 
 def correct_senryoku_text(source_text: str) -> int | None:
+    """
+    解析战力文本，返回整数战力值
+    """
     if source_text.endswith("万"):
         text = source_text[:-1]
         text += "0000"
@@ -49,6 +52,10 @@ def get_senryoku(context: Context, image: ndarray, roi: list[int]) -> int | None
 
 @AgentServer.custom_recognition("IsCounterOverflow")
 class IsCounterOverflow(CustomRecognition):
+    """
+    计数器溢出检测
+    """
+
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
@@ -72,6 +79,10 @@ class IsCounterOverflow(CustomRecognition):
 
 @AgentServer.custom_recognition("IsInNinjiaGuide")
 class IsInNinjiaGuide(CustomRecognition):
+    """
+    是否在忍界引导界面
+    """
+
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
@@ -173,6 +184,11 @@ class FindToChallenge(CustomRecognition):
 
 @AgentServer.custom_recognition("FindPlantableFlower")
 class FindPlantableFlower(CustomRecognition):
+    """
+    中山花店
+    在选花界面中寻找可以种的花
+    """
+
     def analyze(
         self,
         context: Context,
@@ -331,7 +347,10 @@ def get_card_type(context: Context, image: ndarray, roi: list[int]) -> int:
 @AgentServer.custom_recognition("FlipCard")
 class FlipCard(CustomRecognition):
     """
-    4x4翻牌游戏算法逻辑(优先同方向生长)
+    周年庆4x4翻牌游戏
+
+    基于贪心算法
+
     规则：
     1. 胜利判定：仅统计紫色牌数量,连续4个判定胜利;
     2. 初始状态：优先选橙色不在的对角线牌，双对角线橙色则选横竖无橙色牌；
@@ -846,7 +865,7 @@ class FindAccessoryFlipTicket(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
-        logger.info("===== 执行饰品翻牌卷识别 FindAccessoryFlipTicket =====")
+        logger.info("===== 执行饰品翻牌卷识别 =====")
 
         # 调用独立识别函数，传入ROI+自定义文本修改（lambda x: x[1:] if x else x是去掉第一个字符，无修改则改为lambda x:x）
         ticket_count = get_flip_ticket_count(
@@ -859,20 +878,20 @@ class FindAccessoryFlipTicket(CustomRecognition):
         # 逻辑1：识别失败 → 返回未通过（空box）
         if ticket_count is None:
             logger.warning(
-                "[FindAccessoryFlipTicket] 饰品翻牌卷数量识别失败,返回未通过"
+                "饰品翻牌卷数量识别失败,返回未通过"
             )
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         # 逻辑2：数量>0 → 返回通过（非空无效Rect）
         if ticket_count > 0:
             logger.info(
-                f"[FindAccessoryFlipTicket] 饰品翻牌卷数量{ticket_count}>0,返回识别通过"
+                f"饰品翻牌卷数量{ticket_count}>0,返回识别通过"
             )
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
         # 逻辑3：数量≤0 → 返回未通过（空box）
         logger.info(
-            f"[FindAccessoryFlipTicket] 饰品翻牌卷数量{ticket_count}≤0,返回识别未通过"
+            f"饰品翻牌卷数量{ticket_count}≤0,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
@@ -889,7 +908,7 @@ class FindGearFlipTicket(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
-        logger.info("===== 执行忍具翻牌卷识别 FindGearFlipTicket =====")
+        logger.info("===== 执行忍具翻牌卷识别 =====")
 
         ticket_count = get_flip_ticket_count(
             context=context,
@@ -899,16 +918,16 @@ class FindGearFlipTicket(CustomRecognition):
         )
 
         if ticket_count is None:
-            logger.warning("[FindGearFlipTicket] 忍具翻牌卷数量识别失败,返回未通过")
+            logger.warning("忍具翻牌卷数量识别失败,返回未通过")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         if ticket_count > 0:
             logger.info(
-                f"[FindGearFlipTicket] 忍具翻牌卷数量{ticket_count}>0,返回识别通过"
+                f"忍具翻牌卷数量{ticket_count}>0,返回识别通过"
             )
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
         logger.info(
-            f"[FindGearFlipTicket] 忍具翻牌卷数量{ticket_count}≤0,返回识别未通过"
+            f"忍具翻牌卷数量{ticket_count}≤0,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(box=None, detail={})

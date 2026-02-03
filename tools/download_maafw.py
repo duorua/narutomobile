@@ -9,6 +9,9 @@ from utils import get_maafw_version
 sys.path.insert(0, Path(__file__).parent.__str__())
 sys.path.insert(0, (Path(__file__).parent / "ci").__str__())
 
+
+# 使用ghproxy加速下载
+# 如果开了代理要将这行注释掉
 ghproxy = "https://gh-proxy.natsuu.top/"
 
 

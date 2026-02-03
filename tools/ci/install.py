@@ -65,6 +65,10 @@ def install_resource(version):
     configure_ocr_model()
 
     def merge_pipeline_files():
+        """
+        合并 pipeline 目录下的所有 json 文件为一个 merged.json 文件
+        这样用户在直接替换升级的时候就不会出现冲突了
+        """
         pipeline_files = Path(
             working_dir / "assets" / "resource" / "base" / "pipeline"
         ).glob("*.json")

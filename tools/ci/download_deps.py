@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 下载Python依赖到deps目录的脚本
-自动检测当前平台并下载对应架构的wheel文件
 """
 
 import sys
@@ -51,6 +50,10 @@ def download_dependencies(deps_dir, platform_tag):
         return False
 
     try:
+        # 使用 --platform 可以指定下载特定平台的包
+        # 但是必须附带 --no-deps ，而且无法自动解析依赖
+        # 所以本项目使用 uv 进行依赖管理并自动生成 requirements.txt
+        # uv pip compile --output-file=requirements.txt pyproject.toml
         cmd_fallback = [
             sys.executable,
             "-m",

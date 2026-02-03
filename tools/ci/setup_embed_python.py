@@ -184,6 +184,7 @@ def main():
 
         # 修改 ._pth 文件
         # pth 文件名格式如: python312._pth for Python 3.12.x
+        # 不改的话 pip 会出问题
         version_nodots = PYTHON_VERSION_TARGET.replace(".", "")[:3]
         pth_filename_pattern = f"python{version_nodots}._pth"
 

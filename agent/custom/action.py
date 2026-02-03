@@ -179,6 +179,10 @@ class GoIntoEntry(CustomAction):
 
 @AgentServer.custom_action("GoIntoEntryByGuide")
 class GoIntoEntryByGuide(CustomAction):
+    """
+    从忍界指引进入特定功能
+    """
+
     def run(
         self,
         context: Context,
@@ -292,6 +296,10 @@ class GoIntoEntryByGuide(CustomAction):
 
 @AgentServer.custom_action("CounterIncrement")
 class CounterIncrement(CustomAction):
+    """
+    计数器自增动作
+    """
+
     def run(
         self,
         context: Context,
