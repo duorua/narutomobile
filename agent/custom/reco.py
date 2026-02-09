@@ -139,7 +139,16 @@ class FindToChallenge(CustomRecognition):
         for x in reco_detail.filtered_results[:4]:
             match = pattern.search(x.text)  # ty:ignore[unresolved-attribute]
             if match:
-                enemySenryoku_list.append(correct_senryoku_text(match.group()))
+                senryoku = correct_senryoku_text(match.group())
+                if senryoku:
+                    enemySenryoku_list.append(senryoku)
+                else:
+                    logger.warning(
+                        f"无法解析战力文本: {x.text}"  # ty:ignore[unresolved-attribute]
+                    )
+                    enemySenryoku_list.append(
+                        1145141919810
+                    )  # 一个非常大的数，表示无法挑战
             else:
                 logger.warning(
                     f"无法解析战力文本: {x.text}"  # ty:ignore[unresolved-attribute]
