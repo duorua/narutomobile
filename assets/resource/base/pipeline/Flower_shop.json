@@ -157,10 +157,10 @@
             135
         ],
         "next": [
-            "flower_shop_confrim_choose_flower"
+            "flower_shop_confirm_choose_flower"
         ]
     },
-    "flower_shop_confrim_choose_flower": {
+    "flower_shop_confirm_choose_flower": {
         "recognition": "OCR",
         "expected": [
             "确定"
@@ -170,7 +170,7 @@
             "[JumpBack]flower_shop_not_select_flower",
             "flower_shop_out_choose_flower",
             "flower_shop_done",
-            "[JumpBack]flower_shop_confrim_choose_flower"
+            "[JumpBack]flower_shop_confirm_choose_flower"
         ],
         "focus": "[color:DeepSkyBlue]确定种花[/color]"
     },

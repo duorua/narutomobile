@@ -5,7 +5,7 @@
             "[JumpBack]open_ninjia_guide",
             "stronghold_in_stronghold",
             "stronghold_in_map",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 1500,
         "focus": "[color:DeepSkyBlue]进入要塞任务[/color]"
@@ -97,11 +97,10 @@
             40,
             -5
         ],
-        "max_hit": 5,
         "next": [
             "stronghold_in_map",
             "[JumpBack]stronghold_mode",
-            "back_main_screen_and_stop"
+            "group_mode_not_open"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入要塞[/color]"

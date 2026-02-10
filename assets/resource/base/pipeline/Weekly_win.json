@@ -5,7 +5,7 @@
             "[JumpBack]open_ninjia_guide",
             "[JumpBack]go_to_war",
             "[JumpBack]weekly_win_match_fighting",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -363,6 +363,7 @@
             "[JumpBack]weekly_win_rank_confirm_ninjia",
             "[JumpBack]weekly_win_rank_ban",
             "[JumpBack]battle_tips",
+            "[JumpBack]weekly_win_rank_up",
             "[JumpBack]battle_again",
             "[JumpBack]weekly_win_substitution",
             "[JumpBack]go_to_war"

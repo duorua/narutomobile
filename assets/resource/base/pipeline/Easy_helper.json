@@ -380,13 +380,13 @@
         "threshold": 0.9,
         "action": "Click",
         "next": [
-            "confrim_easy_helper_team_dash_sweep",
+            "confirm_easy_helper_team_dash_sweep",
             "[JumpBack]easy_helper_back_to_team_dash_sweep"
         ],
         "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]开始小队扫荡[/color]"
     },
-    "confrim_easy_helper_team_dash_sweep": {
+    "confirm_easy_helper_team_dash_sweep": {
         "recognition": "TemplateMatch",
         "template": "Easy_helper/team_dash_no_gold.png",
         "roi": [

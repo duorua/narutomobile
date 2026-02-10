@@ -528,7 +528,8 @@
     "template": [
       "SharedNode/guide.png",
       "SharedNode/back_to_konoha.png",
-      "SharedNode/ninjia_tools.png"
+      "SharedNode/ninjia_tools.png",
+      "SharedNode/rich_room_ninjia_guide.png"
     ],
     "roi": [
       934,

@@ -88,9 +88,28 @@
         ],
         "action": "Click",
         "next": [
-            "check_copper_done",
-            "[JumpBack]start_copper",
+            "get_copper_in_get_copper",
             "get_copper_ac_entry_undone"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "get_copper_in_get_copper": {
+        "recognition": "OCR",
+        "expected": [
+            "本轮",
+            "招满",
+            "可获得"
+        ],
+        "roi": [
+            713,
+            90,
+            345,
+            296
+        ],
+        "next": [
+            "check_copper_done",
+            "[JumpBack]start_copper"
         ],
         "pre_delay": 0,
         "post_delay": 0

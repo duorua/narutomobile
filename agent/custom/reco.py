@@ -150,7 +150,16 @@ class FindToChallenge(CustomRecognition):
         for x in reco_detail.filtered_results[:4]:
             match = pattern.search(x.text)  # ty:ignore[unresolved-attribute]
             if match:
-                enemySenryoku_list.append(correct_senryoku_text(match.group()))
+                senryoku = correct_senryoku_text(match.group())
+                if senryoku:
+                    enemySenryoku_list.append(senryoku)
+                else:
+                    logger.warning(
+                        f"无法解析战力文本: {x.text}"  # ty:ignore[unresolved-attribute]
+                    )
+                    enemySenryoku_list.append(
+                        1145141919810
+                    )  # 一个非常大的数，表示无法挑战
             else:
                 logger.warning(
                     f"无法解析战力文本: {x.text}"  # ty:ignore[unresolved-attribute]
@@ -929,5 +938,42 @@ class FindGearFlipTicket(CustomRecognition):
 
         logger.info(
             f"忍具翻牌卷数量{ticket_count}≤0,返回识别未通过"
+        )
+        return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+
+@AgentServer.custom_recognition("SecretRealmTicket")
+class SecretRealmTicket(CustomRecognition):
+    """
+    秘境挑战卷识别:和上面的饰品翻牌差不多
+    """
+
+    # 秘境挑战卷ROI
+    Secret_Real_Roi = [496, 624, 39, 44]
+
+    def analyze(
+        self, context: Context, argv: CustomRecognition.AnalyzeArg
+    ) -> CustomRecognition.AnalyzeResult:
+        logger.info("===== 执行秘境挑战卷识别 SecretRealmTicket =====")
+
+        ticket_count = get_flip_ticket_count(
+            context=context,
+            image=argv.image,
+            roi=self.Secret_Real_Roi,
+            text_modifier=lambda x: x,
+        )
+
+        if ticket_count is None:
+            logger.warning("[SecretRealmTicket] 秘境挑战卷数量识别失败,返回未通过")
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        if ticket_count > 0:
+            logger.info(
+                f"[SecretRealmTicket] 秘境挑战卷数量{ticket_count}>0,返回识别通过"
+            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        logger.info(
+            f"[SecretRealmTicket] 秘境挑战卷数量{ticket_count}≤0,返回识别未通过"
         )
         return CustomRecognition.AnalyzeResult(box=None, detail={})

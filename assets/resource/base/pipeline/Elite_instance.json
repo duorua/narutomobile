@@ -3,6 +3,7 @@
         "next": [
             "elite_instance_entry",
             "elite_instance_in_level_roll",
+            "elite_instance_in_elite_instance",
             "[JumpBack]elite_instance_to_level_roll",
             "[JumpBack]back_main_screen"
         ],
@@ -115,9 +116,11 @@
         "action": "Click",
         "next": [
             "elite_instance_in_fight",
-            "use_energy_not_enough_sign"
+            "[JumpBack]loading_page",
+            "use_energy_not_enough_sign",
+            "elite_instance_go_fight"
         ],
-        "post_delay": 900,
+        "post_delay": 500,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
     },
     "elite_instance_in_fight": {
@@ -130,11 +133,59 @@
             89
         ],
         "next": [
-            "elite_instance_auto_fight"
+            "[JumpBack]elite_instance_has_stop_button",
+            "[JumpBack]check_in_auto_fight",
+            "elite_instance_not_in_fight",
+            "[JumpBack]elite_instance_check_not_in_auto_fight"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]战斗中[/color]"
+    },
+    "elite_instance_has_stop_button": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
+        "roi": [
+            1120,
+            0,
+            160,
+            127
+        ],
+        "next": [
+            "elite_instance_check_not_in_auto_fight",
+            "[JumpBack]check_in_auto_fight",
+            "elite_instance_not_in_fight",
+            "[JumpBack]elite_instance_not_in_auto_fight"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "elite_instance_check_not_in_auto_fight": {
+        "recognition": "OCR",
+        "expected": [
+            "自动",
+            "战斗中"
+        ],
+        "inverse": true,
+        "roi": [
+            551,
+            94,
+            188,
+            62
+        ],
+        "next": [
+            "elite_instance_auto_fight",
+            "elite_instance_win",
+            "advanture_lost",
+            "advanture_skip_revive",
+            "elite_instance_lock",
+            "elite_instance_in_fight"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "elite_instance_auto_fight": {
         "recognition": "OCR",
@@ -150,11 +201,11 @@
         ],
         "action": "Click",
         "next": [
+            "[JumpBack]check_in_auto_fight",
             "elite_instance_not_in_fight",
-            "[JumpBack]elite_instance_not_in_auto_fight",
-            "[JumpBack]wait_5_second"
+            "[JumpBack]elite_instance_not_in_auto_fight"
         ],
-        "post_delay": 900,
+        "post_delay": 500,
         "focus": "[color:DeepSkyBlue]打开自动战斗[/color]"
     },
     "elite_instance_not_in_fight": {
@@ -171,7 +222,8 @@
             "elite_instance_win",
             "advanture_lost",
             "advanture_skip_revive",
-            "elite_instance_lock"
+            "elite_instance_lock",
+            "elite_instance_in_fight"
         ],
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]不在战斗[/color]"

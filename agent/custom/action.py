@@ -1,5 +1,6 @@
 import json
 from time import sleep
+import random
 from typing import Optional, Tuple
 
 from maa.agent.agent_server import AgentServer, TaskDetail
@@ -12,6 +13,7 @@ from utils.counter import counter
 from .utils import (
     fast_ocr,
     fast_swipe,
+    nonlinear_swipe,
     click,
     save_screenshot,
     validate_config,
@@ -213,11 +215,12 @@ class GoIntoEntryByGuide(CustomAction):
         if box is None:
             logger.debug("该账号不为回归账号")
             start = [70, 600]
-            end = [70, 200]
+            end = [70, 300]
+            list_roi = (0, 66, 219, 627)  # 防止识别到背景的排行榜
         else:
             logger.debug("该账号为回归账号")
             start = [300, 600]
-            end = [300, 200]
+            end = [300, 300]
             box = fast_ocr(context, expected=["忍界指引"], roi=(6, 886, 249, 173))
             if box is None:
                 return CustomAction.RunResult(success=False)
@@ -245,7 +248,7 @@ class GoIntoEntryByGuide(CustomAction):
             ):
                 break
 
-            fast_swipe(
+            nonlinear_swipe(
                 context,
                 start_x=end[0],
                 start_y=end[1],
@@ -268,7 +271,7 @@ class GoIntoEntryByGuide(CustomAction):
                 break
 
             logger.debug("未识别到功能入口，滑动页面")
-            fast_swipe(
+            nonlinear_swipe(
                 context,
                 start_x=start[0],
                 start_y=start[1],
@@ -277,7 +280,7 @@ class GoIntoEntryByGuide(CustomAction):
             )
 
         if box is None:
-            return CustomAction.RunResult(False)
+            return CustomAction.RunResult(success=False)
 
         if context.tasker.stopping:
             logger.info("任务停止，提前退出")
@@ -288,10 +291,10 @@ class GoIntoEntryByGuide(CustomAction):
 
         box = fast_ocr(context, ["前往"], (834, 539, 287, 149))
         if box is None:
-            return CustomAction.RunResult(False)
+            return CustomAction.RunResult(success=False)
         else:
             click(context, *box)
-            return CustomAction.RunResult(True)
+            return CustomAction.RunResult(success=True)
 
 
 @AgentServer.custom_action("CounterIncrement")

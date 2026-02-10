@@ -46,6 +46,7 @@
             -114
         ],
         "next": [
+            "survival_challenge_above_kage",
             "survival_challenge_yesterday_award",
             "survival_challenge_ac_entry_undone"
         ],
@@ -53,6 +54,55 @@
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入生存挑战[/color]"
+    },
+    "survival_challenge_above_kage": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/battle_tips.png",
+        "roi": [
+            486,
+            187,
+            385,
+            227
+        ],
+        "next": [
+            "survival_challenge_confirm_above_kage"
+        ],
+        "focus": "[color:DeepSkyBlue]生存挑战超影服务触发[/color]"
+    },
+    "survival_challenge_confirm_above_kage": {
+        "recognition": "OCR",
+        "expected": [
+            "确定"
+        ],
+        "roi": [
+            533,
+            343,
+            380,
+            187
+        ],
+        "action": "Click",
+        "next": [
+            "survival_challenge_without_confirm_above_kage",
+            "survival_challenge_confirm_above_kage"
+        ]
+    },
+    "survival_challenge_without_confirm_above_kage": {
+        "recognition": "OCR",
+        "expected": [
+            "确定"
+        ],
+        "roi": [
+            533,
+            343,
+            380,
+            187
+        ],
+        "inverse": true,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "survival_challenge_ac_done": {
         "recognition": "TemplateMatch",
@@ -218,7 +268,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]进入生存挑战扫荡任务[/color]"
     },
     "check_survival_challenge_done": {
@@ -270,10 +320,10 @@
             "survival_challenge_sweep_confirm",
             "survival_challenge_sweep_ready"
         ],
-        "timeout": 800,
+        "timeout": 1500,
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 200
+        "post_wait_freezes": 400
     },
     "survival_challenge_sweep_confirm": {
         "recognition": "OCR",

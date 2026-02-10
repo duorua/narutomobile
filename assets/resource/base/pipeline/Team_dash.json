@@ -381,7 +381,6 @@
     "team_dash_loading": {
         "recognition": "OCR",
         "expected": [
-            "资源",
             "加载"
         ],
         "roi": [

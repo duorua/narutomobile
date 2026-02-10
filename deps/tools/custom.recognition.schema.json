@@ -11,7 +11,8 @@
                 "IsInNinjiaGuide",
                 "IsCounterOverflow",
                 "FindAccessoryFlipTicket",
-                "FindGearFlipTicket"
+                "FindGearFlipTicket",
+                "SecretRealmTicket"
             ]
         },
         "custom_recognition_param": {
@@ -39,6 +40,9 @@
                 },
                 {
                     "$ref": "#/$defs/FindGearFlipTicketParam"
+                },
+                {
+                    "$ref": "#/$defs/SecretRealmTicketParam"
                 }
             ]
         }
@@ -108,6 +112,12 @@
             "type": "object",
             "description": "检查忍具翻牌卷数量是否大于0,用于决定是否进行忍具翻牌",
             "markdownDescription": "检查忍具翻牌卷数量\n\n**功能说明：**\n- 读取固定ROI区域的忍具翻牌卷数量\n- 数量 > 0: 返回识别通过（非空box）\n- 数量 ≤ 0 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[435, 579, 118, 88]\n\n**返回值：**\n- `box`: 数量>0时返回 (0,0,1,1)，否则返回 None\n- `detail.ticket_count`: 识别到的忍具翻牌卷数量\n- `detail.passed`: 是否通过检查\n- `detail.type`: 翻牌卷类型（固定为「忍具翻牌卷」）",
+            "properties": {}
+        },
+        "SecretRealmTicketParam": {
+            "type": "object",
+            "description": "检查秘境挑战卷数量是否大于0,用于决定是否进行忍具翻牌",
+            "markdownDescription": "检查秘境挑战卷数量\n\n**功能说明：**\n- 读取固定ROI区域的秘境挑战卷数量\n- 数量 > 0: 返回识别通过（非空box）\n- 数量 ≤ 0 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[435, 579, 118, 88]\n\n**返回值：**\n- `box`: 数量>0时返回 (0,0,1,1)，否则返回 None\n- `detail.ticket_count`: 识别到的秘境挑战卷数量\n- `detail.passed`: 是否通过检查\n- `detail.type`: 卷类型（固定为「秘境挑战卷」）",
             "properties": {}
         }
     }

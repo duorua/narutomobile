@@ -142,6 +142,7 @@
         "action": "Click",
         "next": [
             "advanture_in_fight",
+            "[JumpBack]loading_page",
             "[JumpBack]advanture_anime_skip",
             "[JumpBack]advanture_anime",
             "advanture_confirm_advanced_option",
@@ -244,8 +245,7 @@
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 300,
-        "focus": "[color:DeepSkyBlue]过场动画[/color]",
-        "timeout": 5000
+        "focus": "[color:DeepSkyBlue]过场动画[/color]"
     },
     "advanture_in_fight": {
         "recognition": "OCR",
@@ -274,11 +274,14 @@
             "advanture_win",
             "advanture_lost",
             "advanture_skip_revive",
-            "[JumpBack]advanture_in_level_roll",
+            "[JumpBack]advanture_in_level_roll"
+        ],
+        "on_error": [
             "[JumpBack]advanture_entry",
             "[JumpBack]back_main_screen"
         ],
-        "post_delay": 900,
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入战斗[/color]"
     },
     "has_stop_button": {
@@ -295,7 +298,9 @@
         ],
         "next": [
             "check_not_in_auto_fight"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "check_not_in_auto_fight": {
         "recognition": "OCR",
@@ -400,10 +405,12 @@
         "inverse": true,
         "action": "DoNothing",
         "next": [
+            "[JumpBack]loading_page",
             "advanture_new_function_unlock",
             "advanture_daily_award_unlock",
             "advanture_new_level_undone",
             "naruto_journey_new_level_undone",
+            "advanture_in_level_roll",
             "advanture_rank_up"
         ],
         "post_delay": 300,

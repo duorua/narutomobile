@@ -204,6 +204,7 @@
                 "秘境翻忍具牌",
                 "秘境忍具每次只翻一张",
                 "从奖励中心进入",
+                "有挑战卷的时候才挑战",
                 "烈炎秘境",
                 "罡体秘境",
                 "水牢秘境",
@@ -222,6 +223,9 @@
         {
             "name": "要塞(beta)",
             "entry": "stronghold",
+            "option": [
+                "玩法未开启时退出"
+            ],
             "description": "默认前往火要塞,进其他要塞在对应要塞内开始任务"
         },
         {
@@ -232,7 +236,8 @@
                 "守擂后游走避战",
                 "你的名字",
                 "天地选择额外奖励柱子",
-                "天地挑战"
+                "天地挑战",
+                "玩法未开启时退出"
             ],
             "description": "非常建议不要开挑战和额外奖励柱子,如果人多会很超雄,可能导致巨大压力"
         },
@@ -353,6 +358,7 @@
         },
         "启动超时后行为": {
             "type": "select",
+            "description": "最多只会尝试启动火影5次",
             "cases": [
                 {
                     "name": "启动火影",
@@ -454,7 +460,7 @@
                     "pipeline_override": {
                         "get_ninjia_book_award": {
                             "template": [
-                                "Ninjia_book/seal_roll_waiting.png",
+                                "Ninjia_book/box_waiting.png",
                                 "Ninjia_book/copper_60_waiting.png",
                                 "Ninjia_book/fame_waiting.png",
                                 "Ninjia_book/gold_waiting.png",
@@ -463,6 +469,8 @@
                                 "Ninjia_book/soul_waiting.png",
                                 "Ninjia_book/box_waiting.png",
                                 "Ninjia_book/wooden_spike_roll_waiting.png",
+                                "Ninjia_book/seal_roll_waiting.png",
+                                "Ninjia_book/defence_roll_waiting.png",
                                 "Ninjia_book/title_waiting.png",
                                 "Ninjia_book/exchange_token_waiting.png"
                             ]
@@ -471,22 +479,7 @@
                 },
                 {
                     "name": "No",
-                    "pipeline_override": {
-                        "get_ninjia_book_award": {
-                            "template": [
-                                "Ninjia_book/seal_roll_waiting.png",
-                                "Ninjia_book/copper_60_waiting.png",
-                                "Ninjia_book/fame_waiting.png",
-                                "Ninjia_book/gold_waiting.png",
-                                "Ninjia_book/star_waiting.png",
-                                "Ninjia_book/energe_waiting.png",
-                                "Ninjia_book/soul_waiting.png",
-                                "Ninjia_book/wooden_spike_roll_waiting.png",
-                                "Ninjia_book/title_waiting.png",
-                                "Ninjia_book/exchange_token_waiting.png"
-                            ]
-                        }
-                    }
+                    "pipeline_override": {}
                 }
             ]
         },
@@ -696,6 +689,7 @@
             "inputs": [
                 {
                     "name": "周胜胜利次数",
+                    "label": "周胜胜利次数",
                     "description": "打赢输入次数,最大999",
                     "pipeline_type": "int",
                     "default": "999",
@@ -731,7 +725,7 @@
             ]
         },
         "清周胜过期宝箱": {
-            "description": "清周胜过期宝箱要有时间卡,且可能有bug",
+            "description": "清周胜过期宝箱要有时间卡,会先打完周胜胜利次数再开始清理过期宝箱",
             "type": "switch",
             "cases": [
                 {
@@ -836,6 +830,7 @@
             "inputs": [
                 {
                     "name": "秘境胜利次数",
+                    "label": "秘境胜利次数",
                     "description": "打赢输入次数,最大999",
                     "pipeline_type": "int",
                     "default": "1",
@@ -929,6 +924,28 @@
                 {
                     "name": "No",
                     "pipeline_override": {}
+                }
+            ]
+        },
+        "有挑战卷的时候才挑战": {
+            "description": "测试功能,在有挑战卷的时候才进行秘境挑战",
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "secret_realm_fight": {
+                            "action": "DoNothing",
+                            "next": [
+                                "secret_realm_check_ticket",
+                                "secret_realm_last_end"
+                            ]
+                        }
+                    }
                 }
             ]
         },
@@ -1171,6 +1188,31 @@
                 }
             ]
         },
+        "玩法未开启时退出": {
+            "type": "switch",
+            "description": "如果关闭会在组织界面一直尝试进入对应功能",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "sky_ground_mode": {
+                            "max_hit": 5
+                        },
+                        "stronghold_mode": {
+                            "max_hit": 5
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "group_mode_not_open": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
         "天地选择战场": {
             "type": "select",
             "cases": [
@@ -1218,10 +1260,11 @@
         },
         "你的名字": {
             "type": "input",
+            "description": "为上面的选项提供ID,只需要子串,识别ID成功时,不会点空柱子避战",
             "inputs": [
                 {
                     "name": "你的名字",
-                    "description": "为上面的选项提供ID,只需要子串,识别ID成功时,不会点空柱子避战",
+                    "label": "输入游戏名",
                     "pipeline_type": "string",
                     "default": "MaaAutoNaruto"
                 }
@@ -1406,6 +1449,13 @@
                                 "rebel_ninja_single_mode_checked",
                                 "rebel_ninja_summon_member"
                             ]
+                        },
+                        "rebel_ninja_without_not_open": {
+                            "next": [
+                                "rebel_ninja_single_mode",
+                                "rebel_ninja_single_mode_checked",
+                                "rebel_ninja_summon_member"
+                            ]
                         }
                     }
                 }
@@ -1465,6 +1515,7 @@
             "inputs": [
                 {
                     "name": "二级密码",
+                    "label": "二级密码",
                     "pipeline_type": "string",
                     "default": "0",
                     "verify": "^(0|[1-9]\\d*)$"
@@ -1494,11 +1545,13 @@
                     "pipeline_override": {
                         "advanture_win": {
                             "next": [
+                                "[JumpBack]loading_page",
                                 "advanture_new_level_undone",
                                 "naruto_journey_new_level_undone",
                                 "advanture_new_function_unlock",
                                 "advanture_daily_award_unlock",
                                 "advanture_rank_up",
+                                "advanture_in_level_roll",
                                 "advanture_win"
                             ]
                         }

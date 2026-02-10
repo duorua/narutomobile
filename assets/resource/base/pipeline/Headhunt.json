@@ -65,7 +65,7 @@
         "threshold": 0.97,
         "action": "Click",
         "next": [
-            "confrim_free_headhunt",
+            "confirm_free_headhunt",
             "free_headhunt_fake",
             "free_headhunt_waiting"
         ],
@@ -91,7 +91,7 @@
         "post_wait_freezes": 500,
         "focus": "[color:DarkGoldenRod]什么,情报是假的[/color]"
     },
-    "confrim_free_headhunt": {
+    "confirm_free_headhunt": {
         "recognition": "TemplateMatch",
         "template": "Headhunt/confirm_free_headhunt.png",
         "roi": [
@@ -103,15 +103,15 @@
         "action": "Click",
         "max_hit": 5,
         "next": [
-            "without_confrim_free_headhunt",
-            "confrim_free_headhunt"
+            "without_confirm_free_headhunt",
+            "confirm_free_headhunt"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]确认免费高级招募[/color]"
     },
-    "without_confrim_free_headhunt": {
+    "without_confirm_free_headhunt": {
         "recognition": "TemplateMatch",
         "template": "Headhunt/confirm_free_headhunt.png",
         "roi": [
@@ -177,7 +177,7 @@
         "threshold": 0.6,
         "action": "Click",
         "next": [
-            "confrim_headhunt_recruit",
+            "confirm_headhunt_recruit",
             "headhunt_recruit"
         ],
         "pre_delay": 0,
@@ -185,7 +185,7 @@
         "post_wait_freezes": 500,
         "focus": "[color:DeepSkyBlue]进行免费普通招募[/color]"
     },
-    "confrim_headhunt_recruit": {
+    "confirm_headhunt_recruit": {
         "recognition": "OCR",
         "expected": [
             "确",

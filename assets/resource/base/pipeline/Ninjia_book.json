@@ -208,31 +208,60 @@
     },
     "ninjia_book_mission_award": {
         "next": [
-            "[JumpBack]close_ninjia_book_level_up_page",
-            "check_no_ninjia_book_mission_award",
             "[JumpBack]get_ninjia_book_mission_award_one_key",
-            "[JumpBack]get_ninjia_book_mission_award"
+            "[JumpBack]get_ninjia_book_mission_award",
+            "[JumpBack]close_ninjia_book_level_up_page",
+            "check_no_ninjia_book_mission_award"
         ]
     },
     "close_ninjia_book_level_up_page": {
         "recognition": "OCR",
         "expected": [
-            "前往领取"
+            "恭喜",
+            "已",
+            "升级"
+        ],
+        "replace": [
+            "己",
+            "已"
         ],
         "roi": [
-            335,
-            375,
-            340,
-            344
+            432,
+            93,
+            592,
+            340
         ],
         "action": "Click",
         "target": [
-            46,
-            552,
-            74,
-            64
+            35,
+            547,
+            59,
+            44
+        ],
+        "next": [
+            "ninjia_book_without_level_up_page",
+            "close_ninjia_book_level_up_page"
         ],
         "focus": "[color:DeepSkyBlue]关闭升级界面[/color]"
+    },
+    "ninjia_book_without_level_up_page": {
+        "recognition": "OCR",
+        "expected": [
+            "恭喜",
+            "已",
+            "升级"
+        ],
+        "replace": [
+            "己",
+            "已"
+        ],
+        "roi": [
+            432,
+            93,
+            592,
+            340
+        ],
+        "inverse": true
     },
     "check_no_ninjia_book_mission_award": {
         "recognition": "OCR",
@@ -247,6 +276,7 @@
         ],
         "inverse": true,
         "next": [
+            "[JumpBack]close_ninjia_book_level_up_page",
             "ninjia_book_liveness_undone",
             "ninjia_book_liveness_done",
             "[JumpBack]close_ninjia_book_liveness_detail"
@@ -912,7 +942,8 @@
     "ninjia_book_award_selected": {
         "recognition": "TemplateMatch",
         "template": [
-            "Ninjia_book/has_award_selected.png"
+            "Ninjia_book/has_award_selected.png",
+            "Ninjia_book/has_award_selected_2.png"
         ],
         "roi": [
             111,
@@ -948,7 +979,7 @@
             "check_no_ninjia_book_award_red_point",
             "top_level_award",
             "[JumpBack]get_ninjia_book_award",
-            "[JumpBack]ninjia_book_award_swip_to_right"
+            "[JumpBack]ninjia_book_award_swipe_to_right"
         ],
         "focus": "[color:DeepSkyBlue]左滑动到忍法帖奖励前部[/color]"
     },
@@ -966,7 +997,7 @@
         ],
         "focus": "[color:DeepSkyBlue]滑动到忍法帖165级[/color]"
     },
-    "ninjia_book_award_swip_to_right": {
+    "ninjia_book_award_swipe_to_right": {
         "recognition": "TemplateMatch",
         "template": [
             "Ninjia_book/ninjia_book_award_undone_v2.png",
@@ -981,7 +1012,7 @@
         "threshold": 0.9,
         "action": "Swipe",
         "begin": [
-            832,
+            732,
             525,
             84,
             81
@@ -1018,7 +1049,6 @@
     "get_ninjia_book_award": {
         "recognition": "TemplateMatch",
         "template": [
-            "Ninjia_book/seal_roll_waiting.png",
             "Ninjia_book/copper_60_waiting.png",
             "Ninjia_book/fame_waiting.png",
             "Ninjia_book/gold_waiting.png",
@@ -1027,6 +1057,8 @@
             "Ninjia_book/soul_waiting.png",
             "Ninjia_book/box_waiting.png",
             "Ninjia_book/wooden_spike_roll_waiting.png",
+            "Ninjia_book/seal_roll_waiting.png",
+            "Ninjia_book/defence_roll_waiting.png",
             "Ninjia_book/title_waiting.png",
             "Ninjia_book/exchange_token_waiting.png"
         ],

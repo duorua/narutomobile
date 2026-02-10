@@ -4,7 +4,7 @@
             "sky_ground_entry",
             "sky_ground_in_main",
             "[JumpBack]open_ninjia_guide",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 1500,
         "focus": "[color:DeepSkyBlue]进入天地任务[/color]"
@@ -95,7 +95,6 @@
             913,
             224
         ],
-        "max_hit": 5,
         "action": "Click",
         "target_offset": [
             -10,
@@ -106,10 +105,19 @@
         "next": [
             "sky_ground_battlefield_selection",
             "[JumpBack]sky_ground_mode",
-            "back_main_screen_and_stop"
+            "group_mode_not_open"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入天地模式[/color]"
+    },
+    "group_mode_not_open": {
+        "recognition": "OCR",
+        "expected": [
+            "未开启"
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ]
     },
     "swipe_for_sky_ground_mode": {
         "recognition": "TemplateMatch",
@@ -186,7 +194,7 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_confrim_battlefield_selection",
+            "sky_ground_confirm_battlefield_selection",
             "sky_ground_confirm_set",
             "sky_ground_to_column",
             "[JumpBack]sky_battlefield"
@@ -205,14 +213,14 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_confrim_battlefield_selection",
+            "sky_ground_confirm_battlefield_selection",
             "sky_ground_confirm_set",
             "[JumpBack]ground_battlefield"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]选择地战场[/color]"
     },
-    "sky_ground_confrim_battlefield_selection": {
+    "sky_ground_confirm_battlefield_selection": {
         "recognition": "OCR",
         "expected": [
             "确认"
@@ -227,7 +235,7 @@
         "next": [
             "sky_ground_recommended_ninja",
             "sky_ground_select_nijia",
-            "[JumpBack]sky_ground_confrim_battlefield_selection"
+            "[JumpBack]sky_ground_confirm_battlefield_selection"
         ],
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]确认战场选择[/color]"

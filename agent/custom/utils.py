@@ -238,3 +238,60 @@ def click_and_wait_for_freezes(
             }
         },
     )
+
+
+def nonlinear_swipe(
+    context: Context,
+    start_x: int,
+    start_y: int,
+    end_x: int,
+    end_y: int,
+    duration: int = 150,
+    end_hold: bool = False,
+    after_swipe_delay: int = 300,
+    steps: int = 7,  # 滑动分段
+):
+    """
+    非线性滑动,形参参考fast_swipe()
+    """
+
+    s_x = random.randint(start_x - 50, start_x + 50)
+    s_y = random.randint(start_y - 50, start_y + 50)
+    e_x = random.randint(end_x - 50, end_x + 50)
+    e_y = random.randint(end_y - 50, end_y + 50)
+    total_dur = random.randint(duration - 100, duration + 100)
+    hold_time = random.randint(100, 200) if end_hold else 0
+
+    points = []
+    dur_list = []
+    total_prog = 0.0
+
+    for i in range(1, steps + 1):
+        # 非线性进度计算
+        t = i / steps
+        prog = 1 - (1 - t) ** 2
+        delta = prog - total_prog
+        total_prog = prog
+
+        # 计算当前坐标
+        curr_x = int(s_x + (e_x - s_x) * prog)
+        curr_y = int(s_y + (e_y - s_y) * prog)
+        points.append([curr_x, curr_y])
+        dur_list.append(round(total_dur * delta))
+
+    # 总时长
+    dur_list[-1] += total_dur - sum(dur_list)
+
+    context.run_action(
+        "custom_swipe",
+        pipeline_override={
+            "custom_swipe": {
+                "action": "Swipe",
+                "begin": [s_x, s_y],
+                "end": points,  # 途径点
+                "end_hold": hold_time,
+                "duration": dur_list,  # 分段时间
+            }
+        },
+    )
+    sleep(after_swipe_delay / 1000)

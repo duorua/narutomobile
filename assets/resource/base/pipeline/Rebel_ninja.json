@@ -5,7 +5,7 @@
             "rebel_ninja_in_battlefield",
             "goto_rebel_ninja_by_guide",
             "[JumpBack]open_ninjia_guide",
-            "[JumpBack]back_main_screen"
+            "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 1500,
         "focus": "[color:DeepSkyBlue]进入叛忍来袭任务[/color]"
@@ -74,7 +74,8 @@
             "rebel_ninja_not_open",
             "rebel_ninja_go_fight",
             "rebel_ninja_finish",
-            "rebel_ninja_confirm_nijia"
+            "rebel_ninja_confirm_nijia",
+            "rebel_ninja_summon_member"
         ],
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入叛忍来袭[/color]"
@@ -120,7 +121,7 @@
         ],
         "duration": 300,
         "post_delay": 800,
-        "focus": "[color:DeepSkyBlue]寻找叛忍[/color]"
+        "focus": "[color:DeepSkyBlue]寻找叛忍模式[/color]"
     },
     "rebel_ninja_not_open": {
         "recognition": "OCR",
@@ -174,7 +175,8 @@
             "rebel_ninja_go_fight",
             "[JumpBack]rebel_ninja_sleep_10s"
         ],
-        "post_delay": 300
+        "post_delay": 300,
+        "focus": "[color:DeepSkyBlue]等待开启[/color]"
     },
     "rebel_ninja_sleep_10s": {
         "post_delay": 10000
@@ -227,15 +229,18 @@
             101,
             79
         ],
+        "threshold": 0.85,
         "action": "Click",
         "next": [
             "rebel_ninja_single_mode_checked",
             "[JumpBack]rebel_ninja_single_mode"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]单倍奖励[/color]"
     },
     "rebel_ninja_single_mode_checked": {
         "recognition": "TemplateMatch",
         "template": "Rebel_ninja/double_award_not_selected.png",
+        "threshold": 0.85,
         "roi": [
             365,
             431,
@@ -256,15 +261,14 @@
             101,
             79
         ],
-        "threshold": [
-            0.85
-        ],
+        "threshold": 0.85,
         "action": "Click",
         "next": [
             "rebel_ninja_double_mode_checked",
             "[JumpBack]rebel_ninja_double_mode"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]双倍奖励[/color]"
     },
     "rebel_ninja_double_mode_checked": {
         "recognition": "TemplateMatch",
@@ -275,6 +279,7 @@
             101,
             79
         ],
+        "threshold": 0.85,
         "next": [
             "rebel_ninja_hard_mode",
             "rebel_ninja_hard_mode_checked"
@@ -299,7 +304,8 @@
             "rebel_ninja_easy_mode_checked",
             "[JumpBack]rebel_ninja_easy_mode"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]简单难度[/color]"
     },
     "rebel_ninja_easy_mode_checked": {
         "recognition": "TemplateMatch",
@@ -339,7 +345,8 @@
             "rebel_ninja_hard_mode_checked",
             "[JumpBack]rebel_ninja_hard_mode"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]困难模式[/color]"
     },
     "rebel_ninja_hard_mode_checked": {
         "recognition": "TemplateMatch",
@@ -417,6 +424,7 @@
         ],
         "next": [
             "rebel_ninja_input_secondary_password",
+            "rebel_ninja_incorrect_secondary_password",
             "[JumpBack]rebel_ninja_secondary_password"
         ],
         "post_delay": 300
@@ -435,6 +443,7 @@
         "action": "InputText",
         "input_text": "0",
         "next": [
+            "rebel_ninja_incorrect_secondary_password",
             "rebel_ninja_confirm_secondary_password"
         ],
         "post_delay": 300
@@ -455,6 +464,23 @@
         ],
         "post_delay": 300
     },
+    "rebel_ninja_incorrect_secondary_password": {
+        "recognition": "OCR",
+        "expected": [
+            "不足",
+            "错误"
+        ],
+        "roi": [
+            486,
+            290,
+            325,
+            138
+        ],
+        "action": "StopTask",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:tomato]密码有误[/color]"
+    },
     "rebel_ninja_confirm_secondary_password": {
         "recognition": "OCR",
         "expected": [
@@ -467,7 +493,9 @@
             64
         ],
         "action": "Click",
+        "max_hit": 5,
         "next": [
+            "rebel_ninja_incorrect_secondary_password",
             "rebel_ninja_without_confirm_secondary_password",
             "[JumpBack]rebel_ninja_confirm_secondary_password"
         ],
@@ -525,7 +553,8 @@
         "next": [
             "rebel_ninja_high_enemy",
             "[JumpBack]rebel_ninja_find_enemy"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]准备战斗[/color]"
     },
     "rebel_ninja_only_me": {
         "recognition": "TemplateMatch",
@@ -537,6 +566,7 @@
             219
         ],
         "method": 10001,
+        "threshold": 0.9,
         "action": "Click",
         "max_hit": 1,
         "enabled": false,
@@ -544,7 +574,8 @@
         "next": [
             "rebel_ninja_is_only_me",
             "rebel_ninja_set_only_me"
-        ]
+        ],
+        "focus": "[color:DeepSkyBlue]设置只显示自己[/color]"
     },
     "rebel_ninja_set_only_me": {
         "recognition": "TemplateMatch",
@@ -555,11 +586,14 @@
             298,
             113
         ],
+        "threshold": 0.85,
         "order_by": "Vertical",
         "action": "Click",
         "next": [
-            "rebel_ninja_only_me_quit"
-        ]
+            "rebel_ninja_is_only_me",
+            "rebel_ninja_set_only_me"
+        ],
+        "pre_delay": 0
     },
     "rebel_ninja_is_only_me": {
         "recognition": "TemplateMatch",
@@ -616,7 +650,8 @@
             1
         ],
         "duration": 800,
-        "post_delay": 1500
+        "post_delay": 1500,
+        "focus": "[color:DeepSkyBlue]寻找敌人[/color]"
     },
     "rebel_ninja_low_enemy": {
         "recognition": "TemplateMatch",
@@ -637,7 +672,8 @@
             "rebel_ninja_confirm_enemy",
             "[JumpBack]rebel_ninja_low_enemy"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]低级敌人[/color]"
     },
     "rebel_ninja_mid_enemy": {
         "recognition": "TemplateMatch",
@@ -658,7 +694,8 @@
             "rebel_ninja_confirm_enemy",
             "[JumpBack]rebel_ninja_mid_enemy"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]中级敌人[/color]"
     },
     "rebel_ninja_high_enemy": {
         "recognition": "TemplateMatch",
@@ -679,7 +716,8 @@
             "rebel_ninja_confirm_enemy",
             "[JumpBack]rebel_ninja_high_enemy"
         ],
-        "post_delay": 400
+        "post_delay": 400,
+        "focus": "[color:DeepSkyBlue]高级敌人[/color]"
     },
     "rebel_ninja_confirm_enemy": {
         "recognition": "OCR",
@@ -697,7 +735,8 @@
             "rebel_ninja_without_confirm_enemy",
             "[JumpBack]rebel_ninja_confirm_enemy"
         ],
-        "post_delay": 300
+        "post_delay": 300,
+        "focus": "[color:DeepSkyBlue]gogogo,出发喽[/color]"
     },
     "rebel_ninja_without_confirm_enemy": {
         "recognition": "OCR",
@@ -733,10 +772,50 @@
             "rebel_ninja_direct_hit_quit",
             "[JumpBack]rebel_ninja_not_in_auto_fight",
             "rebel_ninja_end",
+            "rebel_ninja_in_fight",
             "[JumpBack]wait_5_second"
         ],
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]打开自动战斗[/color]"
+    },
+    "rebel_ninja_in_fight": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
+        "roi": [
+            1120,
+            0,
+            160,
+            127
+        ],
+        "next": [
+            "rebel_ninja_direct_hit_quit",
+            "[JumpBack]rebel_ninja_not_in_auto_fight",
+            "rebel_ninja_end",
+            "rebel_ninja_in_fight",
+            "[JumpBack]wait_5_second"
+        ]
+    },
+    "rebel_ninja_not_in_fight": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
+        "roi": [
+            1120,
+            0,
+            160,
+            127
+        ],
+        "inverse": true,
+        "next": [
+            "rebel_ninja_direct_hit_quit",
+            "rebel_ninja_end",
+            "rebel_ninja_in_fight"
+        ]
     },
     "rebel_ninja_not_in_auto_fight": {
         "recognition": "TemplateMatch",
