@@ -7,3 +7,5 @@ pillow==12.0.0
 strenum==0.4.15      
 win32-setctime==1.2.0
 colorama==0.4.6
+notify-py==0.3.2
+jeepney==0.9.0

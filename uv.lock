@@ -12,6 +12,15 @@ wheels = [
 ]
 
 [[package]]
+name = "jeepney"
+version = "0.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/6f/357efd7602486741aa73ffc0617fb310a29b588ed0fd69c2399acbb85b0c/jeepney-0.9.0.tar.gz", hash = "sha256:cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732", size = 106758, upload-time = "2025-02-27T18:51:01.684Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b2/a3/e137168c9c44d18eff0376253da9f1e9234d0239e0ee230d2fee6cea8e55/jeepney-0.9.0-py3-none-any.whl", hash = "sha256:97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683", size = 49010, upload-time = "2025-02-27T18:51:00.104Z" },
+]
+
+[[package]]
 name = "json-with-comments"
 version = "1.2.10"
 source = { registry = "https://pypi.org/simple" }
@@ -49,6 +58,7 @@ dependencies = [
     { name = "json-with-comments" },
     { name = "loguru" },
     { name = "maafw" },
+    { name = "notify-py" },
     { name = "pillow" },
 ]
 
@@ -57,6 +67,7 @@ requires-dist = [
     { name = "json-with-comments", specifier = ">=1.2.10" },
     { name = "loguru", specifier = ">=0.7.3" },
     { name = "maafw", specifier = ">=5.5.0" },
+    { name = "notify-py", specifier = ">=0.3.2" },
     { name = "pillow", specifier = ">=12.0.0" },
 ]
 
@@ -76,6 +87,19 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e2/37/2151303fcccd39fe85de7e31f6a0e97f73e199b5b719ca485f7a06ae41ae/maafw-5.5.0-py3-none-manylinux2014_x86_64.whl", hash = "sha256:bcb58a1aef8ca42a13b48a561c3825740852b30b04334f6efff243753a0181a4", size = 18117464, upload-time = "2026-01-27T03:10:58.897Z" },
     { url = "https://files.pythonhosted.org/packages/5d/0a/ed40ae54e21ac9cfd225908f84177bfb7be584dc4943f4dd60cbdf16a93b/maafw-5.5.0-py3-none-win_amd64.whl", hash = "sha256:8457d438bb1fe10a6dc89aada745512d2fcb398b01c5b9fd353406a1f4942189", size = 25760844, upload-time = "2026-01-27T03:11:01.049Z" },
     { url = "https://files.pythonhosted.org/packages/cd/4a/913c074de7547d9c4a93223b460a7e51449f317304d644f0b59604a80503/maafw-5.5.0-py3-none-win_arm64.whl", hash = "sha256:149c206733f2ca5b03a160b7478f6f9b9f084863e7c3d15dba38a68800124598", size = 24359781, upload-time = "2026-01-27T03:11:03.464Z" },
+]
+
+[[package]]
+name = "notify-py"
+version = "0.3.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jeepney", marker = "sys_platform == 'linux'" },
+    { name = "loguru" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c0/91/81806bcf65c834f0f5469c6b1a7b593d1c4898d5f5ea00273a0fe7e6cda3/notify_py-0.3.2.tar.gz", hash = "sha256:016b54d20dff55713dce5428d6f6314d3a7e3e6d7d00a57c45ce813534e34a4e", size = 647706, upload-time = "2021-05-05T18:21:01.193Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ed/44/1f4abc7755b4b75dce32a1a184c43bf0580b92f27b035198f885b18d5d1d/notify_py-0.3.2-py3-none-any.whl", hash = "sha256:bcf4a15582a61cab9b7eb6cb1b76c1a395e8eac6e34216d8612df68ef21c886b", size = 649922, upload-time = "2021-05-05T18:20:59.094Z" },
 ]
 
 [[package]]
