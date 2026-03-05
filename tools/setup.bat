@@ -54,10 +54,6 @@ if %errorlevel% neq 0 (
 echo [成功] 虚拟环境已激活
 echo.
 
-echo [信息] 升级 pip...
-python -m pip install --upgrade pip -q
-echo.
-
 echo [4/4] 安装 Python 依赖包...
 python -m pip install -r requirements.txt
 if %errorlevel% neq 0 (
@@ -66,6 +62,32 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 echo.
+
+.venv\Scripts\python.exe tools\download_maafw.py
+if %errorlevel% neq 0 (
+    echo [错误] 下载 MaaFramework 失败
+    pause
+    exit /b 1
+)
+
+
+cd .. 
+echo [信息] 更新子模块...
+git submodule update --remote
+if %errorlevel% neq 0 (
+    echo [错误] 更新子模块失败
+    pause
+    exit /b 1
+)
+
+echo [信息] 配置项目...
+python tools\configure.py
+if %errorlevel% neq 0 (
+    echo [错误] 配置文件生成失败
+    pause
+    exit /b 1
+)
+
 
 echo ============================================
 echo [完成] 所有依赖安装成功！
