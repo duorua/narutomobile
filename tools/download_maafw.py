@@ -32,7 +32,7 @@ def main():
         + version
         + ".zip"
     )
-    if "ghproxy" in os.environ:
+    if "ghproxy" not in os.environ:
         print("尝试通过ghproxy加速下载")
         print("如果你已经开启了系统代理，请将第17行注释掉")
         download_url = ghproxy + download_url
