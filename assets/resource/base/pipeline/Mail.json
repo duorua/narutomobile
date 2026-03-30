@@ -31,7 +31,8 @@
         "threshold": 0.9,
         "action": "Click",
         "next": [
-            "get_mail_award"
+            "get_mail_award",
+            "open_mail"
         ],
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]打开邮箱[/color]"

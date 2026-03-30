@@ -5,6 +5,8 @@
             "asura_instance_in_level_roll",
             "[JumpBack]back_main_screen"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入修罗副本任务[/color]"
     },
     "asura_instance_entry": {
@@ -21,6 +23,7 @@
             "asura_instance_in_level_roll",
             "[JumpBack]asura_instance_entry"
         ],
+        "pre_delay": 0,
         "post_delay": 400,
         "focus": "[color:DeepSkyBlue]进入冒险副本入口[/color]"
     },
@@ -37,6 +40,8 @@
         "next": [
             "asura_instance_to_asura_instance"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]已经在冒险副本[/color]"
     },
     "asura_instance_to_asura_instance": {
@@ -54,6 +59,7 @@
             "asura_instance_in_asura_instance",
             "[JumpBack]asura_instance_to_asura_instance"
         ],
+        "pre_delay": 0,
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]去在修罗副本[/color]"
     },
@@ -70,6 +76,7 @@
             "advanture_check_no_next_roll",
             "[JumpBack]advanture_to_next_roll"
         ],
+        "pre_delay": 0,
         "post_delay": 900,
         "focus": "[color:DeepSkyBlue]已在修罗副本[/color]"
     }

@@ -5,6 +5,8 @@
             "flower_shop_entry",
             "[JumpBack]back_main_screen"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入花店任务[/color]"
     },
     "flower_shop_entry": {
@@ -28,6 +30,8 @@
             "[JumpBack]swipes_for_flower_shop",
             "[JumpBack]back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 700,
         "focus": "[color:DeepSkyBlue]进入活动[/color]"
     },
@@ -45,6 +49,8 @@
             "select_flower_shop",
             "find_flower_shop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]找到花店[/color]"
     },
@@ -61,6 +67,8 @@
             "flower_shop_undone",
             "flower_shop_done"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]选中花店[/color]"
     },
     "swipes_for_flower_shop": {
@@ -78,6 +86,7 @@
             10
         ],
         "duration": 200,
+        "pre_delay": 0,
         "post_delay": 700,
         "max_hit": 5,
         "focus": "[color:DeepSkyBlue]前往花店[/color]"
@@ -97,27 +106,29 @@
             "flower_shop_in_select_flower",
             "flower_shop_to_select_flower"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]可以种花[/color]"
     },
     "flower_shop_in_select_flower": {
-        "recognition": "OCR",
-        "expected": "花朵",
+        "recognition": "TemplateMatch",
+        "template": "Flower_shop/select_flower.png",
         "roi": [
-            325,
-            165,
-            249,
-            153
+            365,
+            195,
+            170,
+            56
         ],
         "next": [
             "flower_shop_in_choose_flower"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]在选花界面[/color]"
     },
     "flower_shop_to_select_flower": {
-        "recognition": "OCR",
-        "expected": [
-            "种花"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "Flower_shop/plant.png",
         "roi": [
             249,
             422,
@@ -129,6 +140,9 @@
             "flower_shop_in_select_flower",
             "[JumpBack]flower_shop_to_select_flower"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]去选花[/color]"
     },
     "flower_shop_in_choose_flower": {
@@ -145,6 +159,9 @@
             "flower_shop_check_select_flower",
             "[JumpBack]flower_shop_in_choose_flower"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]寻找可以种的花[/color]"
     },
     "flower_shop_check_select_flower": {
@@ -158,12 +175,18 @@
         ],
         "next": [
             "flower_shop_confirm_choose_flower"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "flower_shop_confirm_choose_flower": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim_small.png",
+        "roi": [
+            730,
+            409,
+            209,
+            88
         ],
         "action": "Click",
         "next": [
@@ -172,6 +195,9 @@
             "flower_shop_done",
             "[JumpBack]flower_shop_confirm_choose_flower"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 100,
         "focus": "[color:DeepSkyBlue]确定种花[/color]"
     },
     "flower_shop_not_select_flower": {
@@ -187,22 +213,26 @@
         ],
         "next": [
             "flower_shop_in_choose_flower"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "flower_shop_out_choose_flower": {
-        "recognition": "OCR",
-        "expected": "花朵",
+        "recognition": "TemplateMatch",
+        "template": "Flower_shop/select_flower.png",
         "roi": [
-            325,
-            165,
-            249,
-            153
+            365,
+            195,
+            170,
+            56
         ],
         "inverse": true,
         "next": [
             "flower_shop_done",
             "flower_shop_to_select_flower"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "flower_shop_done": {
         "recognition": "TemplateMatch",
@@ -219,7 +249,9 @@
         "next": [
             "flower_shop_planting_flower",
             "back_main_screen_and_stop"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "flower_shop_planting_flower": {
         "recognition": "OCR",
@@ -235,6 +267,8 @@
             523,
             133
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 300,
         "next": [
             "flower_shop_out_choose_flower"

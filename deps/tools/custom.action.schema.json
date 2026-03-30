@@ -9,7 +9,8 @@
                 "GoIntoEntryByGuide",
                 "StopTaskList",
                 "RetryFailed",
-                "CounterIncrement"
+                "CounterIncrement",
+                "NonlinearSwipe"
             ]
         },
         "custom_action_param": {
@@ -31,6 +32,9 @@
                 },
                 {
                     "$ref": "#/$defs/CounterIncrementParam"
+                },
+                {
+                    "$ref": "#/$defs/NonlinearSwipe"
                 }
             ]
         }
@@ -112,6 +116,12 @@
             "type": "object",
             "description": "计数器自增动作",
             "markdownDescription": "计数器自增\n\n**功能说明：**\n- 将当前任务 job_id 对应的计数器加 1\n\n**返回值：**\n- `success`: 始终返回 true",
+            "properties": {}
+        },
+        "NonlinearSwipe": {
+            "type": "object",
+            "description": "调用非线性滑动",
+            "markdownDescription": "非线性滑动\n\n**功能说明：**\n- 进行非线性滑动\n\n**返回值：**\n- `success`正常时返回 true",
             "properties": {}
         }
     }

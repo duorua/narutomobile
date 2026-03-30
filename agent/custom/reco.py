@@ -77,8 +77,8 @@ class IsCounterOverflow(CustomRecognition):
         return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
 
-@AgentServer.custom_recognition("IsInNinjiaGuide")
-class IsInNinjiaGuide(CustomRecognition):
+@AgentServer.custom_recognition("IsInNinjaGuide")
+class IsInNinjaGuide(CustomRecognition):
     """
     是否在忍界引导界面
     """
@@ -86,7 +86,7 @@ class IsInNinjiaGuide(CustomRecognition):
     def analyze(
         self, context: Context, argv: CustomRecognition.AnalyzeArg
     ) -> CustomRecognition.AnalyzeResult:
-        reco_detail = context.run_recognition("in_ninjia_guide", argv.image, {})
+        reco_detail = context.run_recognition("in_ninja_guide", argv.image, {})
         if reco_detail and reco_detail.hit:
             # GoIntoEntryByGuide不需要这个box
             return CustomRecognition.AnalyzeResult(
@@ -886,22 +886,16 @@ class FindAccessoryFlipTicket(CustomRecognition):
 
         # 逻辑1：识别失败 → 返回未通过（空box）
         if ticket_count is None:
-            logger.warning(
-                "饰品翻牌卷数量识别失败,返回未通过"
-            )
+            logger.warning("饰品翻牌卷数量识别失败,返回未通过")
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         # 逻辑2：数量>0 → 返回通过（非空无效Rect）
         if ticket_count > 0:
-            logger.info(
-                f"饰品翻牌卷数量{ticket_count}>0,返回识别通过"
-            )
+            logger.info(f"饰品翻牌卷数量{ticket_count}>0,返回识别通过")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
         # 逻辑3：数量≤0 → 返回未通过（空box）
-        logger.info(
-            f"饰品翻牌卷数量{ticket_count}≤0,返回识别未通过"
-        )
+        logger.info(f"饰品翻牌卷数量{ticket_count}≤0,返回识别未通过")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
@@ -931,14 +925,10 @@ class FindGearFlipTicket(CustomRecognition):
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         if ticket_count > 0:
-            logger.info(
-                f"忍具翻牌卷数量{ticket_count}>0,返回识别通过"
-            )
+            logger.info(f"忍具翻牌卷数量{ticket_count}>0,返回识别通过")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
-        logger.info(
-            f"忍具翻牌卷数量{ticket_count}≤0,返回识别未通过"
-        )
+        logger.info(f"忍具翻牌卷数量{ticket_count}≤0,返回识别未通过")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
@@ -964,7 +954,9 @@ class SecretRealmTicket(CustomRecognition):
         )
 
         if ticket_count is None:
-            logger.warning("[SecretRealmTicket] 秘境挑战卷数量识别失败,返回未通过")
+            logger.warning(
+                "[SecretRealmTicket] 秘境挑战卷数量识别失败,返回未通过,可能是挑战卷不够了"
+            )
             return CustomRecognition.AnalyzeResult(box=None, detail={})
 
         if ticket_count > 0:

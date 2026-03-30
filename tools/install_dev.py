@@ -21,7 +21,7 @@ from ci.install import (
 from ci.setup_embed_python import PYTHON_VERSION_TARGET
 from setup_full_python import download_file
 
-DEFAULT_MFA_VERSION = "v2.5.7"
+DEFAULT_MFA_VERSION = "v2.8.1"
 GHPROXY_URL = "https://gh-proxy.natsuu.top/"
 
 parser = argparse.ArgumentParser(
@@ -64,10 +64,10 @@ if args.clean:
 
 # setup python environment
 def setup_python():
-    print(f"开始设置Python环境")
+    print("开始设置Python环境")
     TEMP_DIR.mkdir(exist_ok=True)
 
-    print(f"下载python并解压...")
+    print("下载python并解压...")
     cmd = [
         "python",
         "tools/setup_full_python.py",

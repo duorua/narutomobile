@@ -52,19 +52,22 @@
     "before_game": {
         "recognition": "TemplateMatch",
         "template": "Startup/naruto_logo.png",
-        "threshold": 0.4,
         "roi": [
             6,
             0,
             348,
             218
         ],
+        "green_mask": true,
         "next": [
             "click_start_game",
             "[JumpBack]start_up_loading",
             "[JumpBack]close_teenager_page",
             "[JumpBack]agree_log_in",
-            "[JumpBack]agree_info"
+            "[JumpBack]agree_info",
+            "check_agreement",
+            "agree_agreement",
+            "[JumpBack]agreement_not_agree"
         ],
         "on_error": [
             "start_up"
@@ -129,17 +132,49 @@
             234
         ],
         "action": "Click",
+        "pre_delay": 0,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
     },
-    "click_start_game": {
+    "refuse_info": {
         "recognition": "OCR",
-        "expected": "开始游戏",
+        "expected": "拒绝",
         "roi": [
-            494,
-            530,
-            291,
-            153
+            533,
+            564,
+            219,
+            69
+        ],
+        "action": "Click",
+        "next": [
+            "confirm_refuse_info",
+            "refuse_info"
+        ],
+        "pre_delay": 0,
+        "post_delay": 200,
+        "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
+    },
+    "confirm_refuse_info": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            699,
+            424,
+            58,
+            44
+        ],
+        "action": "Click",
+        "post_delay": 1000,
+        "focus": "[color:DeepSkyBlue]确认同意信息[/color]"
+    },
+    "click_start_game": {
+        "recognition": "TemplateMatch",
+        "template": "Startup/start_game.png",
+        "roi": [
+            355,
+            441,
+            612,
+            278
         ],
         "action": "Click",
         "next": [
@@ -221,5 +256,111 @@
         ],
         "count": 70,
         "max_hit": 10
+    },
+    "check_agreement": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "sub_name": "安卓QQ",
+                "recognition": "TemplateMatch",
+                "template": "SharedNode/android_qq_login.png",
+                "roi": [
+                    1002,
+                    500,
+                    120,
+                    81
+                ],
+                "green_mask": true
+            },
+            {
+                "sub_name": "协议对勾",
+                "recognition": "TemplateMatch",
+                "template": "SharedNode/agreement_check.png",
+                "roi": [
+                    77,
+                    582,
+                    61,
+                    61
+                ],
+                "green_mask": true
+            }
+        ],
+        "next": [
+            "start_up_switch_social_media_account"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "start_up_in_switch_social_media_account": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/android_qq_login.png",
+        "roi": [
+            1002,
+            500,
+            120,
+            81
+        ],
+        "next": [
+            "check_agreement",
+            "agree_agreement",
+            "[JumpBack]agreement_not_agree"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "start_up_switch_social_media_account": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/android_qq_login.png",
+        "roi": [
+            1002,
+            500,
+            120,
+            81
+        ],
+        "action": "Click",
+        "next": [
+            "click_start_game",
+            "[JumpBack]start_up_loading",
+            "[JumpBack]close_teenager_page",
+            "[JumpBack]agree_log_in",
+            "[JumpBack]agree_info"
+        ]
+    },
+    "agree_agreement": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/bandai_icon.png",
+        "roi": [
+            74,
+            644,
+            83,
+            59
+        ],
+        "action": "Click",
+        "target_offset": [
+            9,
+            -45,
+            -17,
+            -20
+        ],
+        "enabled": false,
+        "pre_delay": 0,
+        "post_delay": 300,
+        "next": [
+            "check_agreement",
+            "agree_agreement"
+        ]
+    },
+    "agreement_not_agree": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/android_qq_login.png",
+        "roi": [
+            1002,
+            500,
+            120,
+            81
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:tomato]由于最终用户协议(EULA),你必须手动同意协议[/color]"
     }
 }

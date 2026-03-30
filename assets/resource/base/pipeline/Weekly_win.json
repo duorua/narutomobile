@@ -1,8 +1,9 @@
 {
     "weekly_win": {
         "next": [
-            "goto_duel_field_by_guide",
-            "[JumpBack]open_ninjia_guide",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]go_to_war",
             "[JumpBack]weekly_win_match_fighting",
             "[JumpBack]back_main_screen_before_task"
@@ -13,12 +14,13 @@
     },
     "goto_duel_field_by_guide": {
         "recognition": "Custom",
-        "custom_recognition": "IsInNinjiaGuide",
+        "custom_recognition": "IsInNinjaGuide",
         "action": "Custom",
         "custom_action": "GoIntoEntryByGuide",
         "custom_action_param": {
             "entry_name": "忍术对战"
         },
+        "pre_delay": 0,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]进入决斗场[/color]",
         "next": [
@@ -47,11 +49,13 @@
             "weekly_win_confirm_weekly_award",
             "weekly_win_weekly_award"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400
     },
     "weekly_win_confirm_weekly_award": {
         "recognition": "TemplateMatch",
-        "template": "Share/weekly_ninjia_title.png",
+        "template": "Share/weekly_ninja_title.png",
         "roi": [
             0,
             475,
@@ -90,6 +94,7 @@
             168
         ],
         "action": "Click",
+        "pre_delay": 0,
         "post_delay": 700,
         "focus": "[color:DeepSkyBlue]月度段位重置奖励[/color]"
     },
@@ -112,6 +117,7 @@
             "[JumpBack]weekly_win_mouthly_reset_award",
             "[JumpBack]weekly_win"
         ],
+        "pre_delay": 0,
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]已在决斗场界面[/color]"
     },
@@ -128,9 +134,11 @@
         "next": [
             "[JumpBack]winner_decided",
             "[JumpBack]click_All_skill",
-            "battle_tips"
+            "battle_tips",
+            "[JumpBack]go_to_war",
+            "[JumpBack]weekly_win_match_fighting"
         ],
-        "timeout": 5000,
+        "timeout": 10000,
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始战斗[/color]"
@@ -193,6 +201,8 @@
         "green_mask": true,
         "action": "Click",
         "threshold": 0.8,
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 500,
         "next": [
             "weekly_win_success",
@@ -271,6 +281,7 @@
             "weekly_win_rank_up_done",
             "weekly_win_rank_up"
         ],
+        "pre_delay": 0,
         "post_delay": 900
     },
     "weekly_win_rank_up_done": {
@@ -284,7 +295,9 @@
             350,
             174
         ],
-        "inverse": true
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "weekly_win_fail": {
         "recognition": "TemplateMatch",
@@ -301,6 +314,7 @@
         "green_mask": true,
         "action": "Click",
         "threshold": 0.9,
+        "pre_delay": 0,
         "post_delay": 500,
         "next": [
             "weekly_win_without_fail",
@@ -319,6 +333,7 @@
         ],
         "inverse": true,
         "threshold": 0.9,
+        "pre_delay": 0,
         "post_delay": 3000
     },
     "weekly_win_substitution": {
@@ -333,7 +348,14 @@
             210,
             200
         ],
-        "threshold": 0.9
+        "threshold": 0.9,
+        "next": [
+            "weekly_win_match_fighting",
+            "[JumpBack]battle_tips",
+            "battle_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "battle_detail": {
         "recognition": "TemplateMatch",
@@ -344,7 +366,9 @@
             220,
             103
         ],
-        "threshold": 0.8
+        "threshold": 0.8,
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "go_to_war": {
         "recognition": "TemplateMatch",
@@ -360,17 +384,31 @@
             "cannot_go_to_war",
             "[JumpBack]weekly_win_match_fighting",
             "[JumpBack]weekly_win_rank_matching",
-            "[JumpBack]weekly_win_rank_confirm_ninjia",
+            "[JumpBack]weekly_win_rank_confirm_ninja",
             "[JumpBack]weekly_win_rank_ban",
             "[JumpBack]battle_tips",
+            "[JumpBack]weekly_win_locked",
             "[JumpBack]weekly_win_rank_up",
             "[JumpBack]battle_again",
             "[JumpBack]weekly_win_substitution",
             "[JumpBack]go_to_war"
         ],
+        "pre_delay": 0,
         "post_delay": 1000,
         "timeout": 40000,
         "focus": "[color:DeepSkyBlue]点击开战[/color]"
+    },
+    "weekly_win_locked": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/locked.png",
+        "roi": [
+            928,
+            558,
+            74,
+            79
+        ],
+        "pre_delay": 0,
+        "post_delay": 2000
     },
     "cannot_go_to_war": {
         "recognition": "OCR",
@@ -384,6 +422,7 @@
             234
         ],
         "action": "Click",
+        "pre_delay": 0,
         "post_delay": 1000,
         "next": [
             "back_main_screen_and_stop"
@@ -402,6 +441,8 @@
         "next": [
             "refuse_battle_again"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]收到再战邀请[/color]"
     },
     "refuse_battle_again": {
@@ -413,7 +454,9 @@
             198,
             66
         ],
-        "action": "Click"
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 200
     },
     "battle_tips": {
         "recognition": "TemplateMatch",
@@ -427,6 +470,8 @@
         "next": [
             "tips_confirm"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]战斗异常提示[/color]"
     },
     "tips_confirm": {
@@ -438,7 +483,9 @@
             221,
             155
         ],
-        "action": "Click"
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 200
     },
     "weekly_win_rank_matching": {
         "recognition": "OCR",
@@ -450,7 +497,9 @@
             368,
             139,
             122
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "weekly_win_rank_ban": {
         "recognition": "TemplateMatch",
@@ -469,7 +518,7 @@
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]ban忍者[/color]"
     },
-    "weekly_win_rank_confirm_ninjia": {
+    "weekly_win_rank_confirm_ninja": {
         "recognition": "TemplateMatch",
         "template": [
             "Weekly_win/lock.png"
@@ -482,6 +531,7 @@
         ],
         "threshold": 0.8,
         "action": "Click",
+        "pre_delay": 0,
         "post_delay": 5000,
         "focus": "[color:DeepSkyBlue]锁定阵容[/color]"
     },
@@ -509,6 +559,7 @@
             "weekly_win_in_duel_field",
             "weekly_win_in_seasonal_awards"
         ],
+        "pre_delay": 0,
         "post_delay": 1000
     },
     "weekly_win_duel_mission": {
@@ -525,6 +576,8 @@
             "weekly_win_in_duel_mission",
             "weekly_win_duel_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入决斗任务[/color]"
     },
@@ -564,6 +617,8 @@
         "next": [
             "weekly_win_get_weekly_duel_mission_award_1_done"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "weekly_win_get_weekly_duel_mission_award_1_done": {
@@ -591,6 +646,8 @@
             "weekly_win_get_weekly_duel_mission_award_2_end",
             "[JumpBack]weekly_win_get_weekly_duel_mission_award_2"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "weekly_win_without_weekly_duel_mission_award_2": {
@@ -610,6 +667,8 @@
             "weekly_win_check_no_daily_duel_mission_award",
             "[JumpBack]weekly_win_get_duel_mission_award"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "weekly_win_get_weekly_duel_mission_award_2": {
@@ -626,6 +685,8 @@
         ],
         "order_by": "Horizontal",
         "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "weekly_win_get_weekly_duel_mission_award_2_end": {
@@ -700,6 +761,8 @@
             0.9
         ],
         "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 200,
         "focus": "[color:DeepSkyBlue]领取决斗任务奖励[/color]"
     },
     "weekly_win_check_daily_duel_mission_recover_award": {
@@ -717,6 +780,8 @@
             "[JumpBack]weekly_win_check_daily_duel_mission_recover_award",
             "weekly_win_check_daily_duel_mission_without_recover_award"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]追回过期决斗任务奖励[/color]"
     },
@@ -733,6 +798,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]没有可追回过期决斗任务奖励[/color]"
     },
@@ -753,6 +820,8 @@
             "weekly_win_check_daily_duel_mission_without_time_card",
             "[JumpBack]weekly_win_check_daily_duel_mission_free_recover_award"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]有时间卡[/color]"
     },
@@ -769,7 +838,9 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "weekly_win_check_no_daily_duel_mission_recover_award": {
         "recognition": "TemplateMatch",
@@ -785,6 +856,8 @@
             "weekly_win_check_daily_duel_mission_back_fight",
             "[JumpBack]weekly_win_check_no_daily_duel_mission_recover_award"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]确认没有可追回过期决斗宝箱[/color]"
     },
@@ -802,6 +875,7 @@
             "go_to_war",
             "[JumpBack]weekly_win_check_daily_duel_mission_back_fight"
         ],
+        "pre_delay": 0,
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]回到战斗[/color]"
     },

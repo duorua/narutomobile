@@ -1,17 +1,18 @@
 {
     "leaderboard": {
         "next": [
-            "ninjia_guide_to_leaderboard",
-            "[JumpBack]open_ninjia_guide",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入排行榜任务[/color]"
     },
-    "ninjia_guide_to_leaderboard": {
+    "ninja_guide_to_leaderboard": {
         "recognition": "Custom",
-        "custom_recognition": "IsInNinjiaGuide",
+        "custom_recognition": "IsInNinjaGuide",
         "action": {
             "type": "Custom",
             "param": {
@@ -27,7 +28,7 @@
         "post_delay": 0,
         "next": [
             "leaderboard_in_leaderboard",
-            "[JumpBack]ninjia_guide_to_funtion_retry"
+            "[JumpBack]ninja_guide_to_funtion_retry"
         ]
     },
     "leaderboard_in_leaderboard": {

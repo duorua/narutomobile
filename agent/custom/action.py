@@ -221,7 +221,8 @@ class GoIntoEntryByGuide(CustomAction):
             logger.debug("该账号为回归账号")
             start = [300, 600]
             end = [300, 300]
-            box = fast_ocr(context, expected=["忍界指引"], roi=(6, 886, 249, 173))
+            list_roi = (209, 88, 200, 580)
+            box = fast_ocr(context, expected=["忍界指引"], roi=(0, 600, 212, 120))
             if box is None:
                 return CustomAction.RunResult(success=False)
 
@@ -311,3 +312,47 @@ class CounterIncrement(CustomAction):
         task_id = argv.task_detail.task_id
         counter.increment(task_id)
         return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("NonlinearSwipe")
+class NonlinearSwipe(CustomAction):
+    """
+    调用非线性滑动
+    """
+
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        swipe_params = {
+            "start_x": 0,
+            "start_y": 0,
+            "end_x": 0,
+            "end_y": 0,
+            "end_hold": False,
+            "duration": 150,
+            "after_swipe_delay": 300,
+            "steps": 5,
+        }
+
+        try:
+            if argv.custom_action_param:
+                swipe_params.update(json.loads(argv.custom_action_param))
+
+            nonlinear_swipe(
+                context=context,
+                start_x=int(swipe_params["start_x"]),
+                start_y=int(swipe_params["start_y"]),
+                end_x=int(swipe_params["end_x"]),
+                end_y=int(swipe_params["end_y"]),
+                duration=int(swipe_params["duration"]),
+                end_hold=swipe_params["end_hold"],
+                after_swipe_delay=int(swipe_params["after_swipe_delay"]),
+                steps=int(swipe_params["steps"]),
+            )
+            return CustomAction.RunResult(success=True)
+
+        except Exception as e:
+            logger.error(f"非线性滑动执行失败: {str(e)}")
+            return CustomAction.RunResult(success=False)

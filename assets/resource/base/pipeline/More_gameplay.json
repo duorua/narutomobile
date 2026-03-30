@@ -5,6 +5,8 @@
             "[JumpBack]more_gameplay_entry",
             "[JumpBack]back_main_screen"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]开始更多玩法任务[/color]"
     },
     "more_gameplay_in_duel_field": {
@@ -25,6 +27,7 @@
             "[JumpBack]weekly_win_mouthly_award",
             "[JumpBack]weekly_win_mouthly_reset_award"
         ],
+        "pre_delay": 0,
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]已在决斗场界面[/color]"
     },
@@ -37,9 +40,11 @@
         "next": [
             "[JumpBack]weekly_win_mouthly_award",
             "[JumpBack]weekly_win_mouthly_reset_award",
+            "more_gameplay_in_duel_field",
             "more_gameplay_entry"
         ],
         "green_mask": true,
+        "pre_delay": 0,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]进入决斗场[/color]"
     },
@@ -60,6 +65,8 @@
             "more_gameplay_in_select_gameplay",
             "more_gameplay_to_select_gameplay"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400
     },
     "more_gameplay_in_select_gameplay": {
@@ -77,11 +84,13 @@
             229
         ],
         "next": [
-            "more_gameplay_hundred_ninjia_gameplay",
+            "more_gameplay_hundred_ninja_gameplay",
             "more_gameplay_trace_vanish",
             "more_gameplay_orochimaru_trial",
             "[JumpBack]swipe_for_select_more_gameplay"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "swipe_for_select_more_gameplay": {
         "recognition": "OCR",
@@ -110,9 +119,10 @@
             71
         ],
         "duration": 400,
+        "pre_delay": 0,
         "post_delay": 900
     },
-    "more_gameplay_hundred_ninjia_gameplay": {
+    "more_gameplay_hundred_ninja_gameplay": {
         "recognition": "OCR",
         "expected": [
             "百忍",
@@ -127,9 +137,11 @@
         "action": "Click",
         "enabled": true,
         "next": [
-            "hundred_ninjia_match",
-            "[JumpBack]more_gameplay_hundred_ninjia_gameplay"
+            "hundred_ninja_match",
+            "[JumpBack]more_gameplay_hundred_ninja_gameplay"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 900
     },
     "more_gameplay_trace_vanish": {
@@ -150,6 +162,8 @@
             "more_gameplay_in_trace_vanish",
             "[JumpBack]more_gameplay_trace_vanish"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400
     },
     "more_gameplay_orochimaru_trial": {
@@ -169,7 +183,9 @@
         "next": [
             "more_gameplay_in_trace_vanish",
             "[JumpBack]more_gameplay_orochimaru_trial"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 200
     },
     "more_gameplay_in_trace_vanish": {
         "recognition": "TemplateMatch",
@@ -180,11 +196,17 @@
             190,
             190
         ],
+        "method": 10001,
+        "threshold": 0.95,
         "action": "Click",
         "next": [
             "more_gameplay_trace_vanish_in_match",
-            "more_gameplay_in_trace_vanish"
+            "more_gameplay_in_trace_vanish",
+            "more_gameplay_trace_vanish_confirm_fight",
+            "more_gameplay_trace_vanish_choose_ninja"
         ],
+        "pre_delay": 0,
+        "post_delay": 200,
         "timeout": 60000
     },
     "more_gameplay_go_fight": {
@@ -196,14 +218,168 @@
             190,
             190
         ],
-        "action": "Click"
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "next": [
+            "more_gameplay_trace_vanish_in_match",
+            "more_gameplay_trace_vanish_choose_ninja",
+            "more_gameplay_trace_vanish_check_fight"
+        ],
+        "pre_delay": 0,
+        "post_delay": 200
+    },
+    "more_gameplay_check_point": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "More_gameplay/mission_book.png"
+        ],
+        "roi": [
+            824,
+            604,
+            274,
+            103
+        ],
+        "action": "Click",
+        "pre_delay": 0,
+        "post_delay": 300,
+        "next": [
+            "more_gameplay_in_mission_book",
+            "more_gameplay_check_point"
+        ]
+    },
+    "more_gameplay_in_mission_book": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/point_text.png",
+        "roi": [
+            192,
+            587,
+            81,
+            56
+        ],
+        "threshold": 0.9,
+        "next": [
+            "more_gameplay_complete",
+            "more_gameplay_back_fight"
+        ],
+        "pre_delay": 100,
+        "post_delay": 0
+    },
+    "more_gameplay_complete": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/complete.png",
+        "roi": [
+            249,
+            575,
+            177,
+            79
+        ],
+        "threshold": 0.95,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "more_gameplay_award": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/award.png",
+        "roi": [
+            1002,
+            564,
+            128,
+            108
+        ],
+        "action": "Click",
+        "next": [
+            "more_gameplay_get_award_one_key",
+            "more_gameplay_award_done",
+            "more_gameplay_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
+    },
+    "more_gameplay_get_award_one_key": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/one_key_get.png",
+        "roi": [
+            414,
+            406,
+            222,
+            98
+        ],
+        "action": "Click",
+        "next": [
+            "more_gameplay_get_award_one_key",
+            "more_gameplay_award_done"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
+    },
+    "more_gameplay_award_done": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/award_done.png",
+        "roi": [
+            1024,
+            582,
+            83,
+            76
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "more_gameplay_back_fight": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/back_fight.png",
+        "roi": [
+            1140,
+            518,
+            139,
+            201
+        ],
+        "action": "Click",
+        "method": 10001,
+        "threshold": 0.95,
+        "next": [
+            "more_gameplay_check_back_fight",
+            "more_gameplay_back_fight"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
+    },
+    "more_gameplay_check_back_fight": {
+        "recognition": "TemplateMatch",
+        "template": "Weekly_win/go_to_war.png",
+        "roi": [
+            1069,
+            506,
+            190,
+            190
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "next": [
+            "more_gameplay_trace_vanish_in_match",
+            "more_gameplay_trace_vanish_confirm_fight",
+            "more_gameplay_check_back_fight"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
     },
     "more_gameplay_trace_vanish_in_match": {
         "recognition": "OCR",
         "expected": [
-            "匹配",
-            "中",
-            "0"
+            "匹配"
+        ],
+        "replace": [
+            [
+                "匹",
+                "正"
+            ]
         ],
         "roi": [
             468,
@@ -211,9 +387,13 @@
             306,
             165
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "more_gameplay_trace_vanish_confirm_fight",
-            "more_gameplay_trace_vanish_in_match"
+            "more_gameplay_trace_vanish_in_match",
+            "more_gameplay_trace_vanish_choose_ninja",
+            "more_gameplay_in_trace_vanish"
         ]
     },
     "more_gameplay_trace_vanish_confirm_fight": {
@@ -232,14 +412,15 @@
         "next": [
             "more_gameplay_trace_vanish_choose_ninja",
             "more_gameplay_trace_vanish_confirm_fight",
-            "[JumpBack]more_gameplay_go_fight"
+            "more_gameplay_in_trace_vanish"
         ],
         "timeout": 60000,
+        "pre_delay": 0,
         "post_delay": 400
     },
     "more_gameplay_trace_vanish_choose_ninja": {
         "recognition": "TemplateMatch",
-        "template": "Hundred_ninjia/select_ninjia_masked.png",
+        "template": "Hundred_ninja/select_ninja_masked.png",
         "roi": [
             82,
             406,
@@ -251,18 +432,18 @@
         "action": "Click",
         "next": [
             "more_gameplay_match_win",
-            "more_gameplay_trace_vanish_confirm_selcet_ninjia",
+            "more_gameplay_trace_vanish_confirm_selcet_ninja",
+            "more_gameplay_trace_vanish_without_confirm_selcet_ninja",
             "more_gameplay_trace_vanish_check_fight",
             "more_gameplay_trace_vanish_choose_ninja"
         ],
+        "pre_delay": 0,
+        "post_delay": 200,
         "timeout": 60000
     },
     "more_gameplay_match_win": {
-        "recognition": "OCR",
-        "expected": [
-            "确",
-            "定"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim.png",
         "roi": [
             472,
             342,
@@ -274,15 +455,13 @@
             "more_gameplay_without_match_win",
             "[JumpBack]more_gameplay_match_win"
         ],
+        "pre_delay": 0,
         "post_delay": 500,
         "focus": "[color:DeepSkyBlue]敌人退出了,你获胜[/color]"
     },
     "more_gameplay_without_match_win": {
-        "recognition": "OCR",
-        "expected": [
-            "确",
-            "定"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim.png",
         "roi": [
             472,
             342,
@@ -291,33 +470,65 @@
         ],
         "inverse": true,
         "next": [
+            "[JumpBack]more_gameplay_go_fight",
             "more_gameplay_trace_vanish_choose_ninja",
-            "more_gameplay_trace_vanish_confirm_fight",
-            "[JumpBack]more_gameplay_go_fight"
+            "more_gameplay_trace_vanish_confirm_fight"
         ],
+        "pre_delay": 0,
         "post_delay": 500,
         "timeout": 60000,
         "focus": "[color:DeepSkyBlue]回到战斗[/color]"
     },
-    "more_gameplay_trace_vanish_confirm_selcet_ninjia": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
+    "more_gameplay_trace_vanish_confirm_selcet_ninja": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim.png",
         "roi": [
             437,
             505,
             437,
             214
         ],
-        "action": "Swipe",
-        "duration": 50,
+        "action": "Click",
+        "next": [
+            "[JumpBack]more_gameplay_trace_vanish_choose_ninja",
+            "more_gameplay_trace_vanish_without_confirm_selcet_ninja",
+            "[JumpBack]more_gameplay_trace_vanish_confirm_selcet_ninja"
+        ],
+        "pre_delay": 0,
+        "post_delay": 200,
+        "focus": "[color:DeepSkyBlue]绝迹战场确定选忍者[/color]"
+    },
+    "more_gameplay_trace_vanish_without_confirm_selcet_ninja": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/background.png",
+        "roi": [
+            555,
+            646,
+            165,
+            66
+        ],
         "next": [
             "more_gameplay_trace_vanish_check_fight",
+            "[JumpBack]more_gameplay_trace_vanish_waiting_fight",
             "[JumpBack]more_gameplay_trace_vanish_choose_ninja",
-            "more_gameplay_trace_vanish_confirm_selcet_ninjia"
+            "[JumpBack]more_gameplay_go_fight",
+            "more_gameplay_trace_vanish_confirm_fight"
         ],
-        "focus": "[color:DeepSkyBlue]绝迹战场确定选忍者[/color]"
+        "timeout": 40000,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "more_gameplay_trace_vanish_waiting_fight": {
+        "recognition": "TemplateMatch",
+        "template": "More_gameplay/background.png",
+        "roi": [
+            555,
+            646,
+            165,
+            66
+        ],
+        "pre_delay": 0,
+        "post_delay": 500
     },
     "more_gameplay_trace_vanish_check_fight": {
         "recognition": "TemplateMatch",
@@ -332,18 +543,17 @@
         ],
         "action": "DoNothing",
         "next": [
-            "more_gameplay_match_win",
             "more_gameplay_trace_vanish_check_no_fight",
             "[JumpBack]more_gameplay_All_skill",
-            "more_gameplay_in_trace_vanish"
+            "more_gameplay_go_fight"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]绝迹战场战斗[/color]"
     },
     "more_gameplay_trace_vanish_check_no_fight": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim.png",
         "roi": [
             485,
             598,
@@ -353,9 +563,12 @@
         "threshold": 0.8,
         "action": "Click",
         "next": [
-            "more_gameplay_in_trace_vanish",
-            "[JumpBack]more_gameplay_trace_vanish_check_no_fight"
+            "more_gameplay_match_win",
+            "[JumpBack]more_gameplay_trace_vanish_check_no_fight",
+            "more_gameplay_go_fight"
         ],
+        "pre_delay": 0,
+        "post_delay": 200,
         "focus": "[color:DeepSkyBlue]绝迹战场战斗[/color]"
     },
     "more_gameplay_All_skill": {

@@ -3,8 +3,9 @@
         "next": [
             "rebel_ninja_only_me",
             "rebel_ninja_in_battlefield",
-            "goto_rebel_ninja_by_guide",
-            "[JumpBack]open_ninjia_guide",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 1500,
@@ -12,7 +13,7 @@
     },
     "goto_rebel_ninja_by_guide": {
         "recognition": "Custom",
-        "custom_recognition": "IsInNinjiaGuide",
+        "custom_recognition": "IsInNinjaGuide",
         "action": "Custom",
         "custom_action": "GoIntoEntryByGuide",
         "custom_action_param": {
@@ -405,9 +406,9 @@
         "post_delay": 300
     },
     "rebel_ninja_secondary_password": {
-        "recognition": "OCR",
-        "expected": [
-            "二级密码"
+        "recognition": "TemplateMatch",
+        "template": [
+            "SharedNode/secondary_password.png"
         ],
         "roi": [
             387,
@@ -552,9 +553,23 @@
         ],
         "next": [
             "rebel_ninja_high_enemy",
-            "[JumpBack]rebel_ninja_find_enemy"
+            "[JumpBack]rebel_ninja_find_enemy",
+            "rebel_ninja_not_find_enemy"
         ],
         "focus": "[color:DeepSkyBlue]准备战斗[/color]"
+    },
+    "rebel_ninja_not_find_enemy": {
+        "recognition": "OCR",
+        "expected": [
+            "迎击叛忍"
+        ],
+        "roi": [
+            538,
+            106,
+            219,
+            116
+        ],
+        "focus": "[color:tomato]找不到敌人,可能原因有识别阈值不够;目标敌人不在摇杆的右边;被组织成员遮挡[/color]"
     },
     "rebel_ninja_only_me": {
         "recognition": "TemplateMatch",
@@ -649,6 +664,7 @@
             1,
             1
         ],
+        "max_hit": 10,
         "duration": 800,
         "post_delay": 1500,
         "focus": "[color:DeepSkyBlue]寻找敌人[/color]"
@@ -665,9 +681,7 @@
             806,
             505
         ],
-        "threshold": [
-            0.9
-        ],
+        "threshold": 0.8,
         "next": [
             "rebel_ninja_confirm_enemy",
             "[JumpBack]rebel_ninja_low_enemy"
@@ -687,9 +701,7 @@
             806,
             505
         ],
-        "threshold": [
-            0.9
-        ],
+        "threshold": 0.8,
         "next": [
             "rebel_ninja_confirm_enemy",
             "[JumpBack]rebel_ninja_mid_enemy"
@@ -708,9 +720,7 @@
             806,
             505
         ],
-        "threshold": [
-            0.9
-        ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "rebel_ninja_confirm_enemy",
@@ -720,15 +730,15 @@
         "focus": "[color:DeepSkyBlue]高级敌人[/color]"
     },
     "rebel_ninja_confirm_enemy": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
+        "recognition": "TemplateMatch",
+        "template": [
+            "SharedNode/confrim.png"
         ],
         "roi": [
-            580,
-            416,
-            120,
-            69
+            516,
+            394,
+            268,
+            130
         ],
         "action": "Click",
         "next": [
@@ -739,15 +749,15 @@
         "focus": "[color:DeepSkyBlue]gogogo,出发喽[/color]"
     },
     "rebel_ninja_without_confirm_enemy": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
+        "recognition": "TemplateMatch",
+        "template": [
+            "SharedNode/confrim.png"
         ],
         "roi": [
-            580,
-            416,
-            120,
-            69
+            516,
+            394,
+            268,
+            130
         ],
         "inverse": true,
         "next": [

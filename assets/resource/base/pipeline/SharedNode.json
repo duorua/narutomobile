@@ -45,7 +45,10 @@
       "[JumpBack]naruto_club_x",
       "[JumpBack]christmas_stocking",
       "[JumpBack]level_up",
-      "[JumpBack]shut_social_media",
+      "[JumpBack]shut_social_media"
+    ],
+    "timeout": 5000,
+    "on_error": [
       "retry_failed"
     ],
     "pre_delay": 0,
@@ -95,6 +98,19 @@
   "check_has_x": {
     "recognition": "Or",
     "any_of": [
+      {
+        "sub_name": "big_x",
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/big_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+          610,
+          0,
+          670,
+          229
+        ]
+      },
       {
         "sub_name": "announcement_x",
         "recognition": "TemplateMatch",
@@ -193,7 +209,8 @@
     "post_wait_freezes": 300,
     "next": [
       "[JumpBack]goto_daily_award",
-      "already_in_daily_award"
+      "already_in_daily_award",
+      "[JumpBack]close_chat"
     ]
   },
   "goto_daily_award": {
@@ -522,22 +539,49 @@
       "type": "Click"
     }
   },
-  "open_ninjia_guide": {
-    "recognition": "TemplateMatch",
+  "open_ninja_guide": {
+    "recognition": "Or",
+    "any_of": [
+      {
+        "sub_name": "图像",
+        "recognition": "TemplateMatch",
+        "template": [
+          "SharedNode/guide.png",
+          "SharedNode/back_to_konoha.png",
+          "SharedNode/ninja_tools.png",
+          "SharedNode/rich_room_ninja_guide.png"
+        ],
+        "roi": [
+          934,
+          597,
+          178,
+          123
+        ],
+        "threshold": 0.8
+      },
+      {
+        "sub_name": "文字",
+        "recognition": "OCR",
+        "expected": [
+          "即将",
+          "开放"
+        ],
+        "roi": [
+          964,
+          674,
+          116,
+          45
+        ]
+      }
+    ],
     "$doc": "这里的图标在等级较低的账号可能显示为忍具,但由于有roi所以不会误判",
-    "template": [
-      "SharedNode/guide.png",
-      "SharedNode/back_to_konoha.png",
-      "SharedNode/ninjia_tools.png",
-      "SharedNode/rich_room_ninjia_guide.png"
-    ],
-    "roi": [
-      934,
-      597,
-      178,
-      123
-    ],
     "action": "Click",
+    "target": [
+      1001,
+      651,
+      34,
+      29
+    ],
     "pre_delay": 0,
     "post_delay": 0,
     "post_wait_freezes": 400
@@ -559,7 +603,7 @@
     "post_wait_freezes": 200,
     "focus": "[color:darkgray]游戏等级提升[/color]"
   },
-  "ninjia_guide_to_funtion_retry": {
+  "ninja_guide_to_funtion_retry": {
     "recognition": "OCR",
     "expected": "即刻",
     "roi": [
@@ -622,5 +666,440 @@
     ],
     "focus": "[color:DeepSkyBlue]任务已完成[/color]",
     "next": "back_main_screen_and_stop"
+  },
+  "ninja_guide_in_ninja_guide": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/in_ninja_guide.png",
+    "roi": [
+      988,
+      81,
+      180,
+      78
+    ],
+    "next": [
+      "ninja_guide_find_funtion_entry",
+      "up_swipe_for_ninja_guide_find_funtion_entry_end",
+      "[JumpBack]up_swipe_for_ninja_guide_find_funtion_entry"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "post_wait_freezes": 300,
+    "focus": "[color:DeepSkyBlue]进入忍界指引[/color]"
+  },
+  "up_swipe_for_ninja_guide_find_funtion_entry_end": {
+    "recognition": "OCR",
+    "expected": [
+      "装备",
+      "精英"
+    ],
+    "roi": [
+      0,
+      66,
+      219,
+      627
+    ],
+    "next": [
+      "ninja_guide_find_funtion_entry",
+      "down_swipe_for_ninja_guide_find_funtion_entry_end",
+      "[JumpBack]down_swipe_for_ninja_guide_find_funtion_entry"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "down_swipe_for_ninja_guide_find_funtion_entry_end": {
+    "recognition": "OCR",
+    "expected": [
+      "忍传",
+      "羁绊"
+    ],
+    "replace": [
+      [
+        "忍",
+        "双"
+      ],
+      [
+        "忍",
+        "丑"
+      ]
+    ],
+    "roi": [
+      0,
+      66,
+      219,
+      627
+    ],
+    "next": [
+      "back_main_screen_and_stop"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "up_swipe_for_ninja_guide_find_funtion_entry": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/in_ninja_guide.png",
+    "roi": [
+      988,
+      81,
+      180,
+      78
+    ],
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "NonlinearSwipe",
+        "custom_action_param": {
+          "start_x": 100,
+          "start_y": 150,
+          "end_x": 100,
+          "end_y": 450,
+          "after_swipe_delay": 100
+        }
+      }
+    },
+    "max_hit": 15
+  },
+  "down_swipe_for_ninja_guide_find_funtion_entry": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/in_ninja_guide.png",
+    "roi": [
+      988,
+      81,
+      180,
+      78
+    ],
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "NonlinearSwipe",
+        "custom_action_param": {
+          "start_x": 100,
+          "start_y": 450,
+          "end_x": 100,
+          "end_y": 150,
+          "after_swipe_delay": 100
+        }
+      }
+    },
+    "max_hit": 15
+  },
+  "ninja_guide_find_funtion_entry": {
+    "recognition": "OCR",
+    "expected": [
+      "装备"
+    ],
+    "roi": [
+      0,
+      66,
+      219,
+      627
+    ],
+    "action": "Click",
+    "next": [
+      "ninja_guide_in_funtion_entry",
+      "ninja_guide_find_funtion_entry"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]找到功能入口[/color]"
+  },
+  "ninja_guide_in_funtion_entry": {
+    "recognition": "OCR",
+    "expected": [
+      "装备"
+    ],
+    "roi": [
+      514,
+      85,
+      212,
+      72
+    ],
+    "next": [
+      "ninja_guide_to_funtion_entry",
+      "ninja_guide_to_funtion_entry_not_open"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]选中功能入口[/color]"
+  },
+  "ninja_guide_to_funtion_entry": {
+    "recognition": "OCR",
+    "expected": [
+      "即刻",
+      "前往"
+    ],
+    "roi": [
+      852,
+      587,
+      138,
+      51
+    ],
+    "action": "Click",
+    "pre_delay": 0,
+    "post_delay": 300
+  },
+  "ninja_guide_to_funtion_entry_not_open": {
+    "recognition": "OCR",
+    "expected": [
+      "冒险"
+    ],
+    "roi": [
+      852,
+      587,
+      138,
+      51
+    ],
+    "next": [
+      "back_main_screen_and_stop"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]功能还没解锁[/color]"
+  },
+  "ninja_guide_returning_player": {
+    "recognition": "OCR",
+    "expected": [
+      "回流"
+    ],
+    "roi": [
+      0,
+      0,
+      195,
+      285
+    ],
+    "next": [
+      "ninja_guide_returning_player_to_ninja_guide",
+      "ninja_guide_returning_player_in_ninja_guide"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]进入回归版忍界指引[/color]"
+  },
+  "ninja_guide_returning_player_to_ninja_guide": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/ninja_guide_returning_player.png",
+    "roi": [
+      0,
+      577,
+      205,
+      142
+    ],
+    "action": "Click",
+    "next": [
+      "ninja_guide_returning_player_in_ninja_guide",
+      "ninja_guide_returning_player_to_ninja_guide"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "post_wait_freezes": 300
+  },
+  "ninja_guide_returning_player_in_ninja_guide": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
+    "roi": [
+      1057,
+      108,
+      222,
+      69
+    ],
+    "next": [
+      "ninja_guide_returning_player_find_funtion_entry",
+      "up_swipe_for_ninja_guide_returning_player_find_funtion_entry_end",
+      "[JumpBack]up_swipe_for_ninja_guide_returning_player_find_funtion_entry"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "up_swipe_for_ninja_guide_returning_player_find_funtion_entry_end": {
+    "recognition": "OCR",
+    "expected": [
+      "装备",
+      "精英"
+    ],
+    "roi": [
+      209,
+      88,
+      200,
+      580
+    ],
+    "next": [
+      "ninja_guide_returning_player_find_funtion_entry",
+      "down_swipe_for_ninja_guide_returning_player_find_funtion_entry_end",
+      "[JumpBack]down_swipe_for_ninja_guide_returning_player_find_funtion_entry"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "down_swipe_for_ninja_guide_returning_player_find_funtion_entry_end": {
+    "recognition": "OCR",
+    "expected": [
+      "忍传",
+      "羁绊"
+    ],
+    "replace": [
+      [
+        "忍",
+        "双"
+      ],
+      [
+        "忍",
+        "丑"
+      ]
+    ],
+    "roi": [
+      209,
+      88,
+      200,
+      580
+    ],
+    "next": [
+      "back_main_screen_and_stop"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0
+  },
+  "up_swipe_for_ninja_guide_returning_player_find_funtion_entry": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
+    "roi": [
+      1057,
+      108,
+      222,
+      69
+    ],
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "NonlinearSwipe",
+        "custom_action_param": {
+          "start_x": 300,
+          "start_y": 150,
+          "end_x": 300,
+          "end_y": 400,
+          "after_swipe_delay": 100
+        }
+      }
+    },
+    "max_hit": 15
+  },
+  "down_swipe_for_ninja_guide_returning_player_find_funtion_entry": {
+    "recognition": "TemplateMatch",
+    "template": "SharedNode/ninja_guide_returning_player_in_ninja_guide.png",
+    "roi": [
+      1057,
+      108,
+      222,
+      69
+    ],
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "NonlinearSwipe",
+        "custom_action_param": {
+          "start_x": 300,
+          "start_y": 400,
+          "end_x": 300,
+          "end_y": 150,
+          "after_swipe_delay": 100
+        }
+      }
+    }
+  },
+  "ninja_guide_returning_player_find_funtion_entry": {
+    "recognition": "OCR",
+    "expected": [
+      "装备"
+    ],
+    "roi": [
+      209,
+      88,
+      200,
+      580
+    ],
+    "action": "Click",
+    "next": [
+      "ninja_guide_returning_player_in_funtion_entry",
+      "ninja_guide_returning_player_find_funtion_entry"
+    ],
+    "pre_delay": 0,
+    "post_wait_freezes": 200,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]找到功能入口[/color]"
+  },
+  "ninja_guide_returning_player_in_funtion_entry": {
+    "recognition": "OCR",
+    "expected": [
+      "装备"
+    ],
+    "roi": [
+      651,
+      110,
+      187,
+      68
+    ],
+    "next": [
+      "ninja_guide_returning_player_to_funtion_entry",
+      "ninja_guide_returning_player_to_funtion_entry_not_open"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]选中功能入口[/color]"
+  },
+  "ninja_guide_returning_player_to_funtion_entry": {
+    "recognition": "OCR",
+    "expected": [
+      "即刻",
+      "前往"
+    ],
+    "roi": [
+      916,
+      565,
+      130,
+      63
+    ],
+    "action": "Click",
+    "pre_delay": 0,
+    "post_delay": 300
+  },
+  "ninja_guide_returning_player_to_funtion_entry_not_open": {
+    "recognition": "OCR",
+    "expected": [
+      "冒险"
+    ],
+    "roi": [
+      916,
+      565,
+      130,
+      63
+    ],
+    "next": [
+      "back_main_screen_and_stop"
+    ],
+    "pre_delay": 0,
+    "post_delay": 0,
+    "focus": "[color:DeepSkyBlue]功能还没解锁[/color]"
+  },
+  "shell_volume_up": {
+    "action": "Shell",
+    "cmd": "input keyevent 24"
+  },
+  "shell_volume_down": {
+    "action": "Shell",
+    "cmd": "input keyevent 25"
+  },
+  "shell_mute_and_unmute": {
+    "action": "Shell",
+    "cmd": "input keyevent 164"
+  },
+  "shell_back": {
+    "action": "Shell",
+    "cmd": "input keyevent 4"
+  },
+  "shell_home": {
+    "action": "Shell",
+    "cmd": "input keyevent 3"
+  },
+  "shell_enter": {
+    "action": "Shell",
+    "cmd": "input keyevent 66"
   }
 }

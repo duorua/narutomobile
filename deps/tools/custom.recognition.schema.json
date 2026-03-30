@@ -8,7 +8,7 @@
                 "FindPlantableFlower",
                 "FlipCard",
                 "find_bonds_without_enough_token",
-                "IsInNinjiaGuide",
+                "IsInNinjaGuide",
                 "IsCounterOverflow",
                 "FindAccessoryFlipTicket",
                 "FindGearFlipTicket",
@@ -30,7 +30,7 @@
                     "$ref": "#/$defs/FindBondsWithoutEnoughTokenParam"
                 },
                 {
-                    "$ref": "#/$defs/IsInNinjiaGuideParam"
+                    "$ref": "#/$defs/IsInNinjaGuideParam"
                 },
                 {
                     "$ref": "#/$defs/IsCounterOverflowParam"
@@ -78,10 +78,10 @@
             "markdownDescription": "检查token数量\n\n**功能说明：**\n- 读取固定ROI区域的token数量\n- token < 5: 返回识别通过（非空box）\n- token ≥ 5 或识别失败: 返回识别未通过（空box）\n\n**ROI配置：**\n- 固定区域：[846, 639, 111, 80]\n\n**返回值：**\n- `box`: token<5时返回 (0,0,1,1)，否则返回 None\n- `detail.token_count`: 识别到的token数量\n- `detail.passed`: 是否通过检查",
             "properties": {}
         },
-        "IsInNinjiaGuideParam": {
+        "IsInNinjaGuideParam": {
             "type": "object",
             "description": "判断是否在忍者指南界面",
-            "markdownDescription": "判断是否在忍者指南界面\n\n**功能说明：**\n- 调用 `in_ninjia_guide` 识别器进行判断\n- 如果识别成功，返回识别区域\n\n**返回值：**\n- `box`: 识别到的区域，识别失败时返回None\n- `detail`: 空对象",
+            "markdownDescription": "判断是否在忍者指南界面\n\n**功能说明：**\n- 调用 `in_ninja_guide` 识别器进行判断\n- 如果识别成功，返回识别区域\n\n**返回值：**\n- `box`: 识别到的区域，识别失败时返回None\n- `detail`: 空对象",
             "properties": {}
         },
         "IsCounterOverflowParam": {

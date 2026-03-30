@@ -193,16 +193,15 @@
         "focus": "[color:DeepSkyBlue]生存挑战未重置[/color]"
     },
     "confirm_survival_challenge_reset": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "Practice_place/confirm_survival_challenge_reset.png",
         "roi": [
             535,
             415,
             205,
             74
         ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "survival_challenge_confirm_tp"
@@ -388,7 +387,7 @@
     "wait_for_survival_challenge_sweep_complete": {
         "recognition": "TemplateMatch",
         "template": [
-            "Practice_place/survival_no_ninjia.png",
+            "Practice_place/survival_no_ninja.png",
             "Practice_place/final_reward.png"
         ],
         "next": [

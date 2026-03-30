@@ -5,6 +5,7 @@
             "easy_helper_done",
             "[JumpBack]back_main_screen"
         ],
+        "timeout": 3000,
         "focus": "[color:DeepSkyBlue]进入轻松助手任务[/color]"
     },
     "easy_helper_done": {

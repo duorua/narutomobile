@@ -1,0 +1,1448 @@
+{
+    "spring_festival_post_office": {
+        "next": [
+            "spring_festival_post_office_in_event",
+            "spring_festival_post_office_in_post_office",
+            "spring_festival_post_office_event_enter",
+            "spring_festival_post_office_event_done",
+            "[JumpBack]back_main_screen"
+        ],
+        "timeout": 3000,
+        "focus": "[color:DeepSkyBlue]进入新春邮局任务[/color]"
+    },
+    "spring_festival_post_office_event_done": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/spring_festival_done.png",
+        "roi": [
+            1066,
+            1,
+            145,
+            533
+        ],
+        "green_mask": true,
+        "threshold": 0.9,
+        "action": "StopTask",
+        "focus": "[color:DeepSkyBlue]新春邮局已完成[/color]"
+    },
+    "spring_festival_post_office_event_enter": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/spring_festival.png",
+        "roi": [
+            1066,
+            1,
+            145,
+            533
+        ],
+        "green_mask": true,
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_in_event",
+            "spring_festival_post_office_event_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 400
+    },
+    "spring_festival_post_office_in_event": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/event_main_screen.png",
+        "roi": [
+            0,
+            0,
+            118,
+            91
+        ],
+        "green_mask": true,
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_enter",
+            "spring_festival_post_office_done"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]进入贺新春主界面[/color]"
+    },
+    "spring_festival_post_office_done": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/spring_festival_post_office_done.png",
+        "roi": [
+            832,
+            110,
+            83,
+            148
+        ],
+        "green_mask": true,
+        "threshold": 0.9,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": "[color:DeepSkyBlue]新春邮局已完成[/color]"
+    },
+    "spring_festival_post_office_enter": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/spring_festival_post_office.png",
+        "roi": [
+            832,
+            110,
+            83,
+            148
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_in_post_office",
+            "spring_festival_post_office_enter"
+        ],
+        "pre_delay": 0,
+        "post_delay": 400
+    },
+    "spring_festival_post_office_in_post_office": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/post_office.png",
+            "Spring_festival_post_office/post_office_night.png"
+        ],
+        "roi": [
+            567,
+            80,
+            219,
+            187
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_endless_mode",
+            "spring_festival_post_office_to_breakthrough",
+            "spring_festival_post_office_breakthrough_done"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_breakthrough": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/breakthrough.png",
+        "roi": [
+            1025,
+            538,
+            187,
+            165
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_in_level_select",
+            "spring_festival_post_office_to_breakthrough"
+        ],
+        "pre_wait_freezes": 400,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_breakthrough_done": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/breakthrough_done.png",
+        "roi": [
+            1025,
+            538,
+            187,
+            165
+        ],
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_in_level_select": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/level_select.png",
+        "roi": [
+            0,
+            564,
+            177,
+            155
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_new_level",
+            "spring_festival_post_office_without_new_level"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_new_level": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/new_level.png",
+        "roi": [
+            79,
+            211,
+            1125,
+            444
+        ],
+        "threshold": 0.95,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_in_new_level",
+            "spring_festival_post_office_to_new_level"
+        ],
+        "pre_delay": 0,
+        "post_delay": 400
+    },
+    "spring_festival_post_office_in_new_level": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/fight.png",
+        "roi": [
+            727,
+            0,
+            276,
+            111
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 80
+    },
+    "spring_festival_post_office_red_post": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/red_Orochimaru.png",
+            "Spring_festival_post_office/red_Hatake_Kakashi.png",
+            "Spring_festival_post_office/red_Hyuga_Hinata.png",
+            "Spring_festival_post_office/red_Nara_Shikamaru.png"
+        ],
+        "roi": [
+            479,
+            105,
+            301,
+            266
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "target": [
+            61,
+            597,
+            64,
+            59
+        ],
+        "next": [
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_end",
+            "spring_festival_post_office_endless_mode_end",
+            "spring_festival_post_office_in_level_select",
+            "spring_festival_post_office_endless_mode_back_in_post_office"
+        ],
+        "pre_delay": 0,
+        "post_delay": 245
+    },
+    "spring_festival_post_office_blue_post": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/blue_Namikaze_Minato.png",
+            "Spring_festival_post_office/blue_Uzumaki_Kushina.png",
+            "Spring_festival_post_office/blue_Uzumaki_Naruto.png"
+        ],
+        "roi": [
+            479,
+            105,
+            301,
+            266
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "target": [
+            1148,
+            594,
+            71,
+            64
+        ],
+        "next": [
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_end",
+            "spring_festival_post_office_endless_mode_end",
+            "spring_festival_post_office_in_level_select",
+            "spring_festival_post_office_endless_mode_back_in_post_office"
+        ],
+        "pre_delay": 0,
+        "post_delay": 245
+    },
+    "spring_festival_post_office_yellow_post": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/yellow_Uchiha_Itachi.png",
+            "Spring_festival_post_office/yellow_Uchiha_Sasuke.png",
+            "Spring_festival_post_office/yellow_Akimichi_Chōji.png"
+        ],
+        "roi": [
+            479,
+            105,
+            301,
+            266
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "target": [
+            269,
+            614,
+            51,
+            46
+        ],
+        "next": [
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_end",
+            "spring_festival_post_office_endless_mode_end",
+            "spring_festival_post_office_in_level_select",
+            "spring_festival_post_office_endless_mode_back_in_post_office"
+        ],
+        "pre_delay": 0,
+        "post_delay": 245
+    },
+    "spring_festival_post_office_green_post": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/green_Konan.png",
+            "Spring_festival_post_office/green_Haruno_Sakura.png",
+            "Spring_festival_post_office/green_Yakushi_Kabuto.png",
+            "Spring_festival_post_office/green_Yamanaka_Ino.png"
+        ],
+        "roi": [
+            479,
+            105,
+            301,
+            266
+        ],
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "target": [
+            953,
+            614,
+            59,
+            49
+        ],
+        "next": [
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_end",
+            "spring_festival_post_office_endless_mode_end",
+            "spring_festival_post_office_in_level_select",
+            "spring_festival_post_office_endless_mode_back_in_post_office"
+        ],
+        "pre_delay": 0,
+        "post_delay": 245
+    },
+    "spring_festival_post_office_red_mail_box": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/red_box.png",
+        "roi": [
+            0,
+            579,
+            422,
+            140
+        ],
+        "threshold": 0.97,
+        "order_by": "Score",
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 80
+    },
+    "spring_festival_post_office_blue_mail_box": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/blue_box.png",
+        "roi": [
+            874,
+            569,
+            405,
+            150
+        ],
+        "threshold": 0.97,
+        "order_by": "Score",
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 80
+    },
+    "spring_festival_post_office_yellow_mail_box": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/yellow_box.png",
+        "roi": [
+            0,
+            579,
+            422,
+            140
+        ],
+        "threshold": 0.97,
+        "order_by": "Score",
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 80
+    },
+    "spring_festival_post_office_green_mail_box": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/green_box.png",
+        "roi": [
+            874,
+            569,
+            405,
+            150
+        ],
+        "threshold": 0.97,
+        "order_by": "Score",
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 80
+    },
+    "spring_festival_post_office_end": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/quit.png",
+        "roi": [
+            585,
+            498,
+            148,
+            111
+        ],
+        "threshold": 0.5,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_in_level_select",
+            "spring_festival_post_office_back_in_post_office"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
+    },
+    "spring_festival_post_office_without_new_level": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/new_level.png",
+        "roi": [
+            79,
+            211,
+            1125,
+            444
+        ],
+        "threshold": 0.95,
+        "inverse": true,
+        "next": [
+            "spring_festival_post_office_to_new_level",
+            "spring_festival_post_office_back_to_post_office"
+        ],
+        "timeout": 3000,
+        "on_error": "back_main_screen_and_stop",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_endless_mode": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/endless.png",
+        "roi": [
+            1041,
+            532,
+            238,
+            187
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_blue_post",
+            "spring_festival_post_office_red_post",
+            "spring_festival_post_office_green_post",
+            "spring_festival_post_office_yellow_post",
+            "spring_festival_post_office_endless_mode_end",
+            "spring_festival_post_office_endless_mode_back_in_post_office"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_endless_mode_back_in_post_office": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/post_office.png",
+            "Spring_festival_post_office/post_office_night.png"
+        ],
+        "roi": [
+            567,
+            80,
+            219,
+            187
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_gacha",
+            "spring_festival_post_office_gacha_done"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_endless_mode_end": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/quit.png",
+        "roi": [
+            713,
+            503,
+            123,
+            93
+        ],
+        "threshold": 0.5,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_endless_mode_back_in_post_office",
+            "spring_festival_post_office_endless_mode_end"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_back_to_post_office": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+            610,
+            0,
+            670,
+            229
+        ],
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_back_in_post_office",
+            "spring_festival_post_office_back_to_post_office"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_back_in_post_office": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/post_office.png",
+            "Spring_festival_post_office/post_office_night.png"
+        ],
+        "roi": [
+            567,
+            80,
+            219,
+            187
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_endless_mode"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_gacha": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/card_album.png",
+        "roi": [
+            800,
+            580,
+            118,
+            118
+        ],
+        "green_mask": true,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_card_pack",
+            "spring_festival_post_office_gacha"
+        ],
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]新春邮局抽卡[/color]"
+    },
+    "spring_festival_post_office_gacha_done": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/card_album_done.png",
+        "roi": [
+            800,
+            580,
+            118,
+            118
+        ],
+        "green_mask": true,
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_back_in_post_office_1",
+            "spring_festival_post_office_back_to_post_office_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:DeepSkyBlue]新春邮局抽卡已完成[/color]"
+    },
+    "spring_festival_post_office_card_pack": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/card_pack.png",
+        "roi": [
+            1121,
+            602,
+            158,
+            74
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_one_key_gacha",
+            "spring_festival_post_office_card_pack"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_one_key_gacha": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/one_key.png",
+        "roi": [
+            528,
+            582,
+            219,
+            88
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_confirm_one_key_gacha",
+            "spring_festival_post_office_one_key_gacha"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_confirm_one_key_gacha": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim.png",
+        "roi": [
+            402,
+            397,
+            234,
+            116
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_gacha_congratulation",
+            "spring_festival_post_office_confirm_one_key_gacha"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_gacha_congratulation": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/congratulation.png",
+        "roi": [
+            412,
+            0,
+            434,
+            174
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_gacha_congratulation",
+            "spring_festival_post_office_back_gacha"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_back_gacha": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/one_key.png",
+        "roi": [
+            528,
+            582,
+            219,
+            88
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "target": [
+            1200,
+            16,
+            51,
+            37
+        ],
+        "next": [
+            "spring_festival_post_office_to_cover",
+            "spring_festival_post_office_back_gacha"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_cover": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/cover.png",
+        "roi": [
+            997,
+            611,
+            76,
+            56
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_in_cover",
+            "spring_festival_post_office_to_cover"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_cover": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "next": [
+            "spring_festival_post_office_to_set_1_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_set_1_1": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            249,
+            239,
+            61,
+            54
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_1_1",
+            "spring_festival_post_office_to_set_1_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_1_1": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Uzumaki_Naruto.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_1_2",
+            "spring_festival_post_office_in_set_1_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_1_2": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            608,
+            241,
+            61,
+            51
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_1_2",
+            "spring_festival_post_office_to_set_1_2"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_1_2": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Uzumaki_Kushina.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_1_3",
+            "spring_festival_post_office_in_set_1_2"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_1_3": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            961,
+            236,
+            71,
+            59
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_1_3",
+            "spring_festival_post_office_to_set_1_3"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_1_3": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Namikaze_Minato.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_2_2",
+            "spring_festival_post_office_in_set_1_3"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_2_2": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            608,
+            241,
+            61,
+            51
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_2_2",
+            "spring_festival_post_office_to_set_2_2"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_2_2": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Uchiha_Sasuke.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_2_3",
+            "spring_festival_post_office_in_set_2_2"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_2_3": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            961,
+            236,
+            71,
+            59
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_2_3",
+            "spring_festival_post_office_to_set_2_3"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_2_3": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Haruno_Sakura.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_3_1",
+            "spring_festival_post_office_in_set_2_3"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_3_1": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            249,
+            239,
+            61,
+            54
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_3_1",
+            "spring_festival_post_office_to_set_3_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_3_1": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Akimichi_Chōji.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_3_2",
+            "spring_festival_post_office_in_set_3_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_3_2": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            608,
+            241,
+            61,
+            51
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_3_2",
+            "spring_festival_post_office_to_set_3_2"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_3_2": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Nara_Shikamaru.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_set_3_3",
+            "spring_festival_post_office_in_set_3_2"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_to_set_3_3": {
+        "recognition": "OCR",
+        "expected": [
+            "点击卡片",
+            "进行展示"
+        ],
+        "roi": [
+            343,
+            656,
+            192,
+            41
+        ],
+        "action": "Click",
+        "target": [
+            961,
+            236,
+            71,
+            59
+        ],
+        "next": [
+            "spring_festival_post_office_in_set_3_3",
+            "spring_festival_post_office_to_set_3_3"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_in_set_3_3": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/small_Yamanaka_Ino.png",
+        "roi": [
+            83,
+            147,
+            1116,
+            501
+        ],
+        "order_by": "Score",
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_back_to_card_pack",
+            "spring_festival_post_office_in_set_3_3"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_back_to_card_pack": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+            610,
+            0,
+            670,
+            229
+        ],
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_back_in_card_pack",
+            "spring_festival_post_office_back_to_card_pack"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_back_in_card_pack": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/card_pack.png",
+        "roi": [
+            1121,
+            602,
+            158,
+            74
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_back_to_post_office_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_back_to_post_office_1": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+            610,
+            0,
+            670,
+            229
+        ],
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_back_in_post_office_1",
+            "spring_festival_post_office_back_to_post_office_1"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_back_in_post_office_1": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Spring_festival_post_office/post_office.png",
+            "Spring_festival_post_office/post_office_night.png"
+        ],
+        "roi": [
+            567,
+            80,
+            219,
+            187
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_to_award",
+            "spring_festival_post_office_award_done"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_award": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/award.png",
+        "roi": [
+            935,
+            592,
+            91,
+            103
+        ],
+        "threshold": 0.9,
+        "green_mask": true,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_in_card_award",
+            "spring_festival_post_office_to_card_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_award_done": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/award_done.png",
+        "roi": [
+            935,
+            592,
+            91,
+            103
+        ],
+        "threshold": 0.9,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_card_award": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/card_award.png",
+        "roi": [
+            402,
+            73,
+            69,
+            375
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_in_card_award",
+            "spring_festival_post_office_to_card_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 200
+    },
+    "spring_festival_post_office_in_card_award": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/card_award_select.png",
+        "roi": [
+            402,
+            73,
+            69,
+            375
+        ],
+        "action": "Click",
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_get_award",
+            "spring_festival_post_office_without_get_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_in_award": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/award_coin.png",
+        "roi": [
+            459,
+            120,
+            128,
+            483
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_get_award",
+            "spring_festival_post_office_without_get_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_get_award": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/get.png",
+        "roi": [
+            713,
+            127,
+            143,
+            464
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_get_award_one_key",
+            "spring_festival_post_office_get_award",
+            "spring_festival_post_office_without_get_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_get_award_one_key": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/one_key_get.png",
+        "roi": [
+            404,
+            397,
+            237,
+            113
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_without_get_award",
+            "spring_festival_post_office_get_award_one_key"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_without_get_award": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/get.png",
+        "roi": [
+            713,
+            127,
+            143,
+            464
+        ],
+        "threshold": 0.9,
+        "inverse": true,
+        "next": [
+            "spring_festival_post_office_to_cover_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_to_cover_award": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/cover_award.png",
+        "roi": [
+            408,
+            214,
+            56,
+            106
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_to_cover_award",
+            "spring_festival_post_office_in_cover_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
+    },
+    "spring_festival_post_office_in_cover_award": {
+        "recognition": "TemplateMatch",
+        "template": "Spring_festival_post_office/cover_award_select.png",
+        "roi": [
+            395,
+            184,
+            81,
+            162
+        ],
+        "threshold": 0.9,
+        "next": [
+            "spring_festival_post_office_get_cover_award",
+            "spring_festival_post_office_without_get_cover_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "spring_festival_post_office_get_cover_award": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/get.png",
+        "roi": [
+            713,
+            127,
+            143,
+            464
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_get_cover_award_one_key",
+            "spring_festival_post_office_get_cover_award",
+            "spring_festival_post_office_without_get_cover_award"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_get_cover_award_one_key": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/one_key_get.png",
+        "roi": [
+            404,
+            397,
+            237,
+            113
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "next": [
+            "spring_festival_post_office_without_get_cover_award",
+            "spring_festival_post_office_get_cover_award_one_key"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 400
+    },
+    "spring_festival_post_office_without_get_cover_award": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/get.png",
+        "roi": [
+            713,
+            127,
+            143,
+            464
+        ],
+        "threshold": 0.9,
+        "inverse": true,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
+    }
+}

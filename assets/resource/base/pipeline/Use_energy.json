@@ -1,14 +1,14 @@
 {
     "use_energy": {
         "next": [
-            "use_energy_by_ninjia_piece",
+            "use_energy_by_ninja_piece",
             "[JumpBack]back_main_screen"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入使用体力任务[/color]"
     },
-    "use_energy_by_ninjia_piece": {
+    "use_energy_by_ninja_piece": {
         "recognition": "TemplateMatch",
         "template": [
             "Use_energy/adventure_cloud.png"
@@ -30,7 +30,7 @@
         "post_delay": 200,
         "next": [
             "elite_entry",
-            "[JumpBack]use_energy_by_ninjia_piece"
+            "[JumpBack]use_energy_by_ninja_piece"
         ],
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]刷忍者碎片[/color]"
@@ -46,7 +46,8 @@
         ],
         "action": "Click",
         "next": [
-            "use_energy_ez_sweep_entry"
+            "use_energy_ez_sweep_entry",
+            "elite_entry"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -88,7 +89,9 @@
             "use_energy_not_enough_sign",
             "use_energy_keep_sweep",
             "use_energy_finish",
-            "[JumpBack]use_energy_ez_sweep",
+            "[JumpBack]use_energy_ez_sweep"
+        ],
+        "on_error": [
             "retry_failed"
         ],
         "max_hit": 5,

@@ -123,14 +123,14 @@
         ],
         "action": "Click",
         "next": [
+            "team_dash_not_in_group",
             "team_dash_my_help_undone",
             "team_dash_my_help_done",
-            "team_dash_not_in_group",
             "team_dash_group_help_undone"
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 600,
+        "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]进入组织助战[/color]"
     },
     "team_dash_not_in_group": {
@@ -241,14 +241,14 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "team_dash_invite_ninjia",
+            "team_dash_invite_ninja",
             "[JumpBack]can_not_invite",
             "dash_or_exit",
             "retry_failed"
         ],
         "focus": "[color:DeepSkyBlue]进入助战邀请界面[/color]"
     },
-    "team_dash_invite_ninjia": {
+    "team_dash_invite_ninja": {
         "recognition": "TemplateMatch",
         "template": "Team_dash/team_dash_invite.png",
         "roi": [
@@ -307,7 +307,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "next": "close_team_desh",
+        "next": "close_team_dash",
         "focus": "[color:darkgray]达到今日收益上限[/color]"
     },
     "team_dash_auto_fight": {
@@ -373,7 +373,9 @@
         "post_delay": 0,
         "next": [
             "team_dash_loading",
-            "check_in_team_dash_sweep"
+            "check_in_team_dash_sweep",
+            "dash_or_exit",
+            "team_dash_keep_fight"
         ],
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]点击继续战斗[/color]"
@@ -466,7 +468,7 @@
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]超影扫荡[/color]"
     },
-    "close_team_desh": {
+    "close_team_dash": {
         "recognition": "TemplateMatch",
         "template": "Team_dash/x.png",
         "roi": [
@@ -478,8 +480,9 @@
         "method": 10001,
         "action": "Click",
         "next": [
-            "close_team_desh",
-            "close_team_desh_out_team_sign"
+            "close_team_dash",
+            "close_team_dash_out_team_sign",
+            "check_main_screen_and_stop"
         ],
         "timeout": 2000,
         "on_error": [
@@ -488,7 +491,7 @@
         "post_delay": 1000,
         "focus": "[color:DeepSkyBlue]关闭小队突袭[/color]"
     },
-    "close_team_desh_out_team_sign": {
+    "close_team_dash_out_team_sign": {
         "recognition": "OCR",
         "expected": [
             "确定"
@@ -501,15 +504,15 @@
         ],
         "action": "Click",
         "next": [
-            "close_team_desh_without_out_team_sign",
-            "close_team_desh_out_team_sign"
+            "close_team_dash_without_out_team_sign",
+            "close_team_dash_out_team_sign"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]确认退队[/color]"
     },
-    "close_team_desh_without_out_team_sign": {
+    "close_team_dash_without_out_team_sign": {
         "recognition": "OCR",
         "expected": [
             "确定"

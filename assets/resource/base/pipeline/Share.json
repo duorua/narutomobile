@@ -89,8 +89,8 @@
         "action": "Click",
         "next": [
             "try_share",
-            "[JumpBack]share_close_weekly_ninjia_title_next_step",
-            "[JumpBack]share_close_weekly_ninjia_title",
+            "[JumpBack]share_close_weekly_ninja_title_next_step",
+            "[JumpBack]share_close_weekly_ninja_title",
             "[JumpBack]share_ac_entry_undone",
             "[JumpBack]share_entry"
         ],
@@ -152,8 +152,8 @@
         "next": [
             "try_share_to_wechat",
             "try_share_to_qq",
-            "[JumpBack]share_close_weekly_ninjia_title_next_step",
-            "[JumpBack]share_close_weekly_ninjia_title",
+            "[JumpBack]share_close_weekly_ninja_title_next_step",
+            "[JumpBack]share_close_weekly_ninja_title",
             "try_share"
         ],
         "pre_wait_freezes": 200,
@@ -210,6 +210,19 @@
             "back_main_screen_and_stop"
         ]
     },
+    "ninja_book_share_back_to_natuto": {
+        "action": "StartApp",
+        "package": "com.tencent.KiHan",
+        "enabled": false,
+        "next": [
+            "close_ninja_book_leaderboard",
+            "[JumpBack]ninja_book_mission_undone",
+            "[JumpBack]ninja_book_mission_done",
+            "ninja_book_close_share",
+            "[JumpBack]ninja_book_close_share_top_bar",
+            "ninja_book_share_without_x"
+        ]
+    },
     "close_wechat_app": {
         "action": "StopApp",
         "package": "com.tencent.mm",
@@ -224,54 +237,97 @@
         "action": "StopApp",
         "package": "com.tencent.mobileqq",
         "next": [
-            "close_share_top_bar"
+            "close_share_top_bar",
+            "share_quit_x",
+            "share_in_main_screen"
         ],
         "focus": "[color:DeepSkyBlue]关闭qq[/color]",
         "pre_delay": 1000,
         "post_delay": 1000
     },
     "close_share_top_bar": {
-        "recognition": "DirectHit",
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/top_bar.png",
+        "roi": [
+            1165,
+            0,
+            114,
+            78
+        ],
         "target": [
             1067,
             0,
             213,
             143
         ],
+        "threshold": 0.9,
         "action": "Click",
+        "next": [
+            "share_quit_x",
+            "share_in_main_screen",
+            "close_share_top_bar"
+        ],
+        "pre_delay": 0,
+        "post_delay": 200,
+        "focus": "[color:DeepSkyBlue]关闭顶部栏[/color]"
+    },
+    "share_in_main_screen": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "threshold": 0.9,
+        "method": 10001,
+        "green_mask": true,
+        "pre_delay": 0,
+        "action": "StopTask",
+        "post_delay": 0
+    },
+    "share_quit_x": {
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/green_masked_x.png",
+        "green_mask": true,
+        "threshold": 0.6,
+        "roi": [
+            610,
+            0,
+            670,
+            229
+        ],
         "next": [
             "back_main_screen_and_stop"
         ],
-        "focus": "[color:DeepSkyBlue]关闭顶部栏[/color]"
+        "pre_delay": 0,
+        "post_delay": 0
     },
-    "share_close_weekly_ninjia_title_next_step": {
+    "share_close_weekly_ninja_title_next_step": {
         "recognition": "TemplateMatch",
-        "template": "Share/weekly_ninjia_title_next_step.png",
+        "template": "Share/weekly_ninja_title_next_step.png",
         "roi": [
-            807,
-            949,
-            294,
-            104
+            402,
+            550,
+            528,
+            169
         ],
+        "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,
-        "action": "Click",
         "focus": "[color:darkgray]关闭周榜更新下一步提示[/color]"
     },
-    "share_close_weekly_ninjia_title": {
+    "share_close_weekly_ninja_title": {
         "recognition": "TemplateMatch",
-        "template": "Share/weekly_ninjia_title.png",
+        "template": "Share/weekly_ninja_title.png",
         "roi": [
-            0,
-            475,
-            622,
-            244
+            224,
+            560,
+            819,
+            160
         ],
+        "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200,
-        "action": "Click",
         "focus": "[color:darkgray]关闭周榜更新提示[/color]"
     }
 }

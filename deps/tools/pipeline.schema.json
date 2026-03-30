@@ -37,7 +37,7 @@
         },
         "jsonDocument": {
             "patternProperties": {
-                ".*_doc$|^doc$": {
+                ".*_doc$|^doc$|.*_desc$|^desc$": {
                     "title": "Document Property",
                     "description": "文档 | 该节点属性的文档说明。",
                     "type": "string",
@@ -307,6 +307,23 @@
             ],
             "default": []
         },
+        "jsonStringOrListOrMap": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "$ref": "#/$defs/jsonStringList"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "default": {}
+        },
         "NodeAttr": {
             "type": "object",
             "properties": {
@@ -568,7 +585,7 @@
                     "title": "ROI Property",
                     "description": "识别区域坐标。可选，默认 [0, 0, 0, 0] ，即全屏。",
                     "$ref": "#/$defs/jsonRoi",
-                    "markdownDescription": "*array<int, 4>* | *string*\n\n识别区域坐标。可选，默认 [0, 0, 0, 0] ，即全屏。\n\n- *array<int, 4>*: 识别区域坐标，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。\n\n- *string*: 填写节点名，在之前执行过的某节点识别到的目标范围内识别。"
+                    "markdownDescription": "*array<int, 4>* | *string*\n\n识别区域坐标。可选，默认 [0, 0, 0, 0] ，即全屏。\n\n- *array<int, 4>*: 识别区域坐标，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。\n\n- *string*: 填写节点名，在之前执行过的某节点识别到的目标范围内识别。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为识别失败。"
                 },
                 "roi_offset": {
                     "title": "ROI Offset Property",
@@ -610,7 +627,7 @@
                     "title": "ROI Property",
                     "description": "识别区域坐标。可选，默认 [0, 0, 0, 0] ，即全屏。",
                     "$ref": "#/$defs/jsonRoi",
-                    "markdownDescription": "*array<int, 4>* | *string*\n\n识别区域坐标。可选，默认 [0, 0, 0, 0] ，即全屏。\n\n- *array<int, 4>*: 识别区域坐标，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。\n\n- *string*: 填写节点名，在之前执行过的某节点识别到的目标范围内识别。"
+                    "markdownDescription": "*array<int, 4>* | *string*\n\n识别区域坐标。可选，默认 [0, 0, 0, 0] ，即全屏。\n\n- *array<int, 4>*: 识别区域坐标，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。\n\n- *string*: 填写节点名，在之前执行过的某节点识别到的目标范围内识别。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为识别失败。"
                 },
                 "roi_offset": {
                     "title": "ROI Offset Property",
@@ -1042,6 +1059,12 @@
                     "description": "模型 **文件夹** 路径。使用 `model/ocr` 文件夹的相对路径。可选，默认为空。",
                     "type": "string",
                     "markdownDescription": "*string*\n\n模型 **文件夹** 路径。使用 `model/ocr` 文件夹的相对路径。可选，默认为空。\n\n若为空，则为 `model/ocr` 根目录下的模型文件。\n\n文件夹中需要包含 `rec.onnx`, `det.onnx`, `keys.txt` 三个文件。"
+                },
+                "color_filter": {
+                    "title": "Color Filter Property",
+                    "description": "颜色过滤。填写某个 ColorMatch 节点名，先使用该节点的颜色参数对图像进行二值化，再送入 OCR 识别。可选，默认为空。",
+                    "type": "string",
+                    "markdownDescription": "*string*\n\n颜色过滤。填写某个 `ColorMatch` 节点名，先使用该节点的颜色参数（`method`、`lower`、`upper`）对图像进行二值化，再送入 OCR 识别。可选，默认为空。\n\n仅使用该节点的颜色二值化逻辑，不依赖其 `count`、`order_by` 等结果参数。\n\n设置了该字段的 OCR 节点不参与 batch 优化。"
                 }
             }
         },
@@ -2070,7 +2093,7 @@
                     "title": "Target Property",
                     "description": "点击目标的位置。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n点击目标的位置。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n点击目标的位置。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "target_offset": {
                     "title": "Target Offset Property",
@@ -2131,7 +2154,7 @@
                     "title": "Target Property",
                     "description": "长按目标的位置。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n长按目标的位置。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n长按目标的位置。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "target_offset": {
                     "title": "Target Offset Property",
@@ -2199,7 +2222,7 @@
                     "title": "Begin Property",
                     "description": "滑动起点。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n滑动起点。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n滑动起点。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "begin_offset": {
                     "title": "Begin Offset Property",
@@ -2211,7 +2234,7 @@
                     "title": "End Property",
                     "description": "滑动终点。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTargetOrList",
-                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>* | *list<true | string | array<int, 2> | array<int, 4>>*\n\n滑动终点。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。\n\n- *list<...>*: v4.5.x 版本新增支持，可配置滑动途径点，列表内各项不抬手连续滑动。"
+                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>* | *list<true | string | array<int, 2> | array<int, 4>>*\n\n滑动终点。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。\n\n- *list<...>*: v4.5.x 版本新增支持，可配置滑动途径点，列表内各项不抬手连续滑动。"
                 },
                 "end_offset": {
                     "title": "End Offset Property",
@@ -2384,7 +2407,7 @@
                     "title": "Target Property",
                     "description": "触控目标的位置。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 4>*\n\n触控目标的位置。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 4>*: 目标为固定坐标区域内随机一点，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 4>*\n\n触控目标的位置。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 4>*: 目标为固定坐标区域内随机一点，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "target_offset": {
                     "title": "Target Offset Property",
@@ -2510,7 +2533,7 @@
                     "title": "Target Property",
                     "description": "滚动目标的位置，鼠标会先移动到该位置再进行滚动。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 4>*\n\n滚动目标的位置，鼠标会先移动到该位置再进行滚动。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 4>*: 目标为固定坐标区域内随机一点，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 4>*\n\n滚动目标的位置，鼠标会先移动到该位置再进行滚动。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 4>*: 目标为固定坐标区域内随机一点，[x, y, w, h]，若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "target_offset": {
                     "title": "Target Offset Property",
@@ -3102,8 +3125,8 @@
                     "type": "string",
                     "markdownDescription": "*string*\n\n要执行的 shell 命令。必选。\n\n例如 `getprop ro.build.version.sdk` 或 `settings put global animator_duration_scale 0`。\n\n> 注意：此动作仅对 ADB 控制器有效。"
                 },
-                "timeout": {
-                    "title": "Timeout Property",
+                "shell_timeout": {
+                    "title": "Shell Timeout Property",
                     "description": "超时时间（毫秒）。可选，默认 20000 (20秒)。设置为 -1 表示无限等待。",
                     "type": "integer",
                     "default": 20000,
@@ -3149,6 +3172,64 @@
                 }
             }
         },
+        "Screencap": {
+            "type": "object",
+            "properties": {
+                "filename": {
+                    "title": "Filename Property",
+                    "description": "保存截图的文件名（不含扩展名）。可选，默认使用 \"时间戳_节点名\" 格式。",
+                    "type": "string",
+                    "markdownDescription": "*string*\n\n保存截图的文件名（不含扩展名）。可选，默认使用 `时间戳_节点名` 格式。\n\n截图保存在 `log_dir/screencap/` 目录下。"
+                },
+                "format": {
+                    "title": "Format Property",
+                    "description": "图片格式。可选，默认 \"png\"。",
+                    "type": "string",
+                    "enum": ["png", "jpg", "jpeg"],
+                    "default": "png",
+                    "markdownDescription": "*string*\n\n图片格式。可选，默认 `\"png\"`（无损）。\n\n可选值：`\"png\"` | `\"jpg\"` | `\"jpeg\"`"
+                },
+                "quality": {
+                    "title": "Quality Property",
+                    "description": "图片质量，仅对 jpg/jpeg 有效。可选，默认 100。",
+                    "type": "integer",
+                    "default": 100,
+                    "minimum": 0,
+                    "maximum": 100,
+                    "markdownDescription": "*int*\n\n图片质量（0-100），仅对 `jpg` / `jpeg` 格式有效。可选，默认 100。\n\n`png` 格式始终为无损压缩，此字段无效。"
+                }
+            }
+        },
+        "ScreencapV1": {
+            "properties": {
+                "action": {
+                    "const": "Screencap"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/$defs/Screencap"
+                }
+            ]
+        },
+        "ScreencapV2": {
+            "properties": {
+                "type": {
+                    "const": "Screencap"
+                },
+                "param": {
+                    "unevaluatedProperties": false,
+                    "allOf": [
+                        {
+                            "$ref": "#/$defs/Screencap"
+                        },
+                        {
+                            "$ref": "#/$defs/jsonComments"
+                        }
+                    ]
+                }
+            }
+        },
         "CustomAction": {
             "type": "object",
             "properties": {
@@ -3156,7 +3237,7 @@
                     "title": "Target Property",
                     "description": "目标的位置，会通过 `MaaCustomActionCallback`.`box` 传出。可选，默认 true 。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n目标的位置，会通过 `MaaCustomActionCallback`.`box` 传出。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n目标的位置，会通过 `MaaCustomActionCallback`.`box` 传出。可选，默认 true 。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "target_offset": {
                     "title": "Target Offset Property",
@@ -3284,6 +3365,7 @@
                 "StopTask",
                 "Command",
                 "Shell",
+                "Screencap",
                 "Custom"
             ]
         },
@@ -3725,6 +3807,17 @@
                     }
                 },
                 {
+                    "label": "ScreencapV1",
+                    "body": "^ \"Screencap\""
+                },
+                {
+                    "label": "ScreencapV2",
+                    "body": {
+                        "type": "Screencap",
+                        "param": {}
+                    }
+                },
+                {
                     "label": "CustomActionV1",
                     "body": "^ \"Custom\",\n\"custom_action\": \"\""
                 },
@@ -3805,6 +3898,9 @@
                 },
                 {
                     "$ref": "#/$defs/ShellV1"
+                },
+                {
+                    "$ref": "#/$defs/ScreencapV1"
                 },
                 {
                     "$ref": "#/$defs/CustomActionV1"
@@ -3891,6 +3987,9 @@
                             "$ref": "#/$defs/ShellV2"
                         },
                         {
+                            "$ref": "#/$defs/ScreencapV2"
+                        },
+                        {
                             "$ref": "#/$defs/CustomActionV2"
                         }
                     ]
@@ -3949,7 +4048,7 @@
                     "title": "Target Property",
                     "description": "等待目标的位置。可选，默认 true。",
                     "$ref": "#/$defs/jsonTarget",
-                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n等待目标的位置。可选，默认 true。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
+                    "markdownDescription": "*true* | *string* | *array<int, 2>* | *array<int, 4>*\n\n等待目标的位置。可选，默认 true。\n\n- *true*: 目标为本节点中刚刚识别到的位置（即自身）。\n\n- *string*: 填写节点名，目标为之前执行过的某节点识别到的位置。也支持 `[Anchor]锚点名` 格式引用锚点对应的节点。若引用的前置节点或锚点识别结果为空，则视为动作失败。\n\n- *array<int, 2>*: 固定坐标点 [x, y]。\n\n- *array<int, 4>*: 固定坐标区域 [x, y, w, h]，会在矩形内随机选取一点（越靠近中心概率越高，边缘概率相对较低），若希望全屏可设为 [0, 0, 0, 0] 。"
                 },
                 "target_offset": {
                     "title": "Target Offset Property",
@@ -4095,8 +4194,8 @@
                 "anchor": {
                     "title": "Anchor Property",
                     "description": "锚点名称。可选，默认空。",
-                    "$ref": "#/$defs/jsonStringOrList",
-                    "markdownDescription": "*string* | *list<string, >*\n\n锚点名称。可选，默认空。\n\n当节点执行成功后，会将该锚点名设置为当前节点。多个节点可设置同一个锚点名，后执行的会覆盖先执行的。\n\n在 `next` 或 `on_error` 中可通过 `[Anchor]` 属性引用该锚点，运行时会解析为最后设置该锚点的节点。\n\n详见文档中的「节点属性」章节。"
+                    "$ref": "#/$defs/jsonStringOrListOrMap",
+                    "markdownDescription": "*string* | *list<string, >* | *object*\n\n锚点名称。可选，默认空。\n\n当节点执行成功后，会将该锚点名设置为对应的节点。多个节点可设置同一个锚点名，后执行的会覆盖先执行的。\n\n支持三种格式：\n- 字符串：`\"anchor\": \"MyAnchor\"` - 将锚点设置为当前节点\n- 字符串数组：`\"anchor\": [\"A\", \"B\"]` - 将多个锚点都设置为当前节点\n- 对象：`\"anchor\": {\"A\": \"TargetNode\", \"B\": \"\"}` - 将锚点 A 设置为 TargetNode，清除锚点 B（空字符串表示清除该锚点）\n\n在 `next` 或 `on_error` 中可通过 `[Anchor]` 属性引用该锚点，运行时会解析为最后设置该锚点的节点。\n\n详见文档中的「节点属性」章节。"
                 },
                 "inverse": {
                     "title": "Inverse Property",

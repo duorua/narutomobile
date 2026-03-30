@@ -1,8 +1,9 @@
 {
     "group": {
         "next": [
-            "goto_group_by_guide",
-            "[JumpBack]open_ninjia_guide",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
         "pre_delay": 0,
@@ -11,7 +12,7 @@
     },
     "goto_group_by_guide": {
         "recognition": "Custom",
-        "custom_recognition": "IsInNinjiaGuide",
+        "custom_recognition": "IsInNinjaGuide",
         "action": "Custom",
         "custom_action": "GoIntoEntryByGuide",
         "custom_action_param": {
@@ -21,7 +22,7 @@
             "group_gameplay_undone",
             "group_gameplay_done",
             "no_group",
-            "[JumpBack]ninjia_guide_to_funtion_retry"
+            "[JumpBack]ninja_guide_to_funtion_retry"
         ],
         "timeout": 3000,
         "post_delay": 1500,
@@ -39,6 +40,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]没有加入组织[/color]"
     },
     "group_gameplay_undone": {
@@ -57,6 +60,7 @@
             "group_gameplay_undone"
         ],
         "threshold": 0.9,
+        "pre_delay": 0,
         "post_delay": 400,
         "focus": "[color:DeepSkyBlue]组织玩法未完成[/color]"
     },
@@ -90,6 +94,8 @@
             "goto_group_pray",
             "check_selected_group_gameplay"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确认选中组织玩法按钮[/color]"
     },
@@ -157,7 +163,9 @@
             "confirm_copper_group_pray",
             "above_kage_group_pray"
         ],
-        "post_wait_freezes": 1000,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]超影签到[/color]"
     },
     "copper_group_pray": {
@@ -174,7 +182,9 @@
             "confirm_copper_group_pray",
             "copper_group_pray"
         ],
-        "post_wait_freezes": 1000,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]铜币签到[/color]"
     },
     "confirm_copper_group_pray": {
@@ -236,8 +246,8 @@
         "post_delay": 0,
         "threshold": 0.98,
         "next": [
-            "second_group_award_done",
-            "[JumpBack]second_group_award"
+            "[JumpBack]second_group_award",
+            "second_group_award_done"
         ]
     },
     "first_group_award": {
@@ -271,8 +281,8 @@
         "repeat_delay": 0,
         "post_delay": 0,
         "next": [
-            "third_group_award_done",
-            "[JumpBack]third_group_award"
+            "[JumpBack]third_group_award",
+            "third_group_award_done"
         ],
         "focus": "[color:DeepSkyBlue]20人签到奖励已领取[/color]"
     },
@@ -285,7 +295,8 @@
             77,
             66
         ],
-        "threshold": 0.7,
+        "threshold": 0.97,
+        "max_hit": 3,
         "action": "Click",
         "next": [
             "second_group_award_box",
@@ -394,7 +405,8 @@
             88,
             83
         ],
-        "threshold": 0.7,
+        "threshold": 0.95,
+        "max_hit": 3,
         "action": "Click",
         "next": [
             "close_third_group_award"

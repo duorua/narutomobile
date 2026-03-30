@@ -132,6 +132,7 @@
             156,
             89
         ],
+        "green_mask": true,
         "next": [
             "[JumpBack]elite_instance_has_stop_button",
             "[JumpBack]check_in_auto_fight",
@@ -217,6 +218,7 @@
             156,
             89
         ],
+        "green_mask": true,
         "inverse": true,
         "next": [
             "elite_instance_win",

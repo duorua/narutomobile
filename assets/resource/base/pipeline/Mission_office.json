@@ -1,17 +1,18 @@
 {
     "mission_office": {
         "next": [
-            "mission_office_in_ninjia_guide",
-            "[JumpBack]open_ninjia_guide",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
         "pre_delay": 0,
         "post_delay": 0,
         "focus": "[color:DeepSkyBlue]进入任务集会所任务[/color]"
     },
-    "mission_office_in_ninjia_guide": {
+    "mission_office_in_ninja_guide": {
         "recognition": "Custom",
-        "custom_recognition": "IsInNinjiaGuide",
+        "custom_recognition": "IsInNinjaGuide",
         "action": "Custom",
         "custom_action": "GoIntoEntryByGuide",
         "custom_action_param": {
@@ -19,10 +20,11 @@
         },
         "next": [
             "check_in_mission_office",
-            "[JumpBack]ninjia_guide_to_funtion_retry"
+            "[JumpBack]ninja_guide_to_funtion_retry"
         ],
+        "pre_delay": 0,
         "post_delay": 400,
-        "focus": "[color:DeepSkyBlue]检测是否已在奖励中心[/color]"
+        "focus": "[color:DeepSkyBlue]检测是否已在忍界指引[/color]"
     },
     "check_in_mission_office": {
         "recognition": "TemplateMatch",
@@ -75,6 +77,8 @@
             "[JumpBack]celebrate_mission_office_award",
             "get_mission_office_award"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]领取任务集会所奖励[/color]"
     },
@@ -95,7 +99,9 @@
             "check_no_mission_office_award",
             "[JumpBack]get_mission_office_award"
         ],
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]确认领取任务集会所奖励[/color]"
     },
     "celebrate_mission_office_award": {
@@ -112,7 +118,9 @@
             "check_no_mission_office_award",
             "[JumpBack]get_mission_office_award"
         ],
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]关闭任务集会所奖励界面[/color]"
     },
     "mission_office_get_mission": {
@@ -151,6 +159,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]任务已领完[/color]"
     },
     "mission_office_3_advance_mission": {
@@ -176,7 +186,9 @@
         "next": [
             "mission_office_recommended_team"
         ],
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]接高级任务[/color]"
     },
     "mission_office_recommended_team": {
@@ -194,7 +206,9 @@
             "mission_office_no_recommended_team",
             "[JumpBack]mission_office_recommended_team"
         ],
-        "post_wait_freezes": 400,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]使用推荐配队[/color]"
     },
     "mission_office_no_recommended_team": {
@@ -213,7 +227,9 @@
         ],
         "next": [
             "back_main_screen_and_stop"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "mission_office_recommended_team_check": {
         "recognition": "OCR",
@@ -238,6 +254,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 400
     },
     "mission_office_3_mission": {
@@ -268,7 +286,9 @@
         "next": [
             "mission_office_recommended_team"
         ],
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200,
         "focus": "[color:DeepSkyBlue]接三人任务[/color]"
     },
     "mission_office_Sharingan_mission": {
@@ -290,9 +310,11 @@
         "threshold": 0.8,
         "green_mask": true,
         "next": [
-            "select_ninjia_for_mission_by_frame"
+            "select_ninja_for_mission_by_frame"
         ],
-        "post_wait_freezes": 500
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300
     },
     "mission_office_relation_mission": {
         "recognition": "TemplateMatch",
@@ -319,7 +341,9 @@
             "mission_office_recommended_team",
             "[JumpBack]mission_office_get_mission"
         ],
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]接羁绊任务[/color]"
     },
     "take_mission_office_relation_mission": {
@@ -328,7 +352,9 @@
             "[JumpBack]select_c_for_relation_mission",
             "[JumpBack]select_a_for_relation_mission",
             "[JumpBack]select_s_for_relation_mission"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "select_s_for_relation_mission": {
         "recognition": "TemplateMatch",
@@ -342,8 +368,10 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "select_relation_ninjia_for_mission"
+            "select_relation_ninja_for_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_a_for_relation_mission": {
@@ -358,8 +386,10 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "select_relation_ninjia_for_mission"
+            "select_relation_ninja_for_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_b_for_relation_mission": {
@@ -374,8 +404,10 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "select_relation_ninjia_for_mission"
+            "select_relation_ninja_for_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_c_for_relation_mission": {
@@ -390,11 +422,13 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "select_relation_ninjia_for_mission"
+            "select_relation_ninja_for_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
-    "select_relation_ninjia_for_mission": {
+    "select_relation_ninja_for_mission": {
         "recognition": "TemplateMatch",
         "template": [
             "Mission_office/relation_ring_masked_0.png",
@@ -416,6 +450,8 @@
             "take_mission_office_mission",
             "[JumpBack]mission_office_get_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "take_mission_office_mission_covered": {
@@ -430,13 +466,16 @@
         "threshold": 0.99999,
         "action": "Click",
         "next": [
-            "mission_office_unselect_ninjia_for_relation",
+            "mission_office_unselect_ninja_for_relation",
             "[JumpBack]mission_office_get_mission"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
     },
-    "mission_office_unselect_ninjia_for_relation": {
+    "mission_office_unselect_ninja_for_relation": {
         "recognition": "TemplateMatch",
-        "template": "Mission_office/unselect_ninjia_masked.png",
+        "template": "Mission_office/unselect_ninja_masked.png",
         "roi": [
             824,
             94,
@@ -447,10 +486,13 @@
         "action": "Click",
         "next": [
             "select_other_b_for_relation_mission",
-            "[JumpBack]left_swipe_for_relation_ninjia"
-        ]
+            "[JumpBack]left_swipe_for_relation_ninja"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 200
     },
-    "left_swipe_for_relation_ninjia": {
+    "left_swipe_for_relation_ninja": {
         "recognition": "TemplateMatch",
         "template": "Mission_office/take_mission.png",
         "roi": [
@@ -472,10 +514,12 @@
             89,
             99
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "duration": 200,
         "post_wait_freezes": 500
     },
-    "right_swipe_for_relation_ninjia": {
+    "right_swipe_for_relation_ninja": {
         "recognition": "TemplateMatch",
         "template": "Mission_office/take_mission.png",
         "roi": [
@@ -498,6 +542,8 @@
             121
         ],
         "duration": 200,
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 500
     },
     "select_other_b_for_relation_mission": {
@@ -514,9 +560,11 @@
         "green_mask": true,
         "order_by": "Vertical",
         "next": [
-            "select_relation_ninjia_for_mission",
-            "[JumpBack]left_swipe_for_relation_ninjia"
+            "select_relation_ninja_for_mission",
+            "[JumpBack]left_swipe_for_relation_ninja"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "mission_office_a_mission": {
@@ -538,9 +586,11 @@
         "threshold": 0.9,
         "green_mask": true,
         "next": [
-            "select_ninjia_for_mission_by_frame"
+            "select_ninja_for_mission_by_frame"
         ],
-        "post_wait_freezes": 500
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300
     },
     "take_mission_office_3_man_mission": {
         "next": [
@@ -548,7 +598,9 @@
             "[JumpBack]select_b_for_mission_1",
             "[JumpBack]select_s_for_mission_1",
             "[JumpBack]select_c_for_mission_1"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "mission_office_b_mission": {
         "recognition": "TemplateMatch",
@@ -569,10 +621,12 @@
         "threshold": 0.9,
         "green_mask": true,
         "next": [
-            "select_ninjia_for_mission_by_frame",
+            "select_ninja_for_mission_by_frame",
             "[JumpBack]mission_office_get_mission"
         ],
-        "post_wait_freezes": 500
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300
     },
     "mission_office_c_mission": {
         "recognition": "TemplateMatch",
@@ -593,10 +647,12 @@
         "threshold": 0.9,
         "green_mask": true,
         "next": [
-            "select_ninjia_for_mission_by_frame",
+            "select_ninja_for_mission_by_frame",
             "[JumpBack]mission_office_get_mission"
         ],
-        "post_wait_freezes": 500
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300
     },
     "mission_office_solo_mission": {
         "recognition": "TemplateMatch",
@@ -617,10 +673,12 @@
         "threshold": 0.85,
         "green_mask": true,
         "next": [
-            "select_ninjia_for_solo_mission_by_frame",
+            "select_ninja_for_solo_mission_by_frame",
             "[JumpBack]mission_office_get_mission"
         ],
-        "post_wait_freezes": 500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "post_wait_freezes": 300,
         "focus": "[color:DeepSkyBlue]接单人任务[/color]"
     },
     "tack_mission_office_solo_mission": {
@@ -629,7 +687,9 @@
             "[JumpBack]select_s_for_mission",
             "[JumpBack]select_b_for_mission",
             "[JumpBack]select_c_for_mission"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "select_s_for_mission": {
         "recognition": "TemplateMatch",
@@ -645,6 +705,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_a_for_mission": {
@@ -661,6 +723,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_b_for_mission": {
@@ -677,6 +741,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_c_for_mission": {
@@ -693,6 +759,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_s_for_mission_1": {
@@ -712,6 +780,8 @@
             "[JumpBack]select_c_for_mission_2",
             "[JumpBack]select_s_for_mission_2"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_a_for_mission_1": {
@@ -731,6 +801,8 @@
             "[JumpBack]select_c_for_mission_2",
             "[JumpBack]select_s_for_mission_2"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_b_for_mission_1": {
@@ -750,6 +822,8 @@
             "[JumpBack]select_c_for_mission_2",
             "[JumpBack]select_s_for_mission_2"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_c_for_mission_1": {
@@ -769,6 +843,8 @@
             "[JumpBack]select_c_for_mission_2",
             "[JumpBack]select_s_for_mission_2"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_s_for_mission_2": {
@@ -788,6 +864,8 @@
             "[JumpBack]select_c_for_mission_3",
             "[JumpBack]select_s_for_mission_3"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_a_for_mission_2": {
@@ -807,6 +885,8 @@
             "[JumpBack]select_c_for_mission_3",
             "[JumpBack]select_s_for_mission_3"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_b_for_mission_2": {
@@ -826,6 +906,8 @@
             "[JumpBack]select_c_for_mission_3",
             "[JumpBack]select_s_for_mission_3"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_c_for_mission_2": {
@@ -845,6 +927,8 @@
             "[JumpBack]select_c_for_mission_3",
             "[JumpBack]select_s_for_mission_3"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_s_for_mission_3": {
@@ -861,6 +945,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_a_for_mission_3": {
@@ -877,6 +963,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_b_for_mission_3": {
@@ -893,6 +981,8 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "select_c_for_mission_3": {
@@ -909,11 +999,13 @@
         "next": [
             "take_mission_office_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
-    "select_ninjia_for_relation_mission_by_frame": {
+    "select_ninja_for_relation_mission_by_frame": {
         "recognition": "TemplateMatch",
-        "template": "Mission_office/ninjia_frame_masked.png",
+        "template": "Mission_office/ninja_frame_masked.png",
         "roi": [
             824,
             94,
@@ -925,14 +1017,16 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "select_relation_ninjia_for_mission",
+            "select_relation_ninja_for_mission",
             "[JumpBack]mission_office_get_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
-    "select_ninjia_for_solo_mission_by_frame": {
+    "select_ninja_for_solo_mission_by_frame": {
         "recognition": "TemplateMatch",
-        "template": "Mission_office/ninjia_frame_masked.png",
+        "template": "Mission_office/ninja_frame_masked.png",
         "roi": [
             824,
             94,
@@ -947,11 +1041,13 @@
             "take_mission_office_mission",
             "[JumpBack]mission_office_get_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
-    "select_ninjia_for_mission_by_frame": {
+    "select_ninja_for_mission_by_frame": {
         "recognition": "TemplateMatch",
-        "template": "Mission_office/ninjia_frame_masked.png",
+        "template": "Mission_office/ninja_frame_masked.png",
         "roi": [
             824,
             94,
@@ -963,14 +1059,16 @@
         "action": "Click",
         "green_mask": true,
         "next": [
-            "select_ninjia_for_mission_by_frame_1",
+            "select_ninja_for_mission_by_frame_1",
             "[JumpBack]mission_office_get_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
-    "select_ninjia_for_mission_by_frame_1": {
+    "select_ninja_for_mission_by_frame_1": {
         "recognition": "TemplateMatch",
-        "template": "Mission_office/ninjia_frame_masked.png",
+        "template": "Mission_office/ninja_frame_masked.png",
         "roi": [
             824,
             94,
@@ -982,14 +1080,16 @@
         "green_mask": true,
         "index": 1,
         "next": [
-            "select_ninjia_for_mission_by_frame_2",
+            "select_ninja_for_mission_by_frame_2",
             "[JumpBack]mission_office_get_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
-    "select_ninjia_for_mission_by_frame_2": {
+    "select_ninja_for_mission_by_frame_2": {
         "recognition": "TemplateMatch",
-        "template": "Mission_office/ninjia_frame_masked.png",
+        "template": "Mission_office/ninja_frame_masked.png",
         "roi": [
             824,
             94,
@@ -1004,6 +1104,8 @@
             "take_mission_office_mission",
             "[JumpBack]mission_office_get_mission"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "take_mission_office_mission": {
@@ -1021,6 +1123,8 @@
             "mission_office_get_mission",
             "[JumpBack]back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "post_wait_freezes": 200
     },
     "take_mission_done": {
@@ -1035,6 +1139,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:DeepSkyBlue]任务已经接取完毕[/color]"
     },
     "mission_office_in_center_enter": {
@@ -1080,6 +1186,6 @@
         "action": "Click",
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]组织祈福未完成[/color]"
+        "focus": "[color:DeepSkyBlue]任务集会所未完成[/color]"
     }
 }

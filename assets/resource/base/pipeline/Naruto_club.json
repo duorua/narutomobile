@@ -188,9 +188,7 @@
             113,
             646
         ],
-        "threshold": [
-            0.9
-        ],
+        "threshold": 0.85,
         "max_hit": 8,
         "action": "Click",
         "pre_delay": 0,
@@ -750,13 +748,15 @@
     "swipe_for_mission": {
         "recognition": "OCR",
         "expected": [
-            "活跃任务"
+            "活跃任务",
+            "本月",
+            "本周"
         ],
         "roi": [
-            78,
-            338,
-            102,
-            43
+            32,
+            60,
+            237,
+            659
         ],
         "action": "Swipe",
         "begin": [

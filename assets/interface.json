@@ -41,14 +41,26 @@
             "option": [
                 "设置启动超时时间",
                 "启动超时后行为",
-                "账号属性"
+                "允许MAN管理qq和火影信息",
+                "账号属性",
+                "拒绝qq获取火影信息"
             ],
-            "description": "软件会关闭公告气泡",
+            "description": "软件会关闭公告气泡,如果此任务总是闪退或失败可以进入游戏主界面再开启任务",
             "default_check": true
         },
         {
             "name": "轻松助手",
             "entry": "easy_helper"
+        },
+        {
+            "name": "轻松季(beta)",
+            "entry": "easy_season",
+            "option": [
+                "轻松季扫荡",
+                "秘境翻饰品牌",
+                "秘境翻忍具牌",
+                "秘境忍具每次只翻一张"
+            ]
         },
         {
             "name": "招财",
@@ -59,6 +71,9 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
+            "option": [
+                "忍界指引寻找排行榜"
+            ],
             "default_check": true
         },
         {
@@ -83,7 +98,8 @@
             "default_check": true,
             "description": "包含祈福签到和领奖，追击晓组织领奖。",
             "option": [
-                "从奖励中心进入"
+                "从奖励中心进入",
+                "忍界指引寻找组织"
             ]
         },
         {
@@ -92,7 +108,8 @@
             "description": "领取当日奖励并尝试进行一次挑战。",
             "option": [
                 "强制战斗",
-                "从奖励中心进入"
+                "从奖励中心进入",
+                "忍界指引寻找积分赛"
             ],
             "default_check": true
         },
@@ -102,7 +119,8 @@
             "default_check": true,
             "option": [
                 "打新关卡",
-                "从奖励中心进入"
+                "从奖励中心进入",
+                "忍界指引寻找修行之路"
             ]
         },
         {
@@ -138,7 +156,8 @@
             "entry": "mission_office",
             "description": "目前仅能接三个任务,不会刷新。买了超影要拿满奖励请手动完成",
             "option": [
-                "从奖励中心进入"
+                "从奖励中心进入",
+                "忍界指引寻找任务集会所"
             ],
             "default_check": true
         },
@@ -152,13 +171,14 @@
         },
         {
             "name": "忍法帖",
-            "entry": "ninjia_book",
+            "entry": "ninja_book",
             "option": [
                 "领取体验卡宝箱",
                 "是否领取奖励",
                 "分享后直接返回游戏",
                 "跳过分享",
-                "宝匣挑战"
+                "宝匣挑战",
+                "忍法帖礼盒"
             ],
             "description": "[size:15][color:tomato]开启后会领取忍法帖升级的全部奖励，需要攒体验卡的不要用！[/color][/size]",
             "default_check": true
@@ -167,13 +187,16 @@
             "name": "周胜(连点器)",
             "entry": "weekly_win",
             "option": [
+                "忍界指引寻找周胜",
                 "打排位",
                 "何时退出",
                 "领取周胜奖励",
                 "清周胜过期宝箱",
-                "从奖励中心进入"
+                "从奖励中心进入",
+                "出现提示时重启任务",
+                "周胜不攻击"
             ],
-            "description": "请在主页开始任务"
+            "description": "请在主页开始任务，请尽量不要滥用这个功能影响其他人游戏体验。该功能**不支持雷电模拟器**，与之有关的问题也不会被受理。"
         },
         {
             "name": "火影情报社(beta)",
@@ -196,7 +219,7 @@
             "default_check": true
         },
         {
-            "name": "秘境(beta)",
+            "name": "秘境",
             "entry": "secret_realm",
             "option": [
                 "秘境赢几次",
@@ -211,25 +234,41 @@
                 "落岩秘境",
                 "毒风秘境",
                 "雷霆秘境",
-                "阴阳秘境"
+                "阴阳秘境",
+                "忍界指引寻找秘境"
             ],
             "default_check": true,
             "description": "请在主页开始任务"
+        },
+        {
+            "name": "切换账号(beta)",
+            "entry": "switch_account",
+            "option": [
+                "账号切换范围",
+                "目标区",
+                "目标社交媒体账号",
+                "允许MAN管理qq和火影信息",
+                "账号属性",
+                "拒绝qq获取火影信息",
+                "切换账号后行为"
+            ],
+            "description": "测试功能;微信在模拟器上登录会封微信账号,只能扫码登录,所以不支持切微信账号"
         },
         {
             "name": "关闭火影手游APP",
             "entry": "exit_naruto"
         },
         {
-            "name": "要塞(beta)",
+            "name": "要塞",
             "entry": "stronghold",
             "option": [
-                "玩法未开启时退出"
+                "要塞玩法未开启时退出",
+                "忍界指引寻找要塞"
             ],
             "description": "默认前往火要塞,进其他要塞在对应要塞内开始任务"
         },
         {
-            "name": "天地(beta)",
+            "name": "天地",
             "entry": "sky_ground",
             "option": [
                 "天地选择战场",
@@ -237,7 +276,9 @@
                 "你的名字",
                 "天地选择额外奖励柱子",
                 "天地挑战",
-                "玩法未开启时退出"
+                "无限循环找柱子",
+                "天地玩法未开启时退出",
+                "忍界指引寻找天地"
             ],
             "description": "非常建议不要开挑战和额外奖励柱子,如果人多会很超雄,可能导致巨大压力"
         },
@@ -249,12 +290,14 @@
                 "叛忍只显示自己",
                 "叛忍难度",
                 "叛忍开双倍",
-                "叛忍二级密码"
+                "叛忍二级密码",
+                "叛忍玩法未开启时退出",
+                "忍界指引寻找叛忍"
             ],
-            "description": "开始测试,可以在叛忍地图打开,选项是首领功能,二级密码仅作为测试,不要填自己的"
+            "description": "尽量开启只显示自己,防止目标被遮挡,可以在叛忍地图打开,选项是首领功能,二级密码仅作为测试,不要填自己的"
         },
         {
-            "name": "冒险副本(beta)",
+            "name": "冒险副本",
             "entry": "advanture",
             "option": [
                 "冒险副本一直推关"
@@ -267,7 +310,7 @@
             "description": "不是体力刷碎片的功能,这个用来开荒的,忍者不要特效太多的"
         },
         {
-            "name": "修罗副本(beta)",
+            "name": "修罗副本",
             "entry": "asura_instance",
             "description": "忍者不要特效太多的"
         },
@@ -275,13 +318,16 @@
             "name": "更多玩法(beta)",
             "entry": "more_gameplay",
             "option": [
+                "从奖励中心进入",
                 "百忍",
                 "绝迹战场",
                 "大蛇丸试炼",
+                "打满奖励停止",
+                "打满奖励停止并领取奖励",
                 "百忍是否使用连点器战斗",
-                "从奖励中心进入"
+                "更多玩法在开战页面开始"
             ],
-            "description": "需要已经适配的主题或者在决斗场页面开启任务"
+            "description": "需要已经适配的主题或者在决斗场页面开启任务;也可以开启从奖励中心进入"
         },
         {
             "name": "小游戏",
@@ -292,6 +338,22 @@
                 "木叶小吃店不选普通蓝红色奖励"
             ],
             "description": "小游戏可以主页进,也可以从有小游戏名的功能入口界面进"
+        },
+        {
+            "name": "心悦会员",
+            "entry": "joy_club",
+            "description": "只会领取游戏内的周度礼包"
+        },
+        {
+            "name": "黑市商人(beta)",
+            "entry": "black_market_merchant",
+            "option": [
+                "黑市忍具之尘购买数量",
+                "黑市二级密码",
+                "忍界指引寻找黑市商人",
+                "从奖励中心进入"
+            ],
+            "description": "这个黑市商人是奸商,你需要在战力指导的陪同下使用这个功能;可以调一下只显示自己,关闭称号等,防止黑市商人被遮挡;[size:15][color:tomato]开启功能需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
         },
         {
             "name": "Debug",
@@ -306,6 +368,7 @@
     "option": {
         "账号属性": {
             "type": "select",
+            "description": "注意要确保自己调出的登录界面是横屏的;因为最终用户协议(EULA),你必须手动同意协议;微信在模拟器上登录会封微信账号,所以不支持切微信账号",
             "default_case": "安卓QQ",
             "cases": [
                 {
@@ -313,8 +376,120 @@
                     "pipeline_override": {}
                 },
                 {
-                    "name": "苹果",
+                    "name": "苹果QQ",
+                    "pipeline_override": {
+                        "switch_account_switch_social_media_account": {
+                            "template": "SharedNode/ios_qq_login.png",
+                            "roi": [
+                                755,
+                                501,
+                                108,
+                                81
+                            ]
+                        },
+                        "start_up_switch_social_media_account": {
+                            "template": "SharedNode/ios_qq_login.png",
+                            "roi": [
+                                755,
+                                501,
+                                108,
+                                81
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "微信",
+                    "pipeline_override": {
+                        "switch_account_already_in_target_area": {
+                            "enabled": true
+                        },
+                        "switch_account_in_before_game": {
+                            "next": "switch_account_to_switch_area"
+                        },
+                        "check_agreement": {
+                            "next": "switch_account_switch_social_media_account"
+                        }
+                    }
+                }
+            ]
+        },
+        "允许MAN管理qq和火影信息": {
+            "type": "switch",
+            "description": "开启后man默认会自动帮你同意:火影获取qq信息,qq获取火影信息;如需要提前选择所有人不可见",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "agree_log_in": {
+                            "enabled": false
+                        },
+                        "agree_info": {
+                            "enabled": false
+                        },
+                        "refuse_info": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "agree_log_in": {
+                            "enabled": true
+                        },
+                        "agree_info": {
+                            "enabled": true
+                        },
+                        "refuse_info": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        },
+        "拒绝qq获取火影信息": {
+            "type": "switch",
+            "description": "开启允许MAN管理qq和火影信息才会生效;在qq申请界面,拒绝qq获取火影信息",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No",
                     "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "before_game": {
+                            "next": [
+                                "click_start_game",
+                                "[JumpBack]start_up_loading",
+                                "[JumpBack]close_teenager_page",
+                                "[JumpBack]agree_log_in",
+                                "[JumpBack]refuse_info",
+                                "check_agreement",
+                                "agree_agreement",
+                                "[JumpBack]agreement_not_agree"
+                            ]
+                        },
+                        "start_up_switch_social_media_account": {
+                            "next": [
+                                "click_start_game",
+                                "[JumpBack]start_up_loading",
+                                "[JumpBack]close_teenager_page",
+                                "[JumpBack]agree_log_in",
+                                "[JumpBack]refuse_info"
+                            ]
+                        },
+                        "switch_account_find_target_qq_account": {
+                            "next": [
+                                "switch_account_to_switch_area",
+                                "[JumpBack]agree_log_in",
+                                "[JumpBack]refuse_info"
+                            ]
+                        }
+                    }
                 }
             ]
         },
@@ -386,6 +561,692 @@
                 }
             ]
         },
+        "轻松季扫荡": {
+            "type": "switch",
+            "description": "轻松季领取扫荡卡,并扫荡",
+            "default_case": "No",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "easy_season_plus_end": {
+                            "next": [
+                                "easy_season_plus_end_to_easy_helper",
+                                "easy_season_plus_end_to_easy_share",
+                                "back_main_screen_and_stop"
+                            ]
+                        },
+                        "easy_season_plus_energy_done": {
+                            "next": [
+                                "easy_season_plus_sweep_card",
+                                "easy_season_plus_back_to_easy_season_plus",
+                                "back_main_screen_and_stop"
+                            ]
+                        },
+                        "secret_realm_celebreate": {
+                            "next": [
+                                "secret_realm_celebreate",
+                                "secret_realm_celebreate_1",
+                                "easy_season_plus_back_to_easy_season_plus"
+                            ]
+                        },
+                        "secret_realm_celebreate_1": {
+                            "next": [
+                                "secret_realm_celebreate",
+                                "secret_realm_celebreate_1",
+                                "easy_season_plus_back_to_easy_season_plus"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找排行榜": {
+            "type": "select",
+            "description": "注意这个选项你没法选择",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "排行榜"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "排行榜"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "leaderboard_in_leaderboard",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "排行榜"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "排行榜"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "leaderboard_in_leaderboard",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找任务集会所": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "集会所"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "集会所"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "check_in_mission_office",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "集会所"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "集会所"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "check_in_mission_office",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找积分赛": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "积分赛"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "积分赛"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "point_race_challenge_enter",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "积分赛"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "积分赛"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "point_race_challenge_enter",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找修行之路": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "修行",
+                                "之路"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "修行",
+                                "之路"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "train_road_entry",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "修行",
+                                "之路"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "修行",
+                                "之路"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "train_road_entry",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找秘境": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "secret_realm_create_room",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "secret_realm_create_room",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找黑市商人": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "black_market_merchant_create_room",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "秘境",
+                                "探险"
+                            ],
+                            "replace": [
+                                "秘境",
+                                "秋境"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "black_market_merchant_create_room",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找周胜": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "忍术对战"
+                            ],
+                            "replace": [
+                                [
+                                    "丑",
+                                    "忍"
+                                ],
+                                [
+                                    "双",
+                                    "忍"
+                                ],
+                                [
+                                    "米",
+                                    "术"
+                                ]
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "忍术对战"
+                            ],
+                            "replace": [
+                                [
+                                    "丑",
+                                    "忍"
+                                ],
+                                [
+                                    "双",
+                                    "忍"
+                                ],
+                                [
+                                    "米",
+                                    "术"
+                                ]
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "[JumpBack]weekly_win_mouthly_award",
+                                "[JumpBack]weekly_win_mouthly_reset_award",
+                                "[JumpBack]weekly_win_weekly_award",
+                                "[JumpBack]weekly_win_confirm_weekly_award",
+                                "[JumpBack]go_to_war",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "忍术对战"
+                            ],
+                            "replace": [
+                                [
+                                    "丑",
+                                    "忍"
+                                ],
+                                [
+                                    "双",
+                                    "忍"
+                                ],
+                                [
+                                    "米",
+                                    "术"
+                                ]
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "忍术对战"
+                            ],
+                            "replace": [
+                                [
+                                    "丑",
+                                    "忍"
+                                ],
+                                [
+                                    "双",
+                                    "忍"
+                                ],
+                                [
+                                    "米",
+                                    "术"
+                                ]
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "[JumpBack]weekly_win_mouthly_award",
+                                "[JumpBack]weekly_win_mouthly_reset_award",
+                                "[JumpBack]weekly_win_weekly_award",
+                                "[JumpBack]weekly_win_confirm_weekly_award",
+                                "[JumpBack]go_to_war",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找组织": {
+            "type": "select",
+            "description": "注意这个选项你没法选择,开启从奖励中心进入之后会改变进入方式",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "roi": [
+                                120,
+                                68,
+                                98,
+                                585
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "group_gameplay_undone",
+                                "group_gameplay_done",
+                                "no_group",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "roi": [
+                                306,
+                                100,
+                                83,
+                                558
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "group_gameplay_undone",
+                                "group_gameplay_done",
+                                "no_group",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找要塞": {
+            "type": "select",
+            "description": "注意这个选项你没法选择",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "roi": [
+                                120,
+                                68,
+                                98,
+                                585
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "stronghold_gameplay",
+                                "no_group",
+                                "ninja_guide_to_funtion_entry",
+                                "stronghold_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "roi": [
+                                306,
+                                100,
+                                83,
+                                558
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "stronghold_gameplay",
+                                "no_group",
+                                "ninja_guide_returning_player_to_funtion_entry",
+                                "stronghold_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找天地": {
+            "type": "select",
+            "description": "注意这个选项你没法选择",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "roi": [
+                                120,
+                                68,
+                                98,
+                                585
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "sky_ground_gameplay",
+                                "no_group",
+                                "ninja_guide_to_funtion_entry",
+                                "sky_ground_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "roi": [
+                                306,
+                                100,
+                                83,
+                                558
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "sky_ground_gameplay",
+                                "no_group",
+                                "ninja_guide_returning_player_to_funtion_entry",
+                                "sky_ground_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍界指引寻找叛忍": {
+            "type": "select",
+            "description": "注意这个选项你没法选择",
+            "cases": [
+                {
+                    "name": "开",
+                    "pipeline_override": {
+                        "ninja_guide_find_funtion_entry": {
+                            "roi": [
+                                120,
+                                68,
+                                98,
+                                585
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_to_funtion_entry": {
+                            "next": [
+                                "rebel_ninja_gameplay",
+                                "no_group",
+                                "ninja_guide_to_funtion_entry"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "roi": [
+                                306,
+                                100,
+                                83,
+                                558
+                            ],
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "组织"
+                            ]
+                        },
+                        "ninja_guide_returning_player_to_funtion_entry": {
+                            "next": [
+                                "rebel_ninja_gameplay",
+                                "no_group",
+                                "ninja_guide_returning_player_to_funtion_entry"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
         "打排位": {
             "type": "switch",
             "cases": [
@@ -408,6 +1269,26 @@
                                 "entry_name": "段位赛"
                             },
                             "focus": "[color:DeepSkyBlue]进入段位赛[/color]"
+                        },
+                        "ninja_guide_find_funtion_entry": {
+                            "expected": [
+                                "段位赛"
+                            ]
+                        },
+                        "ninja_guide_in_funtion_entry": {
+                            "expected": [
+                                "段位赛"
+                            ]
+                        },
+                        "ninja_guide_returning_player_find_funtion_entry": {
+                            "expected": [
+                                "段位赛"
+                            ]
+                        },
+                        "ninja_guide_returning_player_in_funtion_entry": {
+                            "expected": [
+                                "段位赛"
+                            ]
                         }
                     }
                 }
@@ -419,24 +1300,24 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "hundred_ninjia_selcet_ninjia": {
+                        "hundred_ninja_selcet_ninja": {
                             "next": [
-                                "hundred_ninjia_confirm_selcet_ninjia",
-                                "[JumpBack]hundred_ninjia_selcet_ninjia",
-                                "hundred_ninjia_fight"
+                                "hundred_ninja_confirm_selcet_ninja",
+                                "[JumpBack]hundred_ninja_selcet_ninja",
+                                "hundred_ninja_fight"
                             ]
                         },
-                        "hundred_ninjia_confirm_selcet_ninjia": {
+                        "hundred_ninja_confirm_selcet_ninja": {
                             "next": [
-                                "hundred_ninjia_fight",
-                                "[JumpBack]hundred_ninjia_selcet_ninjia"
+                                "hundred_ninja_fight",
+                                "[JumpBack]hundred_ninja_selcet_ninja"
                             ]
                         },
-                        "hundred_ninjia_check_no_fight": {
+                        "hundred_ninja_check_no_fight": {
                             "next": [
-                                "hundred_ninjia_confirm_game_over",
-                                "hundred_ninjia_windfall",
-                                "hundred_ninjia_fight",
+                                "hundred_ninja_confirm_game_over",
+                                "hundred_ninja_windfall",
+                                "hundred_ninja_fight",
                                 "[JumpBack]wait_5_second"
                             ]
                         }
@@ -445,7 +1326,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "hundred_ninjia_check_fight": {
+                        "hundred_ninja_check_fight": {
                             "action": "DoNothing"
                         }
                     }
@@ -458,21 +1339,21 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "get_ninjia_book_award": {
+                        "get_ninja_book_award": {
                             "template": [
-                                "Ninjia_book/box_waiting.png",
-                                "Ninjia_book/copper_60_waiting.png",
-                                "Ninjia_book/fame_waiting.png",
-                                "Ninjia_book/gold_waiting.png",
-                                "Ninjia_book/star_waiting.png",
-                                "Ninjia_book/energe_waiting.png",
-                                "Ninjia_book/soul_waiting.png",
-                                "Ninjia_book/box_waiting.png",
-                                "Ninjia_book/wooden_spike_roll_waiting.png",
-                                "Ninjia_book/seal_roll_waiting.png",
-                                "Ninjia_book/defence_roll_waiting.png",
-                                "Ninjia_book/title_waiting.png",
-                                "Ninjia_book/exchange_token_waiting.png"
+                                "Ninja_book/box_waiting.png",
+                                "Ninja_book/copper_60_waiting.png",
+                                "Ninja_book/fame_waiting.png",
+                                "Ninja_book/gold_waiting.png",
+                                "Ninja_book/star_waiting.png",
+                                "Ninja_book/energe_waiting.png",
+                                "Ninja_book/soul_waiting.png",
+                                "Ninja_book/box_waiting.png",
+                                "Ninja_book/wooden_spike_roll_waiting.png",
+                                "Ninja_book/seal_roll_waiting.png",
+                                "Ninja_book/defence_roll_waiting.png",
+                                "Ninja_book/title_waiting.png",
+                                "Ninja_book/exchange_token_waiting.png"
                             ]
                         }
                     }
@@ -485,34 +1366,27 @@
         },
         "是否领取奖励": {
             "type": "select",
+            "description": "默认不领取奖励,方便卡超影,体力,体验卡",
             "default_case": "否",
             "cases": [
                 {
-                    "name": "是",
+                    "name": "否",
                     "pipeline_override": {
-                        "ninjia_book_award_undone": {
+                        "ninja_book_award_undone": {
                             "next": [
-                                "ninjia_book_award_selected",
-                                "[JumpBack]ninjia_book_award_undone",
-                                "[JumpBack]back_main_screen_and_stop"
+                                "back_main_screen_and_stop"
+                            ]
+                        },
+                        "ninja_book_award_selected": {
+                            "next": [
+                                "back_main_screen_and_stop"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "否",
-                    "pipeline_override": {
-                        "ninjia_book_award_undone": {
-                            "next": [
-                                "back_main_screen_and_stop"
-                            ]
-                        },
-                        "ninjia_book_award_selected": {
-                            "next": [
-                                "back_main_screen_and_stop"
-                            ]
-                        }
-                    }
+                    "name": "是",
+                    "pipeline_override": {}
                 }
             ]
         },
@@ -529,6 +1403,36 @@
                         "check_no_treasure_box_award": {
                             "next": [
                                 "treasure_box_challenge"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "忍法帖礼盒": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "treasure_box_undone": {
+                            "expected": [
+                                "礼"
+                            ]
+                        },
+                        "ninja_book_check_in_treasure_box_access_method": {
+                            "expected": [
+                                "每日活跃度"
+                            ],
+                            "roi": [
+                                550,
+                                125,
+                                118,
+                                41
                             ]
                         }
                     }
@@ -580,6 +1484,7 @@
         },
         "选择小游戏": {
             "type": "select",
+            "description": "请尽量不要滥用这个功能影响其他人游戏体验",
             "cases": [
                 {
                     "name": "聚宝试炼领取奖励",
@@ -627,6 +1532,22 @@
                         "mini_game": {
                             "next": "weekly_win_match_fighting",
                             "timeout": 10000
+                        }
+                    }
+                },
+                {
+                    "name": "新春邮局",
+                    "pipeline_override": {
+                        "mini_game": {
+                            "next": "spring_festival_post_office"
+                        }
+                    }
+                },
+                {
+                    "name": "问答游戏(挂机)",
+                    "pipeline_override": {
+                        "mini_game": {
+                            "next": "konoha_question_and_answer"
                         }
                     }
                 }
@@ -765,6 +1686,69 @@
                 }
             ]
         },
+        "出现提示时重启任务": {
+            "type": "switch",
+            "description": "在遇到对手退出,获取不到房间的时候尝试重启任务,开启会降低应对卡顿的能力",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "weekly_win": {
+                            "next": [
+                                "ninja_guide_returning_player",
+                                "ninja_guide_in_ninja_guide",
+                                "[JumpBack]open_ninja_guide",
+                                "[JumpBack]go_to_war",
+                                "[JumpBack]weekly_win_match_fighting",
+                                "[JumpBack]back_main_screen"
+                            ]
+                        },
+                        "go_to_war": {
+                            "next": [
+                                "cannot_go_to_war",
+                                "[JumpBack]weekly_win_match_fighting",
+                                "[JumpBack]weekly_win_rank_matching",
+                                "[JumpBack]weekly_win_rank_confirm_ninja",
+                                "[JumpBack]weekly_win_rank_ban",
+                                "battle_tips",
+                                "[JumpBack]weekly_win_locked",
+                                "[JumpBack]weekly_win_rank_up",
+                                "[JumpBack]battle_again",
+                                "[JumpBack]weekly_win_substitution",
+                                "[JumpBack]go_to_war"
+                            ]
+                        },
+                        "tips_confirm": {
+                            "next": [
+                                "tips_confirm",
+                                "[JumpBack]weekly_win_rank_up",
+                                "weekly_win"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "周胜不攻击": {
+            "type": "switch",
+            "description": "不开启连点器,请尽量不要滥用这个功能影响其他人游戏体验",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "click_All_skill": {
+                            "action": "DoNothing"
+                        }
+                    }
+                }
+            ]
+        },
         "借组织助战": {
             "type": "switch",
             "cases": [
@@ -773,7 +1757,7 @@
                     "pipeline_override": {
                         "team_dash_invite_page": {
                             "next": [
-                                "team_dash_invite_ninjia"
+                                "team_dash_invite_ninja"
                             ]
                         }
                     }
@@ -896,7 +1880,7 @@
             ]
         },
         "秘境忍具每次只翻一张": {
-            "description": "性价比选项",
+            "description": "性价比选项,只有开启了翻忍具牌选项才生效",
             "type": "switch",
             "cases": [
                 {
@@ -928,7 +1912,7 @@
             ]
         },
         "有挑战卷的时候才挑战": {
-            "description": "测试功能,在有挑战卷的时候才进行秘境挑战",
+            "description": "在有挑战卷的时候才进行秘境挑战,关闭可能会在没有挑战卷进入秘境的时候卡死",
             "type": "switch",
             "cases": [
                 {
@@ -1124,6 +2108,135 @@
                 }
             ]
         },
+        "黑市二级密码": {
+            "type": "input",
+            "description": "开启二级密码之后可能出现误使用金币的情况,请自己注意避免",
+            "inputs": [
+                {
+                    "name": "二级密码",
+                    "label": "二级密码",
+                    "pipeline_type": "string",
+                    "default": "0",
+                    "verify": "^(0|[1-9]\\d*)$"
+                }
+            ],
+            "pipeline_override": {
+                "black_market_merchant_input_secondary_password": {
+                    "input_text": "{二级密码}"
+                },
+                "black_market_merchant_check_secondary_password": {
+                    "expected": [
+                        "{二级密码}"
+                    ]
+                }
+            }
+        },
+        "黑市忍具之尘购买数量": {
+            "type": "input",
+            "description": "注意可能因为OCR识别不到而失败,你确定要无视风险,继续使用吗",
+            "inputs": [
+                {
+                    "name": "购买数量",
+                    "label": "购买数量",
+                    "pipeline_type": "string",
+                    "default": "1",
+                    "verify": "^[1-9]$"
+                }
+            ],
+            "pipeline_override": {
+                "black_market_merchant_check_gear_dust_quantity": {
+                    "expected": "{购买数量}",
+                    "threshold": 0
+                }
+            }
+        },
+        "账号切换范围": {
+            "type": "select",
+            "description": "因为最终用户协议(EULA),换社交媒体账号时,你必须手动同意协议;",
+            "cases": [
+                {
+                    "name": "换区"
+                },
+                {
+                    "name": "换社交媒体账号",
+                    "pipeline_override": {
+                        "switch_account_already_in_target_area": {
+                            "enabled": false
+                        },
+                        "switch_account_in_before_game": {
+                            "next": "switch_account_to_switch_social_media_account"
+                        },
+                        "check_agreement": {
+                            "next": "switch_account_switch_social_media_account"
+                        }
+                    }
+                }
+            ]
+        },
+        "目标区": {
+            "type": "input",
+            "description": "需要切换的目标区",
+            "inputs": [
+                {
+                    "name": "区序号",
+                    "label": "区序号",
+                    "description": "需要切换的目标区的区序号",
+                    "pipeline_type": "string",
+                    "default": "1",
+                    "verify": "^([1-9]\\d{0,4}|100000)$"
+                }
+            ],
+            "pipeline_override": {
+                "switch_account_already_in_target_area": {
+                    "expected": [
+                        "{区序号}"
+                    ]
+                },
+                "switch_account_find_target_area": {
+                    "expected": [
+                        "{区序号}"
+                    ]
+                }
+            }
+        },
+        "目标社交媒体账号": {
+            "type": "input",
+            "description": "需要切换的目标社交媒体账号,字串即可,注意可能因为OCR识别不到而失败",
+            "inputs": [
+                {
+                    "name": "账号名",
+                    "label": "账号名",
+                    "description": "需要切换的目标账号的账号名",
+                    "pipeline_type": "string",
+                    "default": "MaaAutoNaruto"
+                }
+            ],
+            "pipeline_override": {
+                "switch_account_find_target_qq_account": {
+                    "expected": [
+                        "{账号名}"
+                    ]
+                }
+            }
+        },
+        "切换账号后行为": {
+            "type": "select",
+            "description": "切换后行为的行为;开启点击开始游戏后,切换账号之后的任务不需要进入火影任务",
+            "cases": [
+                {
+                    "name": "点击开始游戏"
+                },
+                {
+                    "name": "什么都不做",
+                    "pipeline_override": {
+                        "switch_account_in_start_game": {
+                            "action": "StopTask",
+                            "next": []
+                        }
+                    }
+                }
+            ]
+        },
         "百忍": {
             "type": "switch",
             "description": "百忍虽好,可是有开放时间限制的哦",
@@ -1131,7 +2244,7 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "more_gameplay_hundred_ninjia_gameplay": {
+                        "more_gameplay_hundred_ninja_gameplay": {
                             "enabled": true
                         }
                     }
@@ -1139,7 +2252,7 @@
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "more_gameplay_hundred_ninjia_gameplay": {
+                        "more_gameplay_hundred_ninja_gameplay": {
                             "enabled": false
                         }
                     }
@@ -1188,16 +2301,76 @@
                 }
             ]
         },
-        "玩法未开启时退出": {
+        "打满奖励停止": {
+            "type": "switch",
+            "description": "还没适配百忍",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "more_gameplay_go_fight": {
+                            "action": "DoNothing",
+                            "next": [
+                                "more_gameplay_check_point"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "打满奖励停止并领取奖励": {
+            "type": "switch",
+            "description": "还没适配百忍",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "more_gameplay_complete": {
+                            "next": [
+                                "more_gameplay_award",
+                                "more_gameplay_award_done"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No"
+                }
+            ]
+        },
+        "更多玩法在开战页面开始": {
+            "type": "switch",
+            "description": "这个选项可以在更多玩法加载不出图片的时候用",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "more_gameplay": {
+                            "next": [
+                                "hundred_ninja_match",
+                                "more_gameplay_in_trace_vanish",
+                                "more_gameplay_in_duel_field",
+                                "[JumpBack]more_gameplay_entry",
+                                "[JumpBack]back_main_screen"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "要塞玩法未开启时退出": {
             "type": "switch",
             "description": "如果关闭会在组织界面一直尝试进入对应功能",
             "cases": [
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "sky_ground_mode": {
-                            "max_hit": 5
-                        },
                         "stronghold_mode": {
                             "max_hit": 5
                         }
@@ -1306,6 +2479,61 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {}
+                }
+            ]
+        },
+        "无限循环找柱子": {
+            "type": "switch",
+            "description": "测试功能无限寻找空柱子,实际上会寻找UINT_MAX(4294967295)次",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "left_swipe_for_empty_column": {
+                            "max_hit": 4294967295
+                        },
+                        "right_swipe_for_empty_column": {
+                            "max_hit": 4294967295
+                        },
+                        "up_swipe_for_empty_column": {
+                            "max_hit": 4294967295
+                        },
+                        "down_swipe_for_empty_column": {
+                            "max_hit": 4294967295
+                        }
+                    }
+                }
+            ]
+        },
+        "天地玩法未开启时退出": {
+            "type": "switch",
+            "description": "开启会在识别到玩法未开启的时候退出",
+            "cases": [
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "group_mode_not_open": {
+                            "enabled": false
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "sky_ground_mode": {
+                            "max_hit": 5
+                        },
+                        "sky_ground_battlefield_selection": {
+                            "next": [
+                                "sky_battlefield",
+                                "sky_ground_settlement",
+                                "sky_ground_not_open"
+                            ]
+                        }
+                    }
                 }
             ]
         },
@@ -1512,6 +2740,7 @@
         },
         "叛忍二级密码": {
             "type": "input",
+            "description": "开启二级密码之后可能出现误使用金币的情况,请自己注意避免",
             "inputs": [
                 {
                     "name": "二级密码",
@@ -1531,6 +2760,23 @@
                     ]
                 }
             }
+        },
+        "叛忍玩法未开启时退出": {
+            "type": "switch",
+            "description": "开启会在识别到玩法未开启的时候退出",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "rebel_ninja_without_not_open": {
+                            "next": "back_main_screen_and_stop"
+                        }
+                    }
+                }
+            ]
         },
         "冒险副本一直推关": {
             "type": "switch",
@@ -1593,6 +2839,9 @@
                     "pipeline_override": {
                         "share_back_to_natuto": {
                             "enabled": true
+                        },
+                        "ninja_book_share_back_to_natuto": {
+                            "enabled": true
                         }
                     }
                 }
@@ -1625,10 +2874,10 @@
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "ninjia_book_undone": {
+                        "ninja_book_undone": {
                             "next": [
-                                "ninjia_book_mission_undone",
-                                "ninjia_book_mission_done"
+                                "ninja_book_mission_undone",
+                                "ninja_book_mission_done"
                             ]
                         }
                     }
@@ -1688,9 +2937,17 @@
                                 "[JumpBack]back_main_screen_before_task"
                             ]
                         },
+                        "black_market_merchant": {
+                            "next": [
+                                "black_market_merchant_in_center_enter",
+                                "[JumpBack]award_center_enter",
+                                "[JumpBack]back_main_screen_before_task"
+                            ]
+                        },
                         "more_gameplay": {
                             "next": [
                                 "more_gameplay_in_center_enter",
+                                "more_gameplay_in_duel_field",
                                 "[JumpBack]award_center_enter",
                                 "[JumpBack]back_main_screen_before_task"
                             ]

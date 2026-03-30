@@ -29,18 +29,18 @@ def load_keybindings(keybind_path: str) -> dict:
         if not keybind_file.exists():
             raise FileNotFoundError(f"文件不存在：{keybind_path}")
 
-        with open(keybind_file, 'r', encoding='utf-8') as f:
+        with open(keybind_file, "r", encoding="utf-8") as f:
             keybind_data = json.load(f)
 
         # 构建技能名到位置信息的映射
         key_mapping = {}
         for item in keybind_data:
-            doc_name = item.get('$doc')
+            doc_name = item.get("$doc")
             if doc_name:
                 key_mapping[doc_name] = {
-                    'begin': item.get('begin', []),
-                    'end': item.get('end', []),
-                    'duration': item.get('duration', 0)
+                    "begin": item.get("begin", []),
+                    "end": item.get("end", []),
+                    "duration": item.get("duration", 0),
                 }
 
         print(f"✅ 成功加载 {keybind_file.name}：共 {len(key_mapping)} 个技能配置")
@@ -57,7 +57,7 @@ def load_keybindings(keybind_path: str) -> dict:
         raise
 
 
-def replace_swipes_data(data: dict or list, key_mapping: dict) -> None:
+def replace_swipes_data(data: dict | list, key_mapping: dict) -> None:
     """
     递归遍历JSON数据，替换所有swipes数组中的技能位置信息
     兼容Python 3.12+，递归逻辑无版本兼容性问题
@@ -72,15 +72,15 @@ def replace_swipes_data(data: dict or list, key_mapping: dict) -> None:
     # 如果是字典，检查是否包含swipes字段
     elif isinstance(data, dict):
         # 处理当前字典的swipes字段
-        if 'swipes' in data and isinstance(data['swipes'], list):
-            for swipe_idx, swipe_item in enumerate(data['swipes']):
-                if isinstance(swipe_item, dict) and '$doc' in swipe_item:
-                    doc_name = swipe_item['$doc']
+        if "swipes" in data and isinstance(data["swipes"], list):
+            for swipe_idx, swipe_item in enumerate(data["swipes"]):
+                if isinstance(swipe_item, dict) and "$doc" in swipe_item:
+                    doc_name = swipe_item["$doc"]
                     # 如果找到对应的映射，替换位置信息
                     if doc_name in key_mapping:
-                        swipe_item['begin'] = key_mapping[doc_name]['begin']
-                        swipe_item['end'] = key_mapping[doc_name]['end']
-                        swipe_item['duration'] = key_mapping[doc_name]['duration']
+                        swipe_item["begin"] = key_mapping[doc_name]["begin"]
+                        swipe_item["end"] = key_mapping[doc_name]["end"]
+                        swipe_item["duration"] = key_mapping[doc_name]["duration"]
                         print(f"  ✔️ 替换技能 [{doc_name}]（索引：{swipe_idx}）")
                     else:
                         print(f"  ⚠️  未找到技能 [{doc_name}] 的配置，跳过替换")
@@ -111,7 +111,7 @@ def replace_keybindings(keybind_path: str, keybind_type: str) -> None:
             return
 
         # 3. 读取merged.json
-        with open(MERGED_JSON_PATH, 'r', encoding='utf-8') as f:
+        with open(MERGED_JSON_PATH, "r", encoding="utf-8") as f:
             merged_data = json.load(f)
 
         # 4. 替换所有swipes中的技能位置
@@ -119,7 +119,7 @@ def replace_keybindings(keybind_path: str, keybind_type: str) -> None:
         replace_swipes_data(merged_data, key_mapping)
 
         # 5. 保存修改后的文件（直接覆盖，无备份）
-        with open(MERGED_JSON_PATH, 'w', encoding='utf-8') as f:
+        with open(MERGED_JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(merged_data, f, ensure_ascii=False, indent=2)
 
         print(f"\n🎉 {keybind_type} 键位替换完成！")
@@ -151,7 +151,9 @@ def main():
     # 验证Python版本
     python_version = sys.version_info
     if python_version < (3, 12):
-        print(f"⚠️  警告：当前Python版本为 {python_version.major}.{python_version.minor}，建议使用3.12及以上版本！")
+        print(
+            f"⚠️  警告：当前Python版本为 {python_version.major}.{python_version.minor}，建议使用3.12及以上版本！"
+        )
         print("   程序仍会尝试运行，但可能存在兼容性问题。")
         input("\n按Enter键继续...")
 
@@ -163,13 +165,13 @@ def main():
         try:
             choice = input("请输入数字选择操作（0/1/2）：").strip()
 
-            if choice == '1':
+            if choice == "1":
                 # 替换默认键位
                 replace_keybindings(DEFAULT_KEYBINDINGS_PATH, "默认")
-            elif choice == '2':
+            elif choice == "2":
                 # 替换自定义键位
                 replace_keybindings(CUSTOM_KEYBINDINGS_PATH, "自定义")
-            elif choice == '0':
+            elif choice == "0":
                 # 退出程序
                 print("\n👋 程序已退出！")
                 break

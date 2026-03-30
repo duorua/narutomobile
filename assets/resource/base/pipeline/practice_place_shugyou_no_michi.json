@@ -1,8 +1,9 @@
 {
     "shugyou_no_michi": {
         "next": [
-            "go_into_shugyou_no_michi_by_guide",
-            "[JumpBack]open_ninjia_guide",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
         "pre_delay": 0,
@@ -46,7 +47,7 @@
         },
         "next": [
             "train_road_entry",
-            "[JumpBack]ninjia_guide_to_funtion_retry"
+            "[JumpBack]ninja_guide_to_funtion_retry"
         ],
         "focus": "进入修行之路",
         "post_wait_freezes": 400
@@ -170,6 +171,7 @@
             "train_road_unreset"
         ],
         "pre_delay": 0,
+        "post_wait_freezes": 200,
         "max_hit": 5,
         "focus": "[color:DeepSkyBlue]重置修行之路[/color]"
     },
@@ -212,16 +214,15 @@
         "focus": "[color:DeepSkyBlue]确认修行之路超影重置[/color]"
     },
     "confirm_train_road_reset": {
-        "recognition": "OCR",
-        "expected": [
-            "确定"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "SharedNode/confrim.png",
         "roi": [
             532,
             409,
             205,
             83
         ],
+        "threshold": 0.8,
         "action": "Click",
         "next": [
             "confirm_train_road_sweep",

@@ -1,9 +1,10 @@
 {
     "sky_ground": {
         "next": [
-            "sky_ground_entry",
+            "ninja_guide_returning_player",
+            "ninja_guide_in_ninja_guide",
             "sky_ground_in_main",
-            "[JumpBack]open_ninjia_guide",
+            "[JumpBack]open_ninja_guide",
             "[JumpBack]back_main_screen_before_task"
         ],
         "timeout": 1500,
@@ -183,6 +184,23 @@
         "post_wait_freezes": 400,
         "focus": "[color:DeepSkyBlue]天地战场结束[/color]"
     },
+    "sky_ground_not_open": {
+        "recognition": "OCR",
+        "expected": [
+            "活动开启"
+        ],
+        "roi": [
+            454,
+            485,
+            358,
+            167
+        ],
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "post_wait_freezes": 400,
+        "focus": "[color:DeepSkyBlue]天地战场未开始[/color]"
+    },
     "sky_battlefield": {
         "recognition": "TemplateMatch",
         "template": "Sky_ground/sky_entry.png",
@@ -242,7 +260,7 @@
     },
     "sky_ground_select_nijia": {
         "recognition": "TemplateMatch",
-        "template": "Sky_ground/ninjia_star.png",
+        "template": "Sky_ground/ninja_star.png",
         "roi": [
             795,
             132,
@@ -251,7 +269,7 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_selected_ninjia",
+            "sky_ground_selected_ninja",
             "[JumpBack]sky_ground_select_nijia"
         ],
         "post_wait_freezes": 800,
@@ -268,13 +286,13 @@
         ],
         "action": "Click",
         "next": [
-            "sky_ground_selected_ninjia",
+            "sky_ground_selected_ninja",
             "[JumpBack]sky_ground_recommended_ninja"
         ],
         "post_wait_freezes": 800,
         "focus": "[color:DeepSkyBlue]选择推荐忍者[/color]"
     },
-    "sky_ground_selected_ninjia": {
+    "sky_ground_selected_ninja": {
         "recognition": "TemplateMatch",
         "template": "Sky_ground/no_ninja.png",
         "roi": [

@@ -183,6 +183,8 @@
         "next": [
             "back_main_screen_and_stop"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": "[color:tomato]高级任务无法自动战斗[/color]"
     },
     "advanture_anime": {
