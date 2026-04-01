@@ -45,4 +45,4 @@ jobs:
 
       - name: Check Interface
         run: |
-          npx @nekosu/maa-checker ./interface.json -y
+          npx @nekosu/maa-tools check
