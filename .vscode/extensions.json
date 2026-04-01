@@ -1,10 +1,12 @@
 {
     "recommendations": [
-        "ms-python.black-formatter",
         "nekosu.maa-support",
         "davidanson.vscode-markdownlint",
         "github.vscode-github-actions",
         "github.vscode-pull-request-github",
-        "ms-python.python"
+        "ms-python.python",
+        "astral-sh.ty",
+        "charliermarsh.ruff",
+        "ms-python.debugpy"
     ]
 }
