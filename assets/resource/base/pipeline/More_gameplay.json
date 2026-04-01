@@ -23,9 +23,9 @@
             130
         ],
         "next": [
-            "more_gameplay_to_select_gameplay",
+            "[JumpBack]weekly_win_mouthly_reset_award",
             "[JumpBack]weekly_win_mouthly_award",
-            "[JumpBack]weekly_win_mouthly_reset_award"
+            "more_gameplay_to_select_gameplay"
         ],
         "pre_delay": 0,
         "post_delay": 1000,
@@ -87,7 +87,8 @@
             "more_gameplay_hundred_ninja_gameplay",
             "more_gameplay_trace_vanish",
             "more_gameplay_orochimaru_trial",
-            "[JumpBack]swipe_for_select_more_gameplay"
+            "[JumpBack]swipe_for_select_more_gameplay",
+            "back_main_screen_and_stop"
         ],
         "pre_delay": 0,
         "post_delay": 0
@@ -118,6 +119,7 @@
             81,
             71
         ],
+        "max_hit": 4,
         "duration": 400,
         "pre_delay": 0,
         "post_delay": 900
@@ -137,12 +139,35 @@
         "action": "Click",
         "enabled": true,
         "next": [
+            "hundred_ninja_not_open",
             "hundred_ninja_match",
             "[JumpBack]more_gameplay_hundred_ninja_gameplay"
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "post_wait_freezes": 900
+        "post_wait_freezes": 200
+    },
+    "hundred_ninja_not_open": {
+        "recognition": "OCR",
+        "expected": [
+            "未到",
+            "开放时间"
+        ],
+        "roi": [
+            508,
+            330,
+            249,
+            61
+        ],
+        "next": [
+            "more_gameplay_trace_vanish",
+            "more_gameplay_orochimaru_trial",
+            "[JumpBack]swipe_for_select_more_gameplay",
+            "back_main_screen_and_stop"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:yellow ]百忍还没开,尝试玩别的[/color]"
     },
     "more_gameplay_trace_vanish": {
         "recognition": "OCR",
@@ -283,12 +308,15 @@
     },
     "more_gameplay_award": {
         "recognition": "TemplateMatch",
-        "template": "More_gameplay/award.png",
+        "template": [
+            "More_gameplay/award.png",
+            "More_gameplay/pre_award.png"
+        ],
         "roi": [
-            1002,
-            564,
-            128,
-            108
+            434,
+            570,
+            674,
+            93
         ],
         "action": "Click",
         "next": [
@@ -297,7 +325,8 @@
             "more_gameplay_award"
         ],
         "pre_delay": 0,
-        "post_delay": 300
+        "post_delay": 0,
+        "post_wait_freezes": 300
     },
     "more_gameplay_get_award_one_key": {
         "recognition": "TemplateMatch",
@@ -314,6 +343,7 @@
             "more_gameplay_award_done"
         ],
         "pre_delay": 0,
+        "pre_wait_freezes": 200,
         "post_delay": 300
     },
     "more_gameplay_award_done": {

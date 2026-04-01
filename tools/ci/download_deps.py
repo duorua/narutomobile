@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-下载Python依赖到deps目录的脚本
+下载Python依赖的脚本
 """
 
 import sys

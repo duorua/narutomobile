@@ -86,12 +86,12 @@
     },
     "weekly_win_mouthly_reset_award": {
         "recognition": "TemplateMatch",
-        "template": "Weekly_win/mouthly_rank_award.png",
+        "template": "SharedNode/mouthly_rank_reset_award.png",
         "roi": [
-            439,
-            552,
-            382,
-            168
+            530,
+            583,
+            214,
+            89
         ],
         "action": "Click",
         "pre_delay": 0,

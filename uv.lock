@@ -103,6 +103,19 @@ wheels = [
 ]
 
 [[package]]
+name = "notify-py"
+version = "0.3.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jeepney", marker = "sys_platform == 'linux'" },
+    { name = "loguru" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c0/91/81806bcf65c834f0f5469c6b1a7b593d1c4898d5f5ea00273a0fe7e6cda3/notify_py-0.3.2.tar.gz", hash = "sha256:016b54d20dff55713dce5428d6f6314d3a7e3e6d7d00a57c45ce813534e34a4e", size = 647706, upload-time = "2021-05-05T18:21:01.193Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ed/44/1f4abc7755b4b75dce32a1a184c43bf0580b92f27b035198f885b18d5d1d/notify_py-0.3.2-py3-none-any.whl", hash = "sha256:bcf4a15582a61cab9b7eb6cb1b76c1a395e8eac6e34216d8612df68ef21c886b", size = 649922, upload-time = "2021-05-05T18:20:59.094Z" },
+]
+
+[[package]]
 name = "numpy"
 version = "2.4.0"
 source = { registry = "https://pypi.org/simple" }

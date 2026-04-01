@@ -323,6 +323,7 @@
                 "大蛇丸试炼",
                 "打满奖励停止",
                 "打满奖励停止并领取奖励",
+                "百忍未开放时操作",
                 "百忍是否使用连点器战斗",
                 "更多玩法在开战页面开始"
             ],
@@ -2253,6 +2254,42 @@
                     "pipeline_override": {
                         "more_gameplay_hundred_ninja_gameplay": {
                             "enabled": false
+                        }
+                    }
+                }
+            ]
+        },
+        "百忍未开放时操作": {
+            "type": "select",
+            "description": "其中无限等待选项会10秒尝试静入一次",
+            "cases": [
+                {
+                    "name": "尝试其他的玩法"
+                },
+                {
+                    "name": "直接返回主界面并结束任务",
+                    "pipeline_override": {
+                        "hundred_ninja_not_open": {
+                            "next": [
+                                "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "无限等待到开放",
+                    "pipeline_override": {
+                        "hundred_ninja_not_open": {
+                            "next": [
+                                "more_gameplay_hundred_ninja_gameplay",
+                                "more_gameplay_trace_vanish",
+                                "more_gameplay_orochimaru_trial",
+                                "[JumpBack]swipe_for_select_more_gameplay",
+                                "back_main_screen_and_stop"
+                            ]
+                        },
+                        "more_gameplay_hundred_ninja_gameplay": {
+                            "post_delay": 10000
                         }
                     }
                 }

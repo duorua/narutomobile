@@ -453,6 +453,7 @@
         ],
         "next": [
             "easy_season_plus_sweep_card",
+            "easy_season_plus_find_team_sweep_card_event",
             "easy_season_plus_back_to_easy_season_plus",
             "back_main_screen_and_stop"
         ],

@@ -68,25 +68,7 @@ git submodule update --init --recursive
 
 ---
 
-## 5. 安装 MaaFramework 依赖
-
-MaaFramework 依赖可以通过以下两种方式之一安装：
-
-### 5.1 方式一：直接下载发布包
-
-1. 访问 [MaaFramework 发布页面](https://github.com/MaaXYZ/MaaFramework/releases)
-2. 下载最新版本的发布包
-3. 将下载的文件解压到项目根目录下的 `deps` 文件夹中
-
-### 5.2 方式二：使用下载脚本 (推荐)
-
-在项目根目录下执行以下命令：
-
-```bash title="下载MaaFramework依赖"
-python tools\download_maafw.py
-```
-
-## 6. 安装 Python 依赖
+## 5. 安装 Python 依赖
 
 使用 pip 安装项目所需的 Python 依赖：
 
@@ -108,7 +90,7 @@ pip install -r requirements.txt
 
 ---
 
-## 7. 配置 OCR 模型
+## 6. 配置 OCR 模型
 
 在项目的根目录运行以下命令配置 OCR 模型：
 
@@ -118,7 +100,7 @@ python ./tools/ci/configure.py
 
 ---
 
-## 8. 验证安装
+## 7. 验证安装
 
 安装完成后，可以运行项目来验证是否安装成功：
 
@@ -132,9 +114,9 @@ python -m agent.main <identifier>
 
 ---
 
-## 9. 开始开发
+## 8. 开始开发
 
-### 9.1 入门指南
+### 8.1 入门指南
 
 1. 阅读 [M9A 开发须知](https://1999.fan/zh_cn/develop/development.html)，了解如何在本地以开发模式运行本项目（本项目与M9A的项目结构类似，可以作为学习参考）。
 
@@ -151,7 +133,7 @@ python -m agent.main <identifier>
 
 ---
 
-## 10. 进行调试
+## 9. 进行调试
 
 | 工具 | 简介 |
 | --- | --- |
@@ -160,9 +142,9 @@ python -m agent.main <identifier>
 
 ---
 
-## 11. 常见问题与解决方案
+## 10. 常见问题与解决方案
 
-### 10.1 运行项目问题
+### 11.1 运行项目问题
 
 1. **错误**：提示 "Failed to load det or rec", "ocrer is null"
    **解决方案**：确保 MaaFramework 依赖已正确安装，且 OCR 模型文件完整
@@ -170,7 +152,7 @@ python -m agent.main <identifier>
 2. **错误**：提示找不到模块
    **解决方案**：检查是否已正确激活虚拟环境（如果使用了虚拟环境），或重新安装依赖
 
-### 10.2 开发相关问题
+### 11.2 开发相关问题
 
 1. **问题**：我在这个仓库里提了 Issue 很久没人回复
    **解决方案**：本项目目前紧缺人手，你可以先阅读文档自行尝试寻找解决方案。欢迎提交 PR 贡献代码！
