@@ -26,7 +26,7 @@ print(f"set cwd: {Path.cwd()}")
 if current_script_dir.__str__() not in sys.path:
     sys.path.insert(0, current_script_dir.__str__())
 
-from utils.logger import logger  # type: ignore
+from utils.logger import logger  # noqa: E402
 
 VENV_NAME = ".venv"  # 虚拟环境目录的名称
 VENV_DIR = Path(project_root_dir) / VENV_NAME
@@ -35,20 +35,17 @@ VENV_DIR = Path(project_root_dir) / VENV_NAME
 ### 配置相关 ###
 def read_interface_version(interface_file_name="./interface.json") -> str:
     interface_path = Path(project_root_dir) / interface_file_name
-    assets_interface_path = Path(project_root_dir) / "assets" / interface_file_name
-
     target_path = None
-    if interface_path.exists():
-        target_path = interface_path
-    elif assets_interface_path.exists():
-        return "DEBUG"
 
-    if target_path is None:
-        logger.warning("未找到interface.json")
+    if not interface_path.exists():
+        logger.warning("未找到interface.json!")
         return "unknown"
 
+    if Path(Path(project_root_dir) / "package.json").exists():
+        return "DEBUG"
+
     try:
-        with open(target_path, "r", encoding="utf-8") as f:
+        with open(interface_path, "r", encoding="utf-8") as f:
             interface_data = json.load(f)
             return interface_data.get("version", "unknown")
     except Exception:

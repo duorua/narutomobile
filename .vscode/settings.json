@@ -9,7 +9,7 @@
         },
         {
             "fileMatch": [
-                "/assets/interface.json",
+                "/interface.json",
                 "/install/interface.json"
             ],
             "url": "/deps/tools/interface.schema.json"

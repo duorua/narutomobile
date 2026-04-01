@@ -98,7 +98,7 @@ def install_resource(version):
     )
 
     shutil.copy2(
-        working_dir / "assets" / "interface.json",
+        working_dir / "interface.json",
         install_path,
     )
 
@@ -169,8 +169,6 @@ def install_agent(os_name):
     else:
         print(f"Unsupported OS: {os_name}")
         sys.exit(1)
-
-    interface["agent"]["child_args"] = ["-u", r"agent/main.py"]
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         jsonc.dump(interface, f, ensure_ascii=False, indent=4)

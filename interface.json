@@ -11,10 +11,9 @@
         "child_exec": "../.venv/Scripts/python.exe",
         "child_args": [
             "-u",
-            "../agent/main.py"
+            "agent/main.py"
         ],
         "identifier": "3be2c931-9c0d-4d69-9ebd-eed2263e06fd",
-        "debug_session": "Agent 调试"
     },
     "controller": [
         {

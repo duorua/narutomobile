@@ -126,7 +126,7 @@ python ./tools/ci/configure.py
 python -m agent.main <identifier>
 ```
 
-`identifier`的值在`assets/interface.json`里
+`identifier`的值在`interface.json`里
 
 **✓ 如果能够正常启动，说明开发环境已经搭建完成！**
 
