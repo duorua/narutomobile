@@ -9,6 +9,8 @@ import sys
 import json
 from pathlib import Path
 
+from utils.logger import logger
+
 # utf-8
 sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
 
@@ -26,7 +28,6 @@ print(f"set cwd: {Path.cwd()}")
 if current_script_dir.__str__() not in sys.path:
     sys.path.insert(0, current_script_dir.__str__())
 
-from utils.logger import logger  # type: ignore
 
 VENV_NAME = ".venv"  # 虚拟环境目录的名称
 VENV_DIR = Path(project_root_dir) / VENV_NAME
@@ -37,22 +38,19 @@ def read_interface_version(interface_file_name="./interface.json") -> str:
     interface_path = Path(project_root_dir) / interface_file_name
     assets_interface_path = Path(project_root_dir) / "assets" / interface_file_name
 
-    target_path = None
-    if interface_path.exists():
-        target_path = interface_path
-    elif assets_interface_path.exists():
-        return "DEBUG"
-
-    if target_path is None:
-        logger.warning("未找到interface.json")
+    if not (assets_interface_path.exists() or interface_path.exists()):
+        logger.error("未找到interface.json")
         return "unknown"
 
+    if assets_interface_path.exists():
+        return "DEBUG"
+
     try:
-        with open(target_path, "r", encoding="utf-8") as f:
+        with open(interface_path, "r", encoding="utf-8") as f:
             interface_data = json.load(f)
             return interface_data.get("version", "unknown")
     except Exception:
-        logger.exception(f"读取interface.json版本失败，文件路径：{target_path}")
+        logger.exception(f"读取interface.json版本失败：{interface_path}")
         return "unknown"
 
 
@@ -60,7 +58,7 @@ def read_interface_version(interface_file_name="./interface.json") -> str:
 def agent(is_dev_mode=False):
     try:
         if is_dev_mode:
-            from utils.logger import change_console_level  # type: ignore
+            from utils.logger import change_console_level
 
             change_console_level("DEBUG")
             logger.info("开发模式：日志等级已设置为DEBUG")
@@ -71,7 +69,7 @@ def agent(is_dev_mode=False):
 
             # 导入cunstom模块
             # 这行不能删！！！
-            import custom
+            import custom  # noqa: F401
         except ImportError as e:
             logger.error(e)
             logger.error("Failed to import modules")
@@ -99,14 +97,14 @@ def agent(is_dev_mode=False):
         logger.error("考虑重新配置环境")
         sys.exit(1)
     except Exception as e:
-        logger.exception("agent运行过程中发生异常")
+        logger.exception(f"agent运行过程中发生异常: {e}")
         raise
 
 
 ### 程序入口 ###
 def main():
     current_version = read_interface_version()
-    is_dev_mode = current_version == "DEBUG"
+    is_dev_mode = current_version.upper() == "DEBUG"
 
     if is_dev_mode:
         os.chdir(Path("./assets"))
