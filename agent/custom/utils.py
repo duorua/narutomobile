@@ -119,7 +119,7 @@ def check_resolution(context: Context):
     resolution = context.tasker.controller.resolution
     if resolution[1] > resolution[0]:
         resolution = (resolution[1], resolution[0])
-    if abs(resolution[0] / resolution[1] - 16 / 9) > 0.02:
+    if abs((resolution[0] / resolution[1]) - (16.0 / 9.0)) > 0.02:
         logger.error("你可能正在使用非推荐的分辨率！")
         logger.error("推荐使用的分辨率：1920x1080")
         logger.error(f"当前使用的分辨率：{resolution[0]}x{resolution[1]}")

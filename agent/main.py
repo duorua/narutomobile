@@ -69,7 +69,9 @@ def agent(is_dev_mode=False):
             from maa.agent.agent_server import AgentServer
             from maa.toolkit import Toolkit
 
-            import custom  # type: ignore  # noqa: F401
+            # 导入cunstom模块
+            # 这行不能删！！！
+            import custom
         except ImportError as e:
             logger.error(e)
             logger.error("Failed to import modules")
