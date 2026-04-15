@@ -325,7 +325,9 @@
             "[JumpBack]close_teenager_page",
             "[JumpBack]agree_log_in",
             "[JumpBack]agree_info"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
     },
     "agree_agreement": {
         "recognition": "TemplateMatch",
@@ -361,7 +363,7 @@
             81
         ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "post_delay": 300,
         "focus": "[color:tomato]由于最终用户协议(EULA),你必须手动同意协议[/color]"
     }
 }

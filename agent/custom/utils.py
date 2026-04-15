@@ -80,7 +80,6 @@ def fast_ocr(
         logger.debug(f"OCR 识别成功: {reco_detail.best_result.text}")  # type: ignore
         return reco_detail.best_result.box  # type: ignore
     else:
-
         # 提前提取所有文本，避免重复生成列表
         filtered_texts = [
             res.text  # ty:ignore[unresolved-attribute]
@@ -104,7 +103,7 @@ def fast_ocr(
 
         if result is not None:
             logger.debug(f"OCR 绝对匹配成功: {expected}")
-            return result.box
+            return result.box  # ty:ignore[unresolved-attribute]
         else:
             logger.debug(f"{expected} 绝对匹配失败：{reco_detail.filtered_results}")
             return None
@@ -118,7 +117,9 @@ def wait_for_freezes(context: Context, wait_for_freezes: int = 200):
 
 def check_resolution(context: Context):
     resolution = context.tasker.controller.resolution
-    if resolution not in [(1280, 720), (720, 1280), (1920, 1080), (1080, 1920)]:
+    if resolution[1] > resolution[0]:
+        resolution = (resolution[1], resolution[0])
+    if abs((resolution[0] / resolution[1]) - (16.0 / 9.0)) > 0.02:
         logger.error("你可能正在使用非推荐的分辨率！")
         logger.error("推荐使用的分辨率：1920x1080")
         logger.error(f"当前使用的分辨率：{resolution[0]}x{resolution[1]}")

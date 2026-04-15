@@ -185,12 +185,13 @@
         "recognition": "TemplateMatch",
         "template": "Share/qq.png",
         "roi": [
-            1042,
-            475,
-            238,
-            245
+            1150,
+            614,
+            125,
+            105
         ],
         "threshold": 0.9,
+        "order_by": "Score",
         "next": [
             "try_share_to_qq",
             "share_back_to_natuto",

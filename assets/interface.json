@@ -1964,10 +1964,6 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "No",
-                    "pipeline_override": {}
-                },
-                {
                     "name": "Yes",
                     "pipeline_override": {
                         "secret_realm_fight": {
@@ -1978,6 +1974,10 @@
                             ]
                         }
                     }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {}
                 }
             ]
         },
@@ -2911,7 +2911,7 @@
             ]
         },
         "分享后直接返回游戏": {
-            "description": "开启后不会关闭社交软件而是直接返回火影",
+            "description": "开启后不会关闭社交软件而是直接返回火影,如果容易卡顿不要开这个",
             "type": "switch",
             "cases": [
                 {

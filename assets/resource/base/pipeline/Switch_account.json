@@ -160,7 +160,8 @@
             "switch_account_not_find_target_area"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "post_wait_freezes": 200
     },
     "switch_account_find_target_area": {
         "recognition": "OCR",
@@ -286,7 +287,7 @@
             "switch_account_switch_social_media_account"
         ],
         "pre_delay": 0,
-        "post_delay": 200
+        "post_delay": 500
     },
     "switch_account_switch_qq": {
         "recognition": "TemplateMatch",
