@@ -1,7 +1,8 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
 from loguru import logger as _logger
+
 from utils import root
 
 # 默认日志目录使用绝对路径
@@ -14,7 +15,8 @@ def setup_logger(log_dir: Path = log_dir, console_level: str = "INFO"):
 
     Args:
         log_dir (Path): The directory where log files will be stored.
-        console_level (str): The logging level for console output (e.g., "DEBUG", "INFO", "WARNING", "ERROR").
+        console_level (str): The logging level for console output
+            (e.g., "DEBUG", "INFO", "WARNING", "ERROR").
     """
     _logger.remove()  # Remove default logger
 
