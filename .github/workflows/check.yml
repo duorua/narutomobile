@@ -45,4 +45,5 @@ jobs:
 
       - name: Check Interface
         run: |
-          npx @nekosu/maa-checker ./assets/interface.json -y
+          npm ci
+          npx @nekosu/maa-tools check
