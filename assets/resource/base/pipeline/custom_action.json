@@ -3,7 +3,8 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "template": "",
+                // 占位符，实际应该在custom里替换
+                "template": "Startup/naruto_logo.png",
                 "roi": [
                     345,
                     87,
