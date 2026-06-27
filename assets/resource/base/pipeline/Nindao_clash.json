@@ -90,7 +90,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 300,
-        "focus": "[color:DeepSkyBlue]找到花店[/color]"
+        "focus": "[color:DeepSkyBlue]找到忍界交锋[/color]"
     },
     "select_nindao_clash": {
         "recognition": "Or",
@@ -124,7 +124,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "focus": "[color:DeepSkyBlue]选中花店[/color]"
+        "focus": "[color:DeepSkyBlue]选中忍界交锋[/color]"
     },
     "nindao_clash_undone": {
         "recognition": "TemplateMatch",
@@ -195,7 +195,8 @@
             "[JumpBack]nindao_clash_get_award",
             "nindao_clash_gold_8",
             "[JumpBack]nindao_clash_refresh",
-            "nindao_clash_without_red_point"
+            "nindao_clash_without_red_point",
+            "[JumpBack]nindao_clash_anime_on"
         ],
         "pre_delay": 0,
         "post_delay": 0
@@ -410,17 +411,18 @@
         "recognition": "TemplateMatch",
         "template": "Nindao_clash/anime_on.png",
         "roi": [
-            480,
-            492,
-            66,
-            59
+            467,
+            485,
+            108,
+            76
         ],
-        "threshold": 0.95,
+        "threshold": 0.9,
         "action": "Click",
         "next": [
             "nindao_clash_anime_off",
             "nindao_clash_anime_on"
         ],
+        "pre_wait_freezes": 200,
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 300
@@ -529,8 +531,8 @@
         ],
         "action": "Click",
         "next": [
-            "nindao_clash_win",
-            "select_nindao_clash"
+            "select_nindao_clash",
+            "nindao_clash_win"
         ],
         "pre_delay": 0,
         "post_delay": 0,

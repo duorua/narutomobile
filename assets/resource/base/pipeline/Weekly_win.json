@@ -684,9 +684,8 @@
             469,
             118
         ],
-        "threshold": [
-            0.8
-        ],
+        "threshold": 0.9,
+        "order_by": "Horizontal",
         "inverse": true,
         "next": [
             "weekly_win_check_no_daily_duel_mission_award",
@@ -705,9 +704,7 @@
             469,
             118
         ],
-        "threshold": [
-            0.8
-        ],
+        "threshold": 0.9,
         "order_by": "Horizontal",
         "action": "Click",
         "pre_delay": 0,
@@ -723,10 +720,10 @@
             "商店"
         ],
         "roi": [
-            467,
-            332,
-            790,
-            353
+            387,
+            355,
+            814,
+            241
         ],
         "pre_delay": 0,
         "post_delay": 0,

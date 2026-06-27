@@ -26,8 +26,16 @@
         "recognition": "TemplateMatch",
         "template": [
             "Mail/mail_wait.png",
-            "Mail/lingqi.png"
+            "Mail/lingqi.png",
+            "Mail/mail_wait_1.png"
         ],
+        "roi": [
+            5,
+            101,
+            185,
+            303
+        ],
+        "green_mask": true,
         "threshold": 0.9,
         "action": "Click",
         "next": [

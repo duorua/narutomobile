@@ -127,9 +127,12 @@
         ],
         "next": [
             "check_surf_post",
-            "[JumpBack]surf_post",
+            "[JumpBack]surf_post"
+        ],
+        "on_error": [
             "unknow_error"
         ],
+        "timeout": 7000,
         "post_wait_freezes": 300
     },
     "swipe_for_comments": {

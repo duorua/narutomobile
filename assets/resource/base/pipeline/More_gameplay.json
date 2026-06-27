@@ -601,7 +601,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 200,
-        "focus": "[color:DeepSkyBlue]绝迹战场战斗[/color]"
+        "focus": "[color:DeepSkyBlue]绝迹战场战斗结束[/color]"
     },
     "more_gameplay_All_skill": {
         "recognition": "TemplateMatch",

@@ -104,16 +104,17 @@
             "joy_club_weekly_award_done"
         ],
         "pre_delay": 0,
-        "post_delay": 0
+        "post_delay": 0,
+        "post_wait_freezes": 300
     },
     "joy_club_get_weekly_award": {
         "recognition": "TemplateMatch",
         "template": "Joy_club/get.png",
         "roi": [
-            1069,
-            345,
-            175,
-            103
+            1012,
+            11,
+            251,
+            671
         ],
         "threshold": 0.9,
         "action": "Click",
@@ -123,6 +124,7 @@
             "joy_club_get_weekly_award",
             "joy_club_weekly_award_done"
         ],
+        "pre_wait_freezes": 200,
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200
@@ -149,10 +151,10 @@
         "recognition": "TemplateMatch",
         "template": "Joy_club/done.png",
         "roi": [
-            1083,
-            325,
-            162,
-            133
+            1012,
+            11,
+            251,
+            671
         ],
         "method": 10001,
         "threshold": 0.9,
@@ -164,21 +166,42 @@
         "post_delay": 0
     },
     "joy_club_draw": {
-        "recognition": "TemplateMatch",
-        "template": "Joy_club/draw.png",
-        "roi": [
-            1049,
-            51,
-            175,
-            98
+        "recognition": "And",
+        "all_of": [
+            {
+                "sub_name": "image",
+                "recognition": "TemplateMatch",
+                "template": "Joy_club/draw.png",
+                "roi": [
+                    1012,
+                    11,
+                    251,
+                    671
+                ],
+                "method": 10001,
+                "threshold": 0.9
+            },
+            {
+                "sub_name": "text",
+                "recognition": "OCR",
+                "expected": [
+                    "立即",
+                    "抽奖"
+                ],
+                "roi": [
+                    1012,
+                    11,
+                    251,
+                    671
+                ]
+            }
         ],
-        "method": 10001,
-        "threshold": 0.9,
         "action": "Click",
         "next": [
             "joy_club_close_draw_award",
             "joy_club_draw_done"
         ],
+        "pre_wait_freezes": 200,
         "pre_delay": 0,
         "post_delay": 0,
         "post_wait_freezes": 200
@@ -203,18 +226,39 @@
         "post_wait_freezes": 200
     },
     "joy_club_draw_done": {
-        "recognition": "TemplateMatch",
-        "template": "Joy_club/draw_done.png",
-        "roi": [
-            1049,
-            51,
-            175,
-            98
+        "recognition": "And",
+        "all_of": [
+            {
+                "sub_name": "image",
+                "recognition": "TemplateMatch",
+                "template": "Joy_club/draw_done.png",
+                "roi": [
+                    1012,
+                    11,
+                    251,
+                    671
+                ],
+                "method": 10001,
+                "threshold": 0.9
+            },
+            {
+                "sub_name": "text",
+                "recognition": "OCR",
+                "expected": [
+                    "本周",
+                    "已抽奖"
+                ],
+                "roi": [
+                    1012,
+                    11,
+                    251,
+                    671
+                ]
+            }
         ],
-        "method": 10001,
-        "threshold": 0.9,
         "next": [
-            "joy_club_quit"
+            "joy_club_quit",
+            "joy_club_close_draw_award"
         ],
         "pre_delay": 0,
         "post_delay": 0
