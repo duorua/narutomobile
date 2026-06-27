@@ -215,18 +215,16 @@
             28
         ],
         "duration": 3000,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "focus": "[color:darkgray]在要塞中，向右走[/color]",
         "next": [
             "stronghold_in_match",
             "[JumpBack]stronghold_in_stronghold",
             "[JumpBack]stronghold_fighting",
             "[JumpBack]stronghold_match_win",
-            "stronghold_finished",
-            "[JumpBack]stronghold_substitution"
-        ],
-        "timeout": 30000,
-        "pre_delay": 0,
-        "post_delay": 0,
-        "focus": "[color:darkgray]在要塞中，向右走[/color]"
+            "stronghold_finished"
+        ]
     },
     "stronghold_in_match": {
         "recognition": "OCR",
@@ -246,8 +244,7 @@
             "[JumpBack]stronghold_in_stronghold",
             "[JumpBack]stronghold_in_match",
             "[JumpBack]stronghold_match_win",
-            "stronghold_finished",
-            "[JumpBack]stronghold_substitution"
+            "stronghold_finished"
         ],
         "timeout": 30000
     },
@@ -392,6 +389,8 @@
             210,
             200
         ],
+        "action": "Swipe",
+        "duration": 50,
         "threshold": 0.9,
         "post_delay": 3000
     },

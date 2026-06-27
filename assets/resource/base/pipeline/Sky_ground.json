@@ -162,7 +162,6 @@
         ],
         "next": [
             "sky_battlefield",
-            "ground_battlefield",
             "sky_ground_settlement"
         ],
         "post_wait_freezes": 400,
