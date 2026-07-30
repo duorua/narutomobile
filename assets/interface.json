@@ -18,7 +18,8 @@
     "controller": [
         {
             "name": "连接模拟器",
-            "type": "Adb"
+            "type": "Adb",
+            "description": "MuMu 模拟器若出现运行中闪退，且日志包含 `MuMuPlayerExtras::screencap Failed to capture display`，请参考常见问题，将截图方式切换为通用 ADB 截图。"
         },
         {
             "name": "PlayCover on macOS",

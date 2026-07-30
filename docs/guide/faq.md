@@ -86,6 +86,38 @@
 
 如果以上方案均不能解决问题，请[导出日志](./issue.md)进行反馈。
 
+## MuMu 模拟器运行中闪退
+
+如果软件在执行任务时突然退出，尤其是在情报社的福利站、金币助手等需要频繁截图的步骤发生，可以先检查
+`debug/maafw.log`。出现以下任一日志通常表示 MuMu 专用高速截图发生异常：
+
+```text
+MuMuPlayerExtras::screencap Failed to capture display
+failed to screencap
+lhs_image_.size() != rhs_image_.size()
+```
+
+MuMu 专用高速截图异常后，MaaFramework 可能会重新连接截图服务。如果重连期间画面在
+`1920×1080` 和 `1080×1920` 之间切换，可能导致 MFAAvalonia 异常退出。
+
+可以切换到兼容性更高的通用 ADB 截图方式：
+
+1. 停止任务并完全退出 `MFAAvalonia.exe`。
+2. 备份 `config/instances/default.json`。如果使用了其他实例，请备份对应的实例配置文件。
+3. 在实例配置的 `AdbDevice` 对象中，将以下字段修改为：
+
+    ```json
+    "ScreencapMethods": 7,
+    "Config": "{}"
+    ```
+
+4. 保留原有的 `AdbPath`、`AdbSerial` 和 `InputMethods`，然后重新启动软件。
+
+`ScreencapMethods: 7` 会启用三种通用无损 ADB 截图方式，由 MaaFramework 自动选择当前设备上可用且较快的一种。
+该配置适用于 MuMu、雷电等安卓模拟器以及支持 ADB 的安卓设备，但截图速度可能略低于模拟器专用高速截图。
+
+如果切换后仍然闪退，请同时提供 `debug/maafw.log`、`logs` 目录日志和 Windows 事件查看器中的应用程序错误记录。
+
 ## 软件使用问题
 
 1. Q: 推荐什么模拟器
