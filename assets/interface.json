@@ -19,7 +19,7 @@
         {
             "name": "连接模拟器",
             "type": "Adb",
-            "description": "MuMu 模拟器若出现运行中闪退，且日志包含 `MuMuPlayerExtras::screencap Failed to capture display`，请参考常见问题，将截图方式切换为通用 ADB 截图。"
+            "description": "已知 MuMu 专用高速截图可能在情报社的喂豚豚、金币助手流程中重连并切换横竖屏尺寸，导致 MFAAvalonia 闪退。若日志包含 `MuMuPlayerExtras::screencap Failed to capture display`，请参考常见问题，将截图方式切换为通用 ADB 截图。"
         },
         {
             "name": "PlayCover on macOS",
@@ -230,7 +230,7 @@
                 "金币助手"
             ],
             "default_check": true,
-            "description": "该任务并不稳定,如遇卡顿可能需要人工接管"
+            "description": "该任务并不稳定。已知 MuMu 专用高速截图异常时，福利站的喂豚豚、金币助手流程可能触发横竖屏尺寸切换并导致 MFAAvalonia 闪退，启用前请参考常见问题切换为通用 ADB 截图。"
         },
         {
             "name": "邮箱",
@@ -1875,7 +1875,7 @@
         },
         "金币助手": {
             "type": "switch",
-            "description": "确认MFA不会在喂豚豚闪退后开启,闪退bug成因还在寻找",
+            "description": "已知触发路径为火影情报社进入福利站，在喂豚豚结束后执行金币助手。MuMu 专用高速截图失败重连时可能切换横竖屏尺寸并导致 MFAAvalonia 闪退，请先按常见问题切换为通用 ADB 截图。",
             "cases": [
                 {
                     "name": "No",
