@@ -136,7 +136,7 @@
         "timeout": 10000,
         "next": [
             "[JumpBack]winner_decided",
-            "[JumpBack]click_All_skill",
+            "[JumpBack]arena_fight",
             "battle_tips",
             "[JumpBack]go_to_war",
             "battle_end",

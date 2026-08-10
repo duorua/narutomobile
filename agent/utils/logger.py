@@ -1,7 +1,13 @@
+from __future__ import annotations
+
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from loguru import logger as _logger
+
+if TYPE_CHECKING:
+    from loguru import Logger
 
 from utils import root
 
@@ -9,7 +15,7 @@ from utils import root
 log_dir = root / "debug" / "custom"
 
 
-def setup_logger(log_dir: Path = log_dir, console_level: str = "INFO"):
+def setup_logger(log_dir: Path = log_dir, console_level: str = "INFO") -> Logger:
     """
     Set up the logger with optional file logging.
 
