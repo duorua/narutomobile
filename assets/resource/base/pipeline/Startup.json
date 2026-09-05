@@ -6,11 +6,19 @@
         "package": "com.tencent.KiHan",
         "post_delay": 0,
         "next": [
+            "start_up_check_is_android",
             "start_naruto"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">火影忍者，启动！</font>"
         }
+    },
+    "start_up_check_is_android": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckIsAndroid",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "start_naruto"
     },
     "start_naruto": {
         "timeout": 30000,

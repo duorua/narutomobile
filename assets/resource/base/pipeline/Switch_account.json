@@ -4,12 +4,23 @@
         "post_delay": 0,
         "timeout": 2000,
         "next": [
+            "switch_account_check_is_android",
             "switch_account_enter",
             "[JumpBack]back_main_screen"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入切换账号任务</font>"
         }
+    },
+    "switch_account_check_is_android": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckIsAndroid",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "switch_account_enter",
+            "[JumpBack]back_main_screen"
+        ]
     },
     "switch_account_enter": {
         "recognition": "TemplateMatch",
