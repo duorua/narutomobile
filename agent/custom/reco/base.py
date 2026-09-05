@@ -513,11 +513,11 @@ class CheckIsAndroid(CustomRecognition):
             {
                 "start_up_switch_social_media_account": {
                     "action": "DoNothing",
-                    "focus": {"Node.Action.Starting": '<font color="tomato">安卓端man不能尝试唤起qq</font>'},
+                    "focus": {"Node.Action.Starting": '<font color="tomato">安卓端man-MaaFwApp目前不尝试唤起qq</font>'},
                 },
                 "switch_account_switch_social_media_account": {
                     "action": "DoNothing",
-                    "focus": {"Node.Action.Starting": '<font color="tomato">安卓端man不能尝试唤起qq</font>'},
+                    "focus": {"Node.Action.Starting": '<font color="tomato">安卓端man-MaaFwApp目前不尝试唤起qq</font>'},
                 },
             },
         )
