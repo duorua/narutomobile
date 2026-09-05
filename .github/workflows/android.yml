@@ -78,6 +78,25 @@ jobs:
       - name: Prepare PI tree
         run: python tools/prepare_android_pi.py
 
+      # Only this runner's checkout is modified; the reusable release workflow starts clean.
+      - name: Use internal-test app identity
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          profile = Path("Android/profile.yaml")
+          text = profile.read_text()
+          replacements = {
+              "  id: man\n": "  id: man.ci\n",
+              "  label: MaaAutoNaruto\n": "  label: MaaAutoNaruto 内测版\n",
+          }
+          for old, new in replacements.items():
+              if text.count(old) != 1:
+                  raise SystemExit(f"expected exactly one {old.strip()!r} in {profile}")
+              text = text.replace(old, new)
+          profile.write_text(text)
+          PY
+
       - name: Fetch MaaFramework native libs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
