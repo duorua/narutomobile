@@ -39,5 +39,5 @@ agent:
 
 app:
   id: man
-  label: MaaAutoNaruto
+  label: MAN
   icon: ../docs/imgs/logo.png
