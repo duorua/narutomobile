@@ -1361,7 +1361,7 @@
             53
         ],
         "template": "Naruto_club/club_third_award_done.png",
-        "threshold": 0.9,
+        "threshold": 0.88,
         "post_wait_freezes": 300,
         "next": [
             "close_naruto_club"
