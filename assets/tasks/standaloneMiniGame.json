@@ -32,6 +32,13 @@
             "description": "请在[送奥义]界面开启,不会自动领取宝箱和做网页活动"
         },
         {
+            "name": "冠军送礼",
+            "entry": "champion_gift",
+            "group": [
+                "event"
+            ]
+        },
+        {
             "name": "山中花店",
             "entry": "flower_shop",
             "group": [
