@@ -329,7 +329,7 @@
         ],
         "template": "Sky_ground/no_ninja.png",
         "inverse": true,
-        "post_wait_freezes": 400,
+        "post_delay": 400,
         "next": [
             "sky_ground_to_select_summon",
             "sky_ground_in_select_summon"

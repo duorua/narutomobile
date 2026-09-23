@@ -290,8 +290,7 @@
         "template": "Ninja_book/cancel.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 300,
-        "post_delay": 0,
+        "post_delay": 300,
         "next": [
             "ninja_book_close_share",
             "close_ninja_book_leaderboard",
@@ -490,8 +489,7 @@
         "threshold": 0.9,
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 500,
         "next": [
             "treasure_box_undone",
             "ninja_book_award_undone",
@@ -611,8 +609,7 @@
         "threshold": 0.9,
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 500,
         "next": [
             "treasure_box_undone",
             "ninja_book_award_undone",
@@ -677,8 +674,7 @@
         "template": "Ninja_book/mechanical_treasure_box_access_method_undone.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 500,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected",
@@ -777,8 +773,7 @@
         "template": "Ninja_book/get_mechanical_treasure_box_award.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 500,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected",
@@ -889,8 +884,7 @@
         ],
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 500,
         "next": [
             "ninja_book_award_undone",
             "ninja_book_award_selected",
@@ -1399,8 +1393,7 @@
         "threshold": 0.85,
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 500,
         "next": [
             "back_main_screen_and_stop"
         ],

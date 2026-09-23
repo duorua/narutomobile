@@ -258,8 +258,7 @@
         "template": "Easy_helper/log_on_award.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 300,
-        "post_delay": 0,
+        "post_delay": 300,
         "next": [
             "easy_helper_privilege_undone",
             "easy_helper_privilege_done"
@@ -355,8 +354,7 @@
         "threshold": 0.9,
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 100,
-        "post_delay": 0,
+        "post_delay": 100,
         "next": [
             "easy_helper_team_dash_sweep"
         ],
@@ -419,8 +417,7 @@
         "threshold": 0.85,
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 300,
-        "post_delay": 0,
+        "post_delay": 300,
         "next": [
             "easy_helper_sweep",
             "[JumpBack]easy_helper_celebrate_sweep",
@@ -488,10 +485,8 @@
         "template": "Easy_helper/team_dash_undone.png",
         "threshold": 0.9,
         "inverse": true,
-        "pre_wait_freezes": 200,
-        "pre_delay": 0,
-        "post_wait_freezes": 100,
-        "post_delay": 0,
+        "pre_delay": 200,
+        "post_delay": 100,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -553,8 +548,7 @@
         "template": "Easy_helper/team_dash_back_to_sweep.png",
         "threshold": 0.9,
         "inverse": true,
-        "pre_delay": 0,
-        "post_wait_freezes": 100,
+        "pre_delay": 100,
         "post_delay": 0,
         "next": [
             "easy_helper_team_dash_sweep"

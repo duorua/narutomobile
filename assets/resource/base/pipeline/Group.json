@@ -706,7 +706,8 @@
         ],
         "template": "Group/get_yesterday_award.png",
         "inverse": true,
-        "post_wait_freezes": 300,
+        "pre_delay": 0,
+        "post_delay": 300,
         "next": [
             "close_yesterday_award"
         ],

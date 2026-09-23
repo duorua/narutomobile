@@ -540,7 +540,7 @@
         ],
         "template": "Naruto_club/benefit_station.png",
         "inverse": true,
-        "post_wait_freezes": 400,
+        "post_delay": 400,
         "next": [
             "try_flash_benefit_station_by_village_entry"
         ],
@@ -984,7 +984,7 @@
         "template": "Naruto_club/mission_submit.png",
         "threshold": 0.8,
         "inverse": true,
-        "pre_wait_freezes": 300,
+        "post_delay": 300,
         "timeout": 10000,
         "next": [
             "[JumpBack]naruto_club_duplicate_claim",

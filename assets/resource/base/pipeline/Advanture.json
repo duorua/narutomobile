@@ -537,7 +537,7 @@
             "点击"
         ],
         "inverse": true,
-        "post_wait_freezes": 500,
+        "post_delay": 500,
         "next": [
             "back_main_screen_and_stop"
         ],

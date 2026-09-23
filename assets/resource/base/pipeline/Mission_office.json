@@ -1511,8 +1511,7 @@
         "template": "Mission_office/take_mission.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 300,
-        "post_delay": 0,
+        "post_delay": 300,
         "next": [
             "mission_office_gold_refresh",
             "above_kage_take_mission_done",

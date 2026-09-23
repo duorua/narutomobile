@@ -953,8 +953,7 @@
         "order_by": "Horizontal",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 200,
-        "post_delay": 0,
+        "post_delay": 200,
         "next": [
             "weekly_win_check_no_daily_duel_mission_award",
             "[JumpBack]weekly_win_get_duel_mission_award"
@@ -1090,8 +1089,7 @@
         "template": "Weekly_win/duel_mission_award_waiting.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 400,
-        "post_delay": 0,
+        "post_delay": 400,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -1157,8 +1155,7 @@
         "template": "Weekly_win/duel_mission_award_waiting.png",
         "inverse": true,
         "pre_delay": 0,
-        "post_wait_freezes": 400,
-        "post_delay": 0,
+        "post_delay": 400,
         "next": [
             "weekly_win_check_daily_duel_mission_back_fight",
             "[JumpBack]weekly_win_check_no_daily_duel_mission_recover_award"
