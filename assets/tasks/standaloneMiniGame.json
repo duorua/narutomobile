@@ -34,6 +34,9 @@
         {
             "name": "冠军送礼",
             "entry": "champion_gift",
+            "option": [
+                "忍界指引寻找冠军送礼"
+            ],
             "group": [
                 "event"
             ]
