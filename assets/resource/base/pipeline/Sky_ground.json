@@ -585,7 +585,10 @@
             796,
             718
         ],
-        "template": "Sky_ground/fight_column.png",
+        "template": [
+            "Sky_ground/fight_column.png",
+            "Sky_ground/fight_column_ground.png"
+        ],
         "threshold": [
             0.8
         ],
