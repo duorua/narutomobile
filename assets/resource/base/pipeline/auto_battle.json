@@ -375,6 +375,14 @@
                 "duration": 100
             }
         ],
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]winner_decided",
+            "click_All_skill",
+            "battle_tips",
+            "[JumpBack]go_to_war",
+            "battle_end",
+            "weekly_win_match_fighting"
+        ]
     }
 }

@@ -655,7 +655,7 @@
         "threshold": 0.9,
         "next": [
             "nindao_clash_win",
-            "[JumpBack]nindao_clash_click_All_skill",
+            "nindao_clash_click_All_skill",
             "select_nindao_clash",
             "nindao_clash_in_fight"
         ],
@@ -808,6 +808,12 @@
                 "duration": 100
             }
         ],
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "nindao_clash_win",
+            "nindao_clash_click_All_skill",
+            "select_nindao_clash",
+            "nindao_clash_in_fight"
+        ]
     }
 }

@@ -666,7 +666,7 @@
         "action": "DoNothing",
         "next": [
             "hundred_ninja_check_no_fight",
-            "[JumpBack]hundred_ninja_click_All_skill",
+            "hundred_ninja_click_All_skill",
             "[JumpBack]wait_5_second"
         ],
         "focus": {
@@ -890,6 +890,11 @@
                 "duration": 100
             }
         ],
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "hundred_ninja_check_no_fight",
+            "hundred_ninja_click_All_skill",
+            "[JumpBack]wait_5_second"
+        ]
     }
 }

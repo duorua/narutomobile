@@ -998,7 +998,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "[JumpBack]treasure_box_click_All_skill",
+            "treasure_box_click_All_skill",
             "treasure_box_challenge_not_in_fight"
         ]
     },
@@ -1592,6 +1592,10 @@
                 "duration": 100
             }
         ],
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "treasure_box_click_All_skill",
+            "treasure_box_challenge_not_in_fight"
+        ]
     }
 }

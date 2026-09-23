@@ -148,11 +148,11 @@
         "timeout": 10000,
         "next": [
             "[JumpBack]winner_decided",
-            "[JumpBack]click_All_skill",
+            "click_All_skill",
             "battle_tips",
             "[JumpBack]go_to_war",
             "battle_end",
-            "[JumpBack]weekly_win_match_fighting"
+            "weekly_win_match_fighting"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">开始战斗</font>"

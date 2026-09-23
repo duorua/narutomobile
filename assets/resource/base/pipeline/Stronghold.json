@@ -353,7 +353,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "[JumpBack]stronghold_click_All_skill",
+            "stronghold_click_All_skill",
             "stronghold_winner_decided",
             "[JumpBack]battle_tips",
             "stronghold_in_stronghold",
@@ -385,7 +385,7 @@
             "stronghold_in_stronghold",
             "[JumpBack]stronghold_match_win",
             "stronghold_finished",
-            "[JumpBack]stronghold_click_All_skill"
+            "stronghold_fighting"
         ],
         "$doc": "有一部分忍者会复活,这时候可能会直接进战斗"
     },
@@ -608,6 +608,14 @@
             }
         ],
         "post_delay": 0,
+        "next": [
+            "[JumpBack]stronghold_click_All_skill",
+            "stronghold_winner_decided",
+            "[JumpBack]battle_tips",
+            "stronghold_in_stronghold",
+            "[JumpBack]stronghold_match_win",
+            "stronghold_finished"
+        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">连点器战斗</font>"
         }
