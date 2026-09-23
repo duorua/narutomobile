@@ -592,7 +592,7 @@
         "post_delay": 0,
         "next": [
             "more_gameplay_trace_vanish_check_no_fight",
-            "[JumpBack]more_gameplay_All_skill",
+            "more_gameplay_click_All_skill",
             "more_gameplay_go_fight"
         ],
         "focus": {
@@ -621,7 +621,7 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">绝迹战场战斗结束</font>"
         }
     },
-    "more_gameplay_All_skill": {
+    "more_gameplay_click_All_skill": {
         "recognition": "TemplateMatch",
         "roi": [
             963,
@@ -629,9 +629,7 @@
             316,
             345
         ],
-        "template": [
-            "More_gameplay/attack.png"
-        ],
+        "template": "More_gameplay/attack.png",
         "pre_delay": 0,
         "action": "MultiSwipe",
         "swipes": [
@@ -732,7 +730,12 @@
                 "duration": 50
             }
         ],
-        "post_delay": 0
+        "post_delay": 0,
+        "next": [
+            "more_gameplay_trace_vanish_check_no_fight",
+            "more_gameplay_click_All_skill",
+            "more_gameplay_go_fight"
+        ]
     },
     "more_gameplay_in_center_enter": {
         "recognition": "TemplateMatch",
