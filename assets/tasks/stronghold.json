@@ -5,7 +5,8 @@
             "entry": "stronghold",
             "option": [
                 "要塞玩法未开启时退出",
-                "忍界指引寻找要塞"
+                "忍界指引寻找要塞",
+                "串行连点器(beta)"
             ],
             "group": [
                 "weekly"

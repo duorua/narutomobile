@@ -71,6 +71,91 @@
                     }
                 }
             ]
+        },
+        "串行连点器(beta)": {
+            "type": "switch",
+            "default_case": "No",
+            "description": "雷电模拟器使用多指滑动的时候,有时会出现触摸残留bug.可以选择开启这个选项,将多指滑动转换成串行节点,会变慢很多而且不保证正常运行",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "weekly_win_match_fighting": {
+                            "next": [
+                                "[JumpBack]winner_decided",
+                                "[JumpBack]weekly_win_serial_clicker",
+                                "battle_tips",
+                                "[JumpBack]go_to_war",
+                                "battle_end",
+                                "[JumpBack]weekly_win_match_fighting"
+                            ]
+                        },
+                        "secret_realm_in_fight": {
+                            "next": [
+                                "[JumpBack]secret_realm_serial_clicker",
+                                "secret_realm_settlement",
+                                "secret_realm_wasted",
+                                "secret_realm_win",
+                                "secret_realm_in_fight",
+                                "secret_realm_celebreate",
+                                "secret_realm_celebreate_1",
+                                "secret_realm_old_settlement",
+                                "secret_realm_fight"
+                            ]
+                        },
+                        "hundred_ninja_fight": {
+                            "next": [
+                                "[JumpBack]hundred_ninja_serial_clicker",
+                                "hundred_ninja_check_no_fight",
+                                "[JumpBack]wait_5_second"
+                            ]
+                        },
+                        "more_gameplay_trace_vanish_check_fight": {
+                            "next": [
+                                "more_gameplay_trace_vanish_check_no_fight",
+                                "[JumpBack]more_gameplay_serial_clicker",
+                                "more_gameplay_go_fight"
+                            ]
+                        },
+                        "nindao_clash_in_fight": {
+                            "next": [
+                                "nindao_clash_win",
+                                "[JumpBack]nindao_clash_serial_clicker",
+                                "select_nindao_clash",
+                                "nindao_clash_in_fight"
+                            ]
+                        },
+                        "treasure_box_challenge_in_fight": {
+                            "next": [
+                                "[JumpBack]treasure_box_challenge_serial_clicker",
+                                "treasure_box_challenge_not_in_fight"
+                            ]
+                        },
+                        "sky_ground_in_fight": {
+                            "next": [
+                                "[JumpBack]sky_ground_serial_clicker",
+                                "sky_ground_success",
+                                "sky_ground_fail",
+                                "sky_ground_in_main",
+                                "[JumpBack]battle_tips"
+                            ]
+                        },
+                        "stronghold_fighting": {
+                            "next": [
+                                "[JumpBack]stronghold_serial_clicker",
+                                "stronghold_winner_decided",
+                                "[JumpBack]battle_tips",
+                                "stronghold_in_stronghold",
+                                "[JumpBack]stronghold_match_win",
+                                "stronghold_finished"
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     }
 }

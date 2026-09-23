@@ -231,6 +231,295 @@
             "Node.Action.Starting": "<font color=\"darkgray\">通灵或密卷</font>"
         }
     },
+    "weekly_win_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            224,
+            127,
+            154
+        ],
+        "template": "Weekly_win/battle_emoji.png",
+        "green_mask": true,
+        "threshold": 0.8,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_skill_1"
+        ]
+    },
+
+    "secret_realm_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            224,
+            113,
+            122
+        ],
+        "template": "SharedNode/dameeji_ratio.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "hundred_ninja_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            0,
+            327,
+            145
+        ],
+        "template": "Hundred_ninja/fight.png",
+        "green_mask": true,
+        "threshold": 0.7,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "more_gameplay_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            963,
+            369,
+            316,
+            345
+        ],
+        "template": "More_gameplay/attack.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "nindao_clash_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            259,
+            622,
+            656,
+            79
+        ],
+        "template": [
+            "SharedNode/yellow_boss_health_bar.png",
+            "SharedNode/red_boss_health_bar.png"
+        ],
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "treasure_box_challenge_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1120,
+            0,
+            160,
+            127
+        ],
+        "template": [
+            "Advanture/stop_button.png"
+        ],
+        "green_mask": true,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "sky_ground_serial_clicker": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            5,
+            267,
+            79,
+            68
+        ],
+        "template": "Weekly_win/battle_emoji.png",
+        "green_mask": true,
+        "threshold": 0.5,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "stronghold_serial_clicker": {
+        "recognition": "OCR",
+        "roi": [
+            496,
+            0,
+            229,
+            108
+        ],
+        "expected": [
+            "第",
+            "回"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": "serial_clicker_skill_1"
+    },
+    "serial_clicker_skill_1": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            970,
+            613,
+            62,
+            54
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_skill_2"
+        ]
+    },
+    "serial_clicker_skill_2": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            985,
+            471,
+            65,
+            59
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_attack_2"
+        ]
+    },
+    "serial_clicker_attack_2": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_ultimate"
+        ]
+    },
+    "serial_clicker_ultimate": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1120,
+            400,
+            71,
+            65
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_summon"
+        ]
+    },
+    "serial_clicker_summon": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1128,
+            153,
+            54,
+            51
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_roll"
+        ]
+    },
+    "serial_clicker_roll": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1127,
+            268,
+            56,
+            55
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_replace"
+        ]
+    },
+    "serial_clicker_replace": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            793,
+            564,
+            142,
+            154
+        ],
+        "post_delay": 0,
+        "next": [
+            "serial_clicker_attack_end"
+        ]
+    },
+
+    "serial_clicker_attack_end": {
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1099,
+            548,
+            92,
+            92
+        ],
+        "post_delay": 0
+    },
     "click_All_skill": {
         "recognition": "TemplateMatch",
         "roi": [

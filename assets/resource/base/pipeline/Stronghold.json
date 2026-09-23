@@ -609,7 +609,7 @@
         ],
         "post_delay": 0,
         "next": [
-            "[JumpBack]stronghold_click_All_skill",
+            "stronghold_click_All_skill",
             "stronghold_winner_decided",
             "[JumpBack]battle_tips",
             "stronghold_in_stronghold",

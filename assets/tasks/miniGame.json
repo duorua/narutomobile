@@ -129,7 +129,8 @@
                     "name": "忍道交锋(beta)",
                     "description": "刷不出来8个S箱",
                     "option": [
-                        "忍道交锋刷什么"
+                        "忍道交锋刷什么",
+                        "串行连点器(beta)"
                     ],
                     "pipeline_override": {
                         "mini_game": {

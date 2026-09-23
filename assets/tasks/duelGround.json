@@ -455,44 +455,6 @@
                 }
             ]
         },
-        "串行连点器(beta)": {
-            "type": "switch",
-            "default_case": "No",
-            "description": "雷电模拟器使用多指滑动的时候,有时会出现触摸残留bug.可以选择开启这个选项,将多指滑动转换成串行节点,但是不保证正常运行",
-            "cases": [
-                {
-                    "name": "No"
-                },
-                {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "weekly_win_match_fighting": {
-                            "next": [
-                                "[JumpBack]winner_decided",
-                                "[JumpBack]weekly_win_combo_attack_1",
-                                "battle_tips",
-                                "[JumpBack]go_to_war",
-                                "battle_end",
-                                "[JumpBack]weekly_win_match_fighting"
-                            ]
-                        },
-                        "secret_realm_in_fight": {
-                            "next": [
-                                "[JumpBack]secret_realm_combo_attack_1",
-                                "secret_realm_settlement",
-                                "secret_realm_wasted",
-                                "secret_realm_win",
-                                "secret_realm_in_fight",
-                                "secret_realm_celebreate",
-                                "secret_realm_celebreate_1",
-                                "secret_realm_old_settlement",
-                                "secret_realm_fight"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
         "周胜不攻击": {
             "type": "switch",
             "default_case": "No",
