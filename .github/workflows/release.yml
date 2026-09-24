@@ -20,6 +20,34 @@ jobs:
     with:
       version: ${{ github.ref_name }}
 
+  cli:
+    name: Trigger CLI release
+    needs: [desktop]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Detect prerelease
+        id: release_type
+        shell: bash
+        run: |
+          if [[ "${{ github.ref_name }}" =~ (alpha|beta|rc|dev) ]]; then
+            echo "is_prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger CLI release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.CLI_RELEASE_PAT }}
+        run: |
+          gh workflow run --repo duorua/MaaAutoNaruto_cli build-cli.yml \
+            -f tag=${{ github.ref_name }} \
+            -f source_ref=${{ github.ref_name }} \
+            -f picli_tag=v5.13.0-beta.2 \
+            -f is_prerelease=${{ steps.release_type.outputs.is_prerelease }}
+
   android:
     name: public-release
     permissions:
@@ -155,17 +183,6 @@ jobs:
             MaaAutoNaruto-*.tar.gz
             MaaAutoNaruto-*.zip
             MaaAutoNaruto-android-*.apk
-
-      - name: Trigger CLI release
-        shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.CLI_RELEASE_PAT }}
-        run: |
-          gh workflow run --repo duorua/MaaAutoNaruto build-cli.yml \
-            -f tag=${{ github.ref_name }} \
-            -f source_ref=${{ github.ref_name }} \
-            -f picli_tag=v5.13.0-beta.2 \
-            -f is_prerelease=${{ steps.release_type.outputs.is_prerelease }}
 
       - name: Trigger MirrorChyan workflows
         shell: bash
