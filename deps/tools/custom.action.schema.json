@@ -13,7 +13,9 @@
                 "NonlinearSwipe",
                 "CleanupAgentDebug",
                 "ShopSwipeBack",
-                "SecondaryPasswordAction"
+                "SecondaryPasswordAction",
+                "ClickWithConsent",
+                "SecondaryPasswordClear"
             ]
         },
         "custom_action_param": {
@@ -47,6 +49,12 @@
                 },
                 {
                     "$ref": "#/$defs/SecondaryPasswordActionParam"
+                },
+                {
+                    "$ref": "#/$defs/ClickWithConsentParam"
+                },
+                {
+                    "$ref": "#/$defs/SecondaryPasswordClearParam"
                 }
             ]
         }
@@ -160,6 +168,18 @@
         "SecondaryPasswordActionParam": {
             "type": "object",
             "description": "协助处理二级密码相关事务,暂时废弃",
+            "markdownDescription": "",
+            "properties": {}
+        },
+        "ClickWithConsentParam": {
+            "type": "object",
+            "description": "同意协议功能",
+            "markdownDescription": "",
+            "properties": {}
+        },
+        "SecondaryPasswordClear": {
+            "type": "object",
+            "description": "二级密码字段脱敏,直接替换maafw.log的密文成******.苦手的馊主意,如果任务没有执行或者炸了就不会脱敏",
             "markdownDescription": "",
             "properties": {}
         }

@@ -470,3 +470,57 @@ class ClickWithConsent(CustomAction):
         context.tasker.controller.post_click(click_x, click_y).wait()
 
         return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("SecondaryPasswordClear")
+class SecondaryPasswordClear(CustomAction):
+    """
+    二级密码日志脱敏
+    苦手的馊主意,如果任务没有执行或者炸了就不会脱敏
+    """
+
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        psd = ""
+        if argv.custom_action_param:
+            try:
+                param = json.loads(argv.custom_action_param)
+                psd = str(param.get("psd", "")).strip()
+            except (json.JSONDecodeError, AttributeError, TypeError) as e:
+                logger.error(f"SecondaryPasswordClear: 参数解析失败: {e}")
+                return CustomAction.RunResult(success=False)
+
+        if not psd:
+            logger.info("SecondaryPasswordClear: 未提供有效 psd, 跳过脱敏")
+            return CustomAction.RunResult(success=True)
+
+        log_file = debug_dir / "maafw.log"
+        if not log_file.exists():
+            logger.warning(f"SecondaryPasswordClear: 日志文件不存在: {log_file}")
+            return CustomAction.RunResult(success=True)
+
+        try:
+            with open(log_file, encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+
+            masked = "*" * len(psd)
+            new_content = content.replace(psd, masked)
+
+            if new_content == content:
+                logger.info("SecondaryPasswordClear: 日志中未发现密码字符串, 无需脱敏")
+                return CustomAction.RunResult(success=True)
+
+            with open(log_file, "w", encoding="utf-8") as f:
+                f.write(new_content)
+
+            logger.info(f"SecondaryPasswordClear: 已完成脱敏 (共替换 {content.count(psd)} 处)")
+            return CustomAction.RunResult(success=True)
+        except OSError as e:
+            logger.error(f"SecondaryPasswordClear: 文件读写失败: {e}")
+            return CustomAction.RunResult(success=False)
+        except Exception as e:
+            logger.error(f"SecondaryPasswordClear 执行失败: {e}")
+            return CustomAction.RunResult(success=False)
