@@ -38,15 +38,30 @@
         }
     },
     "ninja_book_undone": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            1205,
-            412,
-            63,
-            39
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    1205,
+                    412,
+                    63,
+                    39
+                ],
+                "template": "Ninja_book/ninja_book_undone_masked.png",
+                "green_mask": true
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    1175,
+                    456,
+                    96,
+                    44
+                ],
+                "expected": "忍法帖"
+            }
         ],
-        "template": "Ninja_book/ninja_book_undone_masked.png",
-        "green_mask": true,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
@@ -541,10 +556,10 @@
         "post_wait_freezes": 500,
         "post_delay": 0,
         "next": [
-            "check_no_ninja_book_liveness_award",
             "[JumpBack]ninja_book_liveness_award",
             "[JumpBack]close_ninja_book_level_up_page_when_liveness",
-            "[JumpBack]close_ninja_book_liveness_detail"
+            "[JumpBack]close_ninja_book_liveness_detail",
+            "check_no_ninja_book_liveness_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确认已经选中活跃度奖励</font>"
@@ -603,7 +618,8 @@
             111
         ],
         "template": [
-            "Ninja_book/liveness_undone_selected.png"
+            "Ninja_book/liveness_undone_selected.png",
+            "Ninja_book/liveness_undone_selected_1.png"
         ],
         "green_mask": true,
         "threshold": 0.9,
@@ -1245,7 +1261,8 @@
             108
         ],
         "template": [
-            "Ninja_book/has_award.png"
+            "Ninja_book/has_award.png",
+            "Ninja_book/has_award_1.png"
         ],
         "pre_delay": 0,
         "action": "Click",
@@ -1322,6 +1339,7 @@
         "next": [
             "check_no_ninja_book_award_red_point",
             "top_level_award",
+            "[JumpBack]get_ninja_book_free_award",
             "[JumpBack]get_ninja_book_award",
             "[JumpBack]ninja_book_award_swipe_to_right"
         ],
@@ -1399,6 +1417,33 @@
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">检查没有忍法帖奖励红点</font>"
+        }
+    },
+    "get_ninja_book_free_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            165,
+            490,
+            1114,
+            39
+        ],
+        "template": "Ninja_book/free_award.png",
+        "green_mask": true,
+        "method": 10001,
+        "threshold": 0.95,
+        "action": "Click",
+        "target_offset": [
+            40,
+            47,
+            -79,
+            15
+        ],
+        "timeout": 8000,
+        "next": [
+            "confirm_ninja_book_award"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取忍法帖免费奖励</font>"
         }
     },
     "get_ninja_book_award": {
