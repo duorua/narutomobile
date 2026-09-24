@@ -156,6 +156,17 @@ jobs:
             MaaAutoNaruto-*.zip
             MaaAutoNaruto-android-*.apk
 
+      - name: Trigger CLI release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.CLI_RELEASE_PAT }}
+        run: |
+          gh workflow run --repo duorua/MaaAutoNaruto build-cli.yml \
+            -f tag=${{ github.ref_name }} \
+            -f source_ref=${{ github.ref_name }} \
+            -f picli_tag=v5.13.0-beta.2 \
+            -f is_prerelease=${{ steps.release_type.outputs.is_prerelease }}
+
       - name: Trigger MirrorChyan workflows
         shell: bash
         env:
