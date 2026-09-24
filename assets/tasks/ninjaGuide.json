@@ -216,7 +216,8 @@
                         "ninja_guide_to_funtion_entry": {
                             "next": [
                                 "train_road_entry",
-                                "ninja_guide_to_funtion_entry"
+                                "train_road_award",
+                                "[JumpBack]ninja_guide_to_funtion_retry"
                             ]
                         },
                         "ninja_guide_returning_player_find_funtion_entry": {
@@ -234,7 +235,8 @@
                         "ninja_guide_returning_player_to_funtion_entry": {
                             "next": [
                                 "train_road_entry",
-                                "ninja_guide_returning_player_to_funtion_entry"
+                                "train_road_award",
+                                "[JumpBack]ninja_guide_to_funtion_retry"
                             ]
                         }
                     }
