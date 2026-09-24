@@ -19,9 +19,11 @@
             36
         ],
         "template": "Naruto_club/club_icon.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "duration": 50,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "check_surf_post",
             "[JumpBack]surf_post",
@@ -47,6 +49,7 @@
         ],
         "template": "Naruto_club/club_icon.png",
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 2000
     },
     "naruto_club_too_many_people": {
@@ -61,6 +64,8 @@
             "访问人数过多",
             "稍后再试"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "confirm_naruto_club_too_many_people"
         ],
@@ -79,7 +84,9 @@
         "expected": [
             "确定"
         ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "next": [
             "back_main_screen_and_stop"
         ]
@@ -96,6 +103,8 @@
             "推荐",
             "忍者"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "surf_post_try_reflash_to_follow"
         ]
@@ -112,8 +121,10 @@
         "expected": [
             "关注"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "surf_post_try_reflash_in_follow",
             "[JumpBack]surf_post_try_reflash_to_follow",
@@ -132,7 +143,9 @@
             86
         ],
         "template": "Naruto_club/follow_select.png",
+        "pre_delay": 0,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "timeout": 7000,
         "next": [
             "check_surf_post",
@@ -154,6 +167,7 @@
         "expected": [
             "关注"
         ],
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             500,
@@ -181,6 +195,7 @@
         "expected": [
             "评论区"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "next": [
             "club_like_mission"
@@ -205,11 +220,14 @@
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">选择有评论话题</font>"
         }
     },
     "club_like_mission": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "first_like",
             "[JumpBack]cancel_club_follow",
@@ -228,6 +246,7 @@
         "expected": [
             "已关注"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 700,
         "next": [
@@ -249,6 +268,7 @@
         "expected": [
             "取消关注"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 900
     },
@@ -256,6 +276,7 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/club_like.png",
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 1500,
         "next": [
@@ -269,6 +290,7 @@
         }
     },
     "swipe_for_club_like": {
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             900,
@@ -297,6 +319,8 @@
             670
         ],
         "expected": "暂无评论",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "surf_post_try_reflash_comment",
             "unknow_error"
@@ -309,6 +333,7 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/club_like.png",
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 1500,
         "next": [
@@ -325,6 +350,7 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/club_like.png",
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 1500,
         "next": [
@@ -341,6 +367,7 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/club_like.png",
         "threshold": 0.8,
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 1500,
         "next": [
@@ -364,8 +391,10 @@
         "expected": [
             "后退"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 700,
+        "post_delay": 0,
         "next": [
             "check_surf_post",
             "[JumpBack]surf_post",
@@ -388,8 +417,10 @@
         "expected": [
             "后退"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "scroll",
             "close_surf_post"
@@ -409,6 +440,7 @@
         "expected": [
             "卷轴"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
         "post_delay": 1000,
@@ -432,8 +464,10 @@
             "后退"
         ],
         "threshold": 0.4,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "ninja_station",
             "close_scroll"
@@ -453,8 +487,10 @@
         "expected": [
             "忍者"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 8000,
+        "post_wait_freezes": 6000,
+        "post_delay": 0,
         "next": [
             "close_ninja_station",
             "ninja_station"
@@ -475,8 +511,10 @@
             "推荐"
         ],
         "threshold": 0.4,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "village_entry",
             "close_ninja_station"
@@ -497,8 +535,10 @@
             "村口",
             "村□"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "close_village_entry",
             "village_entry"
@@ -519,8 +559,10 @@
         "expected": [
             "首页"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "benefit_station",
             "close_village_entry",
@@ -540,6 +582,7 @@
         ],
         "template": "Naruto_club/benefit_station.png",
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 400,
         "next": [
             "try_flash_benefit_station_by_village_entry"
@@ -560,8 +603,10 @@
             "村口",
             "村□"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "try_flash_benefit_station_close_village_entry"
         ],
@@ -581,6 +626,7 @@
         "expected": [
             "首页"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "timeout": 2000,
         "next": [
@@ -602,8 +648,10 @@
             343
         ],
         "template": "Naruto_club/benefit_station.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "confirm_naruto_club_sign",
             "naruto_club_sign",
@@ -625,7 +673,9 @@
         "expected": [
             "今日已签"
         ],
+        "pre_delay": 0,
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "feed_pig",
             "without_feed_pig",
@@ -647,8 +697,10 @@
             "一",
             "键签到"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 1000,
+        "post_delay": 0,
         "next": [
             "confirm_naruto_club_sign",
             "naruto_club_sign",
@@ -670,8 +722,10 @@
             "立即签到"
         ],
         "pre_wait_freezes": 800,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "roger_naruto_club_sign",
             "confirm_naruto_club_sign",
@@ -692,8 +746,10 @@
         "expected": [
             "我知道了"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "feed_pig",
             "without_feed_pig",
@@ -711,6 +767,8 @@
             "去参与"
         ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "check_club_mission_done"
         ],
@@ -723,6 +781,7 @@
         "expected": [
             "去参与"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 500,
         "next": [
@@ -739,6 +798,7 @@
             "去参与"
         ],
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 1500,
         "timeout": 7000,
         "next": [
@@ -753,6 +813,8 @@
         }
     },
     "feed_pig_not_found": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "close_feed_pig"
         ],
@@ -766,8 +828,10 @@
         "template": [
             "Naruto_club/feed_pig.png"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 600,
+        "post_delay": 0,
         "next": [
             "confirm_feed_pig",
             "weekly_feed_pig",
@@ -783,8 +847,9 @@
         "expected": [
             "本周已参与"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 300,
         "next": [
             "close_feed_pig"
         ],
@@ -797,8 +862,9 @@
         "expected": [
             "确认"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 300,
         "next": [
             "close_feed_pig"
         ],
@@ -807,6 +873,7 @@
         }
     },
     "close_feed_pig": {
+        "pre_delay": 0,
         "action": "ClickKey",
         "key": 4,
         "post_delay": 500,
@@ -818,6 +885,8 @@
         }
     },
     "check_club_mission_done": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "club_third_award_done",
             "benefit_station",
@@ -838,6 +907,7 @@
             "本周"
         ],
         "pre_wait_freezes": 1000,
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             320,
@@ -852,6 +922,7 @@
             50
         ],
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "gold_helper_undone",
             "gold_helper_wait",
@@ -863,6 +934,8 @@
         }
     },
     "glod_helper_not_found": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "swipe_for_club_submit"
         ],
@@ -874,6 +947,7 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/gold_helper.png",
         "threshold": 0.95,
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             500,
@@ -893,6 +967,8 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/gold_helper_wait.png",
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "swipe_for_club_submit"
         ],
@@ -904,6 +980,8 @@
         "recognition": "TemplateMatch",
         "template": "Naruto_club/gold_helper_done.png",
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "swipe_for_club_submit"
         ],
@@ -912,6 +990,7 @@
         }
     },
     "close_gold_helper": {
+        "pre_delay": 0,
         "action": "ClickKey",
         "key": 4,
         "post_delay": 500,
@@ -937,6 +1016,7 @@
             "领取",
             "完成"
         ],
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             320,
@@ -951,10 +1031,11 @@
             50
         ],
         "post_wait_freezes": 1000,
+        "post_delay": 0,
         "next": [
+            "club_submit_blank",
             "[JumpBack]naruto_club_duplicate_claim",
             "[JumpBack]club_submit",
-            "club_submit_blank",
             "check_club_all_submit"
         ],
         "on_error": [
@@ -984,15 +1065,14 @@
         "template": "Naruto_club/mission_submit.png",
         "threshold": 0.8,
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 300,
         "timeout": 10000,
         "next": [
             "[JumpBack]naruto_club_duplicate_claim",
             "[JumpBack]club_submit",
-            "roger_club_first_award",
+            "club_first_award",
             "club_first_award_done",
-            "[JumpBack]club_first_award",
-            "naruto_club_in_loop_wheel",
             "benefit_station",
             "check_club_all_submit",
             "[JumpBack]club_first_award_on_error"
@@ -1018,7 +1098,7 @@
         "pre_wait_freezes": 300,
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 400,
+        "post_wait_freezes": 600,
         "post_delay": 0
     },
     "naruto_club_duplicate_claim": {
@@ -1032,7 +1112,8 @@
         "expected": [
             "重复"
         ],
-        "post_wait_freezes": 400,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "naruto_club_back_post"
         ],
@@ -1046,8 +1127,10 @@
         "expected": [
             "后退"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "check_main_screen",
             "benefit_station",
@@ -1069,18 +1152,20 @@
     "club_first_award_done": {
         "recognition": "TemplateMatch",
         "roi": [
-            261,
-            396,
-            78,
-            52
+            226,
+            95,
+            155,
+            624
         ],
         "template": "Naruto_club/club_first_award_done.png",
         "threshold": 0.9,
         "pre_wait_freezes": 300,
+        "pre_delay": 0,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "club_second_award_done",
-            "[JumpBack]club_second_award"
+            "club_second_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">第一个奖励已领取</font>"
@@ -1090,16 +1175,18 @@
         "max_hit": 3,
         "recognition": "TemplateMatch",
         "roi": [
-            231,
-            385,
-            140,
-            75
+            226,
+            95,
+            155,
+            624
         ],
         "template": "Naruto_club/first_award.png",
         "threshold": 0.9,
         "pre_wait_freezes": 300,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "timeout": 10000,
         "next": [
             "confirm_club_first_award",
@@ -1116,16 +1203,18 @@
         "max_hit": 3,
         "recognition": "TemplateMatch",
         "roi": [
-            231,
-            385,
-            140,
-            75
+            226,
+            95,
+            155,
+            624
         ],
         "template": "Naruto_club/first_award.png",
         "threshold": 0.9,
         "pre_wait_freezes": 300,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "timeout": 10000,
         "next": [
             "confirm_club_first_award"
@@ -1146,12 +1235,13 @@
         "expected": [
             "确定"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
         "post_delay": 5000,
         "timeout": 10000,
         "next": [
-            "roger_club_first_award",
+            "[JumpBack]roger_club_first_award",
             "club_first_award_done"
         ],
         "on_error": [
@@ -1172,8 +1262,10 @@
         "expected": [
             "我知道了"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "post_delay": 0
     },
     "naruto_club_in_loop_wheel": {
         "recognition": "TemplateMatch",
@@ -1184,6 +1276,8 @@
             370
         ],
         "template": "Naruto_club/loop_wheel.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "naruto_club_back_post"
         ],
@@ -1194,14 +1288,16 @@
     "club_second_award": {
         "recognition": "TemplateMatch",
         "roi": [
-            426,
-            385,
-            75,
-            75
+            400,
+            192,
+            113,
+            527
         ],
         "template": "Naruto_club/second_award.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "timeout": 15000,
         "next": [
             "confirm_club_second_award",
@@ -1224,11 +1320,13 @@
         "expected": [
             "我知道了"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "timeout": 2000,
         "next": [
-            "roger_club_second_award",
+            "[JumpBack]roger_club_second_award",
             "confirm_club_second_award",
             "club_second_award_done"
         ],
@@ -1247,24 +1345,28 @@
         "expected": [
             "我知道了"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 300
+        "post_wait_freezes": 300,
+        "post_delay": 0
     },
     "club_second_award_done": {
         "recognition": "TemplateMatch",
         "roi": [
-            429,
-            399,
-            69,
-            48
+            400,
+            192,
+            113,
+            527
         ],
         "template": "Naruto_club/club_second_award_done.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "timeout": 2000,
         "next": [
             "club_third_award_done",
-            "[JumpBack]club_third_award"
+            "club_third_award"
         ],
         "on_error": [
             "no_third_award"
@@ -1275,6 +1377,8 @@
     },
     "no_third_award": {
         "recognition": "DirectHit",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "close_naruto_club"
         ],
@@ -1286,19 +1390,21 @@
         "max_hit": 3,
         "recognition": "TemplateMatch",
         "roi": [
-            556,
-            386,
-            75,
-            75
+            551,
+            207,
+            90,
+            512
         ],
         "template": "Naruto_club/third_award.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 800,
+        "post_delay": 0,
         "timeout": 3000,
         "next": [
             "confirm_club_third_award",
-            "[JumpBack]club_third_award",
+            "club_third_award",
             "club_third_award_done"
         ],
         "focus": {
@@ -1316,10 +1422,12 @@
         "expected": [
             "确定"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
-            "roger_club_third_award",
+            "[JumpBack]roger_club_third_award",
             "confirm_club_third_award",
             "club_third_award_done"
         ],
@@ -1338,8 +1446,10 @@
         "expected": [
             "我知道了"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "club_third_award_done",
             "roger_club_third_award"
@@ -1348,14 +1458,16 @@
     "club_third_award_done": {
         "recognition": "TemplateMatch",
         "roi": [
-            556,
-            396,
-            78,
-            53
+            551,
+            207,
+            90,
+            512
         ],
         "template": "Naruto_club/club_third_award_done.png",
         "threshold": 0.88,
+        "pre_delay": 0,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "close_naruto_club"
         ],
@@ -1372,7 +1484,9 @@
             58
         ],
         "template": "Naruto_club/close_club_button.png",
+        "pre_delay": 0,
         "action": "Click",
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -1399,16 +1513,20 @@
         "$doc": "关闭qq和微信,加个命中次数限制,防止死循环"
     },
     "award_kale": {
+        "pre_delay": 0,
         "action": "StopTask",
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DarkGoldenRod\">当前操作超时，疑似遇到真投入</font>"
         }
     },
     "try_esc": {
         "max_hit": 1,
+        "pre_delay": 0,
         "action": "ClickKey",
         "key": 4,
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "award_kale"
         ]
