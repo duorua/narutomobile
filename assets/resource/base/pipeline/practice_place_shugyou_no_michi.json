@@ -701,7 +701,7 @@
         "next": [
             "train_road_entry",
             "train_road_award",
-            "[JumpBack]ninja_guide_to_funtion_retry"
+            "train_road_ac_entry_undone"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">修行之路未完成</font>"
