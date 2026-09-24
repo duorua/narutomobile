@@ -6,7 +6,8 @@
             "option": [
                 "跳过情报社点赞",
                 "喂豚豚",
-                "金币助手"
+                "金币助手",
+                "情报社卡顿模式"
             ],
             "group": [
                 "daily"
@@ -78,6 +79,24 @@
                 },
                 {
                     "name": "Yes"
+                }
+            ]
+        },
+        "情报社卡顿模式": {
+            "type": "switch",
+            "default_case": "No",
+            "description": "如果情报社非常容易卡,那么请开启这个选项",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "club_submit": {
+                            "post_wait_freezes": 1000
+                        }
+                    }
                 }
             ]
         }
