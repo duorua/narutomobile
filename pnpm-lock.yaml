@@ -18,11 +18,11 @@ importers:
         specifier: ^0.23.3
         version: 0.23.3
       prettier:
-        specifier: 3.9.8
-        version: 3.9.8
+        specifier: 3.9.9
+        version: 3.9.9
       prettier-plugin-multiline-arrays:
         specifier: 4.1.11
-        version: 4.1.11(prettier@3.9.8)
+        version: 4.1.11(prettier@3.9.9)
 
 packages:
 
@@ -733,8 +733,8 @@ packages:
     peerDependencies:
       prettier: '>=3.0.0 <4.0.0'
 
-  prettier@3.9.8:
-    resolution: {integrity: sha512-WRFq3Wn3WId7LLROfMLdH7xaFr2jR62wU8nLO6rQUOLOxNZUviyJQs1M0iIhLexSFy+L+w0ch66wtoO2jRjG0A==}
+  prettier@3.9.9:
+    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1800,14 +1800,14 @@ snapshots:
 
   picomatch@4.0.7: {}
 
-  prettier-plugin-multiline-arrays@4.1.11(prettier@3.9.8):
+  prettier-plugin-multiline-arrays@4.1.11(prettier@3.9.9):
     dependencies:
       '@augment-vir/assert': 32.2.3
       '@augment-vir/common': 32.2.3
-      prettier: 3.9.8
+      prettier: 3.9.9
       proxy-vir: 2.0.3
 
-  prettier@3.9.8: {}
+  prettier@3.9.9: {}
 
   proc-log@6.1.0: {}
 
