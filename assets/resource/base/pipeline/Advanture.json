@@ -329,6 +329,7 @@
             "advanture_win",
             "advanture_lost",
             "advanture_skip_revive",
+            "[JumpBack]advanture_skip_dialogue",
             "[JumpBack]advanture_in_level_roll"
         ],
         "on_error": [
