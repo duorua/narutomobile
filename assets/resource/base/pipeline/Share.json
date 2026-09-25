@@ -287,7 +287,10 @@
             114,
             78
         ],
-        "template": "SharedNode/top_bar.png",
+        "template": [
+            "SharedNode/top_bar.png",
+            "SharedNode/top_bar_1.png"
+        ],
         "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",

@@ -215,7 +215,7 @@
         ],
         "template": "Ninja_book/top_bar.png",
         "green_mask": true,
-        "threshold": 0.9,
+        "threshold": 0.85,
         "action": "Click",
         "target": [
             1074,
