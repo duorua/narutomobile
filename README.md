@@ -24,11 +24,13 @@
 
 ## 快速开始
 
-1. 在[release页面](https://github.com/duorua/narutomobile/releases/latest)下载最新版本。
+1. 在[release页面](https://github.com/duorua/narutomobile/releases/latest)下载最新版本
 
-2. 在模拟器设置里将调整为平板**1920×1080**并**锁定屏幕旋转**为横屏以达到最佳运行效果。
+2. 在模拟器设置里将调整为**平板16:9分辨率**并**锁定屏幕旋转**为横屏以达到最佳运行效果
 
-3. 调整软件配置，然后启动。
+3. 检查模拟器桥接,后台保活选项关闭,调整软件配置,然后启动
+   
+4. 命令行版本不再直接包含在项目中,可以前往[MaaAutoNaruto_cli](https://github.com/duorua/MaaAutoNaruto_cli)下载命令行版本
 
 ## 常见问题
 
