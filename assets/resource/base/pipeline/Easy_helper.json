@@ -39,7 +39,10 @@
             145,
             533
         ],
-        "template": "Easy_helper/easy_helper_undone_masked.png",
+        "template": [
+            "Easy_helper/easy_helper_undone_masked.png",
+            "Easy_helper/easy_helper_undone_masked_1.png"
+        ],
         "green_mask": true,
         "method": 10001,
         "threshold": 0.95,
