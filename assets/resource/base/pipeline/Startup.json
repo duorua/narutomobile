@@ -23,12 +23,18 @@
     "start_naruto": {
         "timeout": 30000,
         "next": [
-            "check_main_screen_and_stop",
             "before_game",
+            "start_up_check_has_x",
+            "[JumpBack]close_friend_rank",
             "[JumpBack]splash_screen",
             "[JumpBack]start_up_loading",
             "[JumpBack]close_before_game_notice",
-            "[JumpBack]close_teenager_page"
+            "[JumpBack]close_teenager_page",
+            "[JumpBack]im_come_back",
+            "[JumpBack]im_come_back_award",
+            "[JumpBack]weekly_sign",
+            "[JumpBack]close_chat",
+            "check_main_screen_and_stop"
         ]
     },
     "restart_naruto": {
@@ -80,7 +86,17 @@
             "[JumpBack]agree_info",
             "check_agreement",
             "agree_agreement",
-            "[JumpBack]agreement_not_agree"
+            "[JumpBack]agreement_not_agree",
+            "start_up_check_has_x",
+            "[JumpBack]close_friend_rank",
+            "[JumpBack]splash_screen",
+            "[JumpBack]close_before_game_notice",
+            "[JumpBack]im_come_back",
+            "[JumpBack]im_come_back_award",
+            "[JumpBack]weekly_sign",
+            "[JumpBack]close_chat",
+            "before_game",
+            "check_main_screen_and_stop"
         ],
         "on_error": [
             "start_up"
@@ -424,5 +440,80 @@
         "focus": {
             "Node.Action.Starting": "<font color=\"tomato\">由于最终用户协议(EULA),你必须手动同意协议</font>"
         }
+    },
+    "start_up_check_has_x": {
+        "recognition": "Or",
+        "any_of": [
+            {
+                "sub_name": "big_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/big_x.png",
+                "green_mask": true,
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "announcement_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/green_masked_x.png",
+                "green_mask": true,
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "right_top_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/x_right_top.png",
+                "green_mask": true,
+                "threshold": 0.6
+            },
+            {
+                "sub_name": "masked_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/mask_x.png",
+                "green_mask": true,
+                "threshold": 0.68
+            },
+            {
+                "sub_name": "advanture_x",
+                "recognition": "TemplateMatch",
+                "roi": [
+                    610,
+                    0,
+                    670,
+                    229
+                ],
+                "template": "SharedNode/advanture_x.png",
+                "green_mask": true,
+                "threshold": 0.68
+            }
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 200,
+        "next": "back_main_screen_and_stop"
     }
 }
