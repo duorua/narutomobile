@@ -15,6 +15,7 @@
     "goto_group_by_guide": {
         "recognition": "Custom",
         "custom_recognition": "IsInNinjaGuide",
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "GoIntoEntryByGuide",
         "custom_action_param": {
@@ -123,6 +124,7 @@
         "threshold": [
             0.9
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 700,
         "next": [
@@ -140,7 +142,9 @@
         ],
         "template": "Group/notice_x.png",
         "threshold": 0.9,
-        "inverse": true
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "goto_group_pray": {
         "recognition": "OCR",
@@ -153,8 +157,10 @@
         "expected": [
             "前往"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "above_kage_group_pray",
             "copper_group_pray"
@@ -254,17 +260,44 @@
         }
     },
     "first_group_award_done": {
-        "recognition": "TemplateMatch",
+        "recognition": "OCR",
         "roi": [
-            1158,
-            380,
-            68,
-            59
+            592,
+            216,
+            167,
+            266
         ],
-        "template": "Group/first_box_done.png",
-        "threshold": 0.98,
+        "expected": [
+            "奖励",
+            "功勋",
+            "轮回石",
+            "勾玉"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "[JumpBack]second_group_award",
+            "second_group_award_done"
+        ]
+    },
+    "first_group_award_done_close_detail": {
+        "recognition": "OCR",
+        "roi": [
+            592,
+            216,
+            167,
+            266
+        ],
+        "expected": [
+            "奖励",
+            "功勋",
+            "轮回石",
+            "勾玉"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 300,
         "next": [
             "[JumpBack]second_group_award",
             "second_group_award_done"
@@ -278,10 +311,14 @@
             85,
             80
         ],
-        "template": "Group/first_box_wait.png",
-        "threshold": 0.92,
+        "template": [
+            "Group/first_box_wait.png",
+            "Group/first_box_done.png"
+        ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 700,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取15人签到奖励</font>"
         }
@@ -300,11 +337,11 @@
             "Group/second_box_done_2.png"
         ],
         "threshold": 0.7,
-        "repeat_delay": 0,
+        "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "[JumpBack]third_group_award",
-            "third_group_award_done"
+            "third_group_award_done",
+            "[JumpBack]third_group_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">20人签到奖励已领取</font>"
@@ -320,10 +357,9 @@
             66
         ],
         "template": "Group/second_box_wait.png",
-        "threshold": 0.97,
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 300,
+        "post_wait_freezes": 600,
         "post_delay": 0,
         "next": [
             "second_group_award_box",
@@ -403,6 +439,7 @@
             48
         ],
         "template": "Group/group_pray_red_packet_text.png",
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             940,
@@ -411,34 +448,57 @@
             71
         ],
         "post_wait_freezes": 600,
+        "post_delay": 0,
         "timeout": 3000,
         "next": [
             "close_second_group_award_box",
-            "[JumpBack]third_group_award",
-            "third_group_award_done"
+            "third_group_award_done",
+            "[JumpBack]third_group_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">关闭20人签到奖励</font>"
         }
     },
     "third_group_award_done": {
-        "recognition": "TemplateMatch",
+        "recognition": "OCR",
         "roi": [
-            1155,
-            161,
-            61,
-            59
+            592,
+            216,
+            167,
+            266
         ],
-        "template": "Group/third_box_done.png",
-        "threshold": 0.7,
+        "expected": [
+            "奖励",
+            "功勋",
+            "轮回石",
+            "勾玉"
+        ],
         "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "group_pray_to_pursuit_dawn_organization"
-        ],
+        "action": "Click",
+        "post_delay": 300,
+        "next": "third_group_award_done_close_detail",
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">25人签到奖励已领取</font>"
         }
+    },
+    "third_group_award_done_close_detail": {
+        "recognition": "OCR",
+        "roi": [
+            592,
+            216,
+            167,
+            266
+        ],
+        "expected": [
+            "奖励",
+            "功勋",
+            "轮回石",
+            "勾玉"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 300,
+        "next": "group_pray_to_pursuit_dawn_organization"
     },
     "third_group_award": {
         "max_hit": 3,
@@ -449,34 +509,16 @@
             88,
             83
         ],
-        "template": "Group/third_box_wait.png",
-        "threshold": 0.95,
+        "template": [
+            "Group/third_box_wait.png",
+            "Group/third_box_done.png"
+        ],
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 600,
         "post_delay": 0,
-        "next": [
-            "close_third_group_award"
-        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取25人签到奖励</font>"
-        }
-    },
-    "close_third_group_award": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            983,
-            191,
-            181,
-            158
-        ],
-        "template": "Group/yesterday_award_done.png",
-        "pre_delay": 0,
-        "action": "Click",
-        "post_wait_freezes": 600,
-        "post_delay": 0,
-        "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">关闭25人签到奖励</font>"
         }
     },
     "group_pray_to_pursuit_dawn_organization": {
@@ -490,11 +532,13 @@
         "expected": [
             "追击"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "pursuit_dawn_organization_award",
-            "[JumpBack]group_pray_to_pursuit_dawn_organization"
+            "group_pray_to_pursuit_dawn_organization"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">前往追击晓组织</font>"
@@ -510,6 +554,8 @@
         ],
         "template": "Group/dawn_organization_done.png",
         "threshold": 0.95,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -520,6 +566,7 @@
     "pursuit_dawn_organization_award": {
         "recognition": "TemplateMatch",
         "template": "Group/dawn_organization_award_check.png",
+        "pre_delay": 0,
         "post_delay": 400,
         "next": [
             "pursuit_dawn_organization_award_done",
@@ -536,6 +583,8 @@
         ],
         "template": "Group/dawn_organization_award_done.png",
         "threshold": 0.97,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -553,8 +602,10 @@
         ],
         "template": "Group/dawn_organization_award_undone.png",
         "threshold": 0.97,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 900,
+        "post_delay": 0,
         "next": [
             "check_no_pursuit_dawn_organization_award",
             "one_key_get_pursuit_dawn_organization_award",
@@ -574,8 +625,10 @@
             47
         ],
         "template": "Group/one_key_dawn_organization_award.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "duration": 30,
+        "post_delay": 200,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -592,8 +645,10 @@
             474
         ],
         "template": "Group/dawn_organization_award_waiting.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取追击晓组织奖励</font>"
         }
@@ -608,6 +663,8 @@
         ],
         "template": "Group/dawn_organization_award_waiting.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "swipe_for_pursuit_dawn_organization_award"
         ],
@@ -624,6 +681,7 @@
             103
         ],
         "template": "Group/check_in_dawn_organization_award.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             360,
@@ -639,6 +697,7 @@
         ],
         "duration": 50,
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "check_no_pursuit_dawn_organization_award_1",
             "[JumpBack]get_pursuit_dawn_organization_award_1"
@@ -656,8 +715,10 @@
             474
         ],
         "template": "Group/dawn_organization_award_waiting.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取追击晓组织奖励</font>"
         }
@@ -672,6 +733,8 @@
         ],
         "template": "Group/dawn_organization_award_waiting.png",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ]
@@ -686,8 +749,10 @@
         ],
         "template": "Group/yesterday_award.png",
         "green_mask": true,
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "yesterday_award_done",
             "[JumpBack]get_yesterday_award"
@@ -724,8 +789,10 @@
             444
         ],
         "template": "Group/get_yesterday_award.png",
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 100,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取昨日奖励</font>"
         }
@@ -739,8 +806,10 @@
             158
         ],
         "template": "Group/yesterday_award_done.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">关闭昨日奖励界面</font>"
         }
