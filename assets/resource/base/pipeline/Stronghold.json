@@ -264,10 +264,7 @@
             "stronghold_finished",
             "[JumpBack]stronghold_substitution"
         ],
-        "on_error": "stronghold",
-        "focus": {
-            "Node.Action.Starting": "<font color=\"darkgray\">在要塞中，向右走</font>"
-        }
+        "on_error": "stronghold"
     },
     "stronghold_in_match": {
         "recognition": "OCR",
@@ -339,17 +336,15 @@
         }
     },
     "stronghold_fighting": {
-        "recognition": "OCR",
+        "recognition": "TemplateMatch",
         "roi": [
-            496,
-            0,
-            229,
-            108
+            580,
+            4,
+            118,
+            59
         ],
-        "expected": [
-            "第",
-            "回"
-        ],
+        "template": "Stronghold/fight.png",
+        "green_mask": true,
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -615,9 +610,6 @@
             "stronghold_in_stronghold",
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
-        ],
-        "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">连点器战斗</font>"
-        }
+        ]
     }
 }
