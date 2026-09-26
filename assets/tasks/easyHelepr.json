@@ -7,7 +7,8 @@
                 "轻松助手扫荡",
                 "秘境翻饰品牌",
                 "秘境翻忍具牌",
-                "秘境忍具每次只翻一张"
+                "秘境忍具每次只翻一张",
+                "轻松助手小队突袭四倍奖励"
             ],
             "group": [
                 "event"
@@ -69,6 +70,33 @@
                         "get_easy_helper_without_log_on_award": {
                             "next": [
                                 "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "轻松助手小队突袭四倍奖励": {
+            "type": "switch",
+            "default_case": "No",
+            "description": "选项需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "check_no_easy_helper_sweep": {
+                            "next": [
+                                "easy_helper_team_dash_sweep_check_4x",
+                                "easy_helper_team_dash_sweep_checked_4x"
+                            ]
+                        },
+                        "easy_helper_can_not_sweep": {
+                            "next": [
+                                "easy_helper_team_dash_sweep_check_4x",
+                                "easy_helper_team_dash_sweep_checked_4x"
                             ]
                         }
                     }

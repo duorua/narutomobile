@@ -358,12 +358,42 @@
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 100,
-        "next": [
-            "easy_helper_team_dash_sweep"
-        ],
+        "next": "easy_helper_team_dash_sweep",
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">检查能否进行扫荡</font>"
         }
+    },
+    "easy_helper_team_dash_sweep_check_4x": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            963,
+            498,
+            39,
+            41
+        ],
+        "template": "Easy_helper/uncheck.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "easy_helper_team_dash_sweep_checked_4x",
+            "easy_helper_team_dash_sweep_check_4x"
+        ]
+    },
+    "easy_helper_team_dash_sweep_checked_4x": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            963,
+            498,
+            39,
+            41
+        ],
+        "template": "Easy_helper/check.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "easy_helper_team_dash_sweep"
     },
     "get_easy_helper_sweep": {
         "recognition": "TemplateMatch",
@@ -404,9 +434,7 @@
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "next": [
-            "easy_helper_team_dash_sweep"
-        ]
+        "next": "easy_helper_team_dash_sweep"
     },
     "check_without_easy_helper_back_to_sweep": {
         "recognition": "TemplateMatch",
