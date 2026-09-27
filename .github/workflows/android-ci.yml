@@ -68,9 +68,9 @@ jobs:
           path: |
             Android/MaaFwApp/.maa-cache
             Android/MaaFwApp/.maafw
-          key: android-native-${{ runner.os }}-fw5.12.3-core3.13.15-${{ matrix.abi }}
+          key: android-native-${{ runner.os }}-fw5.13.0-core3.13.15-${{ matrix.abi }}
           restore-keys: |
-            android-native-${{ runner.os }}-fw5.12.3-core3.13.15-
+            android-native-${{ runner.os }}-fw5.13.0-core3.13.15-
             android-native-${{ runner.os }}-
 
       - name: Write local.properties
