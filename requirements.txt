@@ -9,3 +9,5 @@ win32-setctime==1.2.0
 colorama==0.4.6
 notify-py==0.3.2
 jeepney==0.9.0
+# 这玩意暂时没法在android用
+# opencv-python==5.0.0.93
