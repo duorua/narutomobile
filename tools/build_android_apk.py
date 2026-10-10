@@ -124,6 +124,8 @@ def prepare_inputs(variant: str, abis: Sequence[str], skip_setup: bool) -> None:
         "--exclude",
         "pillow",
         "--exclude",
+        "opencv-python",
+        "--exclude",
         "win32-setctime",
         "--exclude",
         "colorama",

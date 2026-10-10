@@ -105,7 +105,7 @@ jobs:
           python Android/MaaFwApp/scripts/build_agent_bundle.py --out Android/agent-dist \
             --abi arm64-v8a --abi x86_64 \
             --requirements requirements.txt \
-            --exclude pillow --exclude win32-setctime --exclude colorama --exclude jeepney \
+            --exclude pillow --exclude opencv-python --exclude win32-setctime --exclude colorama --exclude jeepney \
             --require pillow==11.0.0 --extra-index-url https://chaquo.com/pypi-13.1/
 
       - name: Decode keystore
