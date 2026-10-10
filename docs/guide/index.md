@@ -71,7 +71,7 @@ MaaAutoNaruto 是一款基于[MaaFramework](https://maafw.xyz)开发的`火影�
 - [x] 日志清理
 - [x] 关闭火影
 - [x] 显示触摸(debug)
-- [x] 完成标记(配合auto-mas项目)
+- ~~[x] 完成标记(配合auto-mas项目)~~ AUTO-MAS 现已支持 MFW 专项
 
 ### 活动类
 
