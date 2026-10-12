@@ -370,19 +370,19 @@ class CleanupAgentDebug(CustomAction):
                 keep_count = max(int(count_val), 1)
 
         if not debug_dir.exists():
-            logger.info("[Agent调试清理] debug文件夹不存在,跳过")
+            logger.info("[日志清理action] debug文件夹不存在,跳过")
             return CustomAction.RunResult(success=True)
 
         try:
             cutoff = cleanup_maafw_bak_logs(keep_count)
             if cutoff is None:
-                logger.info("[Agent调试清理] 无法确定最旧日志,跳过日志/图片清理")
+                logger.info("[日志清理action] 无法确定最旧日志,跳过日志/图片清理")
                 return CustomAction.RunResult(success=True)
             clean_logs_in_dir(cutoff)
             clean_images_in_dirs(cutoff)
             return CustomAction.RunResult(success=True)
         except Exception as e:
-            logger.error(f"Agent调试清理 执行异常: {e}")
+            logger.error(f"[日志清理action] 执行异常: {e}")
             return CustomAction.RunResult(success=False)
 
 

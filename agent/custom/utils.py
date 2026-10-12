@@ -345,27 +345,33 @@ def cleanup_maafw_bak_logs(keep_count: int) -> datetime | None:
     logs_with_time = []
     for log_path in log_files:
         try:
-            creation_time = datetime.fromtimestamp(log_path.stat().st_ctime)
+            mtime = datetime.fromtimestamp(log_path.stat().st_mtime)
         except OSError as e:
-            print(f"[日志清理] 无法读取日志创建时间,无法确定最旧日志,跳过日志/图片清理: {log_path.name}: {e}")
+            print(f"[日志清理] 无法读取日志修改时间,无法确定最旧日志,跳过日志/图片清理: {log_path.name}: {e}")
             return None
-        logs_with_time.append((creation_time, log_path))
+        logs_with_time.append((mtime, log_path))
 
     logs_with_time.sort(key=lambda x: x[0], reverse=True)
     to_delete_logs = logs_with_time[keep_count:]
 
-    if to_delete_logs:
-        print(f"[日志清理] 待删除旧日志: {len(to_delete_logs)} 个")
-        for creation_time, log_path in to_delete_logs:
-            try:
-                log_path.unlink()
-                print(f"[日志清理] 已删除: {log_path.name} (创建时间 {creation_time})")
-            except Exception as e:
-                print(f"[日志清理] 删除失败 {log_path.name}: {e}")
-    else:
+    if not to_delete_logs:
         print("[日志清理] 没有需要删除的日志")
+        return None
 
-    # 后续调试文件应与仍保留的备份日志对齐，而不是与已删除的最旧日志对齐。
+    print(f"[日志清理] 待删除旧日志: {len(to_delete_logs)} 个")
+    deleted = 0
+    for mtime, log_path in to_delete_logs:
+        try:
+            log_path.unlink()
+            deleted += 1
+            print(f"[日志清理] 已删除: {log_path.name} (修改时间 {mtime})")
+        except Exception as e:
+            print(f"[日志清理] 删除失败 {log_path.name}: {e}")
+
+    if deleted == 0:
+        print("[日志清理] 没有成功删除任何 bak 日志,跳过后续清理")
+        return None
+
     # keep_count 可能大于现有日志数，因此直接从保留切片中取最旧一份。
     retained_logs = logs_with_time[:keep_count]
     oldest_log_time = retained_logs[-1][0]
@@ -375,7 +381,7 @@ def cleanup_maafw_bak_logs(keep_count: int) -> datetime | None:
 
 def clean_images_in_dirs(base_time: datetime):
     """
-    依次清理多个子目录下创建时间早于 base_time 的图片文件
+    依次清理多个子目录下修改时间早于 base_time 的图片文件
     """
     sub_dirs = ("custom", "on_error", "vision")
     for sub_dir in sub_dirs:
@@ -394,35 +400,35 @@ def clean_images_in_dirs(base_time: datetime):
         to_delete = []
         for img_path in img_files:
             try:
-                creation_time = datetime.fromtimestamp(img_path.stat().st_ctime)
+                mtime = datetime.fromtimestamp(img_path.stat().st_mtime)
             except OSError as e:
-                print(f"[图片清理] 无法读取图片创建时间,跳过: {img_path.name}: {e}")
+                print(f"[图片清理] 无法读取图片修改时间,跳过: {img_path.name}: {e}")
                 continue
-            if creation_time < base_time:
-                to_delete.append((creation_time, img_path))
+            if mtime < base_time:
+                to_delete.append((mtime, img_path))
 
         eligible = len(to_delete)
         if eligible == 0:
-            print(f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,没有创建时间早于 {base_time} 的图片")
+            print(f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,没有修改时间早于 {base_time} 的图片")
             continue
 
         deleted = 0
-        for creation_time, img_path in to_delete:
+        for mtime, img_path in to_delete:
             try:
                 img_path.unlink()
                 deleted += 1
-                print(f"[图片清理] 删除图片: {img_path.name} (创建时间 {creation_time})")
+                print(f"[图片清理] 删除图片: {img_path.name} (修改时间 {mtime})")
             except Exception as e:
                 print(f"[图片清理] 删除失败 {img_path.name}: {e}")
 
         print(
-            f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,其中创建时间早于 {base_time} 的有 {eligible} 张,实际删除了 {deleted} 张"  # noqa: E501
+            f"[图片清理] {sub_dir} 目录下共有 {total_count} 张图片,其中修改时间早于 {base_time} 的有 {eligible} 张,实际删除了 {deleted} 张"  # noqa: E501
         )
 
 
 def clean_logs_in_dir(base_time: datetime):
     """
-    清理 debug/custom 下创建时间早于 base_time 的日志文件
+    清理 debug/custom 下修改时间早于 base_time 的日志文件
     """
     sub_dir = "custom"
     target_dir = debug_dir / sub_dir
@@ -439,27 +445,27 @@ def clean_logs_in_dir(base_time: datetime):
     to_delete = []
     for log_path in log_files:
         try:
-            creation_time = datetime.fromtimestamp(log_path.stat().st_ctime)
+            mtime = datetime.fromtimestamp(log_path.stat().st_mtime)
         except OSError as e:
-            print(f"[日志清理] 无法读取日志创建时间,跳过: {log_path.name}: {e}")
+            print(f"[日志清理] 无法读取日志修改时间,跳过: {log_path.name}: {e}")
             continue
-        if creation_time < base_time:
-            to_delete.append((creation_time, log_path))
+        if mtime < base_time:
+            to_delete.append((mtime, log_path))
 
     eligible = len(to_delete)
     if eligible == 0:
-        print(f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,没有创建时间早于 {base_time} 的日志")
+        print(f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,没有修改时间早于 {base_time} 的日志")
         return
 
     deleted = 0
-    for creation_time, log_path in to_delete:
+    for mtime, log_path in to_delete:
         try:
             log_path.unlink()
             deleted += 1
-            print(f"[日志清理] 删除日志: {log_path.name} (创建时间 {creation_time})")
+            print(f"[日志清理] 删除日志: {log_path.name} (修改时间 {mtime})")
         except Exception as e:
             print(f"[日志清理] 删除失败 {log_path.name}: {e}")
 
     print(
-        f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,其中创建时间早于 {base_time} 的有 {eligible} 个,实际删除了 {deleted} 个"  # noqa: E501
+        f"[日志清理] {sub_dir} 目录下共有 {total_count} 个日志文件,其中修改时间早于 {base_time} 的有 {eligible} 个,实际删除了 {deleted} 个"  # noqa: E501
     )
