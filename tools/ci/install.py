@@ -109,10 +109,18 @@ def install_resource(version):
         interface = jsonc.load(f)
 
     interface["version"] = version
+    announcements = interface.get("welcome", [])
+    if isinstance(announcements, str):
+        announcements = [announcements]
+    elif not isinstance(announcements, list):
+        announcements = []
+
     if "beta" in version:
-        interface["welcome"] = "你正在使用的是公测版，这不是一个稳定版本！"
-    if "ci" in version:
-        interface["welcome"] = "欢迎使用内部测试版本，包含最不稳定但是最新的功能。"
+        announcements.insert(0, "你正在使用的是公测版，这不是一个稳定版本！")
+    elif "ci" in version:
+        announcements.insert(0, "欢迎使用内部测试版本，包含最不稳定但是最新的功能。")
+
+    interface["welcome"] = announcements
 
     with open(install_path / "interface.json", "w", encoding="utf-8") as f:
         jsonc.dump(interface, f, ensure_ascii=False, indent=4)
