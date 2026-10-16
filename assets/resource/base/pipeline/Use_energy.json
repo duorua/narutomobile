@@ -94,17 +94,21 @@
         ],
         "template": "Use_energy/sweep_button.png",
         "method": 10001,
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 500,
+        "post_wait_freezes": 0,
+        "post_delay": 200,
+        "timeout": 20000,
         "next": [
             "use_energy_finish_1",
             "use_energy_not_enough_sign",
             "use_energy_keep_sweep",
             "use_energy_finish",
-            "[JumpBack]use_energy_ez_sweep"
+            "use_energy_reward_animation",
+            "use_energy_ez_sweep"
         ],
         "on_error": [
-            "retry_failed"
+            "use_energy_failed"
         ]
     },
     "use_energy_keep_sweep": {
@@ -118,15 +122,21 @@
         "expected": [
             "继续扫荡"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 500,
+        "post_wait_freezes": 0,
+        "post_delay": 200,
+        "timeout": 20000,
         "next": [
-            "use_energy_keep_sweep",
             "use_energy_finish_1",
             "use_energy_not_enough_sign",
+            "use_energy_keep_sweep",
             "use_energy_finish",
-            "use_energy_ez_sweep",
-            "back_main_screen_and_stop"
+            "use_energy_reward_animation",
+            "use_energy_ez_sweep"
+        ],
+        "on_error": [
+            "use_energy_failed"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">继续扫荡</font>"
@@ -156,6 +166,7 @@
         }
     },
     "use_energy_finish": {
+        "max_hit": 5,
         "recognition": "TemplateMatch",
         "roi": [
             477,
@@ -171,24 +182,28 @@
             "use_energy_finished",
             "use_energy_finish"
         ],
+        "on_error": [
+            "use_energy_failed"
+        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">扫荡完成</font>"
         }
     },
     "use_energy_finished": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            599,
-            422,
-            79,
-            59
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 20000,
+        "next": [
+            "use_energy_finish_1",
+            "use_energy_not_enough_sign",
+            "use_energy_keep_sweep",
+            "use_energy_finish",
+            "use_energy_reward_animation",
+            "use_energy_ez_sweep"
         ],
-        "template": "Use_energy/sweep_finish.png",
-        "inverse": true,
-        "next": "back_main_screen_and_stop",
-        "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">扫荡完成</font>"
-        }
+        "on_error": [
+            "use_energy_failed"
+        ]
     },
     "use_energy_finish_1": {
         "recognition": "OCR",
@@ -348,5 +363,52 @@
             "use_energy_check_star_option",
             "use_energy_select_star_option"
         ]
+    },
+    "use_energy_reward_animation": {
+        "max_hit": 120,
+        "recognition": "OCR",
+        "roi": [
+            570,
+            150,
+            180,
+            410
+        ],
+        "expected": [
+            "第[一二三四五六七八九十0-9]+次"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1040,
+            420,
+            50,
+            70
+        ],
+        "post_delay": 250,
+        "timeout": 20000,
+        "rate_limit": 500,
+        "next": [
+            "use_energy_finish_1",
+            "use_energy_not_enough_sign",
+            "use_energy_keep_sweep",
+            "use_energy_finish",
+            "use_energy_reward_animation",
+            "use_energy_ez_sweep"
+        ],
+        "on_error": [
+            "use_energy_failed"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">扫荡奖励展示中，继续等待结算</font>"
+        }
+    },
+    "use_energy_failed": {
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "StopTaskList",
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "<font color=\"tomato\">扫荡结果无法确认，任务中断，不能判定体力已刷完</font>"
+        }
     }
 }
