@@ -216,6 +216,7 @@
                             "next": [
                                 "train_road_entry",
                                 "train_road_award",
+                                "train_road_sweeping",
                                 "[JumpBack]ninja_guide_to_funtion_retry"
                             ]
                         },
@@ -235,6 +236,7 @@
                             "next": [
                                 "train_road_entry",
                                 "train_road_award",
+                                "train_road_sweeping",
                                 "[JumpBack]ninja_guide_to_funtion_retry"
                             ]
                         }
