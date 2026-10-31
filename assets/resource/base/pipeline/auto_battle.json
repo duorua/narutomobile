@@ -666,7 +666,7 @@
         ],
         "post_delay": 0,
         "next": [
-            "[JumpBack]winner_decided",
+            "winner_decided",
             "click_All_skill",
             "battle_tips",
             "[JumpBack]go_to_war",

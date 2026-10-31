@@ -147,7 +147,7 @@
         "post_delay": 0,
         "timeout": 10000,
         "next": [
-            "[JumpBack]winner_decided",
+            "winner_decided",
             "click_All_skill",
             "battle_tips",
             "[JumpBack]go_to_war",
@@ -157,19 +157,6 @@
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">开始战斗</font>"
         }
-    },
-    "weekly_win_winner_decided_Results": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            0,
-            224,
-            127,
-            154
-        ],
-        "template": "Weekly_win/battle_emoji.png",
-        "green_mask": true,
-        "pre_delay": 0,
-        "post_delay": 200
     },
     "winner_decided": {
         "recognition": "TemplateMatch",
@@ -188,7 +175,6 @@
         "timeout": 5000,
         "next": [
             "winner_decided",
-            "[JumpBack]weekly_win_winner_decided_Results",
             "weekly_win_substitution",
             "battle_end"
         ],
