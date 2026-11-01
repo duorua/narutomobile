@@ -52,10 +52,10 @@
             "[JumpBack]im_come_back",
             "[JumpBack]im_come_back_award",
             "[JumpBack]christmas_stocking",
-            "[JumpBack]level_up",
-            "[JumpBack]shut_social_media"
+            "[JumpBack]level_up"
         ],
         "on_error": [
+            "[JumpBack]shut_social_media",
             "retry_failed"
         ],
         "focus": {
