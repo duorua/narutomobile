@@ -277,7 +277,11 @@
             456,
             93
         ],
-        "expected": "已足够",
+        "expected": "足够",
+        "replace": [
+            "命",
+            "够"
+        ],
         "pre_delay": 0,
         "post_delay": 0,
         "next": "use_energy_forge_gear_quit_sweep_interface"
