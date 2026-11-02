@@ -13,7 +13,7 @@ MaaAutoNaruto 是一款基于[MaaFramework](https://maafw.xyz)开发的`火影�
 
 本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
 
-本项目的前端使用了 **[MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)**,**[MaaFwApp](https://github.com/Aliothmoon/MaaFwApp)** 。
+本项目的前端使用了 **[MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia)**,**[MaaFwApp](https://github.com/Aliothmoon/MaaFwApp)** 。
 
 本项目在开发过程中，修改并借鉴了来自 **[M9A](https://github.com/MAA1999/M9A)** 的代码以及文档。
 
