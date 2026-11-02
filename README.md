@@ -34,8 +34,6 @@
 
 3. 检查模拟器桥接,后台保活选项关闭,调整软件配置,然后启动
 
-4. 命令行版本不再直接包含在项目中,可以前往[MaaAutoNaruto_cli](https://github.com/duorua/MaaAutoNaruto_cli)下载命令行版本
-
 ## 常见问题
 
 请见 [FAQ文档](docs/guide/faq.md)
