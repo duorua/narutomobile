@@ -19,7 +19,7 @@ from ci.install import (
 )
 from utils import download
 
-DEFAULT_MFA_VERSION = "v2.15.2"
+DEFAULT_MFA_VERSION = "v2.16.4"
 GHPROXY_URL = "https://gh-proxy.natsuu.top/"
 
 parser = argparse.ArgumentParser(description="Install MaaFramework to install directory")
@@ -94,7 +94,7 @@ def setup_python():
 # install MFA
 def download_mfa_release(version, archive_name, cache_path):
     print(f"开始下载：{archive_name}")
-    url = f"https://github.com/SweetSmellFox/MFAAvalonia/releases/download/{version}/{archive_name}"
+    url = f"https://github.com/MaaXYZ/MFAAvalonia/releases/download/{version}/{archive_name}"
     if args.ghproxy:
         url = GHPROXY_URL + url
 
@@ -165,7 +165,7 @@ def install_mfa():
         version = args.mfa_version
     else:
         print("尝试获取MFA版本信息")
-        RELEASE_API = "https://api.github.com/repos/SweetSmellFox/MFAAvalonia/releases"
+        RELEASE_API = "https://api.github.com/repos/MaaXYZ/MFAAvalonia/releases"
         response = request.urlopen(RELEASE_API)
         if response.status != 200:
             if response.status == 403:
