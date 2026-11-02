@@ -153,7 +153,7 @@ Please read the [development documentation](docs/develop/index.md)
 
 This project is powered by **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)**!
 
-The frontend of this project uses **[MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)** and **[MaaFwApp](https://github.com/Aliothmoon/MaaFwApp)**.
+The frontend of this project uses **[MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia)** and **[MaaFwApp](https://github.com/Aliothmoon/MaaFwApp)**.
 
 During development, this project referenced and adapted code and documentation from **[M9A](https://github.com/MAA1999/M9A)**.
 

@@ -1,8 +1,8 @@
 name: install
 
 env:
-  MFAA_VERSION: v2.16.3-beta.1
-  MAA_FRAMEWORK_VERSION: v5.13.0
+  MFAA_VERSION: v2.16.4
+  MAA_FRAMEWORK_VERSION: v5.14.3
 
 on:
   push:
@@ -107,7 +107,7 @@ jobs:
         id: download_mfa
         uses: robinraju/release-downloader@v1
         with:
-          repository: SweetSmellFox/MFAAvalonia
+          repository: MaaXYZ/MFAAvalonia
           fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
           tag: ${{ env.MFAA_VERSION }}
           out-file-path: "MFA"

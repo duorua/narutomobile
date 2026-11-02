@@ -8,7 +8,7 @@
 ```bash
 git submodule update --init Android/MaaFwApp
 python tools/prepare_android_pi.py
-python Android/MaaFwApp/scripts/setup_maa_framework.py --abi arm64-v8a --tag v5.13.0
+python Android/MaaFwApp/scripts/setup_maa_framework.py --abi arm64-v8a --tag v5.14.3
 python Android/MaaFwApp/scripts/build_agent_bundle.py --out Android/agent-dist \
     --requirements requirements.txt \
     --exclude pillow --exclude win32-setctime --exclude colorama --exclude jeepney \
@@ -37,7 +37,7 @@ python tools/prepare_android_pi.py
 # 正式包：release 默认打 arm64-v8a + x86_64；发版 CI 会分别产出这两个架构的 APK
 # 本地只打单架构时，在 local.properties 里写 build.releaseAbi=<abi>，
 # 并把 MaaFramework / agent 也只铺该 ABI（--abi <abi>）
-python Android/MaaFwApp/scripts/setup_maa_framework.py --tag v5.13.0
+python Android/MaaFwApp/scripts/setup_maa_framework.py --tag v5.14.3
 ./Android/MaaFwApp/gradlew.bat -p Android/MaaFwApp :app:assembleRelease
 ```
 
