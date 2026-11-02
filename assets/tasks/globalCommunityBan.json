@@ -1,0 +1,122 @@
+{
+    "task": [
+        {
+            "name": "全服ban选决斗场",
+            "entry": "global_community_ban",
+            "description": "这个任务最好在有全服票选文字的界面开启,不推荐直接在主界面开;主界面开需要使用已经适配的主题,且不稳定",
+            "group": [
+                "event"
+            ],
+            "option": [
+                "全服ban选投票",
+                "全服ban选战斗",
+                "全服ban选领取奖励"
+            ]
+        }
+    ],
+    "option": {
+        "全服ban选投票": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "global_community_ban_to_vote": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ],
+            "default_case": "Yes"
+        },
+        "全服ban选战斗": {
+            "type": "switch",
+            "description": "当开启这个选项时,决斗场胜利次数变成匹配次数",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "何时退出",
+                        "决斗场开大",
+                        "决斗场不攻击",
+                        "串行连点器(beta)"
+                    ],
+                    "pipeline_override": {
+                        "sky_ground_selected_roll": {
+                            "next": ["global_community_ban_confirm_set"]
+                        },
+                        "weekly_win_success": {
+                            "next": [
+                                "weekly_win_success",
+                                "[JumpBack]loading_page",
+                                "global_community_ban_counter"
+                            ]
+                        },
+                        "weekly_win_without_fail": {
+                            "next": [
+                                "[JumpBack]loading_page",
+                                "global_community_ban_counter"
+                            ]
+                        },
+                        "go_to_war_again": {
+                            "next": "global_community_ban_match_again"
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "global_community_ban_match": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ],
+            "default_case": "Yes"
+        },
+        "全服ban选领取奖励": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "option": [
+                        "领取周胜奖励"
+                    ],
+                    "pipeline_override": {
+                        "weekly_win_duel_mission": {
+                            "roi": [
+                                916,
+                                516,
+                                155,
+                                120
+                            ]
+                        },
+                        "close_mission_and_back_main_screen": {
+                            "next": [
+                                "global_community_ban_award",
+                                "global_community_ban_award_done",
+                                "close_mission_and_back_main_screen"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "global_community_ban_award": {
+                            "enabled": false
+                        },
+
+                        "global_community_ban_award_done": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ],
+            "default_case": "Yes"
+        }
+    }
+}

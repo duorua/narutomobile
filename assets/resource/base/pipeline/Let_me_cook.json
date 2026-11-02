@@ -1,0 +1,549 @@
+{
+    "let_me_cook": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_play",
+            "let_me_cook_entry",
+            "[JumpBack]back_main_screen"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入火热手感任务</font>"
+        }
+    },
+    "let_me_cook_entry": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1194,
+            132,
+            50,
+            42
+        ],
+        "template": "Activity/headhunt.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            1196,
+            32,
+            53,
+            45
+        ],
+        "post_wait_freezes": 700,
+        "post_delay": 0,
+        "next": [
+            "find_let_me_cook",
+            "let_me_cook_entry",
+            "[JumpBack]swipes_for_let_me_cook",
+            "[JumpBack]back_main_screen_and_stop"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入火热手感活动</font>"
+        }
+    },
+    "swipes_for_let_me_cook": {
+        "max_hit": 5,
+        "recognition": "TemplateMatch",
+        "roi": [
+            906,
+            0,
+            269,
+            81
+        ],
+        "template": "SharedNode/activity_plus_button.png",
+        "pre_delay": 0,
+        "action": "Swipe",
+        "begin": [
+            80,
+            300,
+            10,
+            10
+        ],
+        "end": [
+            80,
+            100,
+            10,
+            10
+        ],
+        "duration": 200,
+        "post_delay": 700,
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">前往火热手感</font>"
+        }
+    },
+    "find_let_me_cook": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            115,
+            212,
+            605
+        ],
+        "expected": [
+            "火热手感"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_play",
+            "[JumpBack]find_let_me_cook"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">找到火热手感</font>"
+        }
+    },
+    "let_me_cook_play": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            646,
+            241,
+            88,
+            66
+        ],
+        "template": "Let_me_cook/let_me_cook.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_hand_check",
+            "let_me_cook_step_check",
+            "let_me_cook_without_step",
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_hand_check": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    444,
+                    562,
+                    39,
+                    41
+                ],
+                "template": "Let_me_cook/check.png",
+                "green_mask": true
+            },
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    283,
+                    565,
+                    153,
+                    37
+                ],
+                "template": "Let_me_cook/exactly.png",
+                "green_mask": true,
+                "threshold": 0.9
+            }
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_stop_hand",
+            "let_me_cook_step_check",
+            "let_me_cook_without_step",
+            "let_me_cook_step_check_revert",
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_hand_check_revert": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            283,
+            565,
+            153,
+            37
+        ],
+        "template": "Let_me_cook/exactly.png",
+        "green_mask": true,
+        "threshold": 0.9,
+        "inverse": true,
+        "pre_delay": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_stop_hand_revert",
+            "let_me_cook_step_check",
+            "let_me_cook_without_step",
+            "let_me_cook_shoot",
+            "let_me_cook_step_check_revert",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_stop_hand_revert": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            444,
+            562,
+            39,
+            41
+        ],
+        "template": "Let_me_cook/check.png",
+        "green_mask": true,
+        "inverse": true,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            454,
+            575,
+            22,
+            19
+        ],
+        "post_delay": 300,
+        "next": [
+            "let_me_cook_step_check",
+            "let_me_cook_without_step",
+            "let_me_cook_step_check_revert",
+            "let_me_cook_hand_check",
+            "let_me_cook_play"
+        ]
+    },
+    "let_me_cook_stop_hand": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    444,
+                    562,
+                    39,
+                    41
+                ],
+                "template": "Let_me_cook/check.png",
+                "green_mask": true
+            },
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    283,
+                    565,
+                    153,
+                    37
+                ],
+                "template": "Let_me_cook/exactly.png",
+                "green_mask": true,
+                "threshold": 0.9
+            }
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_without_step",
+            "let_me_cook_stop_hand",
+            "let_me_cook_step_check",
+            "let_me_cook_hand_check_revert",
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_step_check": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    760,
+                    564,
+                    44,
+                    39
+                ],
+                "template": "Let_me_cook/check.png",
+                "green_mask": true
+            },
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    604,
+                    565,
+                    153,
+                    37
+                ],
+                "template": "Let_me_cook/exactly.png",
+                "green_mask": true,
+                "threshold": 0.9
+            }
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_stop_step",
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_step_check_revert": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            604,
+            565,
+            153,
+            37
+        ],
+        "template": "Let_me_cook/exactly.png",
+        "green_mask": true,
+        "threshold": 0.9,
+        "inverse": true,
+        "pre_delay": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_without_step",
+            "let_me_cook_stop_step_revert",
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_stop_step_revert": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            760,
+            564,
+            44,
+            39
+        ],
+        "template": "Let_me_cook/check.png",
+        "green_mask": true,
+        "inverse": true,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            770,
+            575,
+            22,
+            17
+        ],
+        "post_delay": 300,
+        "next": [
+            "let_me_cook_without_step",
+            "let_me_cook_stop_step_revert",
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_stop_step": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    760,
+                    564,
+                    44,
+                    39
+                ],
+                "template": "Let_me_cook/check.png",
+                "green_mask": true
+            },
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    604,
+                    565,
+                    153,
+                    37
+                ],
+                "template": "Let_me_cook/exactly.png",
+                "green_mask": true,
+                "threshold": 0.9
+            }
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_stop_step",
+            "let_me_cook_shoot",
+            "let_me_cook_burst",
+            "let_me_cook_step_check_revert"
+        ]
+    },
+    "let_me_cook_without_step": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            506,
+            555,
+            66,
+            59
+        ],
+        "template": "Let_me_cook/without_step.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_shoot",
+            "let_me_cook_burst"
+        ]
+    },
+    "let_me_cook_shoot": {
+        "recognition": "OCR",
+        "roi": [
+            1120,
+            555,
+            86,
+            56
+        ],
+        "expected": "投篮",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_shoot",
+            "let_me_cook_play"
+        ]
+    },
+    "let_me_cook_burst": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            935,
+            522,
+            101,
+            86
+        ],
+        "template": "Let_me_cook/burst.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_done",
+            "let_me_cook_shoot",
+            "let_me_cook_play"
+        ]
+    },
+    "let_me_cook_done": {
+        "recognition": "OCR",
+        "roi": [
+            476,
+            288,
+            293,
+            167
+        ],
+        "expected": [
+            "道具不足"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_award",
+            "let_me_cook_award_done"
+        ]
+    },
+    "let_me_cook_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1192,
+            621,
+            87,
+            88
+        ],
+        "template": "Let_me_cook/award.png",
+        "method": 10001,
+        "threshold": 0.95,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_in_award",
+            "let_me_cook_award",
+            "let_me_cook_award_done"
+        ]
+    },
+    "let_me_cook_in_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            323,
+            44,
+            172,
+            345
+        ],
+        "template": "SharedNode/award_interface.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_get_award",
+            "let_me_cook_get_award_done"
+        ]
+    },
+    "let_me_cook_get_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            716,
+            90,
+            150,
+            535
+        ],
+        "template": "SharedNode/get.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_get_award_one_key",
+            "let_me_cook_get_award",
+            "let_me_cook_get_award_done"
+        ]
+    },
+    "let_me_cook_get_award_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            716,
+            90,
+            150,
+            535
+        ],
+        "template": "SharedNode/get.png",
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    },
+    "let_me_cook_get_award_one_key": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            264,
+            246,
+            740,
+            375
+        ],
+        "template": "SharedNode/one_key_get.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "let_me_cook_get_award_one_key",
+            "let_me_cook_get_award_done",
+            "back_main_screen_and_stop"
+        ]
+    },
+    "let_me_cook_award_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1190,
+            641,
+            83,
+            66
+        ],
+        "template": "Let_me_cook/award_done.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ]
+    }
+}

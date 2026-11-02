@@ -3,11 +3,11 @@
         {
             "name": "招财",
             "entry": "get_copper",
+            "default_check": true,
+            "description": "<font color=\"tomato\">使用每日免费招财次数,需要开启二级密码,否则可能因为页面更新卡顿,消耗10金币</font>",
             "group": [
                 "daily"
-            ],
-            "default_check": true,
-            "description": "[size:15][color:tomato]使用每日免费招财次数,需要开启二级密码,否则可能因为页面更新卡顿,消耗10金币[/color][/size]"
+            ]
         }
     ]
 }

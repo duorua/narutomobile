@@ -3,21 +3,20 @@
         {
             "name": "要塞",
             "entry": "stronghold",
+            "description": "默认前往火要塞;打其他要塞,点进对应要塞内开始任务;不能挂跨服",
+            "group": [
+                "weekly"
+            ],
             "option": [
                 "要塞玩法未开启时退出",
                 "忍界指引寻找要塞",
                 "串行连点器(beta)"
-            ],
-            "group": [
-                "weekly"
-            ],
-            "description": "默认前往火要塞;打其他要塞,点进对应要塞内开始任务;不能挂跨服"
+            ]
         }
     ],
     "option": {
         "要塞玩法未开启时退出": {
             "type": "switch",
-            "default_case": "Yes",
             "description": "如果关闭会在组织界面一直尝试进入对应功能",
             "cases": [
                 {
@@ -36,7 +35,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "Yes"
         }
     }
 }

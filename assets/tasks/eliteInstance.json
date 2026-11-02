@@ -3,10 +3,10 @@
         {
             "name": "精英副本",
             "entry": "elite_instance",
+            "description": "不是体力刷碎片的功能,这个用来开荒的,忍者不要特效太多的",
             "group": [
                 "progression"
-            ],
-            "description": "不是体力刷碎片的功能,这个用来开荒的,忍者不要特效太多的"
+            ]
         }
     ]
 }

@@ -3,7 +3,6 @@
         "从奖励中心进入": {
             "type": "switch",
             "description": "开启后选项所在任务从奖励中心进入,注意确保奖励中心对应任务以及对应任务相关选项可以进入",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No"
@@ -53,8 +52,17 @@
                                 "[JumpBack]back_main_screen_before_task"
                             ]
                         },
+                        "secret_realm_weekly_box": {
+                            "next": [
+                                "secret_realm_weekly_box_in_hood",
+                                "secret_realm_weekly_box_in_center_enter",
+                                "[JumpBack]award_center_enter",
+                                "[JumpBack]back_main_screen_before_task"
+                            ]
+                        },
                         "black_market_merchant": {
                             "next": [
+                                "black_market_merchant_in_hood",
                                 "black_market_merchant_in_center_enter",
                                 "[JumpBack]award_center_enter",
                                 "[JumpBack]back_main_screen_before_task"
@@ -70,11 +78,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "串行连点器(beta)": {
             "type": "switch",
-            "default_case": "No",
             "description": "雷电模拟器使用多指滑动的时候,有时会出现触摸残留bug.可以选择开启这个选项,将多指滑动转换成串行节点,会变慢很多而且不保证正常运行",
             "cases": [
                 {
@@ -85,7 +93,7 @@
                     "pipeline_override": {
                         "weekly_win_match_fighting": {
                             "next": [
-                                "[JumpBack]winner_decided",
+                                "winner_decided",
                                 "[JumpBack]weekly_win_serial_clicker",
                                 "battle_tips",
                                 "[JumpBack]go_to_war",
@@ -155,7 +163,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         }
     }
 }

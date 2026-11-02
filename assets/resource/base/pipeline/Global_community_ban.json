@@ -1,0 +1,725 @@
+{
+    "global_community_ban": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_main_entry",
+            "global_community_ban_in_main",
+            "global_community_ban_entry"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入全服票选ban忍者任务</font>"
+        }
+    },
+    "global_community_ban_entry": {
+        "recognition": "OCR",
+        "roi": [
+            12,
+            160,
+            246,
+            469
+        ],
+        "expected": [
+            "全服票选",
+            "禁用忍者"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "global_community_ban_in_main",
+            "global_community_ban_entry"
+        ]
+    },
+    "global_community_ban_in_main_entry": {
+        "recognition": "TemplateMatch",
+        "template": "home/决斗场/",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 500,
+        "next": [
+            "global_community_ban_in_main",
+            "global_community_ban_entry",
+            "global_community_ban_in_main_entry"
+        ]
+    },
+    "global_community_ban_in_main": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1064,
+            426,
+            185,
+            217
+        ],
+        "template": "Global_community_ban/match.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_to_vote",
+            "global_community_ban_match",
+            "global_community_ban_award",
+            "global_community_ban_award_done",
+            "global_community_ban_stop"
+        ]
+    },
+    "global_community_ban_to_vote": {
+        "recognition": "OCR",
+        "roi": [
+            839,
+            449,
+            111,
+            51
+        ],
+        "expected": "前往投",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_vote",
+            "global_community_ban_to_vote"
+        ]
+    },
+    "global_community_ban_in_vote": {
+        "recognition": "OCR",
+        "roi": [
+            464,
+            59,
+            192,
+            51
+        ],
+        "expected": "明日将被",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": ["global_community_ban_in_vote_s"]
+    },
+    "global_community_ban_vote": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            232,
+            283,
+            1017,
+            343
+        ],
+        "template": "Global_community_ban/vote.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 0
+    },
+    "global_community_ban_in_vote_s": {
+        "recognition": "ColorMatch",
+        "roi": [
+            150,
+            130,
+            56,
+            76
+        ],
+        "method": 4,
+        "lower": [
+            224,
+            199,
+            147
+        ],
+        "upper": [
+            231,
+            215,
+            175
+        ],
+        "count": 1500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_quit_s",
+            "[JumpBack]global_community_ban_vote"
+        ]
+    },
+    "global_community_ban_quit_s": {
+        "recognition": "OCR",
+        "roi": [
+            479,
+            332,
+            493,
+            54
+        ],
+        "expected": [
+            "仅可投出",
+            "上限"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]global_community_ban_quit",
+            "global_community_ban_in_vote_a",
+            "global_community_ban_to_vote_a"
+        ]
+    },
+    "global_community_ban_quit": {
+        "recognition": "OCR",
+        "roi": [
+            479,
+            332,
+            493,
+            54
+        ],
+        "expected": [
+            "仅可投出",
+            "上限"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
+    },
+    "global_community_ban_to_vote_a": {
+        "recognition": "OCR",
+        "roi": [
+            59,
+            224,
+            116,
+            51
+        ],
+        "expected": "A级忍者",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_vote_a",
+            "global_community_ban_to_vote_a"
+        ]
+    },
+    "global_community_ban_in_vote_a": {
+        "recognition": "ColorMatch",
+        "roi": [
+            155,
+            214,
+            41,
+            76
+        ],
+        "method": 4,
+        "lower": [
+            224,
+            199,
+            147
+        ],
+        "upper": [
+            231,
+            215,
+            175
+        ],
+        "count": 1500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_quit_a",
+            "[JumpBack]global_community_ban_vote"
+        ]
+    },
+    "global_community_ban_quit_a": {
+        "recognition": "OCR",
+        "roi": [
+            479,
+            332,
+            493,
+            54
+        ],
+        "expected": [
+            "仅可投出",
+            "上限"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]global_community_ban_quit",
+            "global_community_ban_in_vote_b",
+            "global_community_ban_to_vote_b"
+        ]
+    },
+    "global_community_ban_to_vote_b": {
+        "recognition": "OCR",
+        "roi": [
+            56,
+            307,
+            113,
+            51
+        ],
+        "expected": "B级忍者",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_vote_b",
+            "global_community_ban_to_vote_b"
+        ]
+    },
+    "global_community_ban_in_vote_b": {
+        "recognition": "ColorMatch",
+        "roi": [
+            150,
+            297,
+            44,
+            74
+        ],
+        "method": 4,
+        "lower": [
+            224,
+            199,
+            147
+        ],
+        "upper": [
+            231,
+            215,
+            175
+        ],
+        "count": 1500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_quit_b",
+            "[JumpBack]global_community_ban_vote"
+        ]
+    },
+    "global_community_ban_quit_b": {
+        "recognition": "OCR",
+        "roi": [
+            479,
+            332,
+            493,
+            54
+        ],
+        "expected": [
+            "仅可投出",
+            "上限"
+        ],
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]global_community_ban_quit",
+            "global_community_ban_in_vote_c",
+            "global_community_ban_to_vote_c"
+        ]
+    },
+    "global_community_ban_to_vote_c": {
+        "recognition": "OCR",
+        "roi": [
+            61,
+            392,
+            113,
+            46
+        ],
+        "expected": [
+            "C级忍者",
+            "c级忍者"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_vote_c",
+            "global_community_ban_to_vote_c"
+        ]
+    },
+    "global_community_ban_in_vote_c": {
+        "recognition": "ColorMatch",
+        "roi": [
+            150,
+            382,
+            44,
+            74
+        ],
+        "method": 4,
+        "lower": [
+            224,
+            199,
+            147
+        ],
+        "upper": [
+            231,
+            215,
+            175
+        ],
+        "count": 1500,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_quit_c",
+            "[JumpBack]global_community_ban_vote"
+        ]
+    },
+    "global_community_ban_quit_c": {
+        "recognition": "OCR",
+        "roi": [
+            479,
+            332,
+            493,
+            54
+        ],
+        "expected": [
+            "仅可投出",
+            "上限"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "global_community_ban_quit_vote"
+    },
+    "global_community_ban_quit_vote": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    71,
+                    646,
+                    106,
+                    61
+                ],
+                "expected": "返回"
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    464,
+                    59,
+                    192,
+                    51
+                ],
+                "expected": "明日将被"
+            }
+        ],
+        "box_index": 0,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "global_community_ban_quit_vote",
+            "global_community_ban_match",
+            "global_community_ban_award",
+            "global_community_ban_award_done",
+            "global_community_ban_stop"
+        ]
+    },
+    "global_community_ban_match": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1064,
+            426,
+            185,
+            217
+        ],
+        "template": "Global_community_ban/match.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_selected_ninja",
+            "global_community_ban_select_ninja",
+            "global_community_ban_match"
+        ]
+    },
+    "global_community_ban_select_ninja": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            795,
+            132,
+            434,
+            390
+        ],
+        "template": "Sky_ground/ninja_star.png",
+        "order_by": "Random",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 800,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_selected_ninja",
+            "[JumpBack]global_community_ban_select_ninja"
+        ]
+    },
+    "global_community_ban_selected_ninja": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            11,
+            132,
+            612,
+            120
+        ],
+        "template": "Sky_ground/no_ninja.png",
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "sky_ground_to_select_summon",
+            "sky_ground_in_select_summon"
+        ]
+    },
+    "global_community_ban_confirm_set": {
+        "recognition": "OCR",
+        "roi": [
+            804,
+            471,
+            328,
+            209
+        ],
+        "expected": [
+            "确定"
+        ],
+        "action": "Click",
+        "next": [
+            "weekly_win_substitution",
+            "weekly_win_match_fighting",
+            "global_community_ban_confirm_set"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确认配置</font>"
+        }
+    },
+    "global_community_ban_counter": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1064,
+            426,
+            185,
+            217
+        ],
+        "template": "Global_community_ban/match.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Custom",
+        "custom_action": "CounterIncrement",
+        "post_delay": 0,
+        "next": [
+            "go_to_war_again",
+            "global_community_ban_award",
+            "global_community_ban_award_done",
+            "global_community_ban_stop"
+        ]
+    },
+    "global_community_ban_match_again": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1064,
+            426,
+            185,
+            217
+        ],
+        "template": "Global_community_ban/match.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_selected_ninja",
+            "global_community_ban_select_ninja",
+            "global_community_ban_match_again"
+        ]
+    },
+    "global_community_ban_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1180,
+            648,
+            99,
+            71
+        ],
+        "template": "Global_community_ban/award.png",
+        "method": 10001,
+        "threshold": 0.95,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_award",
+            "global_community_ban_award"
+        ]
+    },
+    "global_community_ban_in_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            395,
+            64,
+            79,
+            281
+        ],
+        "template": [
+            "Global_community_ban/achievement_award.png",
+            "Global_community_ban/achievement_award_select.png"
+        ],
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_daily_award",
+            "global_community_ban_to_daily_award"
+        ]
+    },
+    "global_community_ban_in_daily_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            395,
+            64,
+            79,
+            281
+        ],
+        "template": "Global_community_ban/daily_award_select.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "[JumpBack]global_community_ban_get_award",
+            "global_community_ban_get_daily_award_done"
+        ]
+    },
+    "global_community_ban_to_daily_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            395,
+            64,
+            79,
+            281
+        ],
+        "template": "Global_community_ban/daily_award.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_daily_award",
+            "global_community_ban_to_daily_award"
+        ]
+    },
+    "global_community_ban_get_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            706,
+            68,
+            138,
+            562
+        ],
+        "template": "SharedNode/get.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0
+    },
+    "global_community_ban_get_daily_award_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            716,
+            90,
+            150,
+            535
+        ],
+        "template": "Global_community_ban/got.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_achievement_award",
+            "global_community_ban_to_achievement_award"
+        ]
+    },
+    "global_community_ban_in_achievement_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            395,
+            64,
+            79,
+            281
+        ],
+        "template": "Global_community_ban/achievement_award_select.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_get_award_one_key",
+            "[JumpBack]global_community_ban_get_award",
+            "global_community_ban_get_achievement_award_done"
+        ]
+    },
+    "global_community_ban_to_achievement_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            395,
+            64,
+            79,
+            281
+        ],
+        "template": "Global_community_ban/achievement_award.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_in_achievement_award",
+            "global_community_ban_to_achievement_award"
+        ]
+    },
+    "global_community_ban_get_achievement_award_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            716,
+            90,
+            150,
+            535
+        ],
+        "template": "Global_community_ban/got.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "global_community_ban_stop"
+    },
+    "global_community_ban_get_award_one_key": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            264,
+            246,
+            740,
+            375
+        ],
+        "template": "SharedNode/one_key_get.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_get_award_one_key",
+            "global_community_ban_get_achievement_award_done"
+        ]
+    },
+    "global_community_ban_award_done": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1180,
+            648,
+            99,
+            71
+        ],
+        "template": "Global_community_ban/award_done.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "global_community_ban_stop"
+        ]
+    },
+    "global_community_ban_stop": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop"
+    }
+}

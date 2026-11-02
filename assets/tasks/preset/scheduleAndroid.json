@@ -1,0 +1,64 @@
+{
+    "preset": [
+        {
+            "name": "周常,活动和开荒任务",
+            "task": [
+                {
+                    "name": "进入火影[安卓实机]"
+                },
+                {
+                    "name": "修行之路"
+                },
+                {
+                    "name": "决斗场(连点器)",
+                    "enabled": false
+                },
+                {
+                    "name": "要塞",
+                    "enabled": false
+                },
+                {
+                    "name": "天地",
+                    "enabled": false
+                },
+                {
+                    "name": "叛忍(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "更多玩法(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "秘境周度宝箱"
+                },
+                {
+                    "name": "心悦会员"
+                },
+                {
+                    "name": "冒险副本",
+                    "enabled": false
+                },
+                {
+                    "name": "精英副本",
+                    "enabled": false
+                },
+                {
+                    "name": "修罗副本",
+                    "enabled": false
+                },
+                {
+                    "name": "小游戏",
+                    "enabled": false
+                },
+                {
+                    "name": "关闭火影手游APP",
+                    "enabled": false
+                },
+                {
+                    "name": "日志文件清理"
+                }
+            ]
+        }
+    ]
+}

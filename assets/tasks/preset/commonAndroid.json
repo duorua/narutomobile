@@ -1,0 +1,120 @@
+{
+    "preset": [
+        {
+            "name": "常用任务[安卓实机]",
+            "task": [
+                {
+                    "name": "进入火影[安卓实机]"
+                },
+                {
+                    "name": "轻松助手",
+                    "enabled": false
+                },
+                {
+                    "name": "轻松季(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "招财"
+                },
+                {
+                    "name": "排行榜"
+                },
+                {
+                    "name": "送体力"
+                },
+                {
+                    "name": "每日分享"
+                },
+                {
+                    "name": "组织"
+                },
+                {
+                    "name": "积分赛"
+                },
+                {
+                    "name": "修行之路"
+                },
+                {
+                    "name": "生存挑战"
+                },
+                {
+                    "name": "小队突袭"
+                },
+                {
+                    "name": "免费招募"
+                },
+                {
+                    "name": "月签到和一乐拉面"
+                },
+                {
+                    "name": "刷体力"
+                },
+                {
+                    "name": "任务集会所"
+                },
+                {
+                    "name": "丰饶之间"
+                },
+                {
+                    "name": "忍法帖"
+                },
+                {
+                    "name": "决斗场(连点器)",
+                    "enabled": false
+                },
+                {
+                    "name": "火影情报社(beta)"
+                },
+                {
+                    "name": "邮箱"
+                },
+                {
+                    "name": "活跃宝箱"
+                },
+                {
+                    "name": "秘境"
+                },
+                {
+                    "name": "解锁二级密码",
+                    "enabled": false
+                },
+                {
+                    "name": "商店兑换(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "铜币招财[二级密码](beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "购买体力[二级密码](beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "小队突袭[二级密码](beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "切换账号[安卓实机]",
+                    "enabled": false
+                },
+                {
+                    "name": "小游戏",
+                    "enabled": false
+                },
+                {
+                    "name": "心悦会员",
+                    "enabled": false
+                },
+                {
+                    "name": "关闭火影手游APP",
+                    "enabled": false
+                },
+                {
+                    "name": "日志文件清理"
+                }
+            ]
+        }
+    ]
+}

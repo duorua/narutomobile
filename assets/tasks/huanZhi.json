@@ -1,0 +1,177 @@
+{
+    "task": [
+        {
+            "name": "幻之试炼刷祝福",
+            "entry": "illusion_secret_realm",
+            "description": "还没有做修罗;仅支持刷取万象祝福",
+            "group": [
+                "event"
+            ],
+            "option": [
+                "幻之试炼模式",
+                "幻之试炼流派",
+                "幻之试炼忍者分类",
+                "幻之试炼忍者"
+            ]
+        }
+    ],
+    "option": {
+        "幻之试炼模式": {
+            "type": "select",
+            "label": "试炼模式",
+            "cases": [
+                {
+                    "name": "试炼入口",
+                    "pipeline_override": {
+                        "illusion_secret_realm_in_main": {
+                            "next": ["幻之试炼_试炼入口"]
+                        }
+                    }
+                }
+            ],
+            "default_case": "试炼入口"
+        },
+        "幻之试炼流派": {
+            "type": "select",
+            "label": "流派",
+            "cases": [
+                {
+                    "name": "刃具精通",
+                    "pipeline_override": {
+                        "幻之试炼_选择流派": {
+                            "next": ["幻之试炼_翻页_刃具精通_上一页"]
+                        }
+                    }
+                },
+                {
+                    "name": "奥义领域",
+                    "pipeline_override": {
+                        "幻之试炼_选择流派": {
+                            "next": ["幻之试炼_翻页_奥义领域_下一页"]
+                        }
+                    }
+                },
+                {
+                    "name": "秘卷大师",
+                    "pipeline_override": {
+                        "幻之试炼_选择流派": {
+                            "next": ["幻之试炼_翻页_秘卷大师_上一页"]
+                        }
+                    }
+                },
+                {
+                    "name": "医疗忍者",
+                    "pipeline_override": {
+                        "幻之试炼_选择流派": {
+                            "next": ["幻之试炼_翻页_医疗忍者_上一页"]
+                        }
+                    }
+                },
+                {
+                    "name": "最佳伙伴",
+                    "pipeline_override": {
+                        "幻之试炼_选择流派": {
+                            "next": ["幻之试炼_翻页_最佳伙伴_下一页"]
+                        }
+                    }
+                },
+                {
+                    "name": "禁法之术",
+                    "pipeline_override": {
+                        "幻之试炼_选择流派": {
+                            "next": ["幻之试炼_翻页_禁法之术_下一页"]
+                        }
+                    }
+                }
+            ],
+            "default_case": "奥义领域"
+        },
+        "幻之试炼忍者分类": {
+            "type": "select",
+            "label": "忍者分类",
+            "description": "第七班可以刷人数,其余暂没配置",
+            "cases": [
+                {
+                    "name": "第七班",
+                    "pipeline_override": {
+                        "幻之试炼_忍者分类": {
+                            "next": ["幻之试炼_忍者_第七班"]
+                        }
+                    }
+                },
+                {
+                    "name": "无用之人",
+                    "pipeline_override": {
+                        "幻之试炼_忍者分类": {
+                            "next": ["幻之试炼_忍者_无用之人"]
+                        }
+                    }
+                }
+            ],
+            "default_case": "第七班"
+        },
+        "幻之试炼忍者": {
+            "type": "select",
+            "label": "忍者",
+            "cases": [
+                {
+                    "name": "花火",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_花火"]
+                        }
+                    }
+                },
+                {
+                    "name": "斑",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_斑"]
+                        }
+                    }
+                },
+                {
+                    "name": "卡卡西",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_卡卡西"]
+                        }
+                    }
+                },
+                {
+                    "name": "大蛇丸",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_大蛇丸"]
+                        }
+                    }
+                },
+                {
+                    "name": "柱间",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_柱间"]
+                        }
+                    }
+                },
+                {
+                    "name": "小佐助",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_小佐助"]
+                        }
+                    }
+                },
+                {
+                    "name": "骨架",
+                    "pipeline_override": {
+                        "幻之试炼_选择忍者": {
+                            "next": ["幻之试炼_忍者_骨架"]
+                        }
+                    }
+                }
+            ],
+            "default_case": "斑"
+        }
+    }
+}

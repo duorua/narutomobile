@@ -1,25 +1,63 @@
 {
     "task": [
         {
-            "name": "刷体力(精英副本)",
+            "name": "刷体力",
             "entry": "use_energy",
-            "option": [
-                "精英副本一键全选"
-            ],
+            "default_check": true,
             "group": [
                 "daily"
             ],
-            "default_check": true
+            "option": [
+                "刷体力方式"
+            ]
         }
     ],
     "option": {
-        "精英副本一键全选": {
-            "type": "switch",
-            "default_case": "Yes",
-            "description": "开启后会勾选一键全选后再扫荡",
+        "刷体力方式": {
+            "type": "select",
             "cases": [
                 {
-                    "name": "Yes",
+                    "name": "精英副本",
+                    "option": ["精英副本策略"]
+                },
+                {
+                    "name": "做装备",
+                    "description": "测试功能;通过做装备刷体力,还没适配超影服务;最好先了解战力玩法,一般只在老登或买体力时使用这个功能",
+                    "option": [
+                        "做什么装备"
+                    ],
+                    "pipeline_override": {
+                        "use_energy": {
+                            "next": "use_energy_forge_gear"
+                        }
+                    }
+                },
+                {
+                    "name": "修罗副本",
+                    "description": "测试功能;最好先了解战力玩法,一般只在老登或买体力时使用这个功能",
+                    "pipeline_override": {
+                        "use_energy": {
+                            "next": "asura_instance"
+                        },
+                        "advanture_check_no_next_roll": {
+                            "next": [
+                                "check_sweep_level",
+                                "advanture_check_no_next_roll"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "精英副本"
+        },
+        "精英副本策略": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "勾选上次扫荡"
+                },
+                {
+                    "name": "一键全选",
                     "pipeline_override": {
                         "use_energy_ez_sweep_entry": {
                             "next": [
@@ -31,9 +69,254 @@
                     }
                 },
                 {
-                    "name": "No"
+                    "name": "自定义筛选",
+                    "option": [
+                        "精英副本等级筛选",
+                        "精英副本星级筛选"
+                    ],
+                    "pipeline_override": {
+                        "use_energy_ez_sweep_entry": {
+                            "next": [
+                                "use_energy_check_level_option",
+                                "use_energy_explan_level_option",
+                                "[JumpBack]use_energy_ez_sweep_entry"
+                            ]
+                        }
+                    }
                 }
-            ]
+            ],
+            "default_case": "一键全选"
+        },
+        "精英副本等级筛选": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "全部等级"
+                },
+                {
+                    "name": "A级",
+                    "pipeline_override": {
+                        "use_energy_check_level_option": {
+                            "expected": "A级"
+                        },
+                        "use_energy_select_level_option": {
+                            "expected": "A级"
+                        }
+                    }
+                },
+                {
+                    "name": "B级",
+                    "pipeline_override": {
+                        "use_energy_check_level_option": {
+                            "expected": "B级"
+                        },
+                        "use_energy_select_level_option": {
+                            "expected": "B级"
+                        }
+                    }
+                },
+                {
+                    "name": "C级",
+                    "pipeline_override": {
+                        "use_energy_check_level_option": {
+                            "expected": "C级"
+                        },
+                        "use_energy_select_level_option": {
+                            "expected": "C级"
+                        }
+                    }
+                }
+            ],
+            "default_case": "全部等级"
+        },
+        "精英副本星级筛选": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "全部星级"
+                },
+                {
+                    "name": "5星",
+                    "pipeline_override": {
+                        "use_energy_check_star_option": {
+                            "expected": "5星"
+                        },
+                        "use_energy_select_star_option": {
+                            "expected": "5星"
+                        }
+                    }
+                },
+                {
+                    "name": "4星",
+                    "pipeline_override": {
+                        "use_energy_check_star_option": {
+                            "expected": "4星"
+                        },
+                        "use_energy_select_star_option": {
+                            "expected": "4星"
+                        }
+                    }
+                },
+                {
+                    "name": "3星",
+                    "pipeline_override": {
+                        "use_energy_check_star_option": {
+                            "expected": "3星"
+                        },
+                        "use_energy_select_star_option": {
+                            "expected": "3星"
+                        }
+                    }
+                },
+                {
+                    "name": "2星",
+                    "pipeline_override": {
+                        "use_energy_check_star_option": {
+                            "expected": "2星"
+                        },
+                        "use_energy_select_star_option": {
+                            "expected": "2星"
+                        }
+                    }
+                },
+                {
+                    "name": "1星",
+                    "pipeline_override": {
+                        "use_energy_check_star_option": {
+                            "expected": "1星"
+                        },
+                        "use_energy_select_star_option": {
+                            "expected": "1星"
+                        }
+                    }
+                },
+                {
+                    "name": "未招募",
+                    "pipeline_override": {
+                        "use_energy_check_star_option": {
+                            "expected": "招募"
+                        },
+                        "use_energy_select_star_option": {
+                            "expected": "招募"
+                        }
+                    }
+                }
+            ],
+            "default_case": "全部星级"
+        },
+        "做什么装备": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "刀"
+                },
+                {
+                    "name": "头",
+                    "pipeline_override": {
+                        "use_energy_find_gear": {
+                            "target": [
+                                328,
+                                219,
+                                39,
+                                32
+                            ]
+                        },
+                        "use_energy_check_gear_recognition": {
+                            "roi": [
+                                283,
+                                290,
+                                135,
+                                32
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "甲",
+                    "pipeline_override": {
+                        "use_energy_find_gear": {
+                            "target": [
+                                496,
+                                221,
+                                41,
+                                34
+                            ]
+                        },
+                        "use_energy_check_gear_recognition": {
+                            "roi": [
+                                459,
+                                290,
+                                123,
+                                32
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "书",
+                    "pipeline_override": {
+                        "use_energy_find_gear": {
+                            "target": [
+                                160,
+                                389,
+                                41,
+                                27
+                            ]
+                        },
+                        "use_energy_check_gear_recognition": {
+                            "roi": [
+                                118,
+                                456,
+                                125,
+                                32
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "项链",
+                    "pipeline_override": {
+                        "use_energy_find_gear": {
+                            "target": [
+                                330,
+                                389,
+                                46,
+                                37
+                            ]
+                        },
+                        "use_energy_check_gear_recognition": {
+                            "roi": [
+                                286,
+                                456,
+                                123,
+                                34
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "戒指",
+                    "pipeline_override": {
+                        "use_energy_find_gear": {
+                            "target": [
+                                501,
+                                387,
+                                34,
+                                32
+                            ]
+                        },
+                        "use_energy_check_gear_recognition": {
+                            "roi": [
+                                459,
+                                456,
+                                120,
+                                32
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "刀"
         }
     }
 }

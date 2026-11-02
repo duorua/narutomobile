@@ -14,6 +14,10 @@
   <a href="https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&source=MaaAutoNarutogh-badge" target="_blank"><img alt="mirrorc" src="https://img.shields.io/badge/Mirror%E9%85%B1-%239af3f6?logo=countingworkspro&logoColor=4f46e5"></a>
 </p>
 
+<p align="center">
+  <a href="README.md">简体中文</a> | <a href="README_EN.md">English</a>
+</p>
+
 <div align="center">
 
 # Maa Auto Naruto
@@ -35,6 +39,10 @@
 ## 常见问题
 
 请见 [FAQ文档](docs/guide/faq.md)
+
+## 使用说明
+
+请见 [使用说明文档](docs/guide/manual.md)
 
 ## 主要功能
 
@@ -59,6 +67,7 @@
 - [x] 任务集会所
 - [x] 刷体力(精英副本)
 - [x] 刷体力(做装备beta)
+- [x] 刷体力(修罗副本)
 - [x] 丰饶之间
 - [x] 活跃宝箱领奖
 - [x] 邮箱领奖
@@ -92,15 +101,19 @@
 - [x] 日志清理
 - [x] 关闭火影
 - [x] 显示触摸(debug)
-- [x] 完成标记(配合auto-mas项目)
+- ~~[x] 完成标记(配合auto-mas项目)~~ AUTO-MAS 现已支持 MFW 专项
 
 ### 活动类
 
 - [x] 轻松助手
 - [x] 轻松季
+- [x] 秘境周度宝箱
 
 #### (下面的在小游戏任务中)
 
+- [x] 全服ban选决斗场
+- [x] 幻之试炼刷祝福(beta)
+- [x] 火热手感
 - [x] 速战速决
 - [x] 夏日回馈
 - [x] 送好礼摇铃
@@ -113,7 +126,7 @@
 - [x] 木叶小吃店
 - [x] 新春邮局
 - [x] 问答游戏
-- [x] 合成赠礼
+- [x] 合成赠礼/美味蛋糕
 - [x] 聚宝试炼(还只有奖励领取)
 
 ### 超影适配

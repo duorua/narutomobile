@@ -3,15 +3,15 @@
         {
             "name": "黑市商人[二级密码](beta)",
             "entry": "black_market_merchant",
+            "description": "此为奸商,战力知识指导下使用;可调只显自己等,防遮挡;<font color=\"tomato\">需要二级密码,请小心,MAN不会对任何损失负责</font>",
+            "group": [
+                "redeem"
+            ],
             "option": [
                 "黑市忍具之尘购买数量",
                 "忍界指引寻找黑市商人",
                 "从奖励中心进入"
-            ],
-            "group": [
-                "redeem"
-            ],
-            "description": "这个黑市商人是奸商,你需要在战力指导的陪同下使用这个功能;可以调一下只显示自己,关闭称号等,防止黑市商人被遮挡;[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]"
+            ]
         }
     ],
     "option": {
@@ -22,8 +22,8 @@
                 {
                     "name": "购买数量",
                     "label": "购买数量",
-                    "pipeline_type": "string",
                     "default": "1",
+                    "pipeline_type": "string",
                     "verify": "^[1-9]$"
                 }
             ],

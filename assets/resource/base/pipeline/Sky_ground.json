@@ -1,5 +1,7 @@
 {
     "sky_ground": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "timeout": 1500,
         "next": [
             "ninja_guide_returning_player",
@@ -83,8 +85,9 @@
             118
         ],
         "template": "Group/selected_group_gameplay.png",
-        "action": "DoNothing",
+        "pre_delay": 0,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "sky_ground_mode",
             "[JumpBack]swipe_for_sky_ground_mode"
@@ -124,6 +127,8 @@
         "expected": [
             "未开启"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ]
@@ -170,7 +175,9 @@
             "战",
             "场"
         ],
+        "pre_delay": 0,
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "sky_battlefield",
             "ground_battlefield",
@@ -191,7 +198,9 @@
         "expected": [
             "下次开启"
         ],
+        "pre_delay": 0,
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -210,7 +219,9 @@
         "expected": [
             "活动开启"
         ],
+        "pre_delay": 0,
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -227,8 +238,10 @@
             185
         ],
         "template": "Sky_ground/sky_entry.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "sky_ground_confirm_battlefield_selection",
             "sky_ground_confirm_set",
@@ -248,8 +261,10 @@
             123
         ],
         "template": "Sky_ground/ground.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "sky_ground_confirm_battlefield_selection",
             "sky_ground_confirm_set",
@@ -270,8 +285,10 @@
         "expected": [
             "确认"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 800,
+        "post_delay": 0,
         "next": [
             "sky_ground_recommended_ninja",
             "sky_ground_select_ninja",
@@ -290,8 +307,10 @@
             390
         ],
         "template": "Sky_ground/ninja_star.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 800,
+        "post_delay": 0,
         "next": [
             "sky_ground_selected_ninja",
             "[JumpBack]sky_ground_select_ninja"
@@ -309,8 +328,10 @@
             390
         ],
         "template": "Sky_ground/recommended_ninja.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 800,
+        "post_delay": 0,
         "next": [
             "sky_ground_selected_ninja",
             "[JumpBack]sky_ground_recommended_ninja"
@@ -365,6 +386,8 @@
             253
         ],
         "template": "Sky_ground/summon_selected.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "sky_ground_summon_done",
             "[JumpBack]sky_ground_select_summon"
@@ -399,6 +422,8 @@
         ],
         "expected": "未选择",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "sky_ground_to_select_roll",
             "sky_ground_in_select_roll"
@@ -428,7 +453,10 @@
     "sky_ground_in_select_roll": {
         "recognition": "TemplateMatch",
         "template": "Sky_ground/roll_selected.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
+            "sky_ground_selected_roll",
             "sky_ground_select_roll"
         ],
         "focus": {
@@ -465,6 +493,8 @@
         ],
         "expected": "未选择",
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "sky_ground_confirm_set"
         ],
@@ -575,6 +605,7 @@
         "expected": [
             "MaaAutoNaruto"
         ],
+        "pre_delay": 0,
         "post_delay": 5000
     },
     "sky_ground_to_fight_column": {
@@ -586,12 +617,9 @@
             718
         ],
         "template": [
-            "Sky_ground/fight_column.png",
-            "Sky_ground/fight_column_ground.png"
+            "Sky_ground/fight_column.png"
         ],
-        "threshold": [
-            0.8
-        ],
+        "threshold": 0.9,
         "action": "Click",
         "target_offset": [
             10,
@@ -778,6 +806,8 @@
             0.9
         ],
         "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确认没有经验求</font>"
         }
@@ -817,12 +847,14 @@
         "template": "Weekly_win/battle_emoji.png",
         "green_mask": true,
         "threshold": 0.5,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
+            "[JumpBack]battle_tips",
             "sky_ground_click_All_skill",
             "sky_ground_success",
             "sky_ground_fail",
-            "sky_ground_in_main",
-            "[JumpBack]battle_tips"
+            "sky_ground_in_main"
         ]
     },
     "sky_ground_success": {
@@ -902,6 +934,8 @@
             "天地战场活动已结束",
             "提前结束"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "sky_ground_end_back_main_screen"
         ]
@@ -1106,11 +1140,11 @@
         ],
         "post_delay": 0,
         "next": [
+            "[JumpBack]battle_tips",
             "sky_ground_click_All_skill",
             "sky_ground_success",
             "sky_ground_fail",
-            "sky_ground_in_main",
-            "[JumpBack]battle_tips"
+            "sky_ground_in_main"
         ]
     }
 }

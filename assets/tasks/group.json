@@ -3,11 +3,11 @@
         {
             "name": "组织",
             "entry": "group",
+            "default_check": true,
+            "description": "包含祈福签到和领奖,追击晓组织领奖",
             "group": [
                 "daily"
             ],
-            "default_check": true,
-            "description": "包含祈福签到和领奖，追击晓组织领奖。",
             "option": [
                 "从奖励中心进入",
                 "忍界指引寻找组织"

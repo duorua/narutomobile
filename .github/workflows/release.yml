@@ -45,7 +45,6 @@ jobs:
           gh workflow run --repo duorua/MaaAutoNaruto_cli build-cli.yml \
             -f tag=${{ github.ref_name }} \
             -f source_ref=${{ github.ref_name }} \
-            -f picli_tag=v5.13.0-beta.2 \
             -f is_prerelease=${{ steps.release_type.outputs.is_prerelease }}
 
   android:
@@ -83,7 +82,7 @@ jobs:
         with:
           config: .github/cliff.toml
           args: >-
-            -vv --latest --strip header
+            -vv --latest
             ${{ steps.release_type.outputs.is_prerelease == 'false' && '--tag-pattern "^v[0-9]+\\.[0-9]+\\.[0-9]+$"' || '' }}
         env:
           OUTPUT: CHANGES.md

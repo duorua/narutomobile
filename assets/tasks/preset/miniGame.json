@@ -8,6 +8,18 @@
                     "name": "进入火影"
                 },
                 {
+                    "name": "全服ban选决斗场",
+                    "enabled": false
+                },
+                {
+                    "name": "幻之试炼刷祝福",
+                    "enabled": false
+                },
+                {
+                    "name": "火热手感",
+                    "enabled": false
+                },
+                {
                     "name": "速战速决",
                     "enabled": false
                 },
@@ -44,7 +56,7 @@
                     "enabled": false
                 },
                 {
-                    "name": "合成赠礼",
+                    "name": "合成赠礼/美味蛋糕",
                     "enabled": false
                 },
                 {
@@ -69,9 +81,6 @@
                 },
                 {
                     "name": "日志文件清理"
-                },
-                {
-                    "name": "完成标记"
                 }
             ]
         }

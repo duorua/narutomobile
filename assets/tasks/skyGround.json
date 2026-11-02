@@ -3,6 +3,10 @@
         {
             "name": "天地",
             "entry": "sky_ground",
+            "description": "默认是找空柱子,人多开循坏找柱子或者开挑战,否则一段时间找不到空柱子会结束任务;建议不要开挑战和额外奖励柱子,如果人多会乱点有人的柱子",
+            "group": [
+                "weekly"
+            ],
             "option": [
                 "天地选择战场",
                 "守擂后游走避战",
@@ -13,17 +17,12 @@
                 "天地玩法未开启时退出",
                 "忍界指引寻找天地",
                 "串行连点器(beta)"
-            ],
-            "group": [
-                "weekly"
-            ],
-            "description": "默认是找空柱子,人多开循坏找柱子或者开挑战,否则一段时间找不到空柱子会结束任务;建议不要开挑战和额外奖励柱子,如果人多会乱点有人的柱子"
+            ]
         }
     ],
     "option": {
         "天地选择战场": {
             "type": "select",
-            "default_case": "天战场",
             "cases": [
                 {
                     "name": "天战场",
@@ -41,11 +40,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "天战场"
         },
         "守擂后游走避战": {
             "type": "switch",
-            "default_case": "Yes",
             "description": "需要输入自己的ID,子串即可,可能识别失败依旧游走,名字和别人类似可能会不动",
             "cases": [
                 {
@@ -59,7 +58,8 @@
                 {
                     "name": "No"
                 }
-            ]
+            ],
+            "default_case": "Yes"
         },
         "你的名字": {
             "type": "input",
@@ -68,8 +68,8 @@
                 {
                     "name": "你的名字",
                     "label": "输入游戏名",
-                    "pipeline_type": "string",
-                    "default": "MaaAutoNaruto"
+                    "default": "MaaAutoNaruto",
+                    "pipeline_type": "string"
                 }
             ],
             "pipeline_override": {
@@ -80,7 +80,6 @@
         },
         "天地选择额外奖励柱子": {
             "type": "switch",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No",
@@ -93,11 +92,11 @@
                 {
                     "name": "Yes"
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "天地挑战": {
             "type": "switch",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No",
@@ -110,11 +109,11 @@
                 {
                     "name": "Yes"
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "无限循环找柱子": {
             "type": "switch",
-            "name": "Yes",
             "description": "测试功能无限寻找空柱子,实际上会寻找UINT_MAX(4294967295)次",
             "cases": [
                 {
@@ -137,11 +136,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "name": "Yes"
         },
         "天地玩法未开启时退出": {
             "type": "switch",
-            "default_case": "No",
             "description": "开启会在识别到玩法未开启的时候退出",
             "cases": [
                 {
@@ -168,7 +167,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         }
     }
 }

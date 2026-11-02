@@ -1,0 +1,83 @@
+{
+    "task": [
+        {
+            "name": "切换账号[安卓实机]",
+            "entry": "switch_account",
+            "description": "目前横屏切换竖屏会中断任务是正常的,一般是ImageReader报错",
+            "group": [
+                "daily"
+            ],
+            "controller": ["安卓实机"],
+            "option": [
+                "进入火影安卓实机",
+                "切换账号安卓实机",
+                "账号切换范围",
+                "目标区",
+                "目标社交媒体账号",
+                "允许MAN管理qq和火影信息",
+                "账号属性安卓实机",
+                "拒绝qq获取火影信息",
+                "切换账号后行为",
+                "启用协议自动勾选"
+            ]
+        }
+    ],
+    "option": {
+        "切换账号安卓实机": {
+            "type": "select",
+            "description": "微信未适配",
+            "cases": [
+                {
+                    "name": "适配",
+                    "pipeline_override": {
+                        "switch_account_switch_qq": {
+                            "roi": [
+                                4,
+                                389,
+                                715,
+                                890
+                            ]
+                        },
+                        "switch_account_in_switch_qq": {
+                            "roi": [
+                                4,
+                                389,
+                                715,
+                                890
+                            ]
+                        },
+                        "swipe_for_switch_account_find_target_qq_account": {
+                            "roi": [
+                                4,
+                                389,
+                                715,
+                                890
+                            ]
+                        },
+                        "switch_account_not_find_target_qq_account": {
+                            "roi": [
+                                4,
+                                389,
+                                715,
+                                890
+                            ]
+                        },
+                        "switch_account_find_target_qq_account": {
+                            "roi": [
+                                0,
+                                907,
+                                478,
+                                372
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "横屏",
+                    "description": "这个横屏只能处理类似模拟器的横屏qq,如果横屏不规范会出错"
+                }
+            ],
+            "default_case": "适配"
+        }
+    }
+}

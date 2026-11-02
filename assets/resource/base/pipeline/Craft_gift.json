@@ -8,7 +8,7 @@
             "[JumpBack]back_main_screen"
         ],
         "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入合成赠礼任务</font>"
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入合成赠礼/美味蛋糕任务</font>"
         }
     },
     "craft_gift_entry": {
@@ -80,7 +80,8 @@
             605
         ],
         "expected": [
-            "合成赠礼"
+            "合成赠礼",
+            "美味蛋糕"
         ],
         "pre_delay": 0,
         "action": "Click",
@@ -120,9 +121,7 @@
             187,
             88
         ],
-        "expected": [
-            "兑换"
-        ],
+        "expected": "兑换",
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 0,
@@ -225,7 +224,8 @@
             469
         ],
         "template": [
-            "Craft_gift/special_potion.png"
+            "Craft_gift/special_potion.png",
+            "Craft_gift/massive_cake.png"
         ],
         "threshold": 0.9,
         "pre_wait_freezes": 200,
@@ -250,7 +250,8 @@
             469
         ],
         "template": [
-            "Craft_gift/special_potion.png"
+            "Craft_gift/special_potion.png",
+            "Craft_gift/massive_cake.png"
         ],
         "inverse": true,
         "pre_delay": 0,
@@ -301,7 +302,8 @@
             469
         ],
         "template": [
-            "Craft_gift/special_potion.png"
+            "Craft_gift/special_potion.png",
+            "Craft_gift/massive_cake.png"
         ],
         "threshold": 0.9,
         "pre_wait_freezes": 200,
@@ -326,14 +328,16 @@
             469
         ],
         "template": [
-            "Craft_gift/special_potion.png"
+            "Craft_gift/special_potion.png",
+            "Craft_gift/massive_cake.png"
         ],
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
             "craft_gift_award",
-            "craft_gift_award_done"
+            "craft_gift_award_done",
+            "craft_gift_done"
         ]
     },
     "craft_gift_full": {
@@ -362,7 +366,10 @@
             120,
             85
         ],
-        "template": "Craft_gift/award.png",
+        "template": [
+            "Craft_gift/award.png",
+            "Craft_gift/award_1.png"
+        ],
         "method": 10001,
         "threshold": 0.95,
         "pre_delay": 0,
@@ -451,14 +458,12 @@
     "craft_gift_award_done": {
         "recognition": "TemplateMatch",
         "roi": [
-            1145,
-            643,
-            93,
-            61
+            1180,
+            641,
+            99,
+            78
         ],
-        "template": [
-            "Craft_gift/award_done.png"
-        ],
+        "template": "Craft_gift/award_done.png",
         "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0,
@@ -469,17 +474,13 @@
     "craft_gift_done": {
         "recognition": "TemplateMatch",
         "roi": [
-            738,
-            69,
-            541,
-            511
+            1172,
+            651,
+            107,
+            68
         ],
-        "template": [
-            "Treasure_gathering_trial_award/red_point.png"
-        ],
-        "threshold": [
-            0.8
-        ],
+        "template": "Treasure_gathering_trial_award/red_point.png",
+        "threshold": 0.8,
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0,

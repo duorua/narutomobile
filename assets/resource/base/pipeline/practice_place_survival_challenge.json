@@ -304,14 +304,14 @@
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": {
-            "threshold": 0.8,
             "time": 300,
             "target": [
                 520,
                 285,
                 261,
                 150
-            ]
+            ],
+            "threshold": 0.8
         },
         "post_delay": 0,
         "timeout": 5000,
@@ -382,7 +382,8 @@
         "post_delay": 0,
         "timeout": 1500,
         "next": [
-            "survival_challenge_sweep_confirm"
+            "survival_challenge_sweep_confirm",
+            "survival_challenge_sweep_ticket_used_up"
         ],
         "on_error": [
             "survival_challenge_sweep_ready"
@@ -405,6 +406,7 @@
         "post_delay": 0,
         "next": [
             "survival_challenge_sweep_ticket_confirm",
+            "survival_challenge_sweep_ticket_used_up",
             "survival_challenge_sweep_confirm",
             "survival_challenge_ninja_select_confirm"
         ],
@@ -441,14 +443,14 @@
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": {
-            "threshold": 0.8,
             "time": 300,
             "target": [
                 520,
                 285,
                 261,
                 150
-            ]
+            ],
+            "threshold": 0.8
         },
         "post_delay": 0,
         "next": [

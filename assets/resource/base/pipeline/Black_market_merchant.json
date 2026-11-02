@@ -11,7 +11,7 @@
             "[JumpBack]back_main_screen_before_task"
         ],
         "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入秘境子任务</font>"
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入黑市商人子任务</font>"
         }
     },
     "open_black_market_merchant_by_guide": {

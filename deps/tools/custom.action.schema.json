@@ -177,7 +177,7 @@
             "markdownDescription": "",
             "properties": {}
         },
-        "SecondaryPasswordClear": {
+        "SecondaryPasswordClearParam": {
             "type": "object",
             "description": "二级密码字段脱敏,直接替换maafw.log的密文成******.苦手的馊主意,如果任务没有执行或者炸了就不会脱敏",
             "markdownDescription": "",

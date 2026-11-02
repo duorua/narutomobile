@@ -3,6 +3,11 @@
         {
             "name": "进入火影",
             "entry": "start_up",
+            "default_check": true,
+            "description": "MAN会关闭气泡;连点器任务可能不兼容**雷电模拟器**",
+            "group": [
+                "daily"
+            ],
             "option": [
                 "设置启动超时时间",
                 "启动超时后行为",
@@ -11,18 +16,13 @@
                 "拒绝qq获取火影信息",
                 "am_start启动",
                 "启用协议自动勾选"
-            ],
-            "group": [
-                "daily"
-            ],
-            "description": "软件会关闭公告气泡;连点器任务可能不兼容**雷电模拟器**;如果此任务经常失败可以在[开始游戏按钮界面]或者[无公告游戏主界面]开启任务;安卓端man-MaaFwApp目前不尝试唤起qq",
-            "default_check": true
+            ]
         }
     ],
     "option": {
         "设置启动超时时间": {
             "type": "select",
-            "default_case": "20S",
+            "description": "超时时间计时从游戏启动到腾讯游戏界面结束,所以不用担心时间太短会反复重启",
             "cases": [
                 {
                     "name": "20S",
@@ -57,11 +57,10 @@
                     }
                 }
             ],
-            "description": "超时时间计时从游戏启动到腾讯游戏界面结束,所以不用担心时间太短会反复重启"
+            "default_case": "20S"
         },
         "启动超时后行为": {
             "type": "select",
-            "default_case": "启动火影",
             "description": "最多只会尝试启动火影5次",
             "cases": [
                 {
@@ -87,12 +86,12 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "启动火影"
         },
         "账号属性": {
             "type": "select",
             "description": "因为微信不能用模拟器登录所以无法自动登录,对其他任务没影响;同时影响切换到的账号的类型,注意要确保自己调出的登录界面是横屏的",
-            "default_case": "安卓QQ",
             "cases": [
                 {
                     "name": "安卓QQ"
@@ -119,13 +118,37 @@
                             "template": "SharedNode/ios_qq_login.png"
                         }
                     }
+                },
+                {
+                    "name": "微信",
+                    "description": "模拟器不尝试唤起微信,切换账号的时候也一样",
+                    "pipeline_override": {
+                        "switch_account_switch_social_media_account": {
+                            "action": "DoNothing"
+                        },
+                        "start_up_switch_social_media_account": {
+                            "action": "DoNothing"
+                        }
+                    }
+                },
+                {
+                    "name": "不唤起社交媒体",
+                    "description": "qq,微信多开等情况,唤起不想要的社交媒体,此时开启这个选项",
+                    "pipeline_override": {
+                        "switch_account_switch_social_media_account": {
+                            "action": "DoNothing"
+                        },
+                        "start_up_switch_social_media_account": {
+                            "action": "DoNothing"
+                        }
+                    }
                 }
-            ]
+            ],
+            "default_case": "安卓QQ"
         },
         "允许MAN管理qq和火影信息": {
             "type": "switch",
             "description": "开启后man默认会自动帮你同意:火影获取qq信息,qq获取火影信息;如需要提前选择所有人不可见",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No",
@@ -155,12 +178,12 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "拒绝qq获取火影信息": {
             "type": "switch",
             "description": "开启允许MAN管理qq和火影信息才会生效;在qq申请界面,拒绝qq获取火影信息;在低分辨率,卡顿等情况下不生效",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No"
@@ -208,12 +231,12 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "am_start启动": {
             "type": "switch",
             "description": "用不了monkey指令的模拟器,如雷电部分版本;开启后换成am start启动",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No"
@@ -227,11 +250,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "启用协议自动勾选": {
             "type": "switch",
-            "default_case": "No",
             "description": "./DISCLAIMER.md",
             "cases": [
                 {
@@ -239,16 +262,17 @@
                 },
                 {
                     "name": "Yes",
+                    "option": [
+                        "协议确认"
+                    ],
                     "pipeline_override": {
                         "agree_agreement": {
                             "enabled": true
                         }
-                    },
-                    "option": [
-                        "协议确认"
-                    ]
+                    }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "协议确认": {
             "type": "input",

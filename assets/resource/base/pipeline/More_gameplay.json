@@ -588,7 +588,6 @@
             "More_gameplay/attack.png"
         ],
         "pre_delay": 0,
-        "action": "DoNothing",
         "post_delay": 0,
         "next": [
             "more_gameplay_trace_vanish_check_no_fight",

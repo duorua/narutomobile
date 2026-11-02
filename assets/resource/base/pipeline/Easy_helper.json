@@ -1,5 +1,6 @@
 {
     "easy_helper": {
+        "max_hit": 2,
         "pre_delay": 0,
         "post_delay": 0,
         "timeout": 3000,
@@ -101,7 +102,8 @@
         "post_delay": 700,
         "next": [
             "easy_helper_one_key",
-            "[JumpBack]easy_helper_daily"
+            "[JumpBack]easy_helper_daily",
+            "easy_helper_enter"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入轻松助手</font>"
@@ -549,11 +551,20 @@
         }
     },
     "easy_helper_team_dash_sweep": {
+        "recognition": "OCR",
+        "roi": [
+            795,
+            486,
+            474,
+            98
+        ],
+        "expected": "扫荡",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
             "check_no_easy_helper_team_dash_sweep",
-            "[JumpBack]get_easy_helper_team_dash_sweep"
+            "[JumpBack]get_easy_helper_team_dash_sweep",
+            "easy_helper_back_to_team_dash_sweep"
         ]
     },
     "check_no_easy_helper_team_dash_sweep": {
@@ -613,7 +624,8 @@
         "post_wait_freezes": 300,
         "post_delay": 0,
         "next": [
-            "easy_helper_back_to_team_dash_sweep"
+            "easy_helper_back_to_team_dash_sweep",
+            "easy_helper_team_dash_sweep"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">继续扫荡</font>"

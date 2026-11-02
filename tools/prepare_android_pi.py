@@ -24,8 +24,10 @@ def copy_tree(src: Path, dest: Path) -> None:
 
 def main() -> int:
     assets = REPO / "assets"
-    if not (assets / "interface.json").is_file():
-        print(f"missing {assets / 'interface.json'}", file=sys.stderr)
+    android_assets = assets / "android"
+
+    if not (android_assets / "interface.json").is_file():
+        print(f"missing {android_assets / 'interface.json'}", file=sys.stderr)
         return 1
 
     sys.path.insert(0, str(REPO / "tools" / "ci"))
@@ -38,11 +40,15 @@ def main() -> int:
     DEST.mkdir(parents=True)
 
     for child in assets.iterdir():
+        if child.name == "android":
+            continue
         target = DEST / child.name
         if child.is_dir():
             copy_tree(child, target)
         else:
             shutil.copy2(child, target)
+
+    shutil.copy2(android_assets / "interface.json", DEST / "interface.json")
 
     copy_tree(REPO / "agent", DEST / "agent")
 

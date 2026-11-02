@@ -1,0 +1,110 @@
+{
+    "check_sweep_level": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            158,
+            320,
+            518,
+            269
+        ],
+        "template": "Use_energy_asura_instance/sweep_level.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "check_in_level",
+            "check_sweep_level"
+        ]
+    },
+    "check_in_level": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            953,
+            575,
+            118,
+            144
+        ],
+        "template": "Use_energy_asura_instance/sweep.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 300,
+        "next": [
+            "check_in_sweep",
+            "check_in_level"
+        ]
+    },
+    "check_in_sweep": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            765,
+            416,
+            197,
+            103
+        ],
+        "template": "Use_energy_asura_instance/run_sweep.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "check_10x_sweep",
+            "[JumpBack]click_10x_sweep"
+        ]
+    },
+    "check_10x_sweep": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            711,
+            451,
+            56,
+            54
+        ],
+        "template": "Use_energy_asura_instance/check.png",
+        "green_mask": true,
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "run_10x_sweep"
+    },
+    "click_10x_sweep": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            765,
+            416,
+            197,
+            103
+        ],
+        "template": "Use_energy_asura_instance/run_sweep.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            730,
+            466,
+            22,
+            19
+        ],
+        "post_wait_freezes": 300,
+        "post_delay": 0
+    },
+    "run_10x_sweep": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            725,
+            313,
+            249,
+            360
+        ],
+        "template": "Use_energy_asura_instance/run_sweep.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "use_energy_finish_1",
+            "use_energy_not_enough_sign",
+            "use_energy_keep_sweep",
+            "use_energy_finish",
+            "run_10x_sweep"
+        ]
+    }
+}

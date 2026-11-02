@@ -59,7 +59,13 @@
                     96,
                     44
                 ],
-                "expected": "忍法帖"
+                "expected": "忍法帖",
+                "replace": [
+                    [
+                        "涩",
+                        "忍"
+                    ]
+                ]
             }
         ],
         "pre_delay": 0,
@@ -67,7 +73,6 @@
         "post_wait_freezes": 300,
         "post_delay": 0,
         "next": [
-            "ninja_book_is_android_then_no_share",
             "ninja_book_leaderboard",
             "ninja_book_undone",
             "[JumpBack]hit_to_enter_ninja_book",
@@ -137,9 +142,10 @@
         ],
         "template": "Ninja_book/qq_share_icon.png",
         "threshold": 0.8,
-        "pre_wait_freezes": 200,
-        "pre_delay": 0,
+        "pre_delay": 220,
         "action": "Click",
+        "repeat": 2,
+        "repeat_delay": 100,
         "post_delay": 2000,
         "next": [
             "ninja_book_share_to_qq",
@@ -173,9 +179,10 @@
         ],
         "template": "Ninja_book/wechat_share_icon.png",
         "threshold": 0.8,
-        "pre_wait_freezes": 200,
-        "pre_delay": 0,
+        "pre_delay": 220,
         "action": "Click",
+        "repeat": 2,
+        "repeat_delay": 100,
         "post_delay": 3000,
         "next": [
             "ninja_book_share_to_wechat",
@@ -759,14 +766,14 @@
         "pre_delay": 200,
         "action": "Click",
         "post_wait_freezes": {
-            "threshold": 0.8,
             "time": 400,
             "target": [
                 600,
                 293,
                 79,
                 49
-            ]
+            ],
+            "threshold": 0.8
         },
         "post_delay": 0,
         "next": [
@@ -1128,7 +1135,8 @@
         "next": [
             "ninja_book_leaderboard_like_undone",
             "ninja_book_leaderboard_like_done",
-            "ninja_book_leaderboard"
+            "ninja_book_leaderboard",
+            "[JumpBack]hit_to_enter_ninja_book_x"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入忍法帖排行榜界面</font>"
@@ -1226,7 +1234,7 @@
             "ninja_book_mission_done"
         ],
         "focus": {
-            "Node.Action.Starting": "<font color=\"darkorange\">不支持在安卓上进行分享，请使用模拟器！</font>"
+            "Node.Action.Starting": "<font color=\"darkorange\">安卓端man-MaaFwApp目前不尝试唤起qq</font>"
         }
     },
     "close_ninja_book_leaderboard": {

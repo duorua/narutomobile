@@ -1,6 +1,13 @@
 {
     "task": [
         {
+            "name": "火热手感",
+            "entry": "let_me_cook",
+            "group": [
+                "event"
+            ]
+        },
+        {
             "name": "速战速决",
             "entry": "blitz",
             "group": [
@@ -10,35 +17,35 @@
         {
             "name": "夏日回馈(beta)",
             "entry": "summer_plan",
+            "description": "不会选择,只会签到",
             "group": [
                 "event"
-            ],
-            "description": "不会选择,只会签到"
+            ]
         },
         {
             "name": "送好礼摇铃",
             "entry": "fine_gift_bell",
+            "description": "不会选择,只会签到",
             "group": [
                 "event"
-            ],
-            "description": "不会选择,只会签到"
+            ]
         },
         {
             "name": "奥义图大富翁(beta)",
             "entry": "get_aoyi_picture",
+            "description": "请在[送奥义]界面开启,不会自动领取宝箱和做网页活动",
             "group": [
                 "event"
-            ],
-            "description": "请在[送奥义]界面开启,不会自动领取宝箱和做网页活动"
+            ]
         },
         {
             "name": "冠军送礼",
             "entry": "champion_gift",
-            "option": [
-                "忍界指引寻找冠军送礼"
-            ],
             "group": [
                 "event"
+            ],
+            "option": [
+                "忍界指引寻找冠军送礼"
             ]
         },
         {
@@ -58,11 +65,11 @@
         {
             "name": "木叶小吃店",
             "entry": "konoha_snack_shop",
-            "option": [
-                "木叶小吃店不选蓝红色奖励"
-            ],
             "group": [
                 "event"
+            ],
+            "option": [
+                "木叶小吃店不选蓝红色奖励"
             ]
         },
         {
@@ -73,7 +80,7 @@
             ]
         },
         {
-            "name": "合成赠礼",
+            "name": "合成赠礼/美味蛋糕",
             "entry": "craft_gift",
             "group": [
                 "event"
@@ -96,13 +103,13 @@
         {
             "name": "忍道交锋(beta)",
             "entry": "nindao_clash",
+            "description": "刷不出来8个S箱,所以没做8个s箱的选项",
             "group": [
                 "event"
             ],
             "option": [
                 "忍道交锋刷什么"
-            ],
-            "description": "刷不出来8个S箱,所以没做8个s箱的选项"
+            ]
         },
         {
             "name": "聚宝试炼领取奖励",
@@ -114,11 +121,11 @@
         {
             "name": "羁绊追寻",
             "entry": "find_bonds",
-            "option": [
-                "羁绊追寻自动退出"
-            ],
             "group": [
                 "event"
+            ],
+            "option": [
+                "羁绊追寻自动退出"
             ]
         }
     ]

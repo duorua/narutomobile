@@ -250,9 +250,7 @@
             135,
             90
         ],
-        "template": [
-            "Blitz/award_done.png"
-        ],
+        "template": "Blitz/award_done.png",
         "threshold": 0.9,
         "pre_delay": 0,
         "post_delay": 0,

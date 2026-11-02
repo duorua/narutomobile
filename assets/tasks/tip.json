@@ -3,69 +3,69 @@
         {
             "name": "右键我",
             "entry": "tip",
+            "description": "右键会发现右键菜单,可以单独运行任务;注:安卓版逻辑不一样;这个任务只是教学,无实际作用",
+            "group": [
+                "external"
+            ],
             "option": [
                 "自由拖动增删任务",
                 "看看任务选项和问号",
                 "运用配置",
                 "导出日志",
                 "进行设置"
-            ],
-            "group": [
-                "external"
-            ],
-            "description": "右键会发现右键菜单,可以单独运行任务;注:安卓版逻辑不一样;这个任务只是教学,无实际作用"
+            ]
         }
     ],
     "option": {
         "自由拖动增删任务": {
             "type": "select",
-            "default_case": "了解任务列表按钮",
+            "description": "尝试添加定时等任务,客制化自己的配置吧",
             "cases": [
                 {
                     "name": "了解任务列表按钮"
                 }
             ],
-            "description": "尝试添加定时等任务,客制化自己的配置吧"
+            "default_case": "了解任务列表按钮"
         },
         "看看任务选项和问号": {
             "type": "select",
-            "default_case": "适配需求",
+            "description": "选定适合自己的任务流",
             "cases": [
                 {
                     "name": "适配需求"
                 }
             ],
-            "description": "选定适合自己的任务流"
+            "default_case": "适配需求"
         },
         "运用配置": {
             "type": "select",
-            "default_case": "即标签页",
+            "description": "可以通过复制config文件夹到新的man包,达到迁移设置的效果;不保证配置多开和复制config有效",
             "cases": [
                 {
                     "name": "即标签页"
                 }
             ],
-            "description": "可以通过复制config文件夹到新的man包,达到迁移设置的效果;不保证配置多开和复制config有效"
+            "default_case": "即标签页"
         },
         "导出日志": {
             "type": "select",
-            "default_case": "了解日志列表按钮",
+            "description": "必要时进入mfa设置开启调试模式运行出错任务,再导出日志,更多图图",
             "cases": [
                 {
                     "name": "了解日志列表按钮"
                 }
             ],
-            "description": "必要时进入mfa设置开启调试模式运行出错任务,再导出日志,更多图图"
+            "default_case": "了解日志列表按钮"
         },
         "进行设置": {
             "type": "select",
-            "default_case": "更多功能",
+            "description": "模拟器链接不上,重现公告教程等功能在设置里;公告有文档站链接",
             "cases": [
                 {
                     "name": "更多功能"
                 }
             ],
-            "description": "模拟器链接不上,重现公告教程等功能在设置里;公告有文档站链接"
+            "default_case": "更多功能"
         }
     }
 }

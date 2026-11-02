@@ -1,6 +1,6 @@
 # 开发工具
 
-🚧施工中🚧
+本文主要介绍了 MaaAutoNaruto 开发组正在使用的工具。
 
 ## 辅助工具
 
@@ -30,7 +30,7 @@
 
 ### 利用 Pre-commit Hooks 自动进行代码格式化
 
-1. 确保你的电脑上有 Python 与 Node 环境
+1. 确保你的电脑上有 Python 与 Node.js 环境
 
 2. 在项目根目录下执行以下命令
 
@@ -97,4 +97,17 @@
 
 ### js环境常见命令
 
-可以在package.json内查看
+1. pnpm install 安装
+
+2. 其他命令可以在package.json内查看
+
+## LLM 辅助工具
+
+[Everything-Maa](https://github.com/KhazixW2/Everything-Maa) 已集成多个用于开发和调试maafw类衍生项目的skill和mcp。
+
+支持Agentic全流程自主分析maafw日志，并发现关键问题。拥有自动编写pipeline和修改interface.json的能力。
+
+## 其他工具
+
+- [MaaHub](https://hub.maafw.com): 收录了大量 MaaFramework 中常见业务的编写技巧。
+- [MaaFramework 开发工具](https://github.com/MaaXYZ/MaaFramework#开发工具): 收录了 MaaFramework 社区内所有的开发辅助工具。

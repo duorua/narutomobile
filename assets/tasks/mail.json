@@ -3,10 +3,10 @@
         {
             "name": "邮箱",
             "entry": "mail",
+            "default_check": true,
             "group": [
                 "daily"
-            ],
-            "default_check": true
+            ]
         }
     ]
 }

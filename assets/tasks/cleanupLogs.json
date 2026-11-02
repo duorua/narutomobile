@@ -3,27 +3,27 @@
         {
             "name": "日志文件清理",
             "entry": "cleanup_maafw_bak_logs",
-            "option": [
-                "保留备份日志个数"
-            ],
+            "default_check": true,
+            "description": "清理多余的日志文件,节省空间;考虑到方便debug,不会删除MFA日志;可以使用MFA清理缓存功能代替",
             "group": [
                 "external"
             ],
-            "default_check": true,
-            "description": "清理多余的日志文件,节省空间;考虑到方便debug,不会删除MFA日志;可以使用MFA清理缓存功能代替"
+            "option": [
+                "保留备份日志个数"
+            ]
         }
     ],
     "option": {
         "保留备份日志个数": {
-            "description": "清理日志时保留备份日志个数",
             "type": "input",
+            "description": "清理日志时保留备份日志个数",
             "inputs": [
                 {
                     "name": "保留日志数",
                     "label": "保留日志数",
                     "description": "输入需要的保留日志数,最大999",
-                    "pipeline_type": "int",
                     "default": "3",
+                    "pipeline_type": "int",
                     "verify": "^[1-9]\\d{0,2}$"
                 }
             ],

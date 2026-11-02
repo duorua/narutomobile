@@ -3,6 +3,11 @@
         {
             "name": "忍法帖",
             "entry": "ninja_book",
+            "default_check": true,
+            "description": "<font color=\"tomato\">微信忍法帖分享部分设备可能会出现无法退出的情况,这种情况不保证能正常处理</font>由于社交软件版本多,设备延迟差异大.分享任务可能需要你调整选项到自己适合的配置,或者让拉起的社交软件是横版(平板版)并使用加速策略",
+            "group": [
+                "daily"
+            ],
             "option": [
                 "领取体验卡宝箱",
                 "领取忍法帖奖励",
@@ -11,19 +16,14 @@
                 "跳过分享",
                 "宝匣挑战",
                 "忍法帖礼盒",
-                "串行连点器(beta)"
-            ],
-            "group": [
-                "daily"
-            ],
-            "description": "[size:15][color:tomato]微信忍法帖分享部分设备可能会出现无法退出的情况,这种情况不保证能正常处理[/color][/size]由于社交软件版本多,设备延迟差异大.分享任务可能需要你调整选项到自己适合的配置,或者让拉起的社交软件是横版(平板版)并使用加速策略",
-            "default_check": true
+                "串行连点器(beta)",
+                "安卓实机分享唤起社交媒体"
+            ]
         }
     ],
     "option": {
         "领取体验卡宝箱": {
             "type": "switch",
-            "default_case": "Yes",
             "cases": [
                 {
                     "name": "Yes",
@@ -50,12 +50,12 @@
                 {
                     "name": "No"
                 }
-            ]
+            ],
+            "default_case": "Yes"
         },
         "领取忍法帖奖励": {
             "type": "switch",
             "description": "默认不领取奖励,方便卡超影,体力,体验卡",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No",
@@ -75,11 +75,11 @@
                 {
                     "name": "Yes"
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "跳过分享": {
             "type": "switch",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No"
@@ -95,11 +95,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "宝匣挑战": {
             "type": "switch",
-            "default_case": "No",
             "description": "不会自动抽卡",
             "cases": [
                 {
@@ -117,11 +117,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "忍法帖礼盒": {
             "type": "switch",
-            "default_case": "No",
             "description": "不会自动抽卡",
             "cases": [
                 {
@@ -148,7 +148,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         }
     }
 }

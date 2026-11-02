@@ -1,0 +1,88 @@
+{
+    "preset": [
+        {
+            "name": "小游戏一览",
+            "description": "目前支持的小游戏;小游戏可以主页进,也可以从有小游戏名的功能入口界面进",
+            "task": [
+                {
+                    "name": "进入火影[安卓实机]"
+                },
+                {
+                    "name": "全服ban选决斗场",
+                    "enabled": false
+                },
+                {
+                    "name": "幻之试炼刷祝福",
+                    "enabled": false
+                },
+                {
+                    "name": "火热手感",
+                    "enabled": false
+                },
+                {
+                    "name": "速战速决",
+                    "enabled": false
+                },
+                {
+                    "name": "夏日回馈(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "送好礼摇铃",
+                    "enabled": false
+                },
+                {
+                    "name": "奥义图大富翁(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "冠军送礼",
+                    "enabled": false
+                },
+                {
+                    "name": "山中花店",
+                    "enabled": false
+                },
+                {
+                    "name": "抢红包",
+                    "enabled": false
+                },
+                {
+                    "name": "木叶小吃店",
+                    "enabled": false
+                },
+                {
+                    "name": "决斗场托管一把",
+                    "enabled": false
+                },
+                {
+                    "name": "合成赠礼/美味蛋糕",
+                    "enabled": false
+                },
+                {
+                    "name": "新春邮局",
+                    "enabled": false
+                },
+                {
+                    "name": "问答游戏(挂机)",
+                    "enabled": false
+                },
+                {
+                    "name": "忍道交锋(beta)",
+                    "enabled": false
+                },
+                {
+                    "name": "聚宝试炼领取奖励",
+                    "enabled": false
+                },
+                {
+                    "name": "羁绊追寻",
+                    "enabled": false
+                },
+                {
+                    "name": "日志文件清理"
+                }
+            ]
+        }
+    ]
+}

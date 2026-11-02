@@ -3,6 +3,14 @@
         {
             "name": "切换账号(beta)",
             "entry": "switch_account",
+            "description": "请在主页开始任务;需要拉起的qq是横版(平板版)界面;微信在模拟器上登录会封微信账号,只能扫码登录,所以不支持切微信账号",
+            "group": [
+                "daily"
+            ],
+            "controller": [
+                "连接模拟器",
+                "PlayCover on macOS"
+            ],
             "option": [
                 "账号切换范围",
                 "目标区",
@@ -12,17 +20,12 @@
                 "拒绝qq获取火影信息",
                 "切换账号后行为",
                 "启用协议自动勾选"
-            ],
-            "group": [
-                "daily"
-            ],
-            "description": "请在主页开始任务;需要拉起的qq是横版(平板版)界面;微信在模拟器上登录会封微信账号,只能扫码登录,所以不支持切微信账号;安卓端man-MaaFwApp目前不尝试唤起qq"
+            ]
         }
     ],
     "option": {
         "账号切换范围": {
             "type": "select",
-            "default_case": "换区",
             "description": "因为最终用户协议(EULA),换社交媒体账号时,你必须手动同意协议;",
             "cases": [
                 {
@@ -42,7 +45,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "换区"
         },
         "目标区": {
             "type": "input",
@@ -52,8 +56,8 @@
                     "name": "区序号",
                     "label": "区序号",
                     "description": "需要切换的目标区的区序号",
-                    "pipeline_type": "string",
                     "default": "1",
+                    "pipeline_type": "string",
                     "verify": "^([1-9]\\d{0,4}|100000)$"
                 }
             ],
@@ -78,8 +82,8 @@
                     "name": "账号名/账号",
                     "label": "账号名/账号",
                     "description": "需要切换的目标账号的账号名或者账号",
-                    "pipeline_type": "string",
-                    "default": "MaaAutoNaruto"
+                    "default": "MaaAutoNaruto",
+                    "pipeline_type": "string"
                 }
             ],
             "pipeline_override": {
@@ -92,7 +96,6 @@
         },
         "切换账号后行为": {
             "type": "select",
-            "default_case": "什么都不做",
             "description": "切换后行为的行为;开启点击开始游戏后,切换账号之后的任务不需要进入火影任务",
             "cases": [
                 {
@@ -107,7 +110,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "什么都不做"
         }
     }
 }

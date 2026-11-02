@@ -1,9 +1,7 @@
 # 快速上手
 
-> [!WARNING]
-> 本项目目前的开发文档尚未完善！
->
-> 你可以先阅读[M9A 开发须知](https://1999.fan/zh_cn/develop/development.html)以了解如何在本地以开发模式运行项目（本项目与M9A的项目结构类似，可以作为学习参考）。更多内容请自行学习MaaFramework的[开发文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md)的内容。
+> [!NOTE]
+> 在开始之前请先自行学习[MaaFramework的开发文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md)，了解基于 MaaFramework 进行开发所需的基础知识。在学习开发初期遇到的大部分问题你都可以在文档里找到答案
 
 ## 1. 开发环境配置
 
@@ -16,15 +14,15 @@
 1. **安装 VSCode** - 代码编辑器
 2. **安装 Git** - 版本控制工具
 3. **安装 Python** - 开发语言（**≥3.13**，推荐使用 **Python 3.13.15** 版本）
+4. **安装 node.js** - 辅助开发（**版本≥22**,相关见于下方10.开发辅助环境）
 
-### 1.3 可选开发工具
+### 1.3 常用开发工具
 
 | 工具 | 简介 |
 | --- | --- |
-| [MaaDebugger](https://github.com/MaaXYZ/MaaDebugger) | 独立调试工具 |
 | [Maa Pipeline Support](https://marketplace.visualstudio.com/items?itemName=nekosu.maa-support) | VSCode 插件，提供调试、截图、获取 ROI 、取色等功能（强烈推荐） |
-| [MFAToolsPlus](https://github.com/SweetSmellFox/MFAToolsPlus) | 独立截图、获取 ROI 及取色工具 |
 | [MaaPipelineEditor](https://github.com/kqcoxn/MaaPipelineEditor) | 任务流程pipeline可视化工具（推荐） |
+| [MaaLogAnalyzer](https://github.com/MaaXYZ/MaaLogAnalyzer) | 日志分析工具，用于分析任务流程的执行情况 |
 
 ---
 
@@ -144,9 +142,11 @@ python -m agent.main <identifier>#<identifier>替换为uuid如"3be2c931-9c0d-4d6
 
 ---
 
-## 10.开发辅助环境(如格式化工具)
+## 10.其他工具
 
-- 参见[tools.md](https://github.com/duorua/narutomobile/edit/main/docs/develop/tools.md)
+- 参见[tools.md](./tools)
+
+---
 
 ## 完成
 

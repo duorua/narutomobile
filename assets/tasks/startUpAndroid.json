@@ -1,0 +1,223 @@
+{
+    "task": [
+        {
+            "name": "进入火影[安卓实机]",
+            "entry": "start_up",
+            "default_check": true,
+            "description": "目前横屏切换竖屏会中断任务是正常的,一般是ImageReader报错",
+            "group": [
+                "daily"
+            ],
+            "controller": ["安卓实机"],
+            "option": [
+                "进入火影安卓实机",
+                "模拟器核4端火影",
+                "设置启动超时时间",
+                "启动超时后行为",
+                "允许MAN管理qq和火影信息",
+                "拒绝qq获取火影信息",
+                "am_start启动",
+                "启用协议自动勾选"
+            ]
+        }
+    ],
+    "option": {
+        "模拟器核4端火影": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "No",
+                    "option": ["账号属性安卓实机"],
+                    "pipeline_override": {
+                        "check_agreement": {
+                            "all_of": [
+                                {
+                                    "sub_name": "QQ",
+                                    "recognition": "TemplateMatch",
+                                    "roi": [
+                                        707,
+                                        468,
+                                        371,
+                                        138
+                                    ],
+                                    "template": "SharedNode/mobile_qq.png"
+                                },
+                                {
+                                    "sub_name": "协议对勾",
+                                    "recognition": "TemplateMatch",
+                                    "roi": [
+                                        77,
+                                        582,
+                                        61,
+                                        61
+                                    ],
+                                    "template": "SharedNode/agreement_check.png",
+                                    "green_mask": true
+                                }
+                            ]
+                        },
+                        "start_up_in_switch_social_media_account": {
+                            "roi": [
+                                707,
+                                468,
+                                371,
+                                138
+                            ],
+                            "template": "SharedNode/mobile_qq.png"
+                        },
+                        "start_up_switch_social_media_account": {
+                            "roi": [
+                                707,
+                                468,
+                                371,
+                                138
+                            ],
+                            "template": "SharedNode/mobile_qq.png"
+                        },
+                        "agreement_not_agree": {
+                            "roi": [
+                                707,
+                                468,
+                                371,
+                                138
+                            ],
+                            "template": "SharedNode/mobile_qq.png"
+                        },
+                        "switch_account_in_switch_social_media_account": {
+                            "roi": [
+                                707,
+                                468,
+                                371,
+                                138
+                            ],
+                            "template": "SharedNode/mobile_qq.png"
+                        },
+                        "switch_account_switch_social_media_account": {
+                            "roi": [
+                                707,
+                                468,
+                                371,
+                                138
+                            ],
+                            "template": "SharedNode/mobile_qq.png"
+                        }
+                    }
+                },
+                {
+                    "name": "Yes",
+                    "option": ["账号属性"]
+                }
+            ],
+            "default_case": "No"
+        },
+        "进入火影安卓实机": {
+            "type": "select",
+            "description": "微信未适配,同时影响切换到的账号的类型",
+            "cases": [
+                {
+                    "name": "适配",
+                    "pipeline_override": {
+                        "agree_log_in": {
+                            "recognition": "And",
+                            "all_of": [
+                                {
+                                    "recognition": "OCR",
+                                    "roi": [
+                                        4,
+                                        389,
+                                        715,
+                                        890
+                                    ],
+                                    "expected": "同意"
+                                },
+                                {
+                                    "recognition": "OCR",
+                                    "roi": [
+                                        4,
+                                        389,
+                                        715,
+                                        890
+                                    ],
+                                    "expected": [
+                                        "切换账号",
+                                        "拒绝"
+                                    ]
+                                }
+                            ]
+                        },
+                        "agree_info": {
+                            "roi": [
+                                4,
+                                389,
+                                715,
+                                890
+                            ]
+                        },
+                        "refuse_info": {
+                            "roi": [
+                                4,
+                                389,
+                                715,
+                                890
+                            ]
+                        },
+                        "confirm_refuse_info": {
+                            "roi": [
+                                4,
+                                201,
+                                715,
+                                886
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "横屏",
+                    "description": "这个横屏只能处理类似模拟器的横屏qq,如果横屏不规范会出错"
+                }
+            ],
+            "default_case": "适配"
+        },
+        "账号属性安卓实机": {
+            "type": "select",
+            "controller": ["安卓实机"],
+            "description": "微信未适配;同时影响切换到的账号的类型;大概率不适配,建议保持不唤起社交媒体",
+            "cases": [
+                {
+                    "name": "QQ"
+                },
+                {
+                    "name": "微信",
+                    "description": "目前不尝试唤起微信,切换账号的时候也一样",
+                    "pipeline_override": {
+                        "switch_account_switch_social_media_account": {
+                            "action": "DoNothing"
+                        },
+                        "start_up_switch_social_media_account": {
+                            "action": "DoNothing"
+                        }
+                    }
+                },
+                {
+                    "name": "不唤起社交媒体",
+                    "description": "qq,微信多开等情况,唤起不想要的社交媒体,此时开启这个选项",
+                    "pipeline_override": {
+                        "switch_account_switch_social_media_account": {
+                            "action": "DoNothing"
+                        },
+                        "start_up_switch_social_media_account": {
+                            "action": "DoNothing"
+                        },
+                        "start_up": {
+                            "next": [
+                                "start_up_check_is_android",
+                                "start_naruto"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "不唤起社交媒体"
+        }
+    }
+}

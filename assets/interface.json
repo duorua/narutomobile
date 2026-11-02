@@ -1,23 +1,25 @@
 {
+    "interface_version": 2,
     "name": "MaaAutoNaruto",
-    "github": "https://github.com/duorua/narutomobile",
-    "description": "本软件开源免费,受AGPL v3协议保护。",
-    "license": "LICENSE",
     "icon": "resource/logo.ico",
     "mirrorchyan_rid": "MaaAutoNaruto",
     "mirrorchyan_multiplatform": true,
-    "interface_version": 2,
-    "agent": {
-        "child_exec": "../.venv/Scripts/python.exe",
-        "child_args": [
-            "-u",
-            "../agent/main.py"
-        ],
-        "debug_session": "Agent 调试"
-    },
+    "github": "https://github.com/duorua/narutomobile",
+    "license": "LICENSE",
+    "welcome": [
+        "resource/announcement/1.简介.md",
+        "resource/announcement/2.用户协议.md",
+        "resource/announcement/3.决斗场推荐忍者.md",
+        "resource/announcement/4.加入我们.md"
+    ],
+    "description": "本软件开源免费,受AGPL v3协议保护。",
     "controller": [
         {
             "name": "连接模拟器",
+            "type": "Adb"
+        },
+        {
+            "name": "安卓实机",
             "type": "Adb"
         },
         {
@@ -33,6 +35,14 @@
             ]
         }
     ],
+    "agent": {
+        "child_exec": "../.venv/Scripts/python.exe",
+        "child_args": [
+            "-u",
+            "../agent/main.py"
+        ],
+        "debug_session": "Agent 调试"
+    },
     "group": [
         {
             "name": "daily",
@@ -65,6 +75,7 @@
         "tasks/preset/miniGame.json",
         "tasks/preset/external.json",
         "tasks/startUp.json",
+        "tasks/startUpAndroid.json",
         "tasks/easyHelepr.json",
         "tasks/easySeason.json",
         "tasks/getCoppper.json",
@@ -79,7 +90,6 @@
         "tasks/headhunt.json",
         "tasks/activity.json",
         "tasks/useEnergy.json",
-        "tasks/useEnergyForgeGear.json",
         "tasks/richRoom.json",
         "tasks/ninjaBook.json",
         "tasks/duelGround.json",
@@ -88,12 +98,14 @@
         "tasks/mail.json",
         "tasks/livenessAward.json",
         "tasks/secretRealm.json",
+        "tasks/secretRealmWeeklyBox.json",
         "tasks/unlcokSecondaryPassword.json",
         "tasks/shop.json",
         "tasks/getCopperSecondaryPassword.json",
         "tasks/buyEnergySecondaryPassword.json",
         "tasks/teamDashSecondaryPassword.json",
         "tasks/switchAccount.json",
+        "tasks/switchAccountAndroid.json",
         "tasks/exitNaruto.json",
         "tasks/stronghold.json",
         "tasks/skyGround.json",
@@ -105,10 +117,11 @@
         "tasks/asuraInstance.json",
         "tasks/miniGame.json",
         "tasks/blackMarketMerchant.json",
+        "tasks/huanZhi.json",
+        "tasks/globalCommunityBan.json",
         "tasks/Debug.json",
         "tasks/tip.json",
         "tasks/cleanupLogs.json",
-        "tasks/complete.json",
         "tasks/standaloneMiniGame.json",
         "tasks/ninjaGuide.json",
         "tasks/sharedOption.json"

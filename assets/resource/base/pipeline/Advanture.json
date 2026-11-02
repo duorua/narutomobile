@@ -20,6 +20,7 @@
             177
         ],
         "template": "Advanture/advanture_entry.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 3000,
         "focus": {
@@ -36,6 +37,8 @@
         ],
         "template": "Advanture/level_roll.png",
         "threshold": 0.9,
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "advanture_check_no_next_roll",
             "[JumpBack]advanture_to_next_roll"
@@ -54,6 +57,7 @@
         ],
         "template": "Advanture/next_roll.png",
         "inverse": true,
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             593,
@@ -61,10 +65,12 @@
             81,
             88
         ],
-        "post_delay": 900,
+        "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "advanture_new_level_undone",
-            "naruto_journey_new_level_undone"
+            "naruto_journey_new_level_undone",
+            "advanture_check_no_next_roll"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确定没有下一个章节</font>"
@@ -79,6 +85,7 @@
             83
         ],
         "template": "Advanture/next_roll.png",
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             1109,
@@ -100,6 +107,7 @@
             204
         ],
         "template": "Advanture/new_level_undone.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 900,
         "next": [
@@ -121,6 +129,8 @@
             151
         ],
         "template": "Advanture/level_not_enough.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": "back_main_screen_and_stop",
         "focus": {
             "Node.Action.Starting": "等级不足"
@@ -135,6 +145,7 @@
             130
         ],
         "template": "Advanture/naruto_journey_new_level_undone.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 900,
         "next": [
@@ -155,6 +166,7 @@
             301
         ],
         "template": "Advanture/go_fight.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 900,
         "rate_limit": 500,
@@ -184,6 +196,7 @@
         "template": [
             "Advanture/dialogue.png"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 500
     },
@@ -271,6 +284,7 @@
         "expected": [
             "跳过"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 300
     },
@@ -378,6 +392,7 @@
             "战斗中"
         ],
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 500,
         "next": [
             "check_in_auto_fight",
@@ -404,7 +419,9 @@
         "expected": [
             "自动",
             "战斗中"
-        ]
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
     },
     "advanture_auto_fight": {
         "recognition": "OCR",
@@ -435,6 +452,7 @@
             413
         ],
         "template": "Advanture/win.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 900,
         "next": [
@@ -456,6 +474,7 @@
         "expected": [
             "开启新功能"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 300,
         "next": [
@@ -475,7 +494,7 @@
         ],
         "template": "Advanture/win.png",
         "inverse": true,
-        "action": "DoNothing",
+        "pre_delay": 0,
         "post_delay": 300,
         "next": [
             "[JumpBack]loading_page",
@@ -501,8 +520,10 @@
         "expected": [
             "点击"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
+        "post_delay": 0,
         "next": [
             "advanture_not_in_lost",
             "advanture_lost"
@@ -522,6 +543,8 @@
         "expected": [
             "复活"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ]
@@ -538,6 +561,7 @@
             "点击"
         ],
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 500,
         "next": [
             "back_main_screen_and_stop"
@@ -557,6 +581,7 @@
         "expected": [
             "每日任务开启"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             1202,
@@ -583,6 +608,7 @@
         "expected": [
             "等级达到"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 500,
         "next": [
@@ -604,6 +630,7 @@
         "expected": [
             "继续挑战"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 600,
         "next": [
@@ -623,6 +650,7 @@
             "继续挑战"
         ],
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 600,
         "next": [
             "advanture_in_fight",

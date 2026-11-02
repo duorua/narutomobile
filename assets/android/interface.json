@@ -1,0 +1,115 @@
+{
+    "interface_version": 2,
+    "name": "MaaAutoNaruto",
+    "icon": "resource/logo.ico",
+    "mirrorchyan_rid": "MaaAutoNaruto-MaaFwApp",
+    "mirrorchyan_multiplatform": true,
+    "github": "https://github.com/duorua/narutomobile",
+    "license": "LICENSE",
+    "description": "本软件开源免费,受AGPL v3协议保护。",
+    "controller": [
+        {
+            "name": "安卓实机",
+            "type": "Adb"
+        }
+    ],
+    "resource": [
+        {
+            "name": "官服",
+            "path": [
+                "resource/base"
+            ]
+        }
+    ],
+    "agent": {
+        "child_exec": "../.venv/Scripts/python.exe",
+        "child_args": [
+            "-u",
+            "../agent/main.py"
+        ],
+        "debug_session": "Agent 调试"
+    },
+    "group": [
+        {
+            "name": "daily",
+            "label": "日常任务"
+        },
+        {
+            "name": "weekly",
+            "label": "周常任务"
+        },
+        {
+            "name": "event",
+            "label": "活动任务"
+        },
+        {
+            "name": "progression",
+            "label": "开荒任务"
+        },
+        {
+            "name": "redeem",
+            "label": "商店任务"
+        },
+        {
+            "name": "external",
+            "label": "游戏外任务"
+        }
+    ],
+    "import": [
+        "tasks/preset/commonAndroid.json",
+        "tasks/preset/scheduleAndroid.json",
+        "tasks/preset/miniGameAndroid.json",
+        "tasks/preset/external.json",
+        "tasks/startUp.json",
+        "tasks/startUpAndroid.json",
+        "tasks/easyHelepr.json",
+        "tasks/easySeason.json",
+        "tasks/getCoppper.json",
+        "tasks/leaderboard.json",
+        "tasks/giveEnergy.json",
+        "tasks/share.json",
+        "tasks/group.json",
+        "tasks/pointRace.json",
+        "tasks/trainRoad.json",
+        "tasks/survivalChallenge.json",
+        "tasks/teamDash.json",
+        "tasks/headhunt.json",
+        "tasks/activity.json",
+        "tasks/useEnergy.json",
+        "tasks/richRoom.json",
+        "tasks/ninjaBook.json",
+        "tasks/duelGround.json",
+        "tasks/missionOffice.json",
+        "tasks/narutoClub.json",
+        "tasks/mail.json",
+        "tasks/livenessAward.json",
+        "tasks/secretRealm.json",
+        "tasks/secretRealmWeeklyBox.json",
+        "tasks/unlcokSecondaryPassword.json",
+        "tasks/shop.json",
+        "tasks/getCopperSecondaryPassword.json",
+        "tasks/buyEnergySecondaryPassword.json",
+        "tasks/teamDashSecondaryPassword.json",
+        "tasks/switchAccount.json",
+        "tasks/switchAccountAndroid.json",
+        "tasks/exitNaruto.json",
+        "tasks/stronghold.json",
+        "tasks/skyGround.json",
+        "tasks/moreGameplay.json",
+        "tasks/rebelNinja.json",
+        "tasks/joyClub.json",
+        "tasks/advanture.json",
+        "tasks/eliteInstance.json",
+        "tasks/asuraInstance.json",
+        "tasks/miniGame.json",
+        "tasks/blackMarketMerchant.json",
+        "tasks/huanZhi.json",
+        "tasks/globalCommunityBan.json",
+        "tasks/Debug.json",
+        "tasks/tip.json",
+        "tasks/cleanupLogs.json",
+        "tasks/standaloneMiniGame.json",
+        "tasks/ninjaGuide.json",
+        "tasks/sharedOption.json"
+    ]
+}

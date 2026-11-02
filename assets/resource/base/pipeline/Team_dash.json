@@ -125,14 +125,33 @@
         }
     },
     "team_dash_group_help_undone": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            990,
-            602,
-            72,
-            64
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "roi": [
+                    990,
+                    602,
+                    72,
+                    64
+                ],
+                "template": "Team_dash/team_dash_group_help_undone.png"
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    960,
+                    658,
+                    133,
+                    49
+                ],
+                "expect": [
+                    "组织",
+                    "助战"
+                ]
+            }
         ],
-        "template": "Team_dash/team_dash_group_help_undone.png",
+        "box_index": 1,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 400,
@@ -530,14 +549,14 @@
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": {
-            "threshold": 0.8,
             "time": 300,
             "target": [
                 520,
                 285,
                 261,
                 150
-            ]
+            ],
+            "threshold": 0.8
         },
         "post_delay": 0,
         "next": [
@@ -626,6 +645,45 @@
             "[JumpBack]team_dash_not_in_auto_battle",
             "check_in_team_dash_sweep",
             "[JumpBack]team_dash_sweep_win"
+        ]
+    },
+    "team_dash_battle_tips": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            527,
+            120,
+            225,
+            157
+        ],
+        "template": "Weekly_win/battle_tips.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 10000,
+        "next": [
+            "team_dash_tips_confirm"
+        ],
+        "on_error": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">战斗异常提示</font>"
+        }
+    },
+    "team_dash_tips_confirm": {
+        "recognition": "OCR",
+        "roi": [
+            529,
+            375,
+            221,
+            155
+        ],
+        "expected": "确定",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 200,
+        "next": [
+            "team_dash_tips_confirm",
+            "team_dash"
         ]
     },
     "team_dash_not_in_auto_battle": {

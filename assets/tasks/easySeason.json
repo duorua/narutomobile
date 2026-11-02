@@ -3,14 +3,14 @@
         {
             "name": "轻松季(beta)",
             "entry": "easy_season",
+            "group": [
+                "event"
+            ],
             "option": [
                 "轻松季扫荡",
                 "秘境翻饰品牌",
                 "秘境翻忍具牌",
                 "秘境忍具每次只翻一张"
-            ],
-            "group": [
-                "event"
             ]
         }
     ],
@@ -18,7 +18,6 @@
         "轻松季扫荡": {
             "type": "switch",
             "description": "轻松季领取扫荡卡,并扫荡",
-            "default_case": "Yes",
             "cases": [
                 {
                     "name": "Yes",
@@ -72,7 +71,8 @@
                 {
                     "name": "No"
                 }
-            ]
+            ],
+            "default_case": "Yes"
         }
     }
 }

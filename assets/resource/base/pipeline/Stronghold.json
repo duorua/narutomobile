@@ -78,8 +78,9 @@
             118
         ],
         "template": "Group/selected_group_gameplay.png",
-        "action": "DoNothing",
+        "pre_delay": 0,
         "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "stronghold_mode",
             "[JumpBack]swipe_for_stronghold_mode"
@@ -280,12 +281,12 @@
         ],
         "timeout": 30000,
         "next": [
+            "[JumpBack]battle_tips",
             "[JumpBack]stronghold_fighting",
             "stronghold_end",
             "[JumpBack]stronghold_in_stronghold",
             "[JumpBack]stronghold_in_match",
             "[JumpBack]stronghold_match_win",
-            "[JumpBack]battle_tips",
             "stronghold_finished",
             "[JumpBack]stronghold_substitution"
         ]
@@ -348,9 +349,9 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "[JumpBack]battle_tips",
             "stronghold_click_All_skill",
             "stronghold_winner_decided",
-            "[JumpBack]battle_tips",
             "stronghold_in_stronghold",
             "[JumpBack]stronghold_match_win",
             "stronghold_finished"
@@ -374,9 +375,9 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "[JumpBack]battle_tips",
             "stronghold_winner_decided",
             "stronghold_battle_end",
-            "[JumpBack]battle_tips",
             "stronghold_in_stronghold",
             "[JumpBack]stronghold_match_win",
             "stronghold_finished",
@@ -604,12 +605,13 @@
         ],
         "post_delay": 0,
         "next": [
+            "[JumpBack]battle_tips",
             "stronghold_click_All_skill",
             "stronghold_winner_decided",
-            "[JumpBack]battle_tips",
             "stronghold_in_stronghold",
             "[JumpBack]stronghold_match_win",
-            "stronghold_finished"
+            "stronghold_finished",
+            "stronghold_end"
         ]
     }
 }

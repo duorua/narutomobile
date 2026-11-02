@@ -30,10 +30,10 @@
     "headhunt_to_advanced_recruit": {
         "recognition": "TemplateMatch",
         "roi": [
-            4,
-            108,
-            210,
-            456
+            0,
+            110,
+            175,
+            609
         ],
         "template": [
             "Headhunt/headhunt.png",
@@ -78,8 +78,11 @@
             382,
             221
         ],
-        "template": "Headhunt/free_headhunt.png",
-        "threshold": 0.97,
+        "template": [
+            "Headhunt/free_headhunt.png",
+            "Headhunt/free_headhunt_1.png"
+        ],
+        "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,
@@ -142,8 +145,7 @@
         "template": "Headhunt/confirm_free_headhunt.png",
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 500,
-        "post_delay": 0,
+        "post_delay": 400,
         "next": [
             "without_confirm_free_headhunt",
             "confirm_free_headhunt"
@@ -164,7 +166,6 @@
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 0,
-        "next": [],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">完成免费高级招募</font>"
         }
@@ -173,15 +174,17 @@
         "max_hit": 3,
         "recognition": "TemplateMatch",
         "roi": [
-            4,
-            108,
-            210,
-            456
+            0,
+            110,
+            175,
+            609
         ],
         "template": [
             "Headhunt/headhunt.png",
-            "Headhunt/headhunt_selected.png"
+            "Headhunt/headhunt_selected.png",
+            "Headhunt/wish_gacha.png"
         ],
+        "green_mask": true,
         "threshold": 0.8,
         "pre_delay": 0,
         "action": "Swipe",
@@ -265,10 +268,10 @@
             143
         ],
         "template": [
-            "Headhunt/recruit_done_2.png",
+            "Headhunt/free_recruit.png",
             "Headhunt/free_headhunt_1.png"
         ],
-        "threshold": 0.6,
+        "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 500,

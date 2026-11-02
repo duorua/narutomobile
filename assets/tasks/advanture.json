@@ -3,19 +3,18 @@
         {
             "name": "冒险副本",
             "entry": "advanture",
-            "option": [
-                "冒险副本一直推关"
-            ],
+            "description": "不会打高级关卡,忍者不要特效太多的(包括大招文字)",
             "group": [
                 "progression"
             ],
-            "description": "不会打高级关卡,忍者不要特效太多的(包括大招文字)"
+            "option": [
+                "冒险副本一直推关"
+            ]
         }
     ],
     "option": {
         "冒险副本一直推关": {
             "type": "switch",
-            "default_case": "No",
             "description": "在不开荒的时候开启这个会快一点,但开启可能会在开荒时因为功能更新卡住",
             "cases": [
                 {
@@ -38,7 +37,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         }
     }
 }

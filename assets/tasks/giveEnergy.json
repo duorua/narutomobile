@@ -3,20 +3,19 @@
         {
             "name": "送体力",
             "entry": "give_energy",
-            "option": [
-                "选择账号好友送体力"
-            ],
+            "default_check": true,
             "group": [
                 "daily"
             ],
-            "default_check": true
+            "option": [
+                "选择账号好友送体力"
+            ]
         }
     ],
     "option": {
         "选择账号好友送体力": {
-            "description": "在没有游戏好友的时候,给qq或者微信好友送体力",
             "type": "switch",
-            "default_case": "No",
+            "description": "在没有游戏好友的时候,给qq或者微信好友送体力",
             "cases": [
                 {
                     "name": "No"
@@ -32,7 +31,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         }
     }
 }

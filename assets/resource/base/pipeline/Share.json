@@ -3,7 +3,6 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "is_android_then_no_share",
             "share_in_center_enter",
             "share_ac_entry",
             "[JumpBack]back_main_screen_before_task"
@@ -17,7 +16,7 @@
         "custom_recognition": "CheckIsAndroid",
         "next": "back_main_screen_and_stop",
         "focus": {
-            "Node.Action.Starting": "<font color=\"darkorange\">不支持在安卓上进行分享，请使用模拟器！</font>"
+            "Node.Action.Starting": "<font color=\"darkorange\">安卓端man-MaaFwApp目前不尝试唤起qq</font>"
         }
     },
     "share_in_center_enter": {
@@ -197,6 +196,8 @@
         "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",
+        "repeat": 2,
+        "repeat_delay": 100,
         "post_delay": 700,
         "next": [
             "try_share_to_wechat",
@@ -220,6 +221,8 @@
         "order_by": "Score",
         "pre_delay": 0,
         "action": "Click",
+        "repeat": 2,
+        "repeat_delay": 100,
         "post_delay": 700,
         "next": [
             "try_share_to_qq",
@@ -282,15 +285,17 @@
     "close_share_top_bar": {
         "recognition": "TemplateMatch",
         "roi": [
-            1165,
+            1133,
             0,
-            114,
-            78
+            146,
+            41
         ],
         "template": [
             "SharedNode/top_bar.png",
-            "SharedNode/top_bar_1.png"
+            "SharedNode/top_bar_1.png",
+            "SharedNode/top_bar_masked.png"
         ],
+        "green_mask": true,
         "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",

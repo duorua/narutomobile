@@ -3,23 +3,23 @@
         {
             "name": "火影情报社(beta)",
             "entry": "naruto_club",
+            "default_check": true,
+            "description": "该任务并不稳定,如遇卡顿可能需要人工接管;确认MFA不会在喂豚豚和金币助手闪退后开启再对应选项,闪退bug成因还在寻找",
+            "group": [
+                "daily"
+            ],
             "option": [
                 "跳过情报社点赞",
                 "喂豚豚",
                 "金币助手",
-                "情报社卡顿模式"
-            ],
-            "group": [
-                "daily"
-            ],
-            "default_check": true,
-            "description": "该任务并不稳定,如遇卡顿可能需要人工接管;确认MFA不会在喂豚豚和金币助手闪退后开启再对应选项,闪退bug成因还在寻找"
+                "情报社卡顿模式",
+                "情报社出错跳过"
+            ]
         }
     ],
     "option": {
         "跳过情报社点赞": {
             "type": "switch",
-            "default_case": "No",
             "description": "在打满包括周胜的日常任务的时候活跃度正好够100,可以开启这个选项节省时间",
             "cases": [
                 {
@@ -37,11 +37,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "喂豚豚": {
             "type": "switch",
-            "default_case": "No",
             "description": "确认MFA不会在喂豚豚闪退后开启,闪退bug成因还在寻找",
             "cases": [
                 {
@@ -58,11 +58,11 @@
                 {
                     "name": "Yes"
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "金币助手": {
             "type": "switch",
-            "default_case": "No",
             "description": "确认MFA不会在金币助手闪退后开启,闪退bug成因还在寻找",
             "cases": [
                 {
@@ -80,11 +80,11 @@
                 {
                     "name": "Yes"
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "情报社卡顿模式": {
             "type": "switch",
-            "default_case": "No",
             "description": "如果情报社非常容易卡,那么请开启这个选项",
             "cases": [
                 {
@@ -98,7 +98,35 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
+        },
+        "情报社出错跳过": {
+            "type": "switch",
+            "description": "会尽力保证跳出卡死界面,跳过之后将不会报错",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "click_club_icon": {
+                            "next": [
+                                "check_surf_post",
+                                "[JumpBack]surf_post",
+                                "click_club_icon",
+                                "naruto_club_too_many_people",
+                                "[JumpBack]swipe_for_comments",
+                                "[JumpBack]surf_post_try_reflash",
+                                "[JumpBack]without_naruto_club",
+                                "try_esc"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "No"
         }
     }
 }

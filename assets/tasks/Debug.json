@@ -16,7 +16,6 @@
     "option": {
         "display_pointer_location": {
             "type": "switch",
-            "default_case": "No",
             "description": "<b>WARNING!</b> The position top bar may invalidate the close button for some windows.",
             "cases": [
                 {
@@ -30,11 +29,11 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         },
         "display_touch": {
             "type": "switch",
-            "default_case": "No",
             "cases": [
                 {
                     "name": "No"
@@ -47,7 +46,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "default_case": "No"
         }
     }
 }

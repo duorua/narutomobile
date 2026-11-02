@@ -5,10 +5,7 @@
         "action": "StartApp",
         "package": "com.tencent.KiHan",
         "post_delay": 0,
-        "next": [
-            "start_up_check_is_android",
-            "start_naruto"
-        ],
+        "next": "start_naruto",
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">火影忍者，启动！</font>"
         }
@@ -24,7 +21,7 @@
         "timeout": 30000,
         "next": [
             "before_game",
-            "start_up_check_has_x",
+            "[JumpBack]start_up_check_has_x",
             "[JumpBack]close_friend_rank",
             "[JumpBack]splash_screen",
             "[JumpBack]start_up_loading",
@@ -87,7 +84,7 @@
             "check_agreement",
             "agree_agreement",
             "[JumpBack]agreement_not_agree",
-            "start_up_check_has_x",
+            "[JumpBack]start_up_check_has_x",
             "[JumpBack]close_friend_rank",
             "[JumpBack]splash_screen",
             "[JumpBack]close_before_game_notice",
@@ -114,9 +111,9 @@
             "Startup/teenager_page.png",
             "Startup/teenager_page_1.png"
         ],
-        "pre_wait_freezes": 500,
         "pre_delay": 0,
         "action": "Click",
+        "post_delay": 300,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">尝试关闭青少年界面</font>"
         }
@@ -147,8 +144,7 @@
         "expected": "同意",
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 300,
-        "post_delay": 0,
+        "post_delay": 300,
         "next": [
             "without_agree_log_in",
             "empty_number",
@@ -205,10 +201,9 @@
             69
         ],
         "expected": "拒绝",
-        "pre_wait_freezes": 200,
         "pre_delay": 0,
         "action": "Click",
-        "post_delay": 200,
+        "post_delay": 300,
         "next": [
             "confirm_refuse_info",
             "refuse_info",
@@ -242,13 +237,14 @@
             278
         ],
         "template": "Startup/start_game.png",
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 3000,
+        "post_delay": 1000,
         "timeout": 1000,
         "next": [
+            "click_start_game",
             "before_game_loading",
             "[JumpBack]before_game_loading_1",
-            "click_start_game",
             "back_main_screen_and_stop"
         ],
         "focus": {
@@ -512,8 +508,6 @@
         ],
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 500,
-        "post_delay": 200,
-        "next": "back_main_screen_and_stop"
+        "post_delay": 500
     }
 }

@@ -3,13 +3,13 @@
         {
             "name": "排行榜",
             "entry": "leaderboard",
-            "option": [
-                "忍界指引寻找排行榜"
-            ],
+            "default_check": true,
             "group": [
                 "daily"
             ],
-            "default_check": true
+            "option": [
+                "忍界指引寻找排行榜"
+            ]
         }
     ]
 }

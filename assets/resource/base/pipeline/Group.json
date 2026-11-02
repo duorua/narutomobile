@@ -101,8 +101,7 @@
         "template": "Group/selected_group_gameplay.png",
         "threshold": 0.8,
         "pre_delay": 0,
-        "action": "DoNothing",
-        "post_wait_freezes": 300,
+        "post_wait_freezes": 0,
         "post_delay": 0,
         "next": [
             "goto_group_pray",
@@ -199,9 +198,11 @@
             80
         ],
         "template": "Group/copper_pray.png",
+        "method": 10001,
+        "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 300,
+        "post_wait_freezes": 400,
         "post_delay": 0,
         "next": [
             "confirm_copper_group_pray",
@@ -336,7 +337,6 @@
             "Group/second_box_done_1.png",
             "Group/second_box_done_2.png"
         ],
-        "threshold": 0.7,
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -365,7 +365,8 @@
             "second_group_award_box",
             "second_group_award_done_sign",
             "second_group_award_box_done",
-            "second_group_award"
+            "second_group_award",
+            "second_group_award_done"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取20人签到奖励</font>"
@@ -453,7 +454,8 @@
         "next": [
             "close_second_group_award_box",
             "third_group_award_done",
-            "[JumpBack]third_group_award"
+            "[JumpBack]third_group_award",
+            "group_pray_to_pursuit_dawn_organization"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">关闭20人签到奖励</font>"
@@ -751,7 +753,7 @@
         "green_mask": true,
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 300,
+        "post_wait_freezes": 400,
         "post_delay": 0,
         "next": [
             "yesterday_award_done",
