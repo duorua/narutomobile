@@ -58,7 +58,6 @@
         "template": "Advanture/next_roll.png",
         "inverse": true,
         "pre_delay": 0,
-        "action": "Click",
         "target": [
             593,
             318,
