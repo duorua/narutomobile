@@ -85,11 +85,23 @@ footer = """
 > 用户QQ群: [1047724031](https://qm.qq.com/q/owetU4d3Yk)
 > 软件本体完全免费，若您有付费购买请立即退款并举报！  
 
-> [!NOTE]  
-> 如果没有特殊需求，请使用以下链接下载：<br>
-> 手机版: [Android ARM64 (.apk)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-android-public-release-arm64-{{ latest_version }}.apk)<br>
-> PC版: [Windows x86_64 (.zip)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-win-x86_64-{{ latest_version }}.zip)<br>
-> macOS版: [Apple Silicon (.tar.gz)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-macos-aarch64-{{ latest_version }}.tar.gz) / [Intel (.tar.gz)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-macos-x86_64-{{ latest_version }}.tar.gz)
+### 下载 {{ latest_version }}
+
+- 手机版：**[Android ARM64 {{ latest_version }} (.apk)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-android-public-release-arm64-{{ latest_version }}.apk)**：手机、平板及 ARM 模拟器
+- PC 版（模拟器）：**[Windows AMD64 {{ latest_version }} (.zip)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-win-x86_64-{{ latest_version }}.zip)**：Intel / AMD 64 位电脑
+- macOS 版（模拟器）：**macOS {{ latest_version }}**：[Apple Silicon (.tar.gz)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-macos-aarch64-{{ latest_version }}.tar.gz) / [Intel (.tar.gz)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-macos-x86_64-{{ latest_version }}.tar.gz)
+
+<details>
+<summary>其他安装包（一般不需要）：Android AMD64 · Windows ARM64 · Linux</summary>
+
+| 安装包 | 适用设备 |
+| --- | --- |
+| [Android AMD64 (.apk)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-android-public-release-amd64-{{ latest_version }}.apk) | x86_64 安卓模拟器 |
+| [Windows ARM64 (.zip)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-win-aarch64-{{ latest_version }}.zip) | Windows ARM 电脑 |
+| [Linux x86_64 (.tar.gz)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-linux-x86_64-{{ latest_version }}.tar.gz) | Intel / AMD 64 位 Linux 电脑 |
+| [Linux ARM64 (.tar.gz)]({{ self::remote_url() }}/releases/download/{{ latest_version }}/MaaAutoNaruto-linux-aarch64-{{ latest_version }}.tar.gz) | ARM64 Linux 设备 |
+
+</details>
 """
 
 
