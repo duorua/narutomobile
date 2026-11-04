@@ -777,7 +777,7 @@
             "[JumpBack]sky_ground_to_award_column",
             "sky_ground_to_column",
             "[JumpBack]sky_ground_to_fight_column",
-            "left_swipe_for_empty_column",
+            "right_swipe_for_empty_column",
             "sky_ground_end",
             "sky_ground_group_encouragement",
             "[JumpBack]sky_ground_on_column",
