@@ -44,6 +44,10 @@
 
     新版本下载失败可能是 GitHub 链接不稳定导致，请尝试更稳定的 GitHub 链接方式，或使用 [Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&os=windows&arch=x64&channel=stable&source=MaaAutoNarutogh-doc)下载。
 
+7. Q: 报错reason=Agent 'python/python.exe' failed to start：External component has thrown an exception.
+
+    A: 这个报错可能是没法创建C盘Temp文件夹,导致socket文件创建不了.可以手动创建该文件夹,之后文件夹属性->安全->选择你当前的用户,给读写权限(或全部权限/完全控制)
+
 ## 软件启动问题
 
 ### PC 版
