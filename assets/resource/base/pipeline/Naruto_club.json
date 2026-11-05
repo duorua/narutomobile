@@ -1140,10 +1140,7 @@
                     123,
                     651
                 ],
-                "template": [
-                    "Naruto_club/mission_submit.png",
-                    "Naruto_club/mission_submit_moblie.png"
-                ],
+                "template": "Naruto_club/mission_submit.png",
                 "threshold": 0.9
             }
         ],

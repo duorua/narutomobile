@@ -20,8 +20,6 @@
             115
         ],
         "template": "Use_energy_forge_gear/parent_entry.png",
-        "method": 10001,
-        "threshold": 0.9,
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 500,
@@ -279,18 +277,14 @@
             456,
             93
         ],
-        "expected": "已足够",
+        "expected": "足够",
         "replace": [
             "命",
             "够"
         ],
         "pre_delay": 0,
         "post_delay": 0,
-        "next": [
-            "use_energy_forge_gear_quit_sweep_interface",
-            "use_energy_forge_gear_craft",
-            "use_energy_forge_gear_one_key_sweep"
-        ]
+        "next": "use_energy_forge_gear_quit_sweep_interface"
     },
     "use_energy_forge_gear_quit_sweep_interface": {
         "recognition": "OCR",
@@ -301,10 +295,6 @@
             93
         ],
         "expected": "已足够",
-        "replace": [
-            "命",
-            "够"
-        ],
         "pre_delay": 0,
         "action": "Click",
         "target": [
