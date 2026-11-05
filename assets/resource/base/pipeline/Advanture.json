@@ -469,7 +469,10 @@
         "post_delay": 500,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">开启自动战斗</font>"
-        }
+        },
+        "next": [
+            "advanture_in_fight"
+        ]
     },
     "advanture_win": {
         "recognition": "TemplateMatch",

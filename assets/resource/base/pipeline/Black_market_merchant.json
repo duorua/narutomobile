@@ -281,7 +281,6 @@
         "expected": [
             "1"
         ],
-        "threshold": 0,
         "pre_delay": 100,
         "post_delay": 0,
         "next": [
