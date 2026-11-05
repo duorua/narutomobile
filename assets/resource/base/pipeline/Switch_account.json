@@ -79,7 +79,8 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "back_main_screen_and_stop"
+            "back_main_screen",
+            "switch_account_finish"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">已在目标区</font>"
@@ -421,5 +422,15 @@
             "Node.Action.Starting": "<font color=\"tomato\">没有找到目标账号</font>"
         },
         "$doc": "为了适配不同分辨率只能使用文字识别"
+    },
+    "switch_account_finish": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "Startup/main_green_masked.png"
+        ],
+        "green_mask": true,
+        "method": 10001,
+        "threshold": 0.9,
+        "action": "DoNothing"
     }
 }

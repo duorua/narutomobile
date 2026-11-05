@@ -412,6 +412,27 @@ class SecondaryPasswordAction(CustomAction):
         return CustomAction.RunResult(success=True)
 
 
+@AgentServer.custom_action("WaitForManualAgreement")
+class WaitForManualAgreement(CustomAction):
+    """检测到 EULA 时暂停等待用户手动同意，不自动勾选协议。"""
+
+    def run(
+        self,
+        context: Context,
+        argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        seconds = 5
+        if argv.custom_action_param:
+            try:
+                seconds = int(str(argv.custom_action_param).strip().strip('"'))
+            except (TypeError, ValueError):
+                seconds = 5
+        seconds = max(1, min(seconds, 30))
+        logger.warning(f"检测到最终用户协议(EULA)，请手动点击同意；任务等待 {seconds} 秒后重试...")
+        sleep(seconds)
+        return CustomAction.RunResult(success=True)
+
+
 @AgentServer.custom_action("ClickWithConsent")
 class ClickWithConsent(CustomAction):
     """

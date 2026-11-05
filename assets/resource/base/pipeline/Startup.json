@@ -1,11 +1,10 @@
 {
     "start_up": {
         "max_hit": 5,
-        "pre_delay": 0,
-        "action": "StartApp",
-        "package": "com.tencent.KiHan",
-        "post_delay": 0,
-        "next": "start_naruto",
+        "next": [
+            "start_up_check_already_running",
+            "start_up_launch"
+        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">火影忍者，启动！</font>"
         }
@@ -245,7 +244,8 @@
             "click_start_game",
             "before_game_loading",
             "[JumpBack]before_game_loading_1",
-            "back_main_screen_and_stop"
+            "back_main_screen",
+            "switch_account_finish"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">点击开始游戏</font>"
@@ -432,9 +432,12 @@
         ],
         "template": "SharedNode/android_qq_login.png",
         "pre_delay": 0,
-        "post_delay": 300,
+        "action": "Custom",
+        "custom_action": "WaitForManualAgreement",
+        "custom_action_param": "5",
+        "post_delay": 800,
         "focus": {
-            "Node.Action.Starting": "<font color=\"tomato\">由于最终用户协议(EULA),你必须手动同意协议</font>"
+            "Node.Action.Starting": "<font color=\"tomato\">检测到EULA：请手动点击同意，任务等待中...</font>"
         }
     },
     "start_up_check_has_x": {
@@ -509,5 +512,21 @@
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 500
+    },
+    "start_up_check_already_running": {
+        "recognition": "Custom",
+        "custom_recognition": "CheckAppRunning",
+        "custom_recognition_param": "com.tencent.KiHan",
+        "action": "DoNothing"
+    },
+    "start_up_launch": {
+        "max_hit": 5,
+        "action": "StartApp",
+        "package": "com.tencent.KiHan",
+        "post_delay": 0,
+        "next": "start_naruto",
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">火影忍者，启动！</font>"
+        }
     }
 }

@@ -610,3 +610,22 @@ class UseEnergyCheckGear(CustomRecognition):
         logger.warning(f"  ref     ({ref_key}): {sorted(ref_texts)}")
         logger.warning(f"  current ({node}): {sorted(cur_texts)}")
         return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+@AgentServer.custom_recognition("CheckAppRunning")
+class CheckAppRunning(CustomRecognition):
+    """检查火影是否已经在主界面，避免重复启动。"""
+
+    def analyze(
+        self,
+        context: Context,
+        argv: CustomRecognition.AnalyzeArg,
+    ) -> CustomRecognition.AnalyzeResult:
+        try:
+            reco = context.run_recognition("check_main_screen", argv.image, {})
+            if reco and reco.hit:
+                logger.info("检测到火影主界面，跳过启动")
+                return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+            logger.info("未检测到火影主界面，准备启动火影")
+        except Exception as e:
+            logger.warning(f"检查火影主界面失败：{e}")
+        return CustomRecognition.AnalyzeResult(box=None, detail={})

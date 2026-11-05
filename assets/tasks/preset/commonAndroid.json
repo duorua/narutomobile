@@ -96,10 +96,6 @@
                     "enabled": false
                 },
                 {
-                    "name": "切换账号[安卓实机]",
-                    "enabled": false
-                },
-                {
                     "name": "小游戏",
                     "enabled": false
                 },
@@ -113,6 +109,10 @@
                 },
                 {
                     "name": "日志文件清理"
+                },
+                {
+                    "name": "切换账号[安卓实机]",
+                    "enabled": false
                 }
             ]
         }
