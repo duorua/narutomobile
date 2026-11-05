@@ -176,14 +176,15 @@
 
 #### 自定义键位
 
-自定义键位依赖 MAN 根目录下的这些文件(需要在github或者q群下载)：
+自定义键位依赖 MAN 根目录下的这些文件(需要在github或者q群下载):
 
 - `自定义键位.bat`
 - `Custom_Keybindings.json`
 - `default_Keybindings.json`
 
 > [!WARNING]
-> 如果不了解 MaaFramework 的键位机制，建议使用 MfaToolPlus 等专用截图工具修改，不要直接猜测 JSON 内容。
+> 如果不了解 MaaFramework 的键位机制,建议使用 MfaToolPlus 等专用截图工具修改,不要直接猜测 JSON 内容
+> 目前还没有适配串行连点器(因为串行连点器本身都还在测试)
 
 推荐流程：
 
