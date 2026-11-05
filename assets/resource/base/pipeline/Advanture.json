@@ -47,6 +47,32 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">已经在冒险副本</font>"
         }
     },
+    "advanture_no_next_roll": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            0,
+            363,
+            258
+        ],
+        "template": "Advanture/in_advanture.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            593,
+            318,
+            81,
+            88
+        ],
+        "post_delay": 0,
+        "next": [
+            "advanture_new_level_undone",
+            "naruto_journey_new_level_undone",
+            "advanture_check_no_next_roll"
+        ],
+        "on_error": ["advanture_new_level_done"]
+    },
     "advanture_check_no_next_roll": {
         "recognition": "TemplateMatch",
         "roi": [
@@ -58,20 +84,14 @@
         "template": "Advanture/next_roll.png",
         "inverse": true,
         "pre_delay": 0,
-        "action": "Click",
-        "target": [
-            593,
-            318,
-            81,
-            88
-        ],
         "post_wait_freezes": 500,
         "post_delay": 0,
         "next": [
             "advanture_new_level_undone",
             "naruto_journey_new_level_undone",
-            "advanture_check_no_next_roll"
+            "advanture_no_next_roll"
         ],
+        "on_error": ["advanture_new_level_done"],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确定没有下一个章节</font>"
         }
@@ -107,6 +127,7 @@
             204
         ],
         "template": "Advanture/new_level_undone.png",
+        "threshold": 0.8,
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 900,
@@ -118,6 +139,14 @@
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入冒险副本新关卡</font>"
+        }
+    },
+    "advanture_new_level_done": {
+        "pre_delay": 0,
+        "action": "StopTask",
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "<font color=\"tomato\">关卡可能已经打完了,也可能是未适配的关卡ui</font>"
         }
     },
     "level_not_enough": {
@@ -393,10 +422,10 @@
         ],
         "inverse": true,
         "pre_delay": 0,
-        "post_delay": 500,
+        "post_delay": 0,
         "next": [
             "check_in_auto_fight",
-            "advanture_auto_fight",
+            "[JumpBack]advanture_auto_fight",
             "advanture_win",
             "advanture_lost",
             "advanture_skip_revive",
@@ -437,8 +466,7 @@
         ],
         "pre_delay": 0,
         "action": "Click",
-        "post_delay": 0,
-        "timeout": 30000,
+        "post_delay": 500,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">开启自动战斗</font>"
         }
