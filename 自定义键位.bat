@@ -12,7 +12,7 @@ echo.
 
 if not exist "python\python.exe" (
     echo [错误] 找不到 python\python.exe
-    echo        请确认 python 目录与 bat 在同一层。
+    echo 请确认 python 目录与 自定义键位.bat 在同一层
     echo.
     pause
     exit /b 1

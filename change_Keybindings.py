@@ -8,9 +8,9 @@ DEFAULT_KEYBINDINGS_PATH = r"default_Keybindings.json"
 CUSTOM_KEYBINDINGS_PATH = r"Custom_Keybindings.json"
 
 TARGET_PATHS = [
-    r"resource\base\pipeline\merged.json",
-    r"tasks\duelGround.json",
-    r"tasks\richRoom.json",
+    "resource/base/pipeline/merged.json",
+    "tasks/duelGround.json",
+    "tasks/richRoom.json",
 ]
 
 # 目录扫描是否递归子目录

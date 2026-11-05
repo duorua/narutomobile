@@ -178,13 +178,15 @@
 
 自定义键位依赖 MAN 根目录下的这些文件(需要在github或者q群下载):
 
-- `自定义键位.bat`
+- `自定义键位.bat`/`自定义键位.sh`
 - `Custom_Keybindings.json`
 - `default_Keybindings.json`
+- `change_Keybindings.py`
 
 > [!WARNING]
 > 如果不了解 MaaFramework 的键位机制,建议使用 MfaToolPlus 等专用截图工具修改,不要直接猜测 JSON 内容
 > 目前还没有适配串行连点器(因为串行连点器本身都还在测试)
+> mac首次使用加执行权限`chmod +x "自定义键位.sh"`或者运行change_Keybindings.py
 
 推荐流程：
 
