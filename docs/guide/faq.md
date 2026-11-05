@@ -176,7 +176,7 @@
 
 #### 自定义键位
 
-自定义键位依赖 MAN 根目录下的这些文件：
+自定义键位依赖 MAN 根目录下的这些文件(需要在github或者q群下载)：
 
 - `自定义键位.bat`
 - `Custom_Keybindings.json`
