@@ -1,5 +1,7 @@
 {
     "elite_instance": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "elite_instance_entry",
             "elite_instance_in_level_roll",
@@ -20,6 +22,9 @@
             177
         ],
         "template": "Advanture/advanture_entry.png",
+        "method": 10001,
+        "threshold": 0.9,
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 400,
         "next": [
@@ -40,6 +45,7 @@
             258
         ],
         "template": "Advanture/level_roll.png",
+        "pre_delay": 0,
         "post_delay": 400,
         "next": [
             "elite_instance_to_elite_instance"
@@ -58,8 +64,9 @@
         ],
         "template": "Elite_instance/entry.png",
         "threshold": 0.85,
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 900,
+        "post_delay": 400,
         "next": [
             "elite_instance_in_elite_instance",
             "[JumpBack]elite_instance_to_elite_instance"
@@ -75,6 +82,9 @@
         ],
         "template": "Elite_instance/in_elite_instance.png",
         "threshold": 0.85,
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "elite_instance_new_level_undone",
             "elite_instance_level_done"
@@ -90,7 +100,7 @@
         ],
         "template": "Elite_instance/level_done.png",
         "pre_delay": 0,
-        "post_delay": 900,
+        "post_delay": 400,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -126,8 +136,9 @@
             232
         ],
         "template": "Advanture/go_fight.png",
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 400,
         "next": [
             "elite_instance_in_fight",
             "[JumpBack]loading_page",
@@ -217,8 +228,9 @@
             "自",
             "动"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 400,
         "next": [
             "[JumpBack]check_in_auto_fight",
             "elite_instance_not_in_fight",
@@ -239,7 +251,8 @@
         "template": "auto_battle/challenge.png",
         "green_mask": true,
         "inverse": true,
-        "post_delay": 900,
+        "pre_delay": 0,
+        "post_delay": 400,
         "next": [
             "elite_instance_win",
             "advanture_lost",
@@ -260,6 +273,8 @@
             282
         ],
         "template": "Advanture/normal_attack.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "elite_instance_auto_fight"
         ],
@@ -276,8 +291,9 @@
             577
         ],
         "template": "Advanture/win.png",
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 900,
+        "post_delay": 500,
         "next": [
             "elite_instance_new_level_undone",
             "elite_instance_lock",
@@ -299,8 +315,10 @@
         "expected": [
             "点击"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 500,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -317,11 +335,11 @@
             61
         ],
         "expected": [
-            "通",
-            "关",
-            "解",
-            "锁"
+            "通过",
+            "开启"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -340,8 +358,9 @@
         "expected": [
             "等级达到"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 400,
         "next": [
             "elite_instance_entry",
             "elite_instance_in_level_roll",
@@ -364,7 +383,8 @@
         "expected": [
             "返回"
         ],
+        "pre_delay": 0,
         "action": "Click",
-        "post_delay": 500
+        "post_delay": 400
     }
 }
