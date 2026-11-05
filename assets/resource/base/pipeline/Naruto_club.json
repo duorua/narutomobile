@@ -942,6 +942,9 @@
         "next": [
             "swipe_for_club_submit"
         ],
+        "on_error": [
+            "club_reward_recover"
+        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"red\">没有找到金币助手任务</font>"
         }

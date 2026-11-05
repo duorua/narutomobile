@@ -44,9 +44,13 @@
 
     新版本下载失败可能是 GitHub 链接不稳定导致，请尝试更稳定的 GitHub 链接方式，或使用 [Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&os=windows&arch=x64&channel=stable&source=MaaAutoNarutogh-doc)下载。
 
-7. Q: 报错reason=Agent 'python/python.exe' failed to start：External component has thrown an exception.
+7. Q: 报错Agent 'python/python.exe' failed to start：External component has thrown an exception.
 
     A: 这个报错可能是没法创建C盘Temp文件夹,导致socket文件创建不了.可以手动创建该文件夹,之后文件夹属性->安全->选择你当前的用户,给读写权限(或全部权限/完全控制)
+
+8. Q: 报错Agent 'python/python.exe' failed to start: Basepath argument is not fully qualified. (Parameter"basePath')
+
+    A: 这个报错可能是因为放在了磁盘根目录,放在别的文件夹即可
 
 ## 软件启动问题
 
