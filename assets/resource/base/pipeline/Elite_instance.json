@@ -89,6 +89,7 @@
             47
         ],
         "template": "Elite_instance/level_done.png",
+        "pre_delay": 0,
         "post_delay": 900,
         "next": [
             "back_main_screen_and_stop"
@@ -106,7 +107,9 @@
             96
         ],
         "template": "Elite_instance/new_level.png",
-        "post_delay": 900,
+        "pre_delay": 0,
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "elite_instance_go_fight"
         ],
@@ -362,10 +365,6 @@
             "返回"
         ],
         "action": "Click",
-        "post_delay": 500,
-        "next": [
-            "elite_instance_in_level_roll",
-            "elite_instance_to_level_roll"
-        ]
+        "post_delay": 500
     }
 }
