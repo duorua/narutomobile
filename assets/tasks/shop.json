@@ -191,7 +191,7 @@
                 {
                     "name": "兑换A忍",
                     "pipeline_override": {
-                        "shop_exchange_jade_not_check_B": {
+                        "shop_exchange_jade_not_check_A": {
                             "enabled": true
                         }
                     }
@@ -199,7 +199,7 @@
                 {
                     "name": "兑换B忍",
                     "pipeline_override": {
-                        "shop_exchange_jade_not_check_C": {
+                        "shop_exchange_jade_not_check_B": {
                             "enabled": true
                         }
                     }

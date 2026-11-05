@@ -137,7 +137,7 @@
                     }
                 }
             ],
-            "name": "Yes"
+            "default_case": "No"
         },
         "天地玩法未开启时退出": {
             "type": "switch",
