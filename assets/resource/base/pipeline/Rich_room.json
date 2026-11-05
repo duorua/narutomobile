@@ -3,6 +3,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "rich_room_entry_route",
             "rich_room_in_center_enter",
             "rich_room_ac_entry",
             "[JumpBack]back_main_screen_before_task"
@@ -272,7 +273,6 @@
             "check_main_screen_and_stop"
         ]
     },
-
     "rich_room_finished": {
         "recognition": "OCR",
         "roi": [
@@ -671,5 +671,27 @@
             }
         ],
         "post_delay": 0
+    },
+    "rich_room_entry_route": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "PageState",
+                "custom_recognition_param": {
+                    "allowed": [
+                        "rich_room_page"
+                    ]
+                }
+            }
+        },
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0,
+        "next": [
+            "challenge_rich_room"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">已在丰饶之间，跳过回主界面</font>"
+        }
     }
 }

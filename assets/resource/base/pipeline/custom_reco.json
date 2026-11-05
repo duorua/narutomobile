@@ -1,4 +1,11 @@
 {
+    // 页面状态识别的探针节点：只作为 run_recognition 的 override 容器，不被任何 next 引用。
+    // 故意不写 recognition，避免 override 合并后残留 DirectHit 导致探针恒命中。
+    "page_state_probe": {
+        "pre_delay": 0,
+        "post_delay": 0,
+        "timeout": 3000
+    },
     "in_ninja_guide": {
         "recognition": "Or",
         "any_of": [

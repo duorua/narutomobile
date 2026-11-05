@@ -3,6 +3,8 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "weekly_win_entry_route_lobby",
+            "weekly_win_entry_route_fight",
             "ninja_guide_returning_player",
             "ninja_guide_in_ninja_guide",
             "[JumpBack]open_ninja_guide",
@@ -1203,6 +1205,50 @@
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">匹配首胜任务未完成</font>"
+        }
+    },
+    "weekly_win_entry_route_lobby": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "PageState",
+                "custom_recognition_param": {
+                    "allowed": [
+                        "duel_lobby"
+                    ]
+                }
+            }
+        },
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0,
+        "next": [
+            "go_to_war"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">已在决斗场大厅，直接匹配</font>"
+        }
+    },
+    "weekly_win_entry_route_fight": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "PageState",
+                "custom_recognition_param": {
+                    "allowed": [
+                        "duel_fight"
+                    ]
+                }
+            }
+        },
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0,
+        "next": [
+            "weekly_win_match_fighting"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">决斗场战斗中，直接接管战斗</font>"
         }
     }
 }

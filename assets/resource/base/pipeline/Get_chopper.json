@@ -3,6 +3,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "get_copper_entry_route",
             "get_copper_in_center_enter",
             "[JumpBack]award_center_enter",
             "[JumpBack]back_main_screen_before_task"
@@ -340,5 +341,27 @@
             "get_copper_in_get_copper",
             "get_copper_in_main_screen"
         ]
+    },
+    "get_copper_entry_route": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "PageState",
+                "custom_recognition_param": {
+                    "allowed": [
+                        "copper_page"
+                    ]
+                }
+            }
+        },
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0,
+        "next": [
+            "get_copper_in_get_copper"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">已在招财界面，跳过回主界面</font>"
+        }
     }
 }

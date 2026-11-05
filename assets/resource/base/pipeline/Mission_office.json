@@ -3,6 +3,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "mission_office_entry_route",
             "ninja_guide_returning_player",
             "ninja_guide_in_ninja_guide",
             "[JumpBack]open_ninja_guide",
@@ -1686,6 +1687,28 @@
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">任务集会所未完成</font>"
+        }
+    },
+    "mission_office_entry_route": {
+        "recognition": {
+            "type": "Custom",
+            "param": {
+                "custom_recognition": "PageState",
+                "custom_recognition_param": {
+                    "allowed": [
+                        "mission_office_page"
+                    ]
+                }
+            }
+        },
+        "pre_delay": 0,
+        "action": "DoNothing",
+        "post_delay": 0,
+        "next": [
+            "check_in_mission_office"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">已在任务集会所，跳过回主界面</font>"
         }
     }
 }
