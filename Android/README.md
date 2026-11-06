@@ -11,7 +11,7 @@ python tools/prepare_android_pi.py
 python Android/MaaFwApp/scripts/setup_maa_framework.py --abi arm64-v8a --tag v5.15.0
 python Android/MaaFwApp/scripts/build_agent_bundle.py --out Android/agent-dist \
     --requirements requirements.txt \
-    --exclude pillow --exclude win32-setctime --exclude colorama --exclude jeepney \
+    --exclude ruff --exclude pillow --exclude win32-setctime --exclude colorama --exclude jeepney \
     --require pillow==11.0.0 --extra-index-url https://chaquo.com/pypi-13.1/
 ```
 

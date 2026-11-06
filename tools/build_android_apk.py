@@ -122,6 +122,8 @@ def prepare_inputs(variant: str, abis: Sequence[str], skip_setup: bool) -> None:
         "--requirements",
         str(REPO / "requirements.txt"),
         "--exclude",
+        "ruff",
+        "--exclude",
         "pillow",
         "--exclude",
         "opencv-python",
