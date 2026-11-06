@@ -1267,7 +1267,7 @@
                 "threshold": 0.9
             }
         ],
-        "box_index": 2,
+        "box_index": 1,
         "pre_wait_freezes": 300,
         "pre_delay": 0,
         "action": "Click",
@@ -1392,7 +1392,7 @@
                 "template": "Naruto_club/second_award.png"
             }
         ],
-        "box_index": 2,
+        "box_index": 1,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
@@ -1522,7 +1522,7 @@
                 "threshold": 0.8
             }
         ],
-        "box_index": 2,
+        "box_index": 1,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
