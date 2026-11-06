@@ -26,7 +26,7 @@ numpy==2.5.1
     # via
     #   maafw
     #   opencv-python
-opencv-python==5.0.0.93
+# opencv-python==5.0.0.93
     # via maaautonaruto
 packaging==26.2
     # via pytest
