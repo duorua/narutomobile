@@ -1077,8 +1077,8 @@
             "[JumpBack]submit_lag",
             "[JumpBack]club_submit",
             "benefit_station",
-            "club_third_award_done",
             "club_third_award",
+            "club_third_award_done",
             "check_club_all_submit"
         ],
         "on_error": [
@@ -1196,7 +1196,7 @@
             624
         ],
         "template": "Naruto_club/club_first_award_done.png",
-        "threshold": 0.9,
+        "threshold": 0.85,
         "pre_wait_freezes": 300,
         "pre_delay": 0,
         "post_wait_freezes": 300,
@@ -1224,6 +1224,7 @@
         "post_delay": 0,
         "timeout": 10000,
         "next": [
+            "first_award_lock",
             "confirm_club_first_award",
             "roger_club_first_award",
             "club_first_award_done",
@@ -1316,6 +1317,7 @@
         }
     },
     "club_second_award": {
+        "max_hit": 3,
         "recognition": "TemplateMatch",
         "roi": [
             400,
@@ -1330,6 +1332,7 @@
         "post_delay": 0,
         "timeout": 15000,
         "next": [
+            "second_award_lock",
             "confirm_club_second_award",
             "club_second_award",
             "club_second_award_done"
@@ -1389,7 +1392,7 @@
             527
         ],
         "template": "Naruto_club/club_second_award_done.png",
-        "threshold": 0.9,
+        "threshold": 0.85,
         "pre_delay": 0,
         "post_wait_freezes": 300,
         "post_delay": 0,
@@ -1451,7 +1454,8 @@
         ],
         "expected": [
             "活跃度",
-            "领取"
+            "可领取",
+            "已领取"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -1459,6 +1463,43 @@
             "club_second_award_done",
             "club_second_award"
         ]
+    },
+    "second_award_lock": {
+        "recognition": "OCR",
+        "roi": [
+            562,
+            342,
+            155,
+            37
+        ],
+        "expected": [
+            "活跃度",
+            "可领取",
+            "已领取"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "club_first_award",
+            "club_first_award_done"
+        ]
+    },
+    "first_award_lock": {
+        "recognition": "OCR",
+        "roi": [
+            562,
+            342,
+            155,
+            37
+        ],
+        "expected": [
+            "活跃度",
+            "可领取",
+            "已领取"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "close_naruto_club"
     },
     "confirm_club_third_award": {
         "recognition": "OCR",
@@ -1513,7 +1554,7 @@
             512
         ],
         "template": "Naruto_club/club_third_award_done.png",
-        "threshold": 0.88,
+        "threshold": 0.85,
         "pre_delay": 0,
         "post_wait_freezes": 300,
         "post_delay": 0,
