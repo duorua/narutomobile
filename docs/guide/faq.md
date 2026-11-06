@@ -44,6 +44,14 @@
 
     新版本下载失败可能是 GitHub 链接不稳定导致，请尝试更稳定的 GitHub 链接方式，或使用 [Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&os=windows&arch=x64&channel=stable&source=MaaAutoNarutogh-doc)下载。
 
+7. Q: 报错Agent 'python/python.exe' failed to start：External component has thrown an exception.
+
+    A: 这个报错可能是没法创建C盘Temp文件夹,导致socket文件创建不了.可以手动创建该文件夹,之后文件夹属性->安全->选择你当前的用户,给读写权限(或全部权限/完全控制)
+
+8. Q: 报错Agent 'python/python.exe' failed to start: Basepath argument is not fully qualified. (Parameter"basePath')
+
+    A: 这个报错可能是因为放在了磁盘根目录,放在别的文件夹即可
+
 ## 软件启动问题
 
 ### PC 版
@@ -168,14 +176,17 @@
 
 #### 自定义键位
 
-自定义键位依赖 MAN 根目录下的这些文件：
+自定义键位依赖 MAN 根目录下的这些文件(需要在github或者q群下载):
 
-- `自定义键位.bat`
+- `自定义键位.bat`/`自定义键位.sh`
 - `Custom_Keybindings.json`
 - `default_Keybindings.json`
+- `change_Keybindings.py`
 
 > [!WARNING]
-> 如果不了解 MaaFramework 的键位机制，建议使用 MfaToolPlus 等专用截图工具修改，不要直接猜测 JSON 内容。
+> 如果不了解 MaaFramework 的键位机制,建议使用 MfaToolPlus 等专用截图工具修改,不要直接猜测 JSON 内容
+> 目前还没有适配串行连点器(因为串行连点器本身都还在测试)
+> mac首次使用加执行权限`chmod +x "自定义键位.sh"`或者运行change_Keybindings.py
 
 推荐流程：
 

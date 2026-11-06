@@ -15,11 +15,20 @@ loguru==0.7.3
     #   maaautonaruto
     #   notify-py
 maaagentbinary==1.0.1
+<<<<<<< HEAD
     # via maafw
 maafw==5.14.3
     # via maaautonaruto
 nodeenv==1.10.0
     # via pyright
+=======
+maafw==5.14.3
+numpy==2.3.5  
+pillow==12.0.0
+strenum==0.4.15      
+win32-setctime==1.2.0
+colorama==0.4.6
+>>>>>>> 5d810fdaa2ff9e68bf0b2ada87f44c3cb53e61d6
 notify-py==0.3.2
     # via maaautonaruto
 numpy==2.5.1

@@ -942,6 +942,9 @@
         "next": [
             "swipe_for_club_submit"
         ],
+        "on_error": [
+            "club_reward_recover"
+        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"red\">没有找到金币助手任务</font>"
         }
@@ -1114,7 +1117,6 @@
             "[JumpBack]submit_lag",
             "[JumpBack]club_submit",
             "club_third_award_done",
-            "club_third_award_unavailable",
             "club_third_award",
             "club_reward_wrong_page"
         ],
@@ -1126,19 +1128,21 @@
         }
     },
     "club_submit": {
+        "max_hit": 15,
         "recognition": "And",
         "all_of": [
             "club_reward_page",
             {
-                "recognition": "TemplateMatch",
+                "recognition": "OCR",
                 "roi": [
                     555,
                     68,
                     123,
                     651
                 ],
-                "template": "Naruto_club/mission_submit.png",
-                "threshold": 0.9
+                "expected": [
+                    "领取"
+                ]
             }
         ],
         "box_index": 1,
@@ -1146,6 +1150,25 @@
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 600,
+        "post_delay": 0,
+        "next": [
+            "club_submit",
+            "club_submit_done",
+            "award_kale"
+        ]
+    },
+    "club_submit_done": {
+        "recognition": "OCR",
+        "roi": [
+            555,
+            68,
+            123,
+            651
+        ],
+        "expected": [
+            "已领取"
+        ],
+        "pre_delay": 0,
         "post_delay": 0
     },
     "naruto_club_duplicate_claim": {
@@ -1232,7 +1255,6 @@
         "recognition": "And",
         "all_of": [
             "club_reward_page",
-            "club_activity_reached_40",
             {
                 "recognition": "TemplateMatch",
                 "roi": [
@@ -1359,7 +1381,6 @@
         "recognition": "And",
         "all_of": [
             "club_reward_page",
-            "club_activity_reached_60",
             {
                 "recognition": "TemplateMatch",
                 "roi": [
@@ -1460,7 +1481,6 @@
         "timeout": 2000,
         "next": [
             "club_first_award_done",
-            "club_first_award_unavailable",
             "club_first_award"
         ],
         "on_error": [
@@ -1475,7 +1495,6 @@
         "post_delay": 0,
         "next": [
             "club_third_award_done",
-            "club_third_award_unavailable",
             "club_third_award",
             "club_reward_wrong_page"
         ],
@@ -1491,7 +1510,6 @@
         "recognition": "And",
         "all_of": [
             "club_reward_page",
-            "club_activity_reached_100",
             {
                 "recognition": "TemplateMatch",
                 "roi": [
@@ -1619,7 +1637,6 @@
         "post_delay": 0,
         "next": [
             "club_second_award_done",
-            "club_second_award_unavailable",
             "club_second_award"
         ],
         "on_error": [
