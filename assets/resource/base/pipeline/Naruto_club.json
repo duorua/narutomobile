@@ -1452,11 +1452,7 @@
             155,
             37
         ],
-        "expected": [
-            "活跃度",
-            "可领取",
-            "已领取"
-        ],
+        "expected": "100即可领取",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -1472,11 +1468,7 @@
             155,
             37
         ],
-        "expected": [
-            "活跃度",
-            "可领取",
-            "已领取"
-        ],
+        "expected": "60即可领取",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -1492,11 +1484,7 @@
             155,
             37
         ],
-        "expected": [
-            "活跃度",
-            "可领取",
-            "已领取"
-        ],
+        "expected": "40即可领取",
         "pre_delay": 0,
         "post_delay": 0,
         "next": "close_naruto_club"
