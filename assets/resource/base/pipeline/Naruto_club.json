@@ -1089,18 +1089,27 @@
         }
     },
     "club_submit": {
-        "recognition": "TemplateMatch",
+        "recognition": "ColorMatch",
         "roi": [
-            555,
-            68,
-            123,
-            651
+            483,
+            43,
+            190,
+            676
         ],
-        "template": [
-            "Naruto_club/mission_submit.png",
-            "Naruto_club/mission_submit_moblie.png"
+        "method": 4,
+        "lower": [
+            100,
+            186,
+            151
         ],
-        "threshold": 0.9,
+        "upper": [
+            100,
+            186,
+            151
+        ],
+        "connected": true,
+        "count": 500,
+        "order_by": "Vertical",
         "pre_wait_freezes": 300,
         "pre_delay": 0,
         "action": "Click",
