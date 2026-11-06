@@ -1,16 +1,21 @@
 @echo off
-chcp 65001 >nul 2>&1  :: 解决中文乱码问题
+chcp 65001 >nul 2>&1
+
+rem 切到 bat 所在目录，保证脚本里的相对路径正确
+cd /d "%~dp0"
+
 echo ==============================================
-echo          正在启动键位替换工具...
-echo          Python解释器路径：python\python.exe
+echo         除非你清楚maafw图像处理的逻辑
+echo      否则使用MFAToolsPlus获取按键位置及测试
 echo ==============================================
 echo.
 
-:: 调用指定的python.exe运行脚本（脚本名要和你的py文件一致）
+if not exist "python\python.exe" (
+    echo [错误] 找不到 python\python.exe
+    echo 请确认 python 目录与 自定义键位.bat 在同一层
+    echo.
+    pause
+    exit /b 1
+)
+
 python\python.exe change_Keybindings.py
-
-echo.
-echo ==============================================
-echo          程序已退出，按任意键关闭窗口...
-echo ==============================================
-pause >nul
