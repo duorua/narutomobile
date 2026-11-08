@@ -1,8 +1,14 @@
 # 问题反馈
 
+## 维护版本
+
+只维护最新正式版,因此反馈问题前要确认当前版本是最新正式版
+
 ## 反馈渠道
 
-如果你有 github 账号，请直接在[issue](https://github.com/duorua/narutomobile/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen)中提交问题。
+1. 注意要确认项目负责的功能,man项目的issue只受理子任务运行逻辑的问题.ui设计,更新逻辑,模拟器链接逻辑等请前往其他对应开源仓库
+
+2. 如果你有 github 账号，请直接在[issue](https://github.com/duorua/narutomobile/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen)中提交问题，
 
 如果你没有 github 账号，请加入 QQ 群：[1047724031](https://qm.qq.com/q/Mck36YvBsu) 并向管理员提供必要的信息（见下文）。
 
