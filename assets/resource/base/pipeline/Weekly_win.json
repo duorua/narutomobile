@@ -377,7 +377,7 @@
         "action": "Click",
         "post_delay": 1500,
         "next": [
-            "weekly_win_switch_preset",
+            "weekly_win_check_preset_open",
             "weekly_win_preset_open"
         ],
         "on_error": [
@@ -387,19 +387,37 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:打开预设面板</font>"
         }
     },
+    "weekly_win_check_preset_open": {
+        "recognition": "OCR",
+        "roi": [
+            802,
+            172,
+            56,
+            323
+        ],
+        "expected": [
+            "忍者",
+            "通灵兽",
+            "密卷"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "weekly_win_switch_preset"
+        ]
+    },
     "weekly_win_switch_preset": {
         "recognition": "OCR",
         "roi": [
-            800,
-            94,
-            115,
-            62
+            802,
+            95,
+            429,
+            56
         ],
-        "expected": [
-            "1"
-        ],
+        "expected": "1",
         "pre_delay": 0,
         "action": "Click",
+        "repeat": 2,
         "post_delay": 500,
         "next": [
             "weekly_win_preset_confirm",

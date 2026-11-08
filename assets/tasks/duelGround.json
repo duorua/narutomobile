@@ -401,34 +401,13 @@
             "type": "select",
             "cases": [
                 {
-                    "name": "预设1",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "roi": [
-                                800,
-                                94,
-                                115,
-                                62
-                            ],
-                            "expected": [
-                                "1"
-                            ]
-                        }
-                    }
+                    "name": "预设1"
                 },
                 {
                     "name": "预设2",
                     "pipeline_override": {
                         "weekly_win_switch_preset": {
-                            "roi": [
-                                943,
-                                94,
-                                108,
-                                62
-                            ],
-                            "expected": [
-                                "2"
-                            ]
+                            "expected": "2"
                         }
                     }
                 },
@@ -436,15 +415,7 @@
                     "name": "预设3",
                     "pipeline_override": {
                         "weekly_win_switch_preset": {
-                            "roi": [
-                                1040,
-                                94,
-                                108,
-                                62
-                            ],
-                            "expected": [
-                                "3"
-                            ]
+                            "expected": "3"
                         }
                     }
                 },
@@ -452,15 +423,7 @@
                     "name": "预设4",
                     "pipeline_override": {
                         "weekly_win_switch_preset": {
-                            "roi": [
-                                1121,
-                                94,
-                                108,
-                                62
-                            ],
-                            "expected": [
-                                "4"
-                            ]
+                            "expected": "4"
                         }
                     }
                 }
