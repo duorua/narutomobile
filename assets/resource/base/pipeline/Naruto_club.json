@@ -658,14 +658,14 @@
         "next": [
             "confirm_naruto_club_sign",
             "naruto_club_sign",
-            "sign_done",
+            "naruto_club_sign_done",
             "benefit_station"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入福利站</font>"
         }
     },
-    "sign_done": {
+    "naruto_club_sign_done": {
         "recognition": "OCR",
         "roi": [
             581,
@@ -674,7 +674,8 @@
             39
         ],
         "expected": [
-            "今日已签"
+            "今日已",
+            "已签"
         ],
         "pre_delay": 0,
         "post_wait_freezes": 500,
@@ -697,8 +698,9 @@
             39
         ],
         "expected": [
-            "一",
-            "键签到"
+            "一键",
+            "键签",
+            "签到"
         ],
         "pre_delay": 0,
         "action": "Click",
@@ -707,7 +709,7 @@
         "next": [
             "confirm_naruto_club_sign",
             "naruto_club_sign",
-            "sign_done"
+            "naruto_club_sign_done"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进行签到</font>"
@@ -732,7 +734,7 @@
         "next": [
             "roger_naruto_club_sign",
             "confirm_naruto_club_sign",
-            "sign_done"
+            "naruto_club_sign_done"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确认签到</font>"
@@ -758,7 +760,7 @@
             "without_feed_pig",
             "roger_naruto_club_sign",
             "check_club_mission_done",
-            "sign_done"
+            "naruto_club_sign_done"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">收到签到提醒</font>"
