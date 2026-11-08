@@ -102,12 +102,29 @@
             "离开队伍"
         ],
         "pre_delay": 0,
-        "post_wait_freezes": 500,
         "post_delay": 0,
-        "next": "confirm_tip",
+        "next": [
+            "confirm_tip",
+            "team_dash_without_confirm_tip"
+        ],
         "focus": {
             "Node.Action.Starting": "<font color=\"darkgray\">离开当前队伍</font>"
         }
+    },
+    "team_dash_without_confirm_tip": {
+        "recognition": "OCR",
+        "roi": [
+            535,
+            418,
+            205,
+            74
+        ],
+        "expected": [
+            "确定"
+        ],
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "confirm_tip": {
         "recognition": "TemplateMatch",
