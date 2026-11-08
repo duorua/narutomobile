@@ -12,25 +12,29 @@
 
 ## 项目相关
 
-1. Q: 硬件配置有要求吗？
+1. Q: cdk是干什么的,github token是啥
+
+    A: cdk是合作接入的mirror酱下载加速服务,如果你可以用github或者其他渠道更新那就不用管.如果有牛肉懒得折腾,可以买来更新.github token是访问仓库的令牌,github源更新请求增加这个可以访问更多次
+
+2. Q: 硬件配置有要求吗？
     <!-- 参考文献 -->
     <!-- https://mumu.163.com/help/20251216/35048_1276766.html -->
     <!-- 没找到火影的，找了个差不多类型的 -->
     A: 电脑版最低配置:CPU i5 9400 及以上，显卡 GTX 1650 Super 4G 独显及以上，内存8G及以上。手机版推荐：骁龙870及以上，8G内存及以上。
 
-2. Q: 可以在手机上用吗？
+3. Q: 可以在手机上用吗？
 
     A: 可以使用安卓版man
 
-3. Q: 感觉没有xxx的xxx好用 / 为什么不做xxx功能？
+4. Q: 感觉没有xxx的xxx好用 / 为什么不做xxx功能？
 
     A: 开发组现在缺人，这些功能你来写吧。
 
-4. Q: 打不开Github？
+5. Q: 打不开Github？
 
     A: 请使用科学上网忍具,没有可在 bilibili 搜索 github 链接教程
 
-5. Q: 下载速度特别慢或无法更新？
+6. Q: 下载速度特别慢或无法更新？
 
     A: 若从 `GitHub` 源下载速度较慢，可搜索相关加速教程，或加入 QQ 群咨询其他用户。
 
@@ -38,17 +42,17 @@
 
     如果只需要下载软件，也可以优先使用网页下载，相对更容易下载成功。
 
-6. Q: GitHub 源更新报错怎么办？
+7. Q: GitHub 源更新报错怎么办？
 
     A: 如果报错 `403 rate limit exceeded`，说明 GitHub 匿名请求已达到限制。可以点击“关于 token”，前往 GitHub 生成个人 token，并填入“更新 token”栏。token 以 `github_pat` 开头。
 
     新版本下载失败可能是 GitHub 链接不稳定导致，请尝试更稳定的 GitHub 链接方式，或使用 [Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&os=windows&arch=x64&channel=stable&source=MaaAutoNarutogh-doc)下载。
 
-7. Q: 报错Agent 'python/python.exe' failed to start：External component has thrown an exception.
+8. Q: 报错Agent 'python/python.exe' failed to start：External component has thrown an exception.
 
     A: 这个报错可能是没法创建C盘Temp文件夹,导致socket文件创建不了.可以手动创建该文件夹,之后文件夹属性->安全->选择你当前的用户,给读写权限(或全部权限/完全控制)
 
-8. Q: 报错Agent 'python/python.exe' failed to start: Basepath argument is not fully qualified. (Parameter"basePath')
+9. Q: 报错Agent 'python/python.exe' failed to start: Basepath argument is not fully qualified. (Parameter"basePath')
 
     A: 这个报错可能是因为放在了磁盘根目录,放在别的文件夹即可
 
@@ -134,7 +138,7 @@
 
 1. Q: 推荐什么模拟器
 
-    A: 推荐用mumu官方版，不要用定制版。而且强烈建议不要用雷电，因为bug非常多。
+    A: 推荐用mumu官方版,不要用定制版;由于软件更新跟不上模拟器更新,建议使用旧版mumu,安卓15的适配也可能有问题;而且强烈建议不要用雷电,因为有bug,且需要额外设置
 
 2. Q: 无法启动火影app、启动后在桌面乱点，或者能识别但不能点击？
 
@@ -152,7 +156,11 @@
 
 ### 安卓版
 
-请参考我们在 bilibili 上发布的教学视频。
+1. 请参考我们在 bilibili 上发布的教学视频
+
+2. 建议看系统对应的shizuku教学,不然可能踩坑
+
+3. /data/local/tmp访问不了,可能系统不允许adb权限读取文件夹,目前未适配
 
 ## 软件使用问题
 
@@ -173,6 +181,8 @@
 2. 如何在打开软件时自动启动模拟器
 
     参考[启动时拉起模拟器和启动后自动运行](#启动时拉起模拟器和启动后自动运行)
+
+3. 雷电模拟器和mumu的安卓15部分版本不支持多指滑动,可以尝试测试功能串行连点器
 
 #### 自定义键位
 
@@ -198,7 +208,41 @@
 
 ### 安卓版
 
-请参考我们在 bilibili 上发布的教学视频。
+#### 权限相关
+
+1. 注意给后台权限，不然容易被清后台
+
+2. 小米要开启USB调试(安全设置),防止点击被系统阻止
+
+3. 华为鸿蒙提权比较困难,难以适配
+
+4. 自启动权限,有的手机系统如1+可能显示读取不到，但一般系统给了就可以启动
+
+5. 解压失败,导不出日志.可能系统目录权限存在问题,请学习相关知识
+
+#### 使用相关
+
+1. 因为手机省电大于精确,要攒批,定时可能并不精确
+
+2. 任务选项非法无法启动,需要去对应选项将任务选项值设置为合法
+
+3. 由于手机后台清理,睡眠等机制.熄屏,睡眠,关机等情况下自启动可能失败
+
+4. 显示请求过于频繁,已被限流：API rate limit exceeded for ...,节点超出github匿名请求60次/小时限制.请使用纯净节点或github网页下载
+
+5. 大部分情况下不支持竖屏界面,如qq登录,分享,金币助手等
+
+6. 注意下载正确架构,手机是arm64,模拟器是amd64
+
+7. 任务显示无法使用,可能是更新导致,此时删除任务添加新任务
+
+8. 由于手机系统不同,社交媒体和情报社网页显示并不一样.目前还在适配,不保证稳定
+
+#### 部分手机系统未适配的情况
+
+1. 虚拟屏获取出错,虚拟盘获取到使用界面
+
+2. 修改分辨率时,出现竖屏显示横屏火影
 
 #### 自定义键位
 
