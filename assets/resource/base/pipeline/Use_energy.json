@@ -97,7 +97,7 @@
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 0,
-        "post_delay": 200,
+        "post_delay": 400,
         "timeout": 20000,
         "next": [
             "use_energy_finish_1",
@@ -280,10 +280,10 @@
     "use_energy_check_level_option": {
         "recognition": "OCR",
         "roi": [
-            301,
+            296,
             165,
-            108,
-            39
+            103,
+            41
         ],
         "expected": "等级",
         "pre_delay": 0,
@@ -296,10 +296,10 @@
     "use_energy_select_level_option": {
         "recognition": "OCR",
         "roi": [
-            303,
-            204,
-            130,
-            158
+            313,
+            206,
+            108,
+            153
         ],
         "expected": "等级",
         "pre_delay": 0,
@@ -308,7 +308,8 @@
         "post_delay": 0,
         "next": [
             "use_energy_check_level_option",
-            "use_energy_select_level_option"
+            "use_energy_select_level_option",
+            "use_energy_explan_level_option"
         ]
     },
     "use_energy_explan_star_option": {
@@ -333,10 +334,10 @@
     "use_energy_check_star_option": {
         "recognition": "OCR",
         "roi": [
-            597,
-            162,
-            103,
-            44
+            595,
+            165,
+            108,
+            46
         ],
         "expected": "星级",
         "pre_delay": 0,
@@ -349,10 +350,10 @@
     "use_energy_select_star_option": {
         "recognition": "OCR",
         "roi": [
-            600,
-            206,
-            128,
-            264
+            610,
+            207,
+            110,
+            263
         ],
         "expected": "星级",
         "pre_delay": 0,
@@ -361,7 +362,8 @@
         "post_delay": 0,
         "next": [
             "use_energy_check_star_option",
-            "use_energy_select_star_option"
+            "use_energy_select_star_option",
+            "use_energy_explan_star_option"
         ]
     },
     "use_energy_reward_animation": {

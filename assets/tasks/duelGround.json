@@ -252,6 +252,7 @@
                         "weekly_win_check_no_daily_duel_mission_award": {
                             "next": [
                                 "weekly_win_check_daily_duel_mission_recover_award",
+                                "weekly_win_check_daily_duel_mission_award_lock",
                                 "weekly_win_check_daily_duel_mission_back_fight"
                             ]
                         },
@@ -294,7 +295,7 @@
                             "next": [
                                 "cannot_go_to_war",
                                 "[JumpBack]weekly_win_match_fighting",
-                                "[JumpBack]weekly_win_rank_matching",
+                                "[JumpBack]weekly_win_matching",
                                 "[JumpBack]weekly_win_preset_entry",
                                 "[JumpBack]weekly_win_rank_confirm_ninja",
                                 "[JumpBack]weekly_win_rank_ban",
@@ -303,7 +304,7 @@
                                 "[JumpBack]weekly_win_rank_up",
                                 "[JumpBack]battle_again",
                                 "[JumpBack]weekly_win_substitution",
-                                "[JumpBack]go_to_war"
+                                "go_to_war"
                             ]
                         },
                         "tips_confirm": {
@@ -349,7 +350,7 @@
                                 "[JumpBack]weekly_win_weekly_award",
                                 "[JumpBack]weekly_win_confirm_weekly_award",
                                 "[JumpBack]weekly_win_preset_prewar",
-                                "[JumpBack]go_to_war",
+                                "go_to_war",
                                 "ninja_guide_to_funtion_entry"
                             ]
                         },
@@ -360,7 +361,7 @@
                                 "[JumpBack]weekly_win_weekly_award",
                                 "[JumpBack]weekly_win_confirm_weekly_award",
                                 "[JumpBack]weekly_win_preset_prewar",
-                                "[JumpBack]go_to_war",
+                                "go_to_war",
                                 "ninja_guide_returning_player_to_funtion_entry"
                             ]
                         },
@@ -371,7 +372,7 @@
                                 "[JumpBack]weekly_win_weekly_award",
                                 "[JumpBack]weekly_win_confirm_weekly_award",
                                 "[JumpBack]weekly_win_preset_prewar",
-                                "[JumpBack]go_to_war",
+                                "go_to_war",
                                 "weekly_win_ac_entry_undone"
                             ]
                         },
@@ -379,7 +380,7 @@
                             "next": [
                                 "cannot_go_to_war",
                                 "[JumpBack]weekly_win_match_fighting",
-                                "[JumpBack]weekly_win_rank_matching",
+                                "[JumpBack]weekly_win_matching",
                                 "[JumpBack]weekly_win_preset_entry",
                                 "[JumpBack]weekly_win_rank_confirm_ninja",
                                 "[JumpBack]weekly_win_rank_ban",
@@ -388,7 +389,7 @@
                                 "[JumpBack]weekly_win_rank_up",
                                 "[JumpBack]battle_again",
                                 "[JumpBack]weekly_win_substitution",
-                                "[JumpBack]go_to_war"
+                                "go_to_war"
                             ]
                         }
                     }
@@ -400,46 +401,13 @@
             "type": "select",
             "cases": [
                 {
-                    "name": "预设1",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "roi": [
-                                800,
-                                94,
-                                115,
-                                62
-                            ],
-                            "expected": [
-                                "1"
-                            ],
-                            "target": [
-                                825,
-                                109,
-                                64,
-                                38
-                            ]
-                        }
-                    }
+                    "name": "预设1"
                 },
                 {
                     "name": "预设2",
                     "pipeline_override": {
                         "weekly_win_switch_preset": {
-                            "roi": [
-                                943,
-                                94,
-                                108,
-                                62
-                            ],
-                            "expected": [
-                                "2"
-                            ],
-                            "target": [
-                                996,
-                                116,
-                                26,
-                                23
-                            ]
+                            "expected": "2"
                         }
                     }
                 },
@@ -447,21 +415,7 @@
                     "name": "预设3",
                     "pipeline_override": {
                         "weekly_win_switch_preset": {
-                            "roi": [
-                                1040,
-                                94,
-                                108,
-                                62
-                            ],
-                            "expected": [
-                                "3"
-                            ],
-                            "target": [
-                                1081,
-                                115,
-                                21,
-                                23
-                            ]
+                            "expected": "3"
                         }
                     }
                 },
@@ -469,21 +423,7 @@
                     "name": "预设4",
                     "pipeline_override": {
                         "weekly_win_switch_preset": {
-                            "roi": [
-                                1121,
-                                94,
-                                108,
-                                62
-                            ],
-                            "expected": [
-                                "4"
-                            ],
-                            "target": [
-                                1164,
-                                114,
-                                23,
-                                25
-                            ]
+                            "expected": "4"
                         }
                     }
                 }

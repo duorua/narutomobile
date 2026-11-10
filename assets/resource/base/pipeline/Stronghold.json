@@ -1,12 +1,14 @@
 {
     "stronghold": {
+        "pre_delay": 0,
+        "post_delay": 0,
         "timeout": 1500,
         "next": [
+            "stronghold_in_stronghold",
+            "stronghold_in_map",
             "ninja_guide_returning_player",
             "ninja_guide_in_ninja_guide",
             "[JumpBack]open_ninja_guide",
-            "stronghold_in_stronghold",
-            "stronghold_in_map",
             "[JumpBack]back_main_screen_before_task"
         ],
         "focus": {
@@ -43,6 +45,7 @@
                 ]
             }
         ],
+        "pre_delay": 0,
         "action": "Custom",
         "custom_action": "GoIntoEntryByGuide",
         "custom_action_param": {
@@ -62,6 +65,7 @@
     "stronghold_gameplay": {
         "recognition": "TemplateMatch",
         "template": "Sky_ground/gameplay.png",
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 500,
         "next": [
@@ -98,6 +102,7 @@
             224
         ],
         "template": "Stronghold/stronghold_icon.png",
+        "pre_delay": 0,
         "action": "Click",
         "target_offset": [
             -10,
@@ -106,6 +111,7 @@
             -5
         ],
         "post_wait_freezes": 400,
+        "post_delay": 0,
         "next": [
             "stronghold_in_map",
             "[JumpBack]stronghold_mode",
@@ -123,15 +129,120 @@
             419,
             123
         ],
-        "template": [
-            "Stronghold/map.png"
-        ],
+        "template": "Stronghold/map.png",
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "stronghold_end",
-            "stronghold_to_fire_stronghold"
+            "stronghold_to_stronghold",
+            "[JumpBack]stronghold_find_stronghold"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">在要塞地图</font>"
+        }
+    },
+    "stronghold_find_stronghold": {
+        "max_hit": 5,
+        "recognition": "TemplateMatch",
+        "roi": [
+            427,
+            0,
+            419,
+            123
+        ],
+        "template": "Stronghold/map.png",
+        "pre_delay": 0,
+        "action": "Swipe",
+        "begin": [
+            970,
+            192,
+            1,
+            1
+        ],
+        "end": [
+            481,
+            607,
+            1,
+            1
+        ],
+        "post_delay": 0
+    },
+    "stronghold_check_stronghold_right_up": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1007,
+            120,
+            44,
+            44
+        ],
+        "template": "Stronghold/right_up_check.png",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "stronghold_check_stronghold_right_down": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            824,
+            459,
+            86,
+            71
+        ],
+        "template": "Stronghold/right_down_check.png",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "stronghold_check_stronghold_left_up": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            158,
+            152,
+            51,
+            56
+        ],
+        "template": "Stronghold/left_up_check.png",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "stronghold_check_stronghold_left_down": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            402,
+            364,
+            81,
+            83
+        ],
+        "template": "Stronghold/left_down_check.png",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "stronghold_check_stronghold": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            369,
+            456,
+            350
+        ],
+        "template": "Stronghold/small_stronghold.png",
+        "pre_delay": 0,
+        "post_delay": 0
+    },
+    "stronghold_to_stronghold": {
+        "recognition": "And",
+        "all_of": [
+            "stronghold_check_stronghold",
+            "stronghold_check_stronghold_right_up"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 600,
+        "post_delay": 0,
+        "next": [
+            "stronghold_to_fight",
+            "[JumpBack]stronghold_to_stronghold"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">点击要塞</font>"
         }
     },
     "swipe_for_stronghold_mode": {
@@ -143,6 +254,7 @@
             118
         ],
         "template": "Group/selected_group_gameplay.png",
+        "pre_delay": 0,
         "action": "Swipe",
         "begin": [
             479,
@@ -162,27 +274,6 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">寻找要塞</font>"
         }
     },
-    "stronghold_to_fire_stronghold": {
-        "recognition": "TemplateMatch",
-        "roi": [
-            432,
-            108,
-            560,
-            424
-        ],
-        "template": [
-            "Stronghold/fire_stronghold.png"
-        ],
-        "action": "Click",
-        "post_delay": 700,
-        "next": [
-            "stronghold_to_fight",
-            "[JumpBack]stronghold_to_fire_stronghold"
-        ],
-        "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">点击火要塞</font>"
-        }
-    },
     "stronghold_to_fight": {
         "recognition": "OCR",
         "roi": [
@@ -199,11 +290,31 @@
         "action": "Click",
         "post_delay": 300,
         "next": [
+            "stronghold_expired",
             "stronghold_in_stronghold",
             "[JumpBack]stronghold_to_fight"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入火要塞</font>"
+        }
+    },
+    "stronghold_expired": {
+        "recognition": "OCR",
+        "roi": [
+            469,
+            320,
+            320,
+            91
+        ],
+        "expected": [
+            "不在活动",
+            "时间内"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": "back_main_screen_and_stop",
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">不在要塞时间</font>"
         }
     },
     "stronghold_personal_point_award": {
@@ -279,6 +390,8 @@
             "旗鼓",
             "相当"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "timeout": 30000,
         "next": [
             "[JumpBack]battle_tips",
@@ -303,6 +416,7 @@
             "确",
             "定"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "post_delay": 500,
         "next": [
@@ -327,6 +441,7 @@
             "定"
         ],
         "inverse": true,
+        "pre_delay": 0,
         "post_delay": 500,
         "next": [
             "stronghold_in_stronghold",
@@ -397,6 +512,8 @@
             "祈愿",
             "考核"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],
@@ -415,6 +532,7 @@
         "expected": [
             "举报"
         ],
+        "pre_delay": 0,
         "action": "Click",
         "target": [
             590,
@@ -422,6 +540,7 @@
             106,
             93
         ],
+        "post_delay": 200,
         "next": [
             "stronghold_in_stronghold",
             "stronghold_end",
@@ -441,6 +560,7 @@
         ],
         "template": "Weekly_win/substitution.png",
         "threshold": 0.9,
+        "pre_delay": 0,
         "post_delay": 3000
     },
     "stronghold_end": {
@@ -454,6 +574,8 @@
         "expected": [
             "结算"
         ],
+        "pre_delay": 0,
+        "post_delay": 0,
         "next": [
             "back_main_screen_and_stop"
         ],

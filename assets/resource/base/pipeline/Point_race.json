@@ -57,8 +57,29 @@
             "point_race_without_yesterday_award",
             "point_race_challenge_limit",
             "wait_for_select_opponent",
-            "point_race_challenge_enter"
+            "point_race_challenge_enter",
+            "[JumpBack]point_race_challenge_yesterday_award"
         ]
+    },
+    "point_race_challenge_yesterday_award": {
+        "recognition": "OCR",
+        "roi": [
+            504,
+            416,
+            125,
+            37
+        ],
+        "expected": "获奖段位",
+        "pre_delay": 0,
+        "action": "Click",
+        "target": [
+            738,
+            26,
+            32,
+            24
+        ],
+        "post_wait_freezes": 400,
+        "post_delay": 0
     },
     "point_race_without_yesterday_award": {
         "recognition": "TemplateMatch",
@@ -79,7 +100,8 @@
         "next": [
             "point_race_challenge_limit",
             "wait_for_select_opponent",
-            "point_race_without_yesterday_award"
+            "point_race_without_yesterday_award",
+            "[JumpBack]point_race_challenge_yesterday_award"
         ]
     },
     "point_race_challenge_limit": {

@@ -3,7 +3,7 @@
         {
             "name": "黑市商人[二级密码](beta)",
             "entry": "black_market_merchant",
-            "description": "此为奸商,战力知识指导下使用;可调只显自己等,防遮挡;[size:15][color:tomato]需要二级密码,请小心,MAN不会对任何损失负责[/color][/size]",
+            "description": "此为奸商,战力知识指导下使用;可调只显自己等,防遮挡;<font color=\"tomato\">需要二级密码,请小心,MAN不会对任何损失负责</font>",
             "group": [
                 "redeem"
             ],

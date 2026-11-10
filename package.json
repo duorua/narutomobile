@@ -14,9 +14,9 @@
         "check:py": "pnpm lint:py && pnpm typecheck:py && pnpm test:py"
     },
     "devDependencies": {
-        "@nekosu/maa-tools": "1.1.3",
+        "@nekosu/maa-tools": "1.3.0",
         "@nekosu/prettier-plugin-maafw-sort": "1.1.0",
-        "markdownlint-cli2": "^0.23.3",
+        "markdownlint-cli2": "^0.24.0",
         "prettier": "3.9.10",
         "prettier-plugin-multiline-arrays": "4.1.11"
     },

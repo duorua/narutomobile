@@ -5,13 +5,17 @@
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
-  <img alt="platform" src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-blueviolet">
+  <img alt="platform" src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blueviolet">
   <img alt="license" src="https://img.shields.io/github/license/duorua/narutomobile">
   <br>
   <img alt="commit" src="https://img.shields.io/github/commit-activity/w/duorua/narutomobile">
   <img alt="stars" src="https://img.shields.io/github/stars/duorua/narutomobile?style=social">
   <img alt="downloads" src="https://img.shields.io/github/downloads/duorua/narutomobile/total?style=social">
   <a href="https://mirrorchyan.com/zh/projects?rid=MaaAutoNaruto&source=MaaAutoNarutogh-badge" target="_blank"><img alt="mirrorc" src="https://img.shields.io/badge/Mirror%E9%85%B1-%239af3f6?logo=countingworkspro&logoColor=4f46e5"></a>
+</p>
+
+<p align="center">
+  <a href="README.md">简体中文</a> | <a href="README_EN.md">English</a>
 </p>
 
 <div align="center">
@@ -30,11 +34,13 @@
 
 3. 检查模拟器桥接,后台保活选项关闭,调整软件配置,然后启动
 
-4. 命令行版本不再直接包含在项目中,可以前往[MaaAutoNaruto_cli](https://github.com/duorua/MaaAutoNaruto_cli)下载命令行版本
-
 ## 常见问题
 
 请见 [FAQ文档](docs/guide/faq.md)
+
+## 使用说明
+
+请见 [使用说明文档](docs/guide/manual.md)
 
 ## 主要功能
 
@@ -145,7 +151,7 @@
 
 本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
 
-本项目的前端使用了 **[MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)**,**[MaaFwApp](https://github.com/Aliothmoon/MaaFwApp)** 。
+本项目的前端使用了 **[MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia)**,**[MaaFwApp](https://github.com/Aliothmoon/MaaFwApp)** 。
 
 本项目在开发过程中，修改并借鉴了来自 **[M9A](https://github.com/MAA1999/M9A)** 的代码以及文档。
 

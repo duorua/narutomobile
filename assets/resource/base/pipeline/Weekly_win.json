@@ -29,7 +29,7 @@
             "[JumpBack]weekly_win_mouthly_reset_award",
             "[JumpBack]weekly_win_weekly_award",
             "[JumpBack]weekly_win_confirm_weekly_award",
-            "[JumpBack]go_to_war",
+            "go_to_war",
             "goto_duel_field_by_guide"
         ],
         "focus": {
@@ -147,7 +147,7 @@
         "post_delay": 0,
         "timeout": 10000,
         "next": [
-            "[JumpBack]winner_decided",
+            "winner_decided",
             "click_All_skill",
             "battle_tips",
             "[JumpBack]go_to_war",
@@ -186,7 +186,7 @@
             "ninja_guide_returning_player",
             "ninja_guide_in_ninja_guide",
             "[JumpBack]open_ninja_guide",
-            "[JumpBack]go_to_war",
+            "go_to_war",
             "[JumpBack]check_has_x"
         ],
         "$doc": "有一部分忍者会复活,这时候可能会直接进战斗,所以提前JumpBack;容易卡时间卡bug的忍者太多加一个on_error"
@@ -333,10 +333,11 @@
         "post_delay": 800,
         "timeout": 10000,
         "next": [
-            "weekly_win_preset_open"
+            "weekly_win_preset_open",
+            "weekly_win_preset_prewar"
         ],
         "on_error": [
-            "[JumpBack]go_to_war"
+            "go_to_war"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:点击调整阵容</font>"
@@ -374,21 +375,10 @@
         ],
         "pre_delay": 0,
         "action": "Click",
-        "target": [
-            742,
-            455,
-            29,
-            18
-        ],
-        "target_offset": [
-            0,
-            0,
-            0,
-            0
-        ],
         "post_delay": 1500,
         "next": [
-            "weekly_win_switch_preset"
+            "weekly_win_check_preset_open",
+            "weekly_win_preset_open"
         ],
         "on_error": [
             "[JumpBack]weekly_win_rank_confirm_ninja"
@@ -397,28 +387,41 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:打开预设面板</font>"
         }
     },
+    "weekly_win_check_preset_open": {
+        "recognition": "OCR",
+        "roi": [
+            802,
+            172,
+            56,
+            323
+        ],
+        "expected": [
+            "忍者",
+            "通灵兽",
+            "密卷"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "weekly_win_switch_preset"
+        ]
+    },
     "weekly_win_switch_preset": {
         "recognition": "OCR",
         "roi": [
-            800,
-            94,
-            115,
-            62
+            802,
+            95,
+            429,
+            56
         ],
-        "expected": [
-            "1"
-        ],
+        "expected": "1",
         "pre_delay": 0,
         "action": "Click",
-        "target": [
-            825,
-            109,
-            64,
-            38
-        ],
+        "repeat": 2,
         "post_delay": 500,
         "next": [
-            "weekly_win_preset_confirm"
+            "weekly_win_preset_confirm",
+            "weekly_win_switch_preset"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:选择预设页签</font>"
@@ -439,27 +442,8 @@
         "action": "Click",
         "post_delay": 1000,
         "next": [
-            "weekly_win_preset_save"
-        ],
-        "on_error": [
-            "weekly_win_preset_confirm_pos"
-        ],
-        "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:确认选择预设</font>"
-        }
-    },
-    "weekly_win_preset_confirm_pos": {
-        "pre_delay": 0,
-        "action": "Click",
-        "target": [
-            948,
-            573,
-            136,
-            36
-        ],
-        "post_delay": 1000,
-        "next": [
-            "weekly_win_preset_save"
+            "weekly_win_preset_save",
+            "weekly_win_preset_confirm"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:确认选择预设</font>"
@@ -468,10 +452,10 @@
     "weekly_win_preset_save": {
         "recognition": "OCR",
         "roi": [
-            964,
-            573,
-            106,
-            40
+            921,
+            557,
+            197,
+            76
         ],
         "expected": [
             "确",
@@ -484,45 +468,16 @@
         "next": [
             "cannot_go_to_war",
             "[JumpBack]weekly_win_match_fighting",
-            "[JumpBack]weekly_win_rank_matching",
+            "[JumpBack]weekly_win_matching",
             "[JumpBack]weekly_win_rank_confirm_ninja",
             "[JumpBack]weekly_win_rank_ban",
             "[JumpBack]battle_tips",
             "[JumpBack]weekly_win_locked",
+            "weekly_win_preset_save",
             "[JumpBack]weekly_win_rank_up",
             "[JumpBack]battle_again",
             "[JumpBack]weekly_win_substitution",
-            "[JumpBack]go_to_war"
-        ],
-        "on_error": [
-            "weekly_win_preset_save_pos"
-        ],
-        "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:保存阵容</font>"
-        }
-    },
-    "weekly_win_preset_save_pos": {
-        "pre_delay": 0,
-        "action": "Click",
-        "target": [
-            956,
-            573,
-            119,
-            36
-        ],
-        "post_delay": 800,
-        "next": [
-            "cannot_go_to_war",
-            "[JumpBack]weekly_win_match_fighting",
-            "[JumpBack]weekly_win_rank_matching",
-            "[JumpBack]weekly_win_rank_confirm_ninja",
-            "[JumpBack]weekly_win_rank_ban",
-            "[JumpBack]battle_tips",
-            "[JumpBack]weekly_win_locked",
-            "[JumpBack]weekly_win_rank_up",
-            "[JumpBack]battle_again",
-            "[JumpBack]weekly_win_substitution",
-            "[JumpBack]go_to_war"
+            "go_to_war"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:保存阵容</font>"
@@ -617,6 +572,7 @@
             "Weekly_win/substitution.png",
             "Weekly_win/substitution_10th.png"
         ],
+        "green_mask": true,
         "threshold": 0.8,
         "next": [
             "[JumpBack]battle_tips",
@@ -654,7 +610,7 @@
         "next": [
             "cannot_go_to_war",
             "[JumpBack]weekly_win_match_fighting",
-            "[JumpBack]weekly_win_rank_matching",
+            "[JumpBack]weekly_win_matching",
             "[JumpBack]weekly_win_rank_confirm_ninja",
             "[JumpBack]weekly_win_rank_ban",
             "[JumpBack]battle_tips",
@@ -662,7 +618,7 @@
             "[JumpBack]weekly_win_rank_up",
             "[JumpBack]battle_again",
             "[JumpBack]weekly_win_substitution",
-            "[JumpBack]go_to_war"
+            "go_to_war"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">点击开战</font>"
@@ -767,7 +723,7 @@
         "action": "Click",
         "post_delay": 200
     },
-    "weekly_win_rank_matching": {
+    "weekly_win_matching": {
         "recognition": "OCR",
         "roi": [
             519,
@@ -789,13 +745,11 @@
             725,
             87
         ],
-        "template": [
-            "Weekly_win/ban.png"
-        ],
+        "template": "Weekly_win/ban.png",
         "threshold": 0.8,
         "pre_delay": 0,
         "action": "Click",
-        "post_delay": 0,
+        "post_delay": 300,
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">ban忍者</font>"
         }
@@ -808,9 +762,7 @@
             492,
             200
         ],
-        "template": [
-            "Weekly_win/lock.png"
-        ],
+        "template": "Weekly_win/lock.png",
         "threshold": 0.8,
         "pre_delay": 0,
         "action": "Click",
@@ -1071,11 +1023,28 @@
         "next": [
             "weekly_win_check_daily_duel_mission_free_recover_award",
             "[JumpBack]weekly_win_check_daily_duel_mission_recover_award",
+            "weekly_win_check_daily_duel_mission_award_lock",
             "weekly_win_check_daily_duel_mission_without_recover_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">追回过期决斗任务奖励</font>"
         }
+    },
+    "weekly_win_check_daily_duel_mission_award_lock": {
+        "recognition": "OCR",
+        "roi": [
+            1002,
+            122,
+            239,
+            417
+        ],
+        "expected": "未达成",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_delay": 0,
+        "next": [
+            "weekly_win_check_daily_duel_mission_back_fight"
+        ]
     },
     "weekly_win_check_daily_duel_mission_without_recover_award": {
         "recognition": "TemplateMatch",
@@ -1120,7 +1089,7 @@
         "next": [
             "weekly_win_check_no_daily_duel_mission_recover_award",
             "weekly_win_check_daily_duel_mission_without_time_card",
-            "[JumpBack]weekly_win_check_daily_duel_mission_free_recover_award"
+            "weekly_win_check_daily_duel_mission_free_recover_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">有时间卡</font>"

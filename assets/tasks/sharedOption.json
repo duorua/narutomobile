@@ -93,7 +93,7 @@
                     "pipeline_override": {
                         "weekly_win_match_fighting": {
                             "next": [
-                                "[JumpBack]winner_decided",
+                                "winner_decided",
                                 "[JumpBack]weekly_win_serial_clicker",
                                 "battle_tips",
                                 "[JumpBack]go_to_war",

@@ -12,7 +12,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 APP_DIR = REPO / "Android" / "MaaFwApp"
-MAAFW_TAG = "v5.13.0"
+MAAFW_TAG = "v5.15.0"
 ABIS = ("arm64-v8a", "x86_64")
 
 
@@ -121,6 +121,8 @@ def prepare_inputs(variant: str, abis: Sequence[str], skip_setup: bool) -> None:
         str(REPO / "Android" / "agent-dist"),
         "--requirements",
         str(REPO / "requirements.txt"),
+        "--exclude",
+        "ruff",
         "--exclude",
         "pillow",
         "--exclude",

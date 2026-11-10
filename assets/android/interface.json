@@ -2,7 +2,7 @@
     "interface_version": 2,
     "name": "MaaAutoNaruto",
     "icon": "resource/logo.ico",
-    "mirrorchyan_rid": "MaaAutoNaruto",
+    "mirrorchyan_rid": "MaaAutoNaruto-MaaFwApp",
     "mirrorchyan_multiplatform": true,
     "github": "https://github.com/duorua/narutomobile",
     "license": "LICENSE",

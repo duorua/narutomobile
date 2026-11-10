@@ -3,7 +3,7 @@
         {
             "name": "叛忍(beta)",
             "entry": "rebel_ninja",
-            "description": "尽量开启只显示自己,防止目标被遮挡,可以在叛忍地图打开;还不能打首领;部分选项是首领功能,[size:15][color:tomato]需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]",
+            "description": "尽量开启只显示自己,防止目标被遮挡,可以在叛忍地图打开;还不能打首领;部分选项是首领功能,<font color=\"tomato\">需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责</font>",
             "group": [
                 "weekly"
             ],

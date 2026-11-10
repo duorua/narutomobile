@@ -10,7 +10,8 @@
             ],
             "option": [
                 "借组织助战",
-                "小队突袭处理自动战斗"
+                "小队突袭处理自动战斗",
+                "小队突袭出错重启"
             ]
         }
     ],
@@ -47,7 +48,7 @@
         },
         "小队突袭处理自动战斗": {
             "type": "switch",
-            "description": "小队突袭里面开着自动战斗,表现为一进入战斗就自动战斗;这个自动战斗会保留到下一局.如果不清楚账号开着自动战斗,或者不想开，此时开启这个选项",
+            "description": "小队突袭里面开着自动战斗,表现为一进入战斗就自动战斗;这个自动战斗会保留到下一局.如果不清楚账号是否开着自动战斗,此时开启这个选项",
             "cases": [
                 {
                     "name": "No",
@@ -59,6 +60,30 @@
                 },
                 {
                     "name": "Yes"
+                }
+            ],
+            "default_case": "No"
+        },
+        "小队突袭出错重启": {
+            "type": "switch",
+            "description": "如果小队突袭总是响应超时,开启这个选项",
+            "cases": [
+                {
+                    "name": "No"
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "check_in_team_dash_sweep": {
+                            "next": [
+                                "team_dash_battle_tips",
+                                "check_not_in_team_dash_sweep",
+                                "[JumpBack]team_dash_not_in_auto_battle",
+                                "check_in_team_dash_sweep",
+                                "[JumpBack]team_dash_sweep_win"
+                            ]
+                        }
+                    }
                 }
             ],
             "default_case": "No"

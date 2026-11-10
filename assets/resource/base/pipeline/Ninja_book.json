@@ -348,7 +348,7 @@
             29
         ],
         "template": "Ninja_book/mission_done_v2.png",
-        "threshold": 0.94,
+        "threshold": 0.9,
         "pre_delay": 0,
         "post_wait_freezes": 500,
         "post_delay": 0,
@@ -1135,7 +1135,8 @@
         "next": [
             "ninja_book_leaderboard_like_undone",
             "ninja_book_leaderboard_like_done",
-            "ninja_book_leaderboard"
+            "ninja_book_leaderboard",
+            "[JumpBack]hit_to_enter_ninja_book_x"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入忍法帖排行榜界面</font>"

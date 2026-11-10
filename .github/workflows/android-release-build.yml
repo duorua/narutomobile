@@ -72,9 +72,9 @@ jobs:
           path: |
             Android/MaaFwApp/.maa-cache
             Android/MaaFwApp/.maafw
-          key: android-native-${{ runner.os }}-fw5.13.0-core3.13.15-${{ matrix.abi }}
+          key: android-native-${{ runner.os }}-fw5.15.0-core3.13.15-${{ matrix.abi }}
           restore-keys: |
-            android-native-${{ runner.os }}-fw5.13.0-core3.13.15-
+            android-native-${{ runner.os }}-fw5.15.0-core3.13.15-
             android-native-${{ runner.os }}-
 
       - name: Write local.properties
@@ -96,7 +96,7 @@ jobs:
       - name: Fetch MaaFramework native libs (${{ matrix.abi }})
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python Android/MaaFwApp/scripts/setup_maa_framework.py --abi ${{ matrix.abi }} --tag v5.13.0
+        run: python Android/MaaFwApp/scripts/setup_maa_framework.py --abi ${{ matrix.abi }} --tag v5.15.0
 
       - name: Pack agent runtime (${{ matrix.abi }})
         env:
@@ -105,7 +105,7 @@ jobs:
           python Android/MaaFwApp/scripts/build_agent_bundle.py --out Android/agent-dist \
             --abi arm64-v8a --abi x86_64 \
             --requirements requirements.txt \
-            --exclude pillow --exclude opencv-python --exclude win32-setctime --exclude colorama --exclude jeepney \
+            --exclude ruff --exclude pillow --exclude opencv-python --exclude win32-setctime --exclude colorama --exclude jeepney \
             --require pillow==11.0.0 --extra-index-url https://chaquo.com/pypi-13.1/
 
       - name: Decode keystore

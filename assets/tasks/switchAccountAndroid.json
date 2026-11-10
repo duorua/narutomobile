@@ -3,7 +3,7 @@
         {
             "name": "切换账号[安卓实机]",
             "entry": "switch_account",
-            "description": "目前横屏切换竖屏会中断任务是正常的,是maafw的ImageReader报错",
+            "description": "目前横屏切换竖屏会中断任务是正常的,一般是ImageReader报错",
             "group": [
                 "daily"
             ],
@@ -71,6 +71,10 @@
                             ]
                         }
                     }
+                },
+                {
+                    "name": "横屏",
+                    "description": "这个横屏只能处理类似模拟器的横屏qq,如果横屏不规范会出错"
                 }
             ],
             "default_case": "适配"

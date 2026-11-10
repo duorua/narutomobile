@@ -3,7 +3,7 @@
         {
             "name": "商店兑换(beta)",
             "entry": "shop",
-            "description": "测试商店日常兑换,该功能暂时不受理bug上报[size:15][color:tomato]玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责[/color][/size]",
+            "description": "测试商店日常兑换,该功能暂时不受理bug上报<font color=\"tomato\">玉石商店需要二级密码,你需要非常小心,MaaAutoNaruto不会对任何损失负责</font>",
             "group": [
                 "redeem"
             ],

@@ -169,7 +169,8 @@
                         "ninja_guide_to_funtion_entry": {
                             "next": [
                                 "point_race_challenge_enter",
-                                "ninja_guide_to_funtion_entry"
+                                "ninja_guide_to_funtion_entry",
+                                "[JumpBack]point_race_challenge_yesterday_award"
                             ]
                         },
                         "ninja_guide_returning_player_find_funtion_entry": {
@@ -185,7 +186,8 @@
                         "ninja_guide_returning_player_to_funtion_entry": {
                             "next": [
                                 "point_race_challenge_enter",
-                                "ninja_guide_returning_player_to_funtion_entry"
+                                "ninja_guide_returning_player_to_funtion_entry",
+                                "[JumpBack]point_race_challenge_yesterday_award"
                             ]
                         }
                     }
@@ -216,6 +218,7 @@
                             "next": [
                                 "train_road_entry",
                                 "train_road_award",
+                                "train_road_sweeping",
                                 "[JumpBack]ninja_guide_to_funtion_retry"
                             ]
                         },
@@ -235,6 +238,7 @@
                             "next": [
                                 "train_road_entry",
                                 "train_road_award",
+                                "train_road_sweeping",
                                 "[JumpBack]ninja_guide_to_funtion_retry"
                             ]
                         }
@@ -486,8 +490,7 @@
                                 "[JumpBack]weekly_win_mouthly_reset_award",
                                 "[JumpBack]weekly_win_weekly_award",
                                 "[JumpBack]weekly_win_confirm_weekly_award",
-                                "[JumpBack]weekly_win_preset_prewar",
-                                "[JumpBack]go_to_war",
+                                "go_to_war",
                                 "ninja_guide_to_funtion_entry"
                             ]
                         },
@@ -535,8 +538,7 @@
                                 "[JumpBack]weekly_win_mouthly_reset_award",
                                 "[JumpBack]weekly_win_weekly_award",
                                 "[JumpBack]weekly_win_confirm_weekly_award",
-                                "[JumpBack]weekly_win_preset_prewar",
-                                "[JumpBack]go_to_war",
+                                "go_to_war",
                                 "ninja_guide_returning_player_to_funtion_entry"
                             ]
                         }
@@ -547,7 +549,6 @@
         },
         "打排位": {
             "type": "switch",
-
             "cases": [
                 {
                     "name": "No",

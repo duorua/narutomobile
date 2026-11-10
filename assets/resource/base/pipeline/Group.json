@@ -337,7 +337,6 @@
             "Group/second_box_done_1.png",
             "Group/second_box_done_2.png"
         ],
-        "threshold": 0.7,
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
@@ -366,7 +365,8 @@
             "second_group_award_box",
             "second_group_award_done_sign",
             "second_group_award_box_done",
-            "second_group_award"
+            "second_group_award",
+            "second_group_award_done"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取20人签到奖励</font>"

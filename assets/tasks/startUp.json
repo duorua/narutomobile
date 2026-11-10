@@ -4,13 +4,9 @@
             "name": "进入火影",
             "entry": "start_up",
             "default_check": true,
-            "description": "软件会关闭公告气泡;连点器任务可能不兼容**雷电模拟器**;如果此任务经常失败可以在[开始游戏按钮界面]或者[无公告游戏主界面]开启任务;",
+            "description": "MAN会关闭气泡;连点器任务可能不兼容**雷电模拟器**",
             "group": [
                 "daily"
-            ],
-            "controller": [
-                "连接模拟器",
-                "PlayCover on macOS"
             ],
             "option": [
                 "设置启动超时时间",
@@ -95,10 +91,6 @@
         },
         "账号属性": {
             "type": "select",
-            "controller": [
-                "连接模拟器",
-                "PlayCover on macOS"
-            ],
             "description": "因为微信不能用模拟器登录所以无法自动登录,对其他任务没影响;同时影响切换到的账号的类型,注意要确保自己调出的登录界面是横屏的",
             "cases": [
                 {
