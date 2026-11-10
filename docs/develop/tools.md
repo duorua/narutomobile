@@ -4,7 +4,7 @@
 
 ## 辅助工具
 
-- [VSCode插件](#vscode-plugins)
+- [VSCode插件](#vscode-插件)
 - [代码格式化工具](#代码格式化工具)
 
 ## VSCode 插件 <a id="vscode-plugins"></a>
