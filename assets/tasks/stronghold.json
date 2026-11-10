@@ -3,12 +3,13 @@
         {
             "name": "要塞",
             "entry": "stronghold",
-            "description": "默认前往火要塞;打其他要塞,点进对应要塞内开始任务;不能挂跨服",
+            "description": "请不要手动拖动地图,可能导致无法移动到要塞区域;可进对应要塞内开始任务;不能挂跨服",
             "group": [
                 "weekly"
             ],
             "option": [
                 "要塞玩法未开启时退出",
+                "指定要塞",
                 "忍界指引寻找要塞",
                 "串行连点器(beta)"
             ]
@@ -37,6 +38,366 @@
                 }
             ],
             "default_case": "Yes"
+        },
+        "指定要塞": {
+            "type": "select",
+            "label": "要塞方位",
+            "description": "请不要手动拖动地图,可能导致无法移动到要塞区域",
+            "cases": [
+                {
+                    "name": "右上",
+                    "option": ["右上要塞"]
+                },
+                {
+                    "name": "右下",
+                    "option": ["右下要塞"],
+                    "pipeline_override": {
+                        "stronghold_find_stronghold": {
+                            "begin": [
+                                1091,
+                                594,
+                                1,
+                                1
+                            ],
+                            "end": [
+                                130,
+                                76,
+                                1,
+                                1
+                            ]
+                        },
+                        "stronghold_to_stronghold": {
+                            "all_of": [
+                                "stronghold_check_stronghold",
+                                "stronghold_check_stronghold_right_down"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "左上",
+                    "option": ["左上要塞"],
+                    "pipeline_override": {
+                        "stronghold_find_stronghold": {
+                            "begin": [
+                                130,
+                                76,
+                                1,
+                                1
+                            ],
+                            "end": [
+                                1091,
+                                594,
+                                1,
+                                1
+                            ]
+                        },
+                        "stronghold_to_stronghold": {
+                            "all_of": [
+                                "stronghold_check_stronghold",
+                                "stronghold_check_stronghold_left_up"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "左下",
+                    "option": ["左下要塞"],
+                    "pipeline_override": {
+                        "stronghold_find_stronghold": {
+                            "begin": [
+                                320,
+                                560,
+                                1,
+                                1
+                            ],
+                            "end": [
+                                982,
+                                100,
+                                1,
+                                1
+                            ]
+                        },
+                        "stronghold_to_stronghold": {
+                            "all_of": [
+                                "stronghold_check_stronghold",
+                                "stronghold_check_stronghold_left_down"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "右上"
+        },
+        "右上要塞": {
+            "label": "要塞名",
+            "cases": [
+                {
+                    "name": "火",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "template": "Stronghold/big_stronghold.png"
+                        }
+                    }
+                },
+                {
+                    "name": "水",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                456,
+                                369,
+                                358,
+                                276
+                            ],
+                            "template": "Stronghold/mid_stronghold.png"
+                        }
+                    }
+                },
+                {
+                    "name": "田",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                32,
+                                95,
+                                274,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "汤",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                471,
+                                155,
+                                145,
+                                108
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "涡",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                866,
+                                377,
+                                133,
+                                123
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "霜",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                1029,
+                                362,
+                                229,
+                                222
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "火"
+        },
+        "右下要塞": {
+            "label": "要塞名",
+            "cases": [
+                {
+                    "name": "雷",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                24,
+                                241,
+                                148,
+                                120
+                            ],
+                            "template": "Stronghold/mid_stronghold.png"
+                        }
+                    }
+                },
+                {
+                    "name": "泷",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                387,
+                                469,
+                                138,
+                                130
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "云",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                681,
+                                310,
+                                148,
+                                130
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "鸟",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                876,
+                                345,
+                                148,
+                                138
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "雷"
+        },
+        "左上要塞": {
+            "label": "要塞名",
+            "cases": [
+                {
+                    "name": "土",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                819,
+                                374,
+                                167,
+                                143
+                            ],
+                            "template": "Stronghold/mid_stronghold.png"
+                        }
+                    }
+                },
+                {
+                    "name": "铁",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                753,
+                                41,
+                                140,
+                                118
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "田",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                1101,
+                                164,
+                                138,
+                                125
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "熊",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                338,
+                                441,
+                                135,
+                                116
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "土"
+        },
+        "左下要塞": {
+            "label": "要塞名",
+            "cases": [
+                {
+                    "name": "风",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                664,
+                                162,
+                                148,
+                                125
+                            ],
+                            "template": "Stronghold/mid_stronghold.png"
+                        }
+                    }
+                },
+                {
+                    "name": "草",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                224,
+                                290,
+                                128,
+                                113
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雨",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                251,
+                                456,
+                                135,
+                                123
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "海",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                506,
+                                505,
+                                155,
+                                128
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "川",
+                    "pipeline_override": {
+                        "stronghold_check_stronghold": {
+                            "roi": [
+                                824,
+                                463,
+                                130,
+                                123
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "风"
         }
     }
 }
