@@ -967,7 +967,7 @@
         ],
         "pre_delay": 0,
         "action": "Click",
-        "post_delay": 300
+        "post_delay": 500
     },
     "ninja_guide_to_funtion_entry_not_open": {
         "recognition": "OCR",
