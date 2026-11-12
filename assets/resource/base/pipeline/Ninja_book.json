@@ -261,8 +261,7 @@
             "[JumpBack]ninja_book_mission_undone",
             "[JumpBack]ninja_book_mission_done",
             "ninja_book_close_share",
-            "[JumpBack]ninja_book_close_share_top_bar",
-            "ninja_book_share_without_x"
+            "[JumpBack]ninja_book_close_share_top_bar"
         ]
     },
     "ninja_book_share_without_x": {
@@ -287,29 +286,45 @@
             "Node.Action.Starting": "<font color=\"DarkGoldenRod\">没有退出的地方</font>"
         }
     },
+    "ninja_book_share_back_to_natuto": {
+        "enabled": false,
+        "action": "StartApp",
+        "package": "com.tencent.KiHan",
+        "next": [
+            "close_ninja_book_leaderboard",
+            "[JumpBack]ninja_book_mission_undone",
+            "[JumpBack]ninja_book_mission_done",
+            "ninja_book_close_share",
+            "[JumpBack]ninja_book_close_share_top_bar",
+            "ninja_book_share_without_x"
+        ]
+    },
     "ninja_book_cancel_quit": {
-        "recognition": "TemplateMatch",
+        "max_hit": 3,
+        "recognition": "OCR",
         "roi": [
             730,
             362,
             296,
             158
         ],
-        "template": "Ninja_book/cancel.png",
+        "expected": "取消",
+        "pre_delay": 0,
         "action": "Click",
         "next": [
-            "ninja_book_without_cancel_quit"
+            "ninja_book_without_cancel_quit",
+            "ninja_book_cancel_quit"
         ]
     },
     "ninja_book_without_cancel_quit": {
-        "recognition": "TemplateMatch",
+        "recognition": "OCR",
         "roi": [
             730,
             362,
             296,
             158
         ],
-        "template": "Ninja_book/cancel.png",
+        "expected": "取消",
         "inverse": true,
         "pre_delay": 0,
         "post_delay": 300,
