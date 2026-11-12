@@ -56,7 +56,7 @@
             0,
             0
         ],
-        "post_delay": 0,
+        "post_delay": 300,
         "next": [
             "give_energy_in_account_friend",
             "give_energy_account_friend"
@@ -79,7 +79,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
-            "sent_energy",
+            "give_energe_account_friend_sent_energy",
             "energy_entry"
         ],
         "focus": {
@@ -124,6 +124,48 @@
         }
     },
     "get_energy": {
+        "recognition": "OCR",
+        "roi": [
+            412,
+            560,
+            182,
+            74
+        ],
+        "expected": [
+            "领取"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "post_delay": 0,
+        "next": [
+            "back_main_screen_and_stop"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取好友送的体力</font>"
+        },
+        "$doc": "一键领取体力后不需要点确定"
+    },
+    "give_energe_account_friend_sent_energy": {
+        "recognition": "OCR",
+        "roi": [
+            239,
+            557,
+            175,
+            74
+        ],
+        "expected": [
+            "一键"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": "give_energe_account_friend_get_energy",
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">送体力</font>"
+        }
+    },
+    "give_energe_account_friend_get_energy": {
         "recognition": "OCR",
         "roi": [
             412,
