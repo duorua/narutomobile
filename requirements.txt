@@ -40,7 +40,6 @@ pygments==2.20.0
     # via pytest
 pyright==1.1.414
 pytest==9.2.0
-ruff==0.17.3
 strenum==0.4.15
     # via maafw
 typing-extensions==4.16.0
