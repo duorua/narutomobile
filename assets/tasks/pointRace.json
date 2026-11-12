@@ -10,6 +10,7 @@
             ],
             "option": [
                 "积分赛强制战斗",
+                "积分赛对手选择",
                 "积分赛跨服",
                 "积分赛战斗",
                 "积分赛挑战次数",
@@ -54,6 +55,28 @@
                 }
             ],
             "default_case": "No"
+        },
+        "积分赛对手选择": {
+            "type": "select",
+            "description": "选择挑战哪一个敌队。战力最高指在战力低于我方的敌队中挑选战力最高的一个；只按战力数值筛选，不保证对局一定获胜",
+            "cases": [
+                {
+                    "name": "战力最低"
+                },
+                {
+                    "name": "战力最高",
+                    "pipeline_override": {
+                        "point_race_challenge": {
+                            "recognition": {
+                                "param": {
+                                    "custom_recognition": "FindToChallengeHighest"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "default_case": "战力最低"
         },
         "积分赛失败后再战": {
             "type": "switch",
