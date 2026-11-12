@@ -4,6 +4,7 @@
             "name": "月签到和一乐拉面",
             "entry": "activity",
             "default_check": true,
+            "description": "包括特权商店的铜币领奖",
             "group": [
                 "daily"
             ]

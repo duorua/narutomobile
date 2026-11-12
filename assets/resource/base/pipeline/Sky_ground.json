@@ -244,8 +244,7 @@
         "post_delay": 0,
         "next": [
             "sky_ground_confirm_battlefield_selection",
-            "sky_ground_confirm_set",
-            "sky_ground_to_column",
+            "sky_ground_in_set",
             "[JumpBack]sky_battlefield"
         ],
         "focus": {
@@ -267,7 +266,7 @@
         "post_delay": 0,
         "next": [
             "sky_ground_confirm_battlefield_selection",
-            "sky_ground_confirm_set",
+            "sky_ground_in_set",
             "[JumpBack]ground_battlefield"
         ],
         "focus": {
@@ -502,6 +501,25 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">完成选择密卷</font>"
         }
     },
+    "sky_ground_in_set": {
+        "recognition": "OCR",
+        "roi": [
+            804,
+            471,
+            328,
+            209
+        ],
+        "expected": [
+            "确认"
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "sky_ground_selected_ninja",
+            "sky_ground_recommended_ninja",
+            "sky_ground_select_ninja"
+        ]
+    },
     "sky_ground_confirm_set": {
         "recognition": "OCR",
         "roi": [
@@ -513,7 +531,10 @@
         "expected": [
             "确认"
         ],
+        "pre_delay": 0,
         "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
         "next": [
             "sky_ground_group_encouragement",
             "sky_ground_to_column",

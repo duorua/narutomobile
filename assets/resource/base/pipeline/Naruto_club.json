@@ -1084,6 +1084,10 @@
             "check_club_all_submit"
         ],
         "on_error": [
+            "club_second_award_done",
+            "club_second_award",
+            "club_first_award",
+            "club_first_award_done",
             "try_esc"
         ],
         "focus": {
@@ -1468,7 +1472,7 @@
             512
         ],
         "template": "Naruto_club/third_award.png",
-        "threshold": 0.8,
+        "threshold": 0.75,
         "pre_delay": 0,
         "action": "Click",
         "post_wait_freezes": 300,
@@ -1583,7 +1587,7 @@
             512
         ],
         "template": "Naruto_club/club_third_award_done.png",
-        "threshold": 0.85,
+        "threshold": 0.8,
         "pre_delay": 0,
         "post_wait_freezes": 300,
         "post_delay": 0,

@@ -19,7 +19,7 @@ from ci.install import (
 )
 from utils import download
 
-DEFAULT_MFA_VERSION = "v2.16.4"
+DEFAULT_MFA_VERSION = "v2.16.5-beta.2"
 GHPROXY_URL = "https://gh-proxy.natsuu.top/"
 
 parser = argparse.ArgumentParser(description="Install MaaFramework to install directory")
