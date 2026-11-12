@@ -51,7 +51,16 @@
         "pre_wait_freezes": 200,
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 400,
+        "post_wait_freezes": {
+            "time": 400,
+            "target": [
+                467,
+                271,
+                313,
+                237
+            ],
+            "threshold": 0.8
+        },
         "post_delay": 0,
         "next": [
             "point_race_without_yesterday_award",
@@ -95,7 +104,16 @@
         "pre_wait_freezes": 200,
         "pre_delay": 0,
         "action": "Click",
-        "post_wait_freezes": 400,
+        "post_wait_freezes": {
+            "time": 400,
+            "target": [
+                467,
+                271,
+                313,
+                237
+            ],
+            "threshold": 0.8
+        },
         "post_delay": 0,
         "next": [
             "point_race_challenge_limit",

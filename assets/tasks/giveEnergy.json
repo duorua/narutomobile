@@ -8,20 +8,19 @@
                 "daily"
             ],
             "option": [
-                "选择账号好友送体力"
+                "送体力策略"
             ]
         }
     ],
     "option": {
-        "选择账号好友送体力": {
-            "type": "switch",
-            "description": "在没有游戏好友的时候,给qq或者微信好友送体力",
+        "送体力策略": {
+            "type": "select",
             "cases": [
                 {
-                    "name": "No"
+                    "name": "游戏好友"
                 },
                 {
-                    "name": "Yes",
+                    "name": "社交媒体好友",
                     "pipeline_override": {
                         "energy_entry": {
                             "next": [
@@ -30,9 +29,20 @@
                             ]
                         }
                     }
+                },
+                {
+                    "name": "游戏好友和社交媒体好友",
+                    "pipeline_override": {
+                        "get_energy": {
+                            "next": [
+                                "give_energy_account_friend",
+                                "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
                 }
             ],
-            "default_case": "No"
+            "default_case": "游戏好友"
         }
     }
 }

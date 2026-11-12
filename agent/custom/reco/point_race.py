@@ -13,7 +13,12 @@ from ..utils import get_digit_count
 class FindToChallenge(CustomRecognition):
     """
     在积分赛中寻找可以挑战的对象
+
+    默认挑战战力最低的敌队;select_highest 为 True 时,改为在战力低于我方的
+    敌队中挑战战力最高的一个;两种策略都只按战力数值筛选,不保证对局一定获胜
     """
+
+    select_highest = False
 
     def analyze(
         self,
@@ -25,6 +30,11 @@ class FindToChallenge(CustomRecognition):
             logger.info("当前配置：强制挑战")
         else:
             logger.info("当前配置：非强制挑战")
+
+        if self.select_highest:
+            logger.info("当前策略：优先挑战战力最高的敌队")
+        else:
+            logger.info("当前策略：优先挑战战力最低的敌队")
 
         logger.info("尝试读取我方小队战力...")
         team_senryoku = self.get_senryoku(context, argv.image, [271, 337, 178, 29])
@@ -58,12 +68,8 @@ class FindToChallenge(CustomRecognition):
                 logger.warning(f"无法解析战力文本: {enemy_rois.index(roi) + 1}")
                 enemySenryoku_list.append(1145141919810)
 
-        min_enemySenryoku = min(enemySenryoku_list)
-        idx = enemySenryoku_list.index(min_enemySenryoku)
-        logger.info(f"敌队{idx + 1}战力最低：{min_enemySenryoku / 10000}万")
-
-        if (min_enemySenryoku > team_senryoku) and (not fource_battle):
-            logger.info("没一个打得过的，溜了溜了。")
+        idx = self.pick_target(enemySenryoku_list, team_senryoku, fource_battle)
+        if idx is None:
             return CustomRecognition.AnalyzeResult(
                 box=None,
                 detail={},
@@ -82,6 +88,37 @@ class FindToChallenge(CustomRecognition):
             detail={},
         )
 
+    def pick_target(
+        self,
+        enemy_senryoku: list[int],
+        team_senryoku: int,
+        fource_battle: bool,
+    ) -> int | None:
+        """
+        按当前策略选出要挑战的敌队下标，返回 None 表示放弃本次挑战
+        """
+        if self.select_highest:
+            # 在战力低于我方的敌队中挑战力最高的一个
+            beatable = [senryoku for senryoku in enemy_senryoku if senryoku < team_senryoku]
+            if beatable:
+                target = max(beatable)
+                idx = enemy_senryoku.index(target)
+                logger.info(f"敌队{idx + 1}战力最高且低于我方：{target / 10000}万")
+                return idx
+            if not fource_battle:
+                logger.info("没有战力低于我方的敌队，溜了溜了。")
+                return None
+
+        min_enemySenryoku = min(enemy_senryoku)
+        idx = enemy_senryoku.index(min_enemySenryoku)
+        logger.info(f"敌队{idx + 1}战力最低：{min_enemySenryoku / 10000}万")
+
+        if (min_enemySenryoku > team_senryoku) and (not fource_battle):
+            logger.info("没一个打得过的，溜了溜了。")
+            return None
+
+        return idx
+
     def get_senryoku(self, context: Context, image: ndarray, roi: list[int], default=None) -> int | None:
         """
         获取战力
@@ -95,3 +132,12 @@ class FindToChallenge(CustomRecognition):
             value *= 10000
         logger.info(f"读取到战力：{value}")
         return value
+
+
+@AgentServer.custom_recognition("FindToChallengeHighest")
+class FindToChallengeHighest(FindToChallenge):
+    """
+    在战力低于我方的敌队中，挑战战力最高的一个
+    """
+
+    select_highest = True
