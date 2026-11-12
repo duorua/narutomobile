@@ -21,7 +21,7 @@ on:
 
 jobs:
   resource:
-    runs-on: macos-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v7
         with:
