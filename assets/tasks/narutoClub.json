@@ -9,7 +9,7 @@
                 "daily"
             ],
             "option": [
-                "跳过情报社点赞",
+                "情报社点赞",
                 "喂豚豚",
                 "金币助手",
                 "情报社卡顿模式",
@@ -18,15 +18,12 @@
         }
     ],
     "option": {
-        "跳过情报社点赞": {
+        "情报社点赞": {
             "type": "switch",
-            "description": "在打满包括周胜的日常任务的时候活跃度正好够100,可以开启这个选项节省时间",
+            "description": "关闭后跳过情报社点赞;打满包括周胜的日常任务后活跃度正好够100,可以关闭这个选项节省时间",
             "cases": [
                 {
-                    "name": "No"
-                },
-                {
-                    "name": "Yes",
+                    "name": "No",
                     "pipeline_override": {
                         "club_like_mission": {
                             "next": [
@@ -36,9 +33,12 @@
                             ]
                         }
                     }
+                },
+                {
+                    "name": "Yes"
                 }
             ],
-            "default_case": "No"
+            "default_case": "Yes"
         },
         "喂豚豚": {
             "type": "switch",
