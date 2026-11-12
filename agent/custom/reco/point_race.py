@@ -14,8 +14,8 @@ class FindToChallenge(CustomRecognition):
     """
     在积分赛中寻找可以挑战的对象
 
-    默认挑战战力最低的敌队；select_highest 为 True 时，改为在战力低于我方的
-    敌队中挑战战力最高的一个。两种策略都只按战力数值筛选，不保证对局一定获胜。
+    默认挑战战力最低的敌队;select_highest 为 True 时,改为在战力低于我方的
+    敌队中挑战战力最高的一个;两种策略都只按战力数值筛选,不保证对局一定获胜
     """
 
     select_highest = False
@@ -98,7 +98,7 @@ class FindToChallenge(CustomRecognition):
         按当前策略选出要挑战的敌队下标，返回 None 表示放弃本次挑战
         """
         if self.select_highest:
-            # 只在战力低于我方的敌队中挑战力最高的一个
+            # 在战力低于我方的敌队中挑战力最高的一个
             beatable = [senryoku for senryoku in enemy_senryoku if senryoku < team_senryoku]
             if beatable:
                 target = max(beatable)
