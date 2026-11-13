@@ -59,6 +59,7 @@
         "post_delay": 300,
         "next": [
             "give_energy_in_account_friend",
+            "get_energy",
             "give_energy_account_friend"
         ],
         "focus": {
