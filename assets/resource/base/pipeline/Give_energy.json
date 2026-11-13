@@ -59,7 +59,7 @@
         "post_delay": 300,
         "next": [
             "give_energy_in_account_friend",
-            "get_energy",
+            "[JumpBack]give_energe_confirm_get_energy",
             "give_energy_account_friend"
         ],
         "focus": {
@@ -188,5 +188,19 @@
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取好友送的体力</font>"
         },
         "$doc": "一键领取体力后不需要点确定"
+    },
+    "give_energe_confirm_get_energy": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            501,
+            377,
+            271,
+            132
+        ],
+        "template": "SharedNode/confirm.png",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0
     }
 }
