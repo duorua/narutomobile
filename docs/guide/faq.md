@@ -76,7 +76,7 @@
 
     A: 将MAN目录下的文件全部删除，然后重新下载最新版的MAN。
 
-2. Q: 拖到桌面后启动不了
+2. Q: 移动可执行文件(.exe文件)到桌面或者其他路径后启动不了
 
     A: 请看[如何创建快捷方式](https://www.bilibili.com/video/BV1oGwfedEGS)
 
