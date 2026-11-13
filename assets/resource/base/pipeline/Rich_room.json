@@ -267,6 +267,7 @@
         "next": [
             "rich_room_finished",
             "rich_room_ninja_expire",
+            "[JumpBack]loading_page",
             "rich_room_in_fight",
             "challenge_rich_room",
             "check_main_screen_and_stop"
