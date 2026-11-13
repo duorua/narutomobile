@@ -471,10 +471,10 @@
     "get_aoyi_picture_challenge_dice_quit_confirm": {
         "recognition": "TemplateMatch",
         "roi": [
-            634,
-            511,
-            281,
-            125
+            422,
+            455,
+            508,
+            264
         ],
         "template": [
             "SharedNode/confirm.png"
@@ -550,10 +550,10 @@
     "get_aoyi_picture_challenge_option": {
         "recognition": "TemplateMatch",
         "roi": [
-            535,
-            358,
-            59,
-            116
+            530,
+            353,
+            93,
+            125
         ],
         "template": [
             "aoyi_picture/option.png"
