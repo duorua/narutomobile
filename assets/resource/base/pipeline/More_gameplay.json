@@ -421,8 +421,8 @@
         ],
         "replace": [
             [
-                "匹",
-                "正"
+                "正",
+                "匹"
             ]
         ],
         "pre_delay": 0,
@@ -560,9 +560,25 @@
             "[JumpBack]more_gameplay_trace_vanish_waiting_fight",
             "[JumpBack]more_gameplay_trace_vanish_choose_ninja",
             "[JumpBack]more_gameplay_go_fight",
+            "[JumpBack]more_gameplay_trace_vanish_loading",
             "more_gameplay_trace_vanish_confirm_fight",
             "more_gameplay_match_win"
         ]
+    },
+    "more_gameplay_trace_vanish_loading": {
+        "recognition": "OCR",
+        "roi": [
+            1005,
+            239,
+            125,
+            44
+        ],
+        "expected": [
+            "融合",
+            "白绝"
+        ],
+        "pre_delay": 0,
+        "post_delay": 300
     },
     "more_gameplay_trace_vanish_waiting_fight": {
         "recognition": "TemplateMatch",
