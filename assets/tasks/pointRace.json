@@ -58,13 +58,13 @@
         },
         "积分赛对手选择": {
             "type": "select",
-            "description": "战力最高指在战力低于我方的敌队中挑选战力最高的一个;只按战力数值筛选,不保证对局一定获胜",
+            "description": "排名最高指在战力低于我方的敌队中挑选排名最高的一个;不保证对局一定获胜",
             "cases": [
                 {
                     "name": "战力最低"
                 },
                 {
-                    "name": "战力最高",
+                    "name": "排名最高",
                     "pipeline_override": {
                         "point_race_challenge": {
                             "recognition": {

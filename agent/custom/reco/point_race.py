@@ -14,8 +14,8 @@ class FindToChallenge(CustomRecognition):
     """
     在积分赛中寻找可以挑战的对象
 
-    默认挑战战力最低的敌队;select_highest 为 True 时,改为在战力低于我方的
-    敌队中挑战战力最高的一个;两种策略都只按战力数值筛选,不保证对局一定获胜
+    默认挑战战力最低的敌队;
+    select_highest 为 True 时,改为在战力低于我方的敌队中挑战排名最高的一个;
     """
 
     select_highest = False
@@ -27,14 +27,14 @@ class FindToChallenge(CustomRecognition):
     ) -> CustomRecognition.AnalyzeResult:
         fource_battle = json.loads(argv.custom_recognition_param).get("fource_battle", False)
         if fource_battle:
-            logger.info("当前配置：强制挑战")
+            logger.info("当前配置:强制挑战")
         else:
-            logger.info("当前配置：非强制挑战")
+            logger.info("当前配置:非强制挑战")
 
         if self.select_highest:
-            logger.info("当前策略：优先挑战战力最高的敌队")
+            logger.info("当前策略:优先挑战排名最高的敌队")
         else:
-            logger.info("当前策略：优先挑战战力最低的敌队")
+            logger.info("当前策略:优先挑战战力最低的敌队")
 
         logger.info("尝试读取我方小队战力...")
         team_senryoku = self.get_senryoku(context, argv.image, [271, 337, 178, 29])
@@ -98,13 +98,11 @@ class FindToChallenge(CustomRecognition):
         按当前策略选出要挑战的敌队下标，返回 None 表示放弃本次挑战
         """
         if self.select_highest:
-            # 在战力低于我方的敌队中挑战力最高的一个
-            beatable = [senryoku for senryoku in enemy_senryoku if senryoku < team_senryoku]
-            if beatable:
-                target = max(beatable)
-                idx = enemy_senryoku.index(target)
-                logger.info(f"敌队{idx + 1}战力最高且低于我方：{target / 10000}万")
-                return idx
+            for idx, senryoku in enumerate(enemy_senryoku):
+                if senryoku < team_senryoku:
+                    logger.info(f"敌队{idx + 1}排名最高且战力低于我方：{senryoku / 10000}万")
+                    return idx
+
             if not fource_battle:
                 logger.info("没有战力低于我方的敌队，溜了溜了。")
                 return None
@@ -137,7 +135,7 @@ class FindToChallenge(CustomRecognition):
 @AgentServer.custom_recognition("FindToChallengeHighest")
 class FindToChallengeHighest(FindToChallenge):
     """
-    在战力低于我方的敌队中，挑战战力最高的一个
+    在战力低于我方的敌队中,挑战排名最高的一个
     """
 
     select_highest = True
