@@ -76,6 +76,7 @@ class FindToChallenge(CustomRecognition):
             )
 
         logger.info(f"挑战敌队{idx + 1}!")
+        # 火影中一般上面两个是排名大于自己,下面两个是排名小于自己.排名高的在上面
         targets = [
             [986, 195, 92, 39],
             [987, 312, 92, 39],
