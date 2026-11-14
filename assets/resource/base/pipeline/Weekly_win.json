@@ -398,7 +398,7 @@
         "expected": [
             "忍者",
             "通灵兽",
-            "密卷"
+            "秘卷"
         ],
         "pre_delay": 0,
         "post_delay": 0,
@@ -410,11 +410,13 @@
         "recognition": "OCR",
         "roi": [
             802,
-            95,
-            429,
-            56
+            92,
+            462,
+            60
         ],
-        "expected": "1",
+        "expected": [
+            "预设1"
+        ],
         "pre_delay": 0,
         "action": "Click",
         "repeat": 2,

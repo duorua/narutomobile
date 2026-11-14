@@ -321,7 +321,7 @@
         },
         "切换预设": {
             "type": "switch",
-            "description": "每局开战前自动切换到指定编号的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
+            "description": "每局开战前自动切换到指定名称的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
             "cases": [
                 {
                     "name": "No",
@@ -398,37 +398,24 @@
             "default_case": "No"
         },
         "决斗场预设选择": {
-            "type": "select",
-            "cases": [
+            "type": "input",
+            "description": "填写游戏内阵容预设的名称;预设名可自定义,必须与游戏内'预设'面板顶部页签显示的文字一致",
+            "inputs": [
                 {
-                    "name": "预设1"
-                },
-                {
-                    "name": "预设2",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "expected": "2"
-                        }
-                    }
-                },
-                {
-                    "name": "预设3",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "expected": "3"
-                        }
-                    }
-                },
-                {
-                    "name": "预设4",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "expected": "4"
-                        }
-                    }
+                    "name": "决斗场预设名称",
+                    "label": "预设名称",
+                    "description": "游戏内点开'预设'后顶部页签上的文字,例如 预设1;改过名字的请填自定义的名称,可只输入容易识别的部分",
+                    "default": "预设1",
+                    "pipeline_type": "string"
                 }
             ],
-            "default_case": "预设1"
+            "pipeline_override": {
+                "weekly_win_switch_preset": {
+                    "expected": [
+                        "{决斗场预设名称}"
+                    ]
+                }
+            }
         },
         "决斗场不攻击": {
             "type": "switch",
