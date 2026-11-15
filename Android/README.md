@@ -34,7 +34,7 @@ python tools/prepare_android_pi.py
 # 已连接设备
 ./Android/MaaFwApp/gradlew.bat -p Android/MaaFwApp :app:installDebug
 
-# 正式包：release 默认打 arm64-v8a + x86_64；发版 CI 会分别产出这两个架构的 APK
+# 正式包：本地 release 默认支持 arm64-v8a + x86_64；发版 CI 只产出 arm64-v8a 的 APK
 # 本地只打单架构时，在 local.properties 里写 build.releaseAbi=<abi>，
 # 并把 MaaFramework / agent 也只铺该 ABI（--abi <abi>）
 python Android/MaaFwApp/scripts/setup_maa_framework.py --tag v5.15.0

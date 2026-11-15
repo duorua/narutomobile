@@ -126,12 +126,6 @@ jobs:
           name: MaaAutoNaruto-android-public-release-arm64-v8a-${{ github.ref_name }}
           path: release-assets/android-arm64-v8a
 
-      - name: Download Android APK (x86_64)
-        uses: actions/download-artifact@v8
-        with:
-          name: MaaAutoNaruto-android-public-release-x86_64-${{ github.ref_name }}
-          path: release-assets/android-x86_64
-
       - name: Download changelog
         uses: actions/download-artifact@v8
         with:
@@ -151,13 +145,11 @@ jobs:
             fi
           done
 
-      - name: Rename Android APKs
+      - name: Rename Android APK
         shell: bash
         run: |
           mv "release-assets/android-arm64-v8a"/*.apk \
             "MaaAutoNaruto-android-public-release-arm64-${{ github.ref_name }}.apk"
-          mv "release-assets/android-x86_64"/*.apk \
-            "MaaAutoNaruto-android-public-release-amd64-${{ github.ref_name }}.apk"
 
       - name: Detect prerelease
         id: release_type
