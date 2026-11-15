@@ -41,7 +41,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        abi: [arm64-v8a, x86_64]
+        abi: [arm64-v8a]
     env:
       APK_ARTIFACT_NAME: MaaAutoNaruto-android-${{ inputs.distribution || 'internal' }}-release-${{ matrix.abi }}-${{ inputs.version || github.ref_name }}
       MAPPING_ARTIFACT_NAME: MaaAutoNaruto-android-${{ inputs.distribution || 'internal' }}-release-mapping-${{ matrix.abi }}-${{ inputs.version || github.ref_name }}
@@ -103,7 +103,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python Android/MaaFwApp/scripts/build_agent_bundle.py --out Android/agent-dist \
-            --abi arm64-v8a --abi x86_64 \
+            --abi arm64-v8a \
             --requirements requirements.txt \
             --exclude ruff --exclude pillow --exclude opencv-python --exclude win32-setctime --exclude colorama --exclude jeepney \
             --require pillow==11.0.0 --extra-index-url https://chaquo.com/pypi-13.1/
