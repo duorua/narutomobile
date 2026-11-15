@@ -321,7 +321,7 @@
         },
         "切换预设": {
             "type": "switch",
-            "description": "每局开战前自动切换到指定名称的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
+            "description": "每局开战前自动切换到指定编号的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
             "cases": [
                 {
                     "name": "No",
@@ -375,22 +375,6 @@
                                 "go_to_war",
                                 "weekly_win_ac_entry_undone"
                             ]
-                        },
-                        "go_to_war": {
-                            "next": [
-                                "cannot_go_to_war",
-                                "[JumpBack]weekly_win_match_fighting",
-                                "[JumpBack]weekly_win_matching",
-                                "[JumpBack]weekly_win_preset_entry",
-                                "[JumpBack]weekly_win_rank_confirm_ninja",
-                                "[JumpBack]weekly_win_rank_ban",
-                                "[JumpBack]battle_tips",
-                                "[JumpBack]weekly_win_locked",
-                                "[JumpBack]weekly_win_rank_up",
-                                "[JumpBack]battle_again",
-                                "[JumpBack]weekly_win_substitution",
-                                "go_to_war"
-                            ]
                         }
                     }
                 }
@@ -399,21 +383,19 @@
         },
         "决斗场预设选择": {
             "type": "input",
-            "description": "填写游戏内阵容预设的名称;预设名可自定义,必须与游戏内'预设'面板顶部页签显示的文字一致",
+            "description": "没有自定义命名输入数字,自定义命名只要第一个字即可;可能因为OCR失败导致失败,建议使用容易识别的名",
             "inputs": [
                 {
-                    "name": "决斗场预设名称",
-                    "label": "预设名称",
-                    "description": "游戏内点开'预设'后顶部页签上的文字,例如 1;改过名字的请填自定义的名称,可只输入容易识别的部分",
+                    "name": "预设编号/名",
+                    "label": "预设编号/名",
                     "default": "1",
-                    "pipeline_type": "string"
+                    "pipeline_type": "string",
+                    "verify": "^\\S$"
                 }
             ],
             "pipeline_override": {
                 "weekly_win_switch_preset": {
-                    "expected": [
-                        "{决斗场预设名称}"
-                    ]
+                    "expected": "{预设编号/名}"
                 }
             }
         },
