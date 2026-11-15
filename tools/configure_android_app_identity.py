@@ -3,7 +3,6 @@
 import argparse
 import re
 from pathlib import Path
-from typing import Optional
 
 PUBLIC_ID = "man"
 PUBLIC_LABEL = "MAN"
@@ -62,7 +61,7 @@ def replace_agent_abi(text: str, agent_abi: str) -> str:
     return "".join(lines)
 
 
-def configure(profile: Path, distribution: str, agent_abi: Optional[str] = None) -> None:
+def configure(profile: Path, distribution: str, agent_abi: str | None = None) -> None:
     text = profile.read_text(encoding="utf-8")
     original_text = text
     has_public_identity = has_identity(text, PUBLIC_ID, PUBLIC_LABEL)
