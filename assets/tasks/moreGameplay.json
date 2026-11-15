@@ -139,6 +139,12 @@
                             "next": [
                                 "more_gameplay_check_point"
                             ]
+                        },
+                        "more_gameplay_in_trace_vanish": {
+                            "action": "DoNothing",
+                            "next": [
+                                "more_gameplay_check_point"
+                            ]
                         }
                     }
                 },
