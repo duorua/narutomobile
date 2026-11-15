@@ -41,8 +41,6 @@ jobs:
         include:
           - os: android
             arch: arm64
-          - os: android
-            arch: amd64
     steps:
       - id: uploading
         uses: MirrorChyan/uploading-action@v1

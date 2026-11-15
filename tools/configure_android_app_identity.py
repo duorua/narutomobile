@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
 import argparse
+import re
 from pathlib import Path
 
 PUBLIC_ID = "man"
 PUBLIC_LABEL = "MAN"
 INTERNAL_ID = "man.ci"
 INTERNAL_LABEL = "MAN 内测版"
+AGENT_ABI_PATTERN = re.compile(r"^  abi: \[[^\]\n]*\]")
 
 
 def parse_args() -> argparse.Namespace:
@@ -23,6 +25,11 @@ def parse_args() -> argparse.Namespace:
         default=Path("Android/profile.yaml"),
         help="Android profile path",
     )
+    parser.add_argument(
+        "--agent-abi",
+        choices=("arm64-v8a", "x86_64"),
+        help="replace the profile's agent ABI list with a single ABI",
+    )
     return parser.parse_args()
 
 
@@ -30,7 +37,31 @@ def has_identity(text: str, app_id: str, label: str) -> bool:
     return text.count(f"  id: {app_id}\n") == 1 and text.count(f"  label: {label}\n") == 1
 
 
-def configure(profile: Path, distribution: str) -> None:
+def replace_agent_abi(text: str, agent_abi: str) -> str:
+    lines = text.splitlines(keepends=True)
+    in_agent_section = False
+    matches = []
+    for index, line in enumerate(lines):
+        content = line.rstrip("\r\n")
+        if content == "agent:":
+            in_agent_section = True
+            continue
+        if in_agent_section and content and not content[0].isspace():
+            break
+        if in_agent_section and AGENT_ABI_PATTERN.fullmatch(content):
+            matches.append(index)
+    if len(matches) != 1:
+        raise SystemExit(
+            f"expected exactly one agent.abi list in the profile, found {len(matches)}",
+        )
+
+    index = matches[0]
+    newline = lines[index][len(lines[index].rstrip("\r\n")) :]
+    lines[index] = f"  abi: [{agent_abi}]{newline}"
+    return "".join(lines)
+
+
+def configure(profile: Path, distribution: str, agent_abi: str | None = None) -> None:
     text = profile.read_text(encoding="utf-8")
     original_text = text
     has_public_identity = has_identity(text, PUBLIC_ID, PUBLIC_LABEL)
@@ -51,13 +82,15 @@ def configure(profile: Path, distribution: str) -> None:
     else:
         if not has_public_identity or has_internal_identity:
             raise SystemExit(f"could not identify public app identity in {profile}")
+    if agent_abi is not None:
+        text = replace_agent_abi(text, agent_abi)
     if text != original_text:
         profile.write_text(text, encoding="utf-8")
 
 
 def main() -> None:
     args = parse_args()
-    configure(args.profile, args.distribution)
+    configure(args.profile, args.distribution, args.agent_abi)
 
 
 if __name__ == "__main__":
