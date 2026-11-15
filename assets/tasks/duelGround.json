@@ -322,7 +322,7 @@
         },
         "被ban时补忍者": {
             "type": "switch",
-            "description": "每局开战前自动切换到指定编号的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
+            "description": "忍者被ban的时候会自动补人",
             "cases": [
                 {
                     "name": "Yes"
@@ -340,7 +340,7 @@
         },
         "切换预设": {
             "type": "switch",
-            "description": "每局开战前自动切换到指定编号的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
+            "description": "每局开战前自动切换到指定的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
             "cases": [
                 {
                     "name": "No",
@@ -359,7 +359,8 @@
                 {
                     "name": "Yes",
                     "option": [
-                        "决斗场预设选择"
+                        "决斗场预设选择",
+                        "决斗场预设重名下标"
                     ],
                     "pipeline_override": {
                         "ninja_guide_to_funtion_entry": {
@@ -415,6 +416,24 @@
             "pipeline_override": {
                 "weekly_win_switch_preset": {
                     "expected": "{预设编号/名}"
+                }
+            }
+        },
+        "决斗场预设重名下标": {
+            "type": "input",
+            "description": "如果有首字一样的预设,建议改成不一样的或者输入从左到右的下标(只用考虑首字一样的,如果有1,周胜,周常,a四个预设,要选周胜输入0,选周常输入1)",
+            "inputs": [
+                {
+                    "name": "识别下标",
+                    "label": "识别下标",
+                    "default": "0",
+                    "pipeline_type": "int",
+                    "verify": "^[0-3]$"
+                }
+            ],
+            "pipeline_override": {
+                "weekly_win_switch_preset": {
+                    "index": "{识别下标}"
                 }
             }
         },

@@ -417,6 +417,7 @@
         "expected": [
             "1"
         ],
+        "index": 0,
         "pre_delay": 0,
         "action": "Click",
         "repeat": 2,
