@@ -75,6 +75,65 @@
             "more_gameplay_to_select_gameplay"
         ]
     },
+    "more_gameplay_select_check_point": {
+        "max_hit": 2,
+        "recognition": "TemplateMatch",
+        "roi": [
+            1150,
+            600,
+            130,
+            120
+        ],
+        "template": [
+            "More_gameplay/mission_book.png"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 300,
+        "post_delay": 0,
+        "next": [
+            "more_gameplay_select_mission_panel",
+            "more_gameplay_in_select_gameplay"
+        ]
+    },
+    "more_gameplay_select_mission_panel": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            192,
+            587,
+            81,
+            56
+        ],
+        "template": [
+            "More_gameplay/point_text.png"
+        ],
+        "threshold": [
+            0.8
+        ],
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "more_gameplay_complete",
+            "more_gameplay_select_close_mission"
+        ]
+    },
+    "more_gameplay_select_close_mission": {
+        "action": "Click",
+        "target": [
+            71,
+            533,
+            1,
+            1
+        ],
+        "post_delay": 300,
+        "next": [
+            "more_gameplay_hundred_ninja_gameplay",
+            "more_gameplay_trace_vanish",
+            "more_gameplay_orochimaru_trial",
+            "[JumpBack]swipe_for_select_more_gameplay",
+            "back_main_screen_and_stop"
+        ]
+    },
     "more_gameplay_in_select_gameplay": {
         "recognition": "OCR",
         "roi": [
@@ -92,6 +151,7 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "more_gameplay_select_check_point",
             "more_gameplay_hundred_ninja_gameplay",
             "more_gameplay_trace_vanish",
             "more_gameplay_orochimaru_trial",
