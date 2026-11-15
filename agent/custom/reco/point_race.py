@@ -44,6 +44,7 @@ class FindToChallenge(CustomRecognition):
                 detail={},
             )
 
+        # 积分赛选择对手页面中一般上面两个是排名大于自己,下面两个是排名小于自己.排名高的在上面
         enemy_rois = [
             [841, 234, 115, 32],
             [841, 352, 113, 32],
@@ -76,7 +77,6 @@ class FindToChallenge(CustomRecognition):
             )
 
         logger.info(f"挑战敌队{idx + 1}!")
-        # 火影中一般上面两个是排名大于自己,下面两个是排名小于自己.排名高的在上面
         targets = [
             [986, 195, 92, 39],
             [987, 312, 92, 39],

@@ -39,10 +39,9 @@
                         "use_energy": {
                             "next": "asura_instance"
                         },
-                        "advanture_check_no_next_roll": {
+                        "advanture_no_next_roll": {
                             "next": [
-                                "check_sweep_level",
-                                "advanture_check_no_next_roll"
+                                "check_sweep_level"
                             ]
                         }
                     }
