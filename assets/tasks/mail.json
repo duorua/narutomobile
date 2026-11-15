@@ -4,6 +4,7 @@
             "name": "邮箱",
             "entry": "mail",
             "default_check": true,
+            "description": "目前无法处理超影,奥义等特殊物品的领取",
             "group": [
                 "daily"
             ]

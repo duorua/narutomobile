@@ -398,37 +398,22 @@
             "default_case": "No"
         },
         "决斗场预设选择": {
-            "type": "select",
-            "cases": [
+            "type": "input",
+            "description": "没有自定义命名输入数字,自定义命名只要第一个字即可;可能因为OCR失败导致失败,建议使用容易识别的名",
+            "inputs": [
                 {
-                    "name": "预设1"
-                },
-                {
-                    "name": "预设2",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "expected": "2"
-                        }
-                    }
-                },
-                {
-                    "name": "预设3",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "expected": "3"
-                        }
-                    }
-                },
-                {
-                    "name": "预设4",
-                    "pipeline_override": {
-                        "weekly_win_switch_preset": {
-                            "expected": "4"
-                        }
-                    }
+                    "name": "预设编号/名",
+                    "label": "预设编号/名",
+                    "default": "1",
+                    "pipeline_type": "string",
+                    "verify": "^\\S$"
                 }
             ],
-            "default_case": "预设1"
+            "pipeline_override": {
+                "weekly_win_switch_preset": {
+                    "expected": "{预设编号/名}"
+                }
+            }
         },
         "决斗场不攻击": {
             "type": "switch",
