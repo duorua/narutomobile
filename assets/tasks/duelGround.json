@@ -16,6 +16,7 @@
                 "清周胜过期宝箱",
                 "从奖励中心进入",
                 "出现提示时重启任务",
+                "被ban时补忍者",
                 "决斗场不攻击",
                 "串行连点器(beta)",
                 "切换预设"
@@ -318,6 +319,24 @@
                 }
             ],
             "default_case": "No"
+        },
+        "被ban时补忍者": {
+            "type": "switch",
+            "description": "每局开战前自动切换到指定编号的阵容预设(忍术对战与排位赛);请保持'忍界指引寻找周胜'开启",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "weekly_win_not_selected_ninja": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ],
+            "default_case": "Yes"
         },
         "切换预设": {
             "type": "switch",

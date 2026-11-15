@@ -470,6 +470,7 @@
         "next": [
             "cannot_go_to_war",
             "[JumpBack]weekly_win_match_fighting",
+            "[JumpBack]weekly_win_not_selected_ninja",
             "[JumpBack]weekly_win_matching",
             "[JumpBack]weekly_win_rank_confirm_ninja",
             "[JumpBack]weekly_win_rank_ban",
@@ -612,6 +613,7 @@
         "next": [
             "cannot_go_to_war",
             "[JumpBack]weekly_win_match_fighting",
+            "[JumpBack]weekly_win_not_selected_ninja",
             "[JumpBack]weekly_win_matching",
             "[JumpBack]weekly_win_preset_entry",
             "[JumpBack]weekly_win_rank_confirm_ninja",
@@ -626,6 +628,56 @@
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">点击开战</font>"
         }
+    },
+    "weekly_win_not_selected_ninja": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            120,
+            567,
+            303
+        ],
+        "template": "Weekly_win/no_ninja.png",
+        "post_delay": 400,
+        "next": [
+            "weekly_win_selected_ninja",
+            "weekly_win_select_ninja"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">忍者出现空缺</font>"
+        }
+    },
+    "weekly_win_select_ninja": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            795,
+            132,
+            434,
+            390
+        ],
+        "template": "Weekly_win/star.png",
+        "order_by": "Random",
+        "pre_delay": 0,
+        "action": "Click",
+        "post_wait_freezes": 400,
+        "post_delay": 0,
+        "next": [
+            "weekly_win_selected_ninja",
+            "weekly_win_select_ninja"
+        ]
+    },
+    "weekly_win_selected_ninja": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            120,
+            567,
+            303
+        ],
+        "template": "Weekly_win/no_ninja.png",
+        "inverse": true,
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "weekly_win_locked": {
         "recognition": "TemplateMatch",
