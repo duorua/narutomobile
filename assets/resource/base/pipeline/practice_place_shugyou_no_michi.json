@@ -96,11 +96,13 @@
         "post_wait_freezes": 400,
         "next": [
             "confirm_train_road_sweep",
-            "train_road_unsweep"
+            "train_road_unsweep",
+            "train_road_unreset"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">修行之路未扫荡</font>"
-        }
+        },
+        "$doc": "有的时候扫荡了也会显示红点,所以加一个train_road_unreset"
     },
     "train_road_sweeping": {
         "recognition": "OCR",
