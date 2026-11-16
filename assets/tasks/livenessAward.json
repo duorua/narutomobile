@@ -6,7 +6,39 @@
             "default_check": true,
             "group": [
                 "daily"
+            ],
+            "option": [
+                "检查活跃宝箱已领取"
             ]
         }
-    ]
+    ],
+    "option": {
+        "检查活跃宝箱已领取": {
+            "type": "switch",
+            "description": "开启时候识别到宝箱锁定跳过;活跃宝箱经常加载缓慢,导致显示箱子未解锁的情况开启这个选项",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "liveness_award_box_1_locked": {
+                            "enabled": false
+                        },
+                        "liveness_award_box_2_locked": {
+                            "enabled": false
+                        },
+                        "liveness_award_box_3_locked": {
+                            "enabled": false
+                        },
+                        "liveness_award_box_4_locked": {
+                            "enabled": false
+                        }
+                    }
+                }
+            ],
+            "default_case": "Yes"
+        }
+    }
 }
