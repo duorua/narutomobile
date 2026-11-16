@@ -138,13 +138,14 @@
                         },
                         "ninja_book_check_in_treasure_box_access_method": {
                             "roi": [
-                                550,
-                                125,
-                                118,
-                                41
+                                541,
+                                93,
+                                170,
+                                91
                             ],
                             "expected": [
-                                "每日活跃度"
+                                "每日活跃度",
+                                "升至"
                             ]
                         }
                     }
