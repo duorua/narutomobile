@@ -196,11 +196,21 @@
                                 "click_start_game",
                                 "[JumpBack]start_up_loading",
                                 "[JumpBack]close_teenager_page",
-                                "[JumpBack]refuse_info",
-                                "[JumpBack]agree_log_in",
                                 "check_agreement",
                                 "agree_agreement",
-                                "[JumpBack]agreement_not_agree"
+                                "[JumpBack]in_agreement",
+                                "[JumpBack]refuse_info",
+                                "[JumpBack]agree_log_in",
+                                "before_game",
+                                "[JumpBack]start_up_check_has_x",
+                                "[JumpBack]close_friend_rank",
+                                "[JumpBack]splash_screen",
+                                "[JumpBack]close_before_game_notice",
+                                "[JumpBack]im_come_back",
+                                "[JumpBack]im_come_back_award",
+                                "[JumpBack]weekly_sign",
+                                "[JumpBack]close_chat",
+                                "check_main_screen_and_stop"
                             ]
                         },
                         "start_up_switch_social_media_account": {
@@ -227,6 +237,14 @@
                                 "[JumpBack]agree_log_in",
                                 "click_start_game",
                                 "[JumpBack]close_teenager_page"
+                            ]
+                        },
+                        "agree_log_in": {
+                            "next": [
+                                "without_agree_log_in",
+                                "empty_number",
+                                "[JumpBack]refuse_info",
+                                "agree_log_in"
                             ]
                         }
                     }

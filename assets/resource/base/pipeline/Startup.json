@@ -79,11 +79,12 @@
             "click_start_game",
             "[JumpBack]start_up_loading",
             "[JumpBack]close_teenager_page",
-            "[JumpBack]agree_log_in",
-            "[JumpBack]agree_info",
             "check_agreement",
             "agree_agreement",
-            "[JumpBack]agreement_not_agree",
+            "[JumpBack]in_agreement",
+            "[JumpBack]agree_log_in",
+            "[JumpBack]agree_info",
+            "before_game",
             "[JumpBack]start_up_check_has_x",
             "[JumpBack]close_friend_rank",
             "[JumpBack]splash_screen",
@@ -92,12 +93,23 @@
             "[JumpBack]im_come_back_award",
             "[JumpBack]weekly_sign",
             "[JumpBack]close_chat",
-            "before_game",
             "check_main_screen_and_stop"
         ],
         "on_error": [
             "start_up"
         ]
+    },
+    "in_agreement": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            584,
+            513,
+            135
+        ],
+        "expected": "详细阅读",
+        "pre_delay": 0,
+        "post_delay": 0
     },
     "close_teenager_page": {
         "recognition": "TemplateMatch",
@@ -385,13 +397,14 @@
         "template": "SharedNode/android_qq_login.png",
         "pre_delay": 0,
         "action": "Click",
-        "post_delay": 300,
+        "post_delay": 400,
         "next": [
             "click_start_game",
             "[JumpBack]start_up_loading",
             "[JumpBack]close_teenager_page",
             "[JumpBack]agree_log_in",
-            "[JumpBack]agree_info"
+            "[JumpBack]agree_info",
+            "start_up_switch_social_media_account"
         ]
     },
     "agree_agreement": {
