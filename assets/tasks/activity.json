@@ -7,7 +7,36 @@
             "description": "包括特权商店的铜币领奖",
             "group": [
                 "daily"
+            ],
+            "option": [
+                "特权商店铜币奖励"
             ]
         }
-    ]
+    ],
+    "option": {
+        "特权商店铜币奖励": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes"
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "mouthly_signature_title_done": {
+                            "next": [
+                                "back_main_screen_and_stop"
+                            ]
+                        },
+                        "check_mouthly_signature_title": {
+                            "next": [
+                                "back_main_screen_and_stop"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "Yes"
+        }
+    }
 }
