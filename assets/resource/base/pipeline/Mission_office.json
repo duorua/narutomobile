@@ -86,7 +86,8 @@
         "next": [
             "confirm_mission_office_award",
             "[JumpBack]celebrate_mission_office_award",
-            "get_mission_office_award"
+            "get_mission_office_award",
+            "check_no_mission_office_award"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">领取任务集会所奖励</font>"
