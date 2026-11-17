@@ -4,7 +4,7 @@
             "name": "火影情报社(beta)",
             "entry": "naruto_club",
             "default_check": true,
-            "description": "该任务并不稳定,如遇卡顿可能需要人工接管;确认MFA不会在喂豚豚和金币助手闪退后开启再对应选项,闪退bug成因还在寻找",
+            "description": "该任务并不稳定,如遇卡顿可能需要人工接管;确认MFA不会在金币助手,喂豚豚闪退或截图失败卡死才开对应选项",
             "group": [
                 "daily"
             ],
@@ -42,7 +42,7 @@
         },
         "喂豚豚": {
             "type": "switch",
-            "description": "确认MFA不会在喂豚豚闪退后开启,闪退bug成因还在寻找",
+            "description": "确认MFA不会在喂豚豚闪退或截图失败卡死后开启",
             "cases": [
                 {
                     "name": "No",
@@ -63,7 +63,7 @@
         },
         "金币助手": {
             "type": "switch",
-            "description": "确认MFA不会在金币助手闪退后开启,闪退bug成因还在寻找",
+            "description": "确认MFA不会在金币助手或截图失败卡死后开启",
             "cases": [
                 {
                     "name": "No",
