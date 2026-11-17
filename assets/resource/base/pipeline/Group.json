@@ -618,9 +618,9 @@
         },
         "post_delay": 0,
         "next": [
-            "check_no_pursuit_dawn_organization_award",
             "one_key_get_pursuit_dawn_organization_award",
             "[JumpBack]get_pursuit_dawn_organization_award",
+            "check_no_pursuit_dawn_organization_award",
             "pursuit_dawn_organization_award_undone"
         ],
         "focus": {
@@ -719,6 +719,7 @@
         "post_wait_freezes": 400,
         "post_delay": 0,
         "next": [
+            "one_key_get_pursuit_dawn_organization_award",
             "check_no_pursuit_dawn_organization_award_1",
             "[JumpBack]get_pursuit_dawn_organization_award_1"
         ],
