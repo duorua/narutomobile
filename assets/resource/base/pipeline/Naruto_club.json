@@ -1194,32 +1194,15 @@
         }
     },
     "club_first_award_done": {
-        "recognition": "Or",
-        "any_of": [
-            {
-                "recognition": "TemplateMatch",
-                "roi": [
-                    226,
-                    95,
-                    155,
-                    624
-                ],
-                "template": "Naruto_club/club_first_award_done.png",
-                "threshold": 0.85
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    226,
-                    95,
-                    155,
-                    624
-                ],
-                "expected": [
-                    "已领"
-                ]
-            }
+        "recognition": "TemplateMatch",
+        "roi": [
+            226,
+            95,
+            155,
+            624
         ],
+        "template": "Naruto_club/club_first_award_done.png",
+        "threshold": 0.8,
         "pre_wait_freezes": 300,
         "pre_delay": 0,
         "post_wait_freezes": 300,
@@ -1412,32 +1395,15 @@
         "post_delay": 0
     },
     "club_second_award_done": {
-        "recognition": "Or",
-        "any_of": [
-            {
-                "recognition": "TemplateMatch",
-                "roi": [
-                    400,
-                    192,
-                    113,
-                    527
-                ],
-                "template": "Naruto_club/club_second_award_done.png",
-                "threshold": 0.85
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    400,
-                    192,
-                    113,
-                    527
-                ],
-                "expected": [
-                    "已领"
-                ]
-            }
+        "recognition": "TemplateMatch",
+        "roi": [
+            400,
+            192,
+            113,
+            527
         ],
+        "template": "Naruto_club/club_second_award_done.png",
+        "threshold": 0.8,
         "pre_delay": 0,
         "post_wait_freezes": 300,
         "post_delay": 0,
