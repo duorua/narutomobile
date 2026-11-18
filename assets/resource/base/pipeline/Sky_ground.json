@@ -978,7 +978,7 @@
             "[JumpBack]sky_ground_end_back_main_screen"
         ],
         "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">天地开始回主页面</font>"
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">天地开始回主界面</font>"
         }
     },
     "sky_ground_end_confirm_back_main_screen": {
@@ -999,7 +999,7 @@
             "[JumpBack]sky_ground_end_confirm_back_main_screen"
         ],
         "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">天地确认回主页面</font>"
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">天地确认回主界面</font>"
         }
     },
     "sky_ground_end_not_in_main": {
