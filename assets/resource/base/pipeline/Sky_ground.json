@@ -810,6 +810,7 @@
         }
     },
     "sky_ground_get_bead": {
+        "enabled": false,
         "recognition": "TemplateMatch",
         "template": "Sky_ground/bead.png",
         "threshold": [
@@ -850,11 +851,12 @@
             "[JumpBack]sky_ground_to_award_column",
             "sky_ground_to_column",
             "[JumpBack]sky_ground_to_fight_column",
-            "[JumpBack]sky_ground_get_bead",
             "sky_ground_in_fight",
             "right_swipe_for_empty_column",
             "left_swipe_for_empty_column",
-            "up_swipe_for_empty_column"
+            "up_swipe_for_empty_column",
+            "sky_ground_success",
+            "sky_ground_fail"
         ]
     },
     "sky_ground_in_fight": {
