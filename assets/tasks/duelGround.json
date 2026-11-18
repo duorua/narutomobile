@@ -16,7 +16,6 @@
                 "清周胜过期宝箱",
                 "从奖励中心进入",
                 "出现提示时重启任务",
-                "被ban时补忍者",
                 "决斗场不攻击",
                 "串行连点器(beta)",
                 "切换预设"
@@ -325,15 +324,15 @@
             "description": "忍者被ban的时候会自动补人",
             "cases": [
                 {
-                    "name": "Yes"
-                },
-                {
-                    "name": "No",
+                    "name": "Yes",
                     "pipeline_override": {
                         "weekly_win_not_selected_ninja": {
-                            "enabled": false
+                            "enabled": true
                         }
                     }
+                },
+                {
+                    "name": "No"
                 }
             ],
             "default_case": "Yes"

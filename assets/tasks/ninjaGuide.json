@@ -565,6 +565,9 @@
                 },
                 {
                     "name": "Yes",
+                    "option": [
+                        "被ban时补忍者"
+                    ],
                     "pipeline_override": {
                         "goto_duel_field_by_guide": {
                             "custom_action_param": {
