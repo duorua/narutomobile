@@ -16,6 +16,7 @@
                 "MissionOfficeStrategy",
                 "CheckGetCopperRoll",
                 "CheckGetCopperCount",
+                "InitBuyEnergyCount",
                 "CheckBuyEnergyCount",
                 "Shopping",
                 "SwitchAccountFindTargetArea",
@@ -61,6 +62,9 @@
                 },
                 {
                     "$ref": "#/$defs/CheckGetCopperCountParam"
+                },
+                {
+                    "$ref": "#/$defs/InitBuyEnergyCountParam"
                 },
                 {
                     "$ref": "#/$defs/CheckBuyEnergyCountParam"
@@ -172,6 +176,12 @@
             "type": "object",
             "description": "检测招财次数",
             "markdownDescription": "检测招财次数:读取固定ROI招财次数,识别失败视为66;当前轮次 > count 时通过,否则失败.",
+            "properties": {}
+        },
+        "InitBuyEnergyCountParam": {
+            "type": "object",
+            "description": "检测购买体力初始次数",
+            "markdownDescription": "检测购买体力初始次数,识别到返回通过",
             "properties": {}
         },
         "CheckBuyEnergyCountParam": {

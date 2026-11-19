@@ -50,13 +50,25 @@
         "pre_delay": 0,
         "post_delay": 0,
         "next": [
+            "buy_energy_init_buy_energy"
+        ]
+    },
+    "buy_energy_init_buy_energy": {
+        "recognition": "Custom",
+        "custom_recognition": "InitBuyEnergyCount",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
             "[JumpBack]energy_upper_limit",
             "[JumpBack]check_not_in_buy_energy",
             "check_buy_energy",
             "[JumpBack]try_buy_energy",
             "[JumpBack]pay_to_stronger_tip",
             "back_main_screen_and_stop"
-        ]
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"pink\">检查购买体力初始次数</font>"
+        }
     },
     "energy_upper_limit": {
         "recognition": "OCR",

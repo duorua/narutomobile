@@ -533,6 +533,9 @@
             "advanture_in_level_roll",
             "advanture_rank_up"
         ],
+        "on_error": [
+            "advanture"
+        ],
         "focus": {
             "Node.Action.Starting": "返回主页检查是否有新功能"
         }

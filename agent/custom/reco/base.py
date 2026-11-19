@@ -464,6 +464,29 @@ class CheckGetCopperCount(CustomRecognition):
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
 
+@AgentServer.custom_recognition("InitBuyEnergyCount")
+class InitBuyEnergyCount(CustomRecognition):
+    """
+    初始化购买体力计数器: 识别到 0-30 的数字则通过,重置 CheckBuyEnergyCount 的初始值
+    """
+
+    def analyze(self, context: Context, argv: CustomRecognition.AnalyzeArg) -> CustomRecognition.AnalyzeResult:
+        roi = [637, 379, 120, 56]
+        value, _ = get_digit_count(context, argv.image, roi)
+
+        if value is None:
+            logger.info("初始值未识别到数字")
+            return CustomRecognition.AnalyzeResult(box=None, detail={})
+
+        if not (0 <= value <= 30):
+            logger.warning(f"识别值 {value} 出错,")
+            return CustomRecognition.AnalyzeResult(box=None, detail={"value": value})
+
+        CheckBuyEnergyCount.start_count = value
+        logger.info(f"InitBuyEnergyCount: 识别到有效值 {value}")
+        return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={"value": value})
+
+
 @AgentServer.custom_recognition("CheckBuyEnergyCount")
 class CheckBuyEnergyCount(CustomRecognition):
     """
@@ -477,20 +500,29 @@ class CheckBuyEnergyCount(CustomRecognition):
         param = json.loads(argv.custom_recognition_param)
         count = int(param.get("count", "1"))
         if self.start_count == -1:
-            value, _ = get_digit_count(context, argv.image, roi)
-            self.start_count = value if value else 0
-
-        value, _ = get_digit_count(context, argv.image, roi)
-        now_count = value if value else 0
-
-        if self.start_count - now_count >= count:
-            logger.info(
-                f"当前值:{self.start_count - now_count},达到最大执行次数{count},初始值{self.start_count},识别值{now_count}"  # noqa: E501
-            )
+            logger.info("出错,未初始化")
             return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
 
+        value, _ = get_digit_count(context, argv.image, roi)
+        if value is None:
+            logger.info("识别数字出错,任务停止")
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={})
+
+        now_count = value
+        sum_count = self.start_count - now_count
+
+        if sum_count < 0:
+            logger.info("识别值大于初始值,识别出错,任务停止")
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={"now_count": now_count})
+
+        if sum_count >= count:
+            logger.info(
+                f"达到设定值{count},累计值:{sum_count},初始值{self.start_count},识别值{now_count}"  # noqa: E501
+            )
+            return CustomRecognition.AnalyzeResult(box=Rect(0, 0, 1, 1), detail={"now_count": now_count})
+
         logger.debug(
-            f"购买体力计数器状态: 最大值:{count} 当前值: {self.start_count - now_count},初始值{self.start_count},识别值{now_count}"  # noqa: E501
+            f"购买体力计数器状态:设定值:{count} 累计值:{sum_count},初始值{self.start_count},识别值{now_count}"  # noqa: E501
         )
         return CustomRecognition.AnalyzeResult(box=None, detail={})
 
