@@ -61,10 +61,10 @@
     "energy_upper_limit": {
         "recognition": "OCR",
         "roi": [
-            486,
-            333,
-            308,
-            51
+            64,
+            456,
+            350,
+            54
         ],
         "expected": [
             "当前体力",

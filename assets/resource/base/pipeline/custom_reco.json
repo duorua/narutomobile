@@ -87,5 +87,20 @@
         "template": [
             "Find_bonds/橙色牌.png"
         ]
+    },
+    "custom_ocr_get_copper": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "replace": [
+                    [
+                        "D",
+                        "0"
+                    ]
+                ]
+            }
+        },
+        "pre_delay": 0,
+        "post_delay": 0
     }
 }

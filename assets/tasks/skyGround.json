@@ -114,7 +114,7 @@
         },
         "无限循环找柱子": {
             "type": "switch",
-            "description": "测试功能无限寻找空柱子,实际上会寻找UINT_MAX(4294967295)次",
+            "description": "测试功能无限寻找空柱子",
             "cases": [
                 {
                     "name": "No"
@@ -123,16 +123,16 @@
                     "name": "Yes",
                     "pipeline_override": {
                         "left_swipe_for_empty_column": {
-                            "max_hit": 4294967295
+                            "max_hit": 976105668
                         },
                         "right_swipe_for_empty_column": {
-                            "max_hit": 4294967295
+                            "max_hit": 976105668
                         },
                         "up_swipe_for_empty_column": {
-                            "max_hit": 4294967295
+                            "max_hit": 976105668
                         },
                         "down_swipe_for_empty_column": {
-                            "max_hit": 4294967295
+                            "max_hit": 976105668
                         }
                     }
                 }
