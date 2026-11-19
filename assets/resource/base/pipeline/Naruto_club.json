@@ -1123,25 +1123,51 @@
         "post_delay": 0
     },
     "submit_lag": {
-        "recognition": "ColorMatch",
-        "roi": [
-            570,
-            291,
-            140,
-            135
+        "recognition": "Or",
+        "any_of": [
+            {
+                "recognition": "ColorMatch",
+                "roi": [
+                    570,
+                    291,
+                    140,
+                    135
+                ],
+                "method": 4,
+                "lower": [
+                    44,
+                    44,
+                    43
+                ],
+                "upper": [
+                    45,
+                    44,
+                    44
+                ],
+                "count": 500
+            },
+            {
+                "recognition": "ColorMatch",
+                "roi": [
+                    570,
+                    291,
+                    140,
+                    135
+                ],
+                "method": 4,
+                "lower": [
+                    74,
+                    72,
+                    71
+                ],
+                "upper": [
+                    75,
+                    74,
+                    73
+                ],
+                "count": 500
+            }
         ],
-        "method": 4,
-        "lower": [
-            45,
-            45,
-            44
-        ],
-        "upper": [
-            46,
-            45,
-            45
-        ],
-        "count": 1000,
         "pre_delay": 0,
         "post_delay": 300
     },
