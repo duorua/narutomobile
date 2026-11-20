@@ -14,25 +14,27 @@
             "option": [
                 "账号切换范围",
                 "目标区",
-                "目标社交媒体账号",
-                "允许MAN管理qq和火影信息",
-                "账号属性",
-                "拒绝qq获取火影信息",
-                "切换账号后行为",
-                "启用协议自动勾选"
+                "切换账号后行为"
             ]
         }
     ],
     "option": {
         "账号切换范围": {
             "type": "select",
-            "description": "因为最终用户协议(EULA),换社交媒体账号时,你必须手动同意协议;",
+            "description": "因为最终用户协议(EULA),换社交媒体账号时,你必须手动同意协议;安卓版只能换区",
             "cases": [
                 {
                     "name": "换区"
                 },
                 {
                     "name": "换社交媒体账号",
+                    "option": [
+                        "目标社交媒体账号",
+                        "允许MAN管理qq和火影信息",
+                        "账号属性",
+                        "拒绝qq获取火影信息",
+                        "启用协议自动勾选"
+                    ],
                     "pipeline_override": {
                         "switch_account_already_in_target_area": {
                             "enabled": false
