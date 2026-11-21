@@ -295,7 +295,7 @@
             "[JumpBack]stronghold_to_fight"
         ],
         "focus": {
-            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入火要塞</font>"
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">进入要塞</font>"
         }
     },
     "stronghold_expired": {
@@ -407,22 +407,21 @@
     "stronghold_match_win": {
         "recognition": "OCR",
         "roi": [
-            472,
-            342,
-            325,
-            209
+            513,
+            389,
+            246,
+            120
         ],
         "expected": [
-            "确",
-            "定"
+            "确定"
         ],
         "pre_delay": 0,
         "action": "Click",
         "post_delay": 500,
         "next": [
-            "stronghold_without_match_win",
-            "[JumpBack]stronghold_match_win",
-            "stronghold_finished"
+            "stronghold_match_win",
+            "stronghold_finished",
+            "stronghold_without_match_win"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">敌人退出了,你获胜</font>"
@@ -431,14 +430,13 @@
     "stronghold_without_match_win": {
         "recognition": "OCR",
         "roi": [
-            472,
-            342,
-            325,
-            209
+            513,
+            389,
+            246,
+            120
         ],
         "expected": [
-            "确",
-            "定"
+            "确定"
         ],
         "inverse": true,
         "pre_delay": 0,
