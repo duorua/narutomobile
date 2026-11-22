@@ -9,7 +9,7 @@
                 "daily"
             ],
             "option": [
-                "借组织助战",
+                "小队突袭直接匹配",
                 "小队突袭处理自动战斗",
                 "小队突袭出错重启"
             ]
@@ -20,17 +20,7 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "Yes",
-                    "pipeline_override": {
-                        "team_dash_invite_page": {
-                            "next": [
-                                "team_dash_invite_ninja",
-                                "[JumpBack]can_not_invite",
-                                "dash_or_exit",
-                                "retry_failed"
-                            ]
-                        }
-                    }
+                    "name": "Yes"
                 },
                 {
                     "name": "No",
@@ -45,6 +35,30 @@
                 }
             ],
             "default_case": "Yes"
+        },
+        "小队突袭直接匹配": {
+            "type": "switch",
+            "description": "开启后不管组织内容直接匹配",
+            "cases": [
+                {
+                    "name": "No",
+                    "option": [
+                        "借组织助战"
+                    ]
+                },
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "team_dash_ac_entry_undone": {
+                            "next": [
+                                "dash_or_exit",
+                                "team_dash_ac_entry_undone"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "default_case": "No"
         },
         "小队突袭处理自动战斗": {
             "type": "switch",
