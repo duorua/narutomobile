@@ -1080,7 +1080,8 @@
             "benefit_station",
             "club_third_award",
             "club_third_award_done",
-            "check_club_all_submit"
+            "check_club_all_submit",
+            "roger_naruto_club_sign"
         ],
         "on_error": [
             "club_second_award_done",
@@ -1366,7 +1367,8 @@
             "second_award_lock",
             "confirm_club_second_award",
             "club_second_award",
-            "club_second_award_done"
+            "club_second_award_done",
+            "roger_naruto_club_sign"
         ],
         "on_error": "award_kale",
         "focus": {
@@ -1473,7 +1475,8 @@
             "third_award_lock",
             "confirm_club_third_award",
             "club_third_award",
-            "club_third_award_done"
+            "club_third_award_done",
+            "roger_naruto_club_sign"
         ],
         "on_error": ["no_third_award"],
         "focus": {
