@@ -1986,7 +1986,7 @@
             1089,
             567
         ],
-        "template": "Shop/reincarnation_stone.png",
+        "template": "Shop/group_reincarnation_stone.png",
         "green_mask": true,
         "threshold": 0.9,
         "pre_delay": 0,
@@ -2005,7 +2005,7 @@
             1089,
             567
         ],
-        "template": "Shop/ninja_jade.png",
+        "template": "Shop/group_ninja_jade.png",
         "green_mask": true,
         "threshold": 0.9,
         "pre_delay": 0,
