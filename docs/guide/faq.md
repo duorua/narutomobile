@@ -52,7 +52,7 @@
 
     A: 这个报错可能是没法创建C盘Temp文件夹,导致socket文件创建不了.可以手动创建该文件夹,之后文件夹属性->安全->选择你当前的用户,给读写权限(或全部权限/完全控制)
 
-9. Q: 报错Agent 'python/python.exe' failed to start: Basepath argument is not fully qualified. (Parameter"basePath')
+9. Q: 报错Agent 'python/python.exe' failed to start: Basepath argument is not fully qualified. (Parameter"basePath') 或 Access to the path 'X:\System Volume Information' is denied
 
     A: 这个报错可能是因为放在了磁盘根目录,放在别的文件夹即可
 

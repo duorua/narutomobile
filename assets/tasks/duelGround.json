@@ -321,8 +321,11 @@
         },
         "被ban时补忍者": {
             "type": "switch",
-            "description": "忍者被ban的时候会自动补人",
+            "description": "忍者被ban的时候会自动补人,可能因为卡顿误识别",
             "cases": [
+                {
+                    "name": "No"
+                },
                 {
                     "name": "Yes",
                     "pipeline_override": {
@@ -330,12 +333,9 @@
                             "enabled": true
                         }
                     }
-                },
-                {
-                    "name": "No"
                 }
             ],
-            "default_case": "Yes"
+            "default_case": "No"
         },
         "切换预设": {
             "type": "switch",

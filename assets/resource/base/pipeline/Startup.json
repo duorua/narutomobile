@@ -219,7 +219,9 @@
         "next": [
             "confirm_refuse_info",
             "refuse_info",
-            "switch_account_in_start_game"
+            "switch_account_in_start_game",
+            "check_agreement",
+            "agree_agreement"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">确认同意信息</font>"

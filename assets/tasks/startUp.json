@@ -183,7 +183,7 @@
         },
         "拒绝qq获取火影信息": {
             "type": "switch",
-            "description": "开启允许MAN管理qq和火影信息才会生效;在qq申请界面,拒绝qq获取火影信息;在低分辨率,卡顿等情况下不生效",
+            "description": "开启允许MAN管理qq和火影信息才会生效;建议不开,在低分辨率,卡顿等情况下不生效且容易卡死;在qq申请界面,拒绝qq获取火影信息",
             "cases": [
                 {
                     "name": "No"
@@ -226,7 +226,9 @@
                             "next": [
                                 "switch_account_to_switch_area",
                                 "[JumpBack]refuse_info",
-                                "[JumpBack]agree_log_in"
+                                "[JumpBack]agree_log_in",
+                                "check_agreement",
+                                "agree_agreement"
                             ]
                         },
                         "agree_agreement": {

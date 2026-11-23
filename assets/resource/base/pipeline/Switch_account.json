@@ -372,7 +372,9 @@
         "next": [
             "switch_account_to_switch_area",
             "[JumpBack]agree_log_in",
-            "[JumpBack]agree_info"
+            "[JumpBack]agree_info",
+            "check_agreement",
+            "agree_agreement"
         ]
     },
     "swipe_for_switch_account_find_target_qq_account": {
