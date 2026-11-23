@@ -567,6 +567,12 @@
     },
     "pursuit_dawn_organization_award": {
         "recognition": "TemplateMatch",
+        "roi": [
+            390,
+            567,
+            696,
+            152
+        ],
         "template": "Group/dawn_organization_award_check.png",
         "pre_delay": 0,
         "post_delay": 400,
@@ -618,14 +624,29 @@
         },
         "post_delay": 0,
         "next": [
-            "one_key_get_pursuit_dawn_organization_award",
-            "[JumpBack]get_pursuit_dawn_organization_award",
-            "check_no_pursuit_dawn_organization_award",
+            "pursuit_dawn_organization_in_award",
             "pursuit_dawn_organization_award_undone"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">追击晓组织奖励未领取</font>"
         }
+    },
+    "pursuit_dawn_organization_in_award": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            160,
+            201,
+            150,
+            103
+        ],
+        "template": "Group/check_in_dawn_organization_award.png",
+        "pre_delay": 0,
+        "post_delay": 0,
+        "next": [
+            "one_key_get_pursuit_dawn_organization_award",
+            "[JumpBack]get_pursuit_dawn_organization_award",
+            "check_no_pursuit_dawn_organization_award"
+        ]
     },
     "one_key_get_pursuit_dawn_organization_award": {
         "recognition": "TemplateMatch",
