@@ -640,6 +640,8 @@
             303
         ],
         "template": "Weekly_win/no_ninja.png",
+        "threshold": 0.9,
+        "pre_delay": 0,
         "post_delay": 400,
         "next": [
             "weekly_win_selected_ninja",
