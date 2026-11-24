@@ -237,7 +237,11 @@ jobs:
         run: |
           python3 tools/ci/download_deps.py --deps-dir ./install/python/lib/python3.13/site-packages --os ${{ matrix.os }} --arch ${{ matrix.arch }}
 
+      - name: List hidden files in install
+        run: find install -name ".*" -not -name "." -not -name ".." | sort
+
       - uses: actions/upload-artifact@v7
         with:
           name: MaaAutoNaruto-${{ matrix.os }}-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}
           path: "install"
+          include-hidden-files: true
