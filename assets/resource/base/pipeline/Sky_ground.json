@@ -861,6 +861,14 @@
         "on_error": ["sky_ground_in_main_quick_stop"]
     },
     "sky_ground_in_main_quick_stop": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            1014,
+            377,
+            265,
+            342
+        ],
+        "template": "Sky_ground/rule_book.png",
         "pre_delay": 0,
         "action": "StopTask",
         "post_delay": 0,
