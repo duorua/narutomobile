@@ -857,7 +857,16 @@
             "up_swipe_for_empty_column",
             "sky_ground_success",
             "sky_ground_fail"
-        ]
+        ],
+        "on_error": ["sky_ground_in_main_quick_stop"]
+    },
+    "sky_ground_in_main_quick_stop": {
+        "pre_delay": 0,
+        "action": "StopTask",
+        "post_delay": 0,
+        "focus": {
+            "Node.Action.Starting": "<font color=\"tomato\">天地提前停止;可能因为找不到空的柱子,且没有开启无限循环找柱子等选项,具体见任务描述</font>"
+        }
     },
     "sky_ground_in_fight": {
         "recognition": "TemplateMatch",
