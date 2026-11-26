@@ -96,6 +96,13 @@
                                 "check_in_team_dash_sweep",
                                 "[JumpBack]team_dash_sweep_win"
                             ]
+                        },
+                        "team_dash_loading": {
+                            "next": [
+                                "team_dash_battle_tips",
+                                "check_in_team_dash_sweep",
+                                "team_dash_loading"
+                            ]
                         }
                     }
                 }
