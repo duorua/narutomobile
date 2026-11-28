@@ -422,12 +422,38 @@
         "action": "Click",
         "repeat": 2,
         "post_delay": 500,
+        "timeout": 10000,
         "next": [
             "weekly_win_preset_confirm",
             "weekly_win_switch_preset"
         ],
         "focus": {
             "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:选择预设页签</font>"
+        },
+        "on_error": [
+            "weekly_win_switch_preset_fallback"
+        ]
+    },
+    "weekly_win_switch_preset_fallback": {
+        "recognition": "OCR",
+        "roi": [
+            802,
+            92,
+            462,
+            60
+        ],
+        "expected": [
+            "1"
+        ],
+        "pre_delay": 0,
+        "action": "Click",
+        "repeat": 2,
+        "post_delay": 500,
+        "next": [
+            "weekly_win_preset_confirm"
+        ],
+        "focus": {
+            "Node.Action.Starting": "<font color=\"DeepSkyBlue\">切换预设:下标无效,按名称首个匹配重试</font>"
         }
     },
     "weekly_win_preset_confirm": {
